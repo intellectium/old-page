@@ -1,0 +1,121 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ментальная арифметика</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+}
+
+#show_answer {
+  margin-top: 40px;
+}
+
+#summ {
+  font-size: inherit;
+}
+
+#button_start {
+  width: 500px;
+  height: 50px;
+}
+
+input[type="checkbox"] {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+#timestep, #chainlength {
+    text-align: center;
+}
+
+#number{
+  color: #191;
+  font-size: 30px;
+}
+
+#hello{
+  text-align: center;
+  background-color: fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+}
+
+#show{
+text-align: center;
+color: #431;
+font-size: 60vh;
+width: 100%;
+height: 100%;
+position: absolute;
+display: none;
+z-index: -100;
+}
+#summ_final{
+text-align: center;
+background-color: fff;
+color: #a31;
+font-size: 60vh;
+width: 100%;
+height: 100%;
+position: absolute;
+display: none;
+padding: 0;
+margin: 0;
+}
+#answer_request{
+text-align: center;
+background-color: fff;
+width: 100%;
+height: 100%;
+position: absolute;
+display: none;
+}
+
+</style>
+<script>
+var _0x862c=["\x6E\x61\x6D\x65","\x73\x69\x6D\x70\x6C\x65","\x34","\x62\x72\x6F\x5F\x70\x6C\x75\x73","\x2D\x34","\x62\x72\x6F\x5F\x6D\x69\x6E\x75\x73","\x39","\x35","\x66\x61\x6D\x69\x6C\x79\x5F\x70\x6C\x75\x73","\x36","\x6E\x65\x69\x67\x68\x62\x6F\x75\x72\x5F\x70\x6C\x75\x73","\x72\x61\x6E\x64\x6F\x6D","\x6C\x65\x6E\x67\x74\x68","\x66\x6C\x6F\x6F\x72","\x77\x61\x72\x6E","\x76\x61\x6C\x75\x65","\x63\x68\x61\x69\x6E\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x74\x69\x6D\x65\x73\x74\x65\x70","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x73\x68\x6F\x77","\x6E\x6F\x6E\x65","\x61\x6E\x73\x77\x65\x72\x5F\x72\x65\x71\x75\x65\x73\x74","\x62\x6C\x6F\x63\x6B","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x62\x6C\x61\x63\x6B","\x62\x6C\x75\x65","\x62\x72\x6F\x77\x6E","\x63\x68\x6F\x63\x6F\x6C\x61\x74\x65","\x64\x61\x72\x6B\x72\x65\x64","\x70\x75\x72\x70\x6C\x65","\x63\x6F\x6C\x6F\x72","\x6D\x61\x72\x67\x69\x6E\x2D\x74\x6F\x70","\x6D\x61\x72\x67\x69\x6E\x2D\x6C\x65\x66\x74","\x46\x20\x6D\x69\x6E\x75\x73\x20\x77\x68\x6F\x6F\x6F\x68\x6F\x6F\x6F\x21","\x6C\x6F\x67","\x4E\x20\x6D\x69\x6E\x75\x73\x20\x77\x68\x6F\x6F\x6F\x68\x6F\x6F\x6F\x21","\x69\x6E\x66\x6F","\x3D\x20","\x68\x65\x6C\x6C\x6F","\x63\x68\x65\x63\x6B\x65\x64","\x66\x61\x6D\x69\x6C\x79\x5F\x6D\x69\x6E\x75\x73","\x6E\x65\x69\x67\x68\x62\x6F\x75\x72\x5F\x6D\x69\x6E\x75\x73","\x73\x75\x70\x65\x72\x68\x65\x72\x6F","\x70\x75\x73\x68","\x64\x6F\x75\x62\x6C\x65\x73\x69\x67\x6E","\x73\x74\x61\x72\x74","\x73\x68\x6F\x77\x52\x65\x73\x75\x6C\x74","\x73\x75\x6D\x6D","\x73\x75\x6D\x6D\x5F\x66\x69\x6E\x61\x6C","\x72\x65\x73\x65\x74","\x6F\x6E\x6C\x6F\x61\x64","\x6F\x6E\x63\x6C\x69\x63\x6B","\x63\x6C\x61\x73\x73\x65\x73","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x64\x69\x73\x61\x62\x6C\x65\x64",""];var MentalA=function(){var _0xcefax2= new Array(),_0xcefax3= new Array(),_0xcefax4= new Array(),_0xcefax5= new Array(),_0xcefax6= new Array(),_0xcefax7=false,_0xcefax8=false,_0xcefax9=false,_0xcefaxa=false,_0xcefaxb=false,_0xcefaxc=false,_0xcefaxd=false;var _0xcefaxe=function(){_0xcefax2[0]=  new Array(1,2,3,4,5,6,7,8,9);_0xcefax2[1]=  new Array(1,2,3,5,6,7,8,-1);_0xcefax2[2]=  new Array(1,2,5,6,7,-1,-2);_0xcefax2[3]=  new Array(1,5,6,-1,-2,-3);_0xcefax2[4]=  new Array(5,-1,-2,-3,-4);_0xcefax2[5]=  new Array(1,2,3,4,-5);_0xcefax2[6]=  new Array(1,2,3,-1,-5,-6);_0xcefax2[7]=  new Array(1,2,-1,-2,-5,-6,-7);_0xcefax2[8]=  new Array(1,-1,-2,-3,-5,-6,-7,-8);_0xcefax2[9]=  new Array(-1,-2,-3,-4,-5,-6,-7,-8,-9);_0xcefax2[_0x862c[0]]= _0x862c[1];_0xcefax3[1]=  new Array(_0x862c[2]);_0xcefax3[2]=  new Array(3,4);_0xcefax3[3]=  new Array(2,3,4);_0xcefax3[4]=  new Array(1,2,3,4);_0xcefax3[_0x862c[0]]= _0x862c[3];_0xcefax4[5]=  new Array(-1,-2,-3,-4);_0xcefax4[6]=  new Array(-2,-3,-4);_0xcefax4[7]=  new Array(-3,-4);_0xcefax4[8]=  new Array(_0x862c[4]);_0xcefax4[_0x862c[0]]= _0x862c[5];_0xcefax5[1]=  new Array(_0x862c[6]);_0xcefax5[2]=  new Array(8,9);_0xcefax5[3]=  new Array(7,8,9);_0xcefax5[4]=  new Array(6,7,8,9);_0xcefax5[5]=  new Array(_0x862c[7]);_0xcefax5[6]=  new Array(4,5,9);_0xcefax5[7]=  new Array(3,4,5,8,9);_0xcefax5[8]=  new Array(2,3,4,5,7,8,9);_0xcefax5[9]=  new Array(1,2,3,4,5,6,7,8,9);_0xcefax5[_0x862c[0]]= _0x862c[8];_0xcefax6[5]=  new Array(6,7,8,9);_0xcefax6[6]=  new Array(6,7,8);_0xcefax6[7]=  new Array(6,7);_0xcefax6[8]=  new Array(_0x862c[9]);_0xcefax6[_0x862c[0]]= _0x862c[10]};var _0xcefaxf,_0xcefax10,_0xcefax11,_0xcefax12,_0xcefax13;var _0xcefax14;var _0xcefax15=false;var _0xcefax16=function(_0xcefax17){if(!_0xcefaxb){return false};if(Math[_0x862c[13]](Math[_0x862c[11]]()* _0xcefax14[_0x862c[12]])> 1){return false};var _0xcefax18=false;var _0xcefax19=_0xcefaxf% 10;if(_0xcefaxf< 10|| _0xcefax19>= 5){return false};switch(_0xcefax19){case 0:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 5)+ 1);break;case 1:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 4)+ 2);break;case 2:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 3)+ 3);break;case 3:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 2)+ 4);break;case 4:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 2)+ 4);break};if(_0xcefax18&& Math[_0x862c[11]]()> 0.5){_0xcefax18-= 5};return _0xcefax18};var _0xcefax1a=function(_0xcefax17){if(!_0xcefaxc){return false};if(Math[_0x862c[13]](Math[_0x862c[11]]()* _0xcefax14[_0x862c[12]])> 1){return false};var _0xcefax18=false;var _0xcefax19=_0xcefaxf% 10;if(_0xcefaxf< 10|| _0xcefax19>= 5|| _0xcefax19== 0){return false};switch(_0xcefax19){case 1:_0xcefax18=  -6;break;case 2:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 2)+ 6);break;case 3:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 3)+ 6);break;case 4:_0xcefax18=  -(Math[_0x862c[13]](Math[_0x862c[11]]()* 4)+ 6);break};return _0xcefax18};var _0xcefax1b=function(){var _0xcefax1c=_0xcefax2;var _0xcefax1d=Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]));var _0xcefax19=_0xcefaxf% 10;while(!_0xcefax14[_0xcefax1d]||  !_0xcefax14[_0xcefax1d][_0xcefax19]){_0xcefax1d= Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]))};_0xcefax1c= _0xcefax14[_0xcefax1d];var _0xcefax1e=parseInt(_0xcefax1c[_0xcefax19][Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax1c[_0xcefax19][_0x862c[12]]))].toString(),10);return _0xcefax1e};var _0xcefax1f=function(){var _0xcefax1c=_0xcefax2;var _0xcefax1d=Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]));var _0xcefax19=_0xcefax10% 10;while(!_0xcefax14[_0xcefax1d]||  !_0xcefax14[_0xcefax1d][_0xcefax19]){_0xcefax1d= Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]))};_0xcefax1c= _0xcefax14[_0xcefax1d];_0xcefax12= parseInt(_0xcefax1c[_0xcefax19][Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax1c[_0xcefax19][_0x862c[12]]))].toString(),10);console[_0x862c[14]](_0xcefax12);_0xcefax10= _0xcefax10+ _0xcefax12};var _0xcefax20=function(){var _0xcefax1c=_0xcefax2;var _0xcefax1d=Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]));var _0xcefax19=_0xcefax11% 10;while(!_0xcefax14[_0xcefax1d]||  !_0xcefax14[_0xcefax1d][_0xcefax19]){_0xcefax1d= Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax14[_0x862c[12]]))};_0xcefax1c= _0xcefax14[_0xcefax1d];_0xcefax13= 0;while(_0xcefax13* _0xcefax12<= 0){var _0xcefax21=0;while(_0xcefax13* _0xcefax12<= 0&& _0xcefax21< 3){_0xcefax13= parseInt(_0xcefax1c[_0xcefax19][Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax1c[_0xcefax19][_0x862c[12]]))].toString(),10);_0xcefax21++};if(_0xcefax13* _0xcefax12<= 0&& _0xcefax21>= 3){_0xcefax10= _0xcefax10- _0xcefax12;_0xcefax1f()}};_0xcefax11= _0xcefax11+ _0xcefax13};var _0xcefax22;var _0xcefax23;var _0xcefax24=50;var _0xcefax25=function(){_0xcefax22= document[_0x862c[17]](_0x862c[16])[_0x862c[15]];_0xcefax23= parseInt(document[_0x862c[17]](_0x862c[18])[_0x862c[15]],10)+ _0xcefax24};var _0xcefax26=function(){document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[19]]= _0x862c[22];document[_0x862c[17]](_0x862c[23])[_0x862c[20]][_0x862c[19]]= _0x862c[24]};var _0xcefax27=function(_0xcefax1e){var _0xcefax28=document[_0x862c[17]](_0x862c[21]);_0xcefax28[_0x862c[20]][_0x862c[19]]= _0x862c[22];_0xcefax28[_0x862c[25]]= _0xcefax1e;var _0xcefax29= new Array(_0x862c[26],_0x862c[27],_0x862c[28],_0x862c[29],_0x862c[30],_0x862c[31]);_0xcefax28[_0x862c[20]][_0x862c[32]]= _0xcefax29[Math[_0x862c[13]](Math[_0x862c[11]]()* (_0xcefax29[_0x862c[12]]))];setTimeout(function(){document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[19]]= _0x862c[24]},_0xcefax24);if(_0xcefaxd){document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[33]]= (Math[_0x862c[13]](Math[_0x862c[11]]()* 7)- 1)* 50;document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[34]]= (Math[_0x862c[13]](Math[_0x862c[11]]()* 11)- 7)* 50}};var _0xcefax2a=function(){if(_0xcefax22> 0){var _0xcefax2b=_0xcefax16(_0xcefaxf);var _0xcefax2c=_0xcefax1a(_0xcefaxf);if(_0xcefax2b!== false){console[_0x862c[36]](_0x862c[35]);_0xcefax1e= _0xcefax2b;_0xcefaxf= _0xcefaxf+ _0xcefax2b}else {if(_0xcefax2c!== false){console[_0x862c[36]](_0x862c[37]);_0xcefax1e= _0xcefax2c;_0xcefaxf= _0xcefaxf+ _0xcefax2c}else {if(_0xcefax15){_0xcefax1f();_0xcefax20();var _0xcefax1e=_0xcefax12* 10+ _0xcefax13;_0xcefaxf= _0xcefaxf+ _0xcefax1e}else {_0xcefax1e= _0xcefax1b();_0xcefaxf= _0xcefaxf+ _0xcefax1e}}};console[_0x862c[38]](_0xcefax1e);console[_0x862c[36]](_0x862c[39]+ _0xcefaxf);_0xcefax27(_0xcefax1e);_0xcefax22--;setTimeout(_0xcefax2a,_0xcefax23)}else {_0xcefax26()}};var _0xcefax2d=function(){_0xcefaxf= 0;_0xcefax10= 0;_0xcefax11= 0;document[_0x862c[17]](_0x862c[40])[_0x862c[20]][_0x862c[19]]= _0x862c[22];document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[19]]= _0x862c[24];document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[33]]= 0;document[_0x862c[17]](_0x862c[21])[_0x862c[20]][_0x862c[34]]= 0;_0xcefaxb= document[_0x862c[17]](_0x862c[42])[_0x862c[41]];_0xcefaxc= document[_0x862c[17]](_0x862c[43])[_0x862c[41]];_0xcefaxd= document[_0x862c[17]](_0x862c[44])[_0x862c[41]];_0xcefax14=  new Array();if(document[_0x862c[17]](_0x862c[1])[_0x862c[41]]){_0xcefax14[_0x862c[45]](_0xcefax2)};if(document[_0x862c[17]](_0x862c[3])[_0x862c[41]]){_0xcefax14[_0x862c[45]](_0xcefax3)};if(document[_0x862c[17]](_0x862c[5])[_0x862c[41]]){_0xcefax14[_0x862c[45]](_0xcefax4)};if(document[_0x862c[17]](_0x862c[8])[_0x862c[41]]){_0xcefax14[_0x862c[45]](_0xcefax5)};if(document[_0x862c[17]](_0x862c[10])[_0x862c[41]]){_0xcefax14[_0x862c[45]](_0xcefax6)};_0xcefax15= document[_0x862c[17]](_0x862c[46])[_0x862c[41]]};this[_0x862c[47]]= function(){_0xcefax25();_0xcefax2d();_0xcefax2a()};this[_0x862c[48]]= function(){document[_0x862c[17]](_0x862c[23])[_0x862c[20]][_0x862c[19]]= _0x862c[22];document[_0x862c[17]](_0x862c[49])[_0x862c[25]]= _0xcefaxf;document[_0x862c[17]](_0x862c[50])[_0x862c[20]][_0x862c[19]]= _0x862c[24]};this[_0x862c[51]]= function(){document[_0x862c[17]](_0x862c[50])[_0x862c[20]][_0x862c[19]]= _0x862c[22];document[_0x862c[17]](_0x862c[40])[_0x862c[20]][_0x862c[19]]= _0x862c[24]};_0xcefaxe()};m=  new MentalA();window[_0x862c[52]]= function(){document[_0x862c[17]](_0x862c[46])[_0x862c[53]]= function(){var _0xcefax2e=document[_0x862c[55]](_0x862c[54]);for(var _0xcefax2f=0;_0xcefax2f< _0xcefax2e[_0x862c[12]];_0xcefax2f++){}};function _0xcefax30(_0xcefax31){var _0xcefax32=document[_0x862c[17]](_0x862c[8]);_0xcefax31= document[_0x862c[17]](_0x862c[42])[_0x862c[41]]|| document[_0x862c[17]](_0x862c[43])[_0x862c[41]];_0xcefax32[_0x862c[56]]= _0xcefax31?_0x862c[56]:_0x862c[57];_0xcefax32[_0x862c[41]]= _0xcefax31?true:_0xcefax32[_0x862c[41]]}document[_0x862c[17]](_0x862c[42])[_0x862c[53]]= function(){_0xcefax30(this[_0x862c[41]])};document[_0x862c[17]](_0x862c[43])[_0x862c[53]]= function(){_0xcefax30(this[_0x862c[41]])}}
+</script>
+</head>
+
+<body>
+
+<div id='hello'>
+<form id="test_parameters">
+<br/>
+    <label><input id="simple" type="checkbox"  checked disabled /> Простые числа</label>
+    <label><input id="doublesign" type="checkbox" /> Двузначные числа</label><br/><br/>
+    <label><input id="bro_plus" type="checkbox" class="classes" /> Братья+</label>
+    <label><input id="family_plus" type="checkbox"  class="classes" /> Родственники+</label>
+    <label><input id="neighbour_plus" type="checkbox"  class="classes" /> Соседи+</label><br/><br/>
+    <label><input id="bro_minus" type="checkbox"  class="classes" /> Братья-</label>
+    <label><input id="family_minus" type="checkbox"  class="classes" /> Родственники-</label>
+    <label><input id="neighbour_minus" type="checkbox"  class="classes" /> Соседи-</label><br/><br/>
+    <label><input id="superhero" type="checkbox" /> "Супергерой"</label><br/><br/>
+    <input id="chainlength" placeholder="Длина цепи" title="Длина цепи" value="10"/>
+	<input id="timestep" placeholder="Задержка по времени" title="Задержка по времени" value="1000"/><br/><br/>
+	<input id="button_start" type="button" onclick="m.start()" value=" Начать ">
+</form>
+</div>
+
+<div id='show'>
+- -
+</div>
+<div id='answer_request'>
+	<input id="show_answer" type="button" onclick="m.showResult()" value=" Показать ответ ">
+</div>
+<div id='summ_final'>
+	<div id='summ'>
+	--
+	</div>
+	<input id="to_start" type="button" onclick="m.reset()" value=" Продолжить ">
+</div>
+
+</body>
+</html>

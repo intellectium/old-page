@@ -1,0 +1,99 @@
+<manifest alg="2" build="2015.2.0.352" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive" exportTarget="other" domain="intellectium.ru" resolutions="1x" timestamp="1598699681152">
+  <folder name="css">
+    <file name="site_global.css" crc="453916966"/>
+    <file name="master_tem1.css" crc="3797943781" ref="good_write:contacts:order:fast_read:index:mental_math"/>
+    <file name="good_write.css" crc="407600022" ref="good_write"/>
+    <file name="iefonts_good_write.css" crc="510182323" ref="good_write"/>
+    <file name="contacts.css" crc="143784378" ref="contacts"/>
+    <file name="iefonts_contacts.css" crc="4144934079" ref="contacts"/>
+    <file name="order.css" crc="4250453793" ref="order"/>
+    <file name="iefonts_order.css" crc="299094705" ref="order"/>
+    <file name="fast_read.css" crc="4251617155" ref="fast_read"/>
+    <file name="iefonts_fast_read.css" crc="224004223" ref="fast_read"/>
+    <file name="index.css" crc="82879374" ref="index"/>
+    <file name="iefonts_index.css" crc="342953082" ref="index"/>
+    <file name="mental_math.css" crc="14985433" ref="mental_math"/>
+    <file name="iefonts_mental_math.css" crc="84227494" ref="mental_math"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="312386352" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="museutils.js" crc="4155826306" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="whatinput.js" crc="86476730" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="museconfig.js" crc="483509463" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="pie.js" crc="3827607177" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="4034513494" ref="index:contacts:mental_math:fast_read:good_write"/>
+    <file name="jquery.watch.js" crc="117772946" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="require.js" crc="228336483" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="webpro.js" crc="4078243563" ref="contacts"/>
+    <file name="form_check.php" crc="474517188" ref="contacts"/>
+    <file name="form_throttle.php" crc="495784356" ref="contacts"/>
+    <file name="form_process.php" crc="4149049960" ref="contacts"/>
+    <file name="form-u5108.php" crc="3821698234" ref="contacts"/>
+    <file name="musewpslideshow.js" crc="4115829919" ref="contacts"/>
+    <file name="jquery.museoverlay.js" crc="3936724022" ref="contacts"/>
+    <file name="touchswipe.js" crc="157639107" ref="contacts"/>
+    <file name="form-u5004.php" crc="79160909" ref="contacts"/>
+  </folder>
+  <folder name="images">
+    <file name="favicon.ico" crc="3815863660" ref="index"/>
+    <file name="intellectium_logo_black_on_white.png" crc="370925502" ref="index"/>
+    <file name="banner_main_1.jpg" crc="4134350030" ref="index"/>
+    <file name="banner_main_2.jpg" crc="366139610" ref="index"/>
+    <file name="banner_main_3.jpg" crc="343224021" ref="index:mental_math:fast_read:good_write"/>
+    <file name="up.png" crc="370018765" ref="index:contacts:mental_math:fast_read:good_write"/>
+    <file name="instagram_logo_40.png" crc="350214821" seo="true" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="vk_w.png" crc="282481168" ref="index"/>
+    <file name="yt_w.png" crc="4246591885" ref="index"/>
+    <file name="cream_pixels.jpg" crc="3926192844" ref="index:order:contacts:mental_math:fast_read:good_write"/>
+    <file name="metro_purp.png" crc="202065308" ref="contacts"/>
+    <file name="logo_w-u5106-fr.png" crc="4273652564" ref="contacts"/>
+    <file name="u5132-17.png" crc="237503386" ref="contacts"/>
+    <file name="u5132-17-r.png" crc="515455010" ref="contacts"/>
+    <file name="u5132-17-m.png" crc="515455010" ref="contacts"/>
+    <file name="u5132-17-fs.png" crc="487837712" ref="contacts"/>
+    <file name="checkboxunchecked.png" crc="3953652346" ref="contacts"/>
+    <file name="checkboxuncheckedrollover.png" crc="32437065" ref="contacts"/>
+    <file name="checkboxuncheckedmousedown.png" crc="41320463" ref="contacts"/>
+    <file name="checkboxchecked.png" crc="4243906595" ref="contacts"/>
+    <file name="checkboxcheckedrollover.png" crc="4168856179" ref="contacts"/>
+    <file name="checkboxcheckedmousedown.png" crc="4190422059" ref="contacts"/>
+    <file name="metro_blue.png" crc="3835874035" ref="contacts"/>
+    <file name="u5028-17.png" crc="237503386" ref="contacts"/>
+    <file name="u5028-17-r.png" crc="515455010" ref="contacts"/>
+    <file name="u5028-17-m.png" crc="515455010" ref="contacts"/>
+    <file name="u5028-17-fs.png" crc="206955760" ref="contacts"/>
+    <file name="banner.png" crc="4048699339" ref="mental_math"/>
+    <file name="fon_kletka.jpg" crc="3690854" ref="mental_math"/>
+    <file name="intellectium_logo_for_list-u7965-fr.png" crc="4259951764" ref="mental_math"/>
+    <file name="travkina.jpg" crc="171149126" ref="mental_math"/>
+    <file name="dim_1574_2.jpg" crc="36332748" ref="mental_math"/>
+    <file name="tetrad.jpg" crc="62558998" ref="mental_math"/>
+    <file name="_dsc7541.jpg" crc="328439876" ref="mental_math"/>
+    <file name="_dsc7574-u5438-fr.jpg" crc="413261927" ref="mental_math"/>
+    <file name="_dsc7615.jpg" crc="3995485458" ref="mental_math"/>
+    <file name="alexandr.jpg" crc="143835385" ref="mental_math"/>
+    <file name="alexandra.jpg" crc="536819045" ref="mental_math"/>
+    <file name="ekaterina.jpg" crc="259946937" ref="mental_math"/>
+    <file name="elena.jpg" crc="407099875" ref="mental_math"/>
+    <file name="skorochtenie2.jpg" crc="422290739" ref="fast_read"/>
+    <file name="skorochtenie.jpg" crc="3812820186" ref="fast_read"/>
+    <file name="artem.jpg" crc="4172352004" ref="fast_read"/>
+    <file name="alisa.jpg" crc="450907955" ref="fast_read"/>
+    <file name="dasha.jpg" crc="3940684649" ref="fast_read"/>
+    <file name="lev.jpg" crc="3794595615" ref="fast_read"/>
+    <file name="sonya.jpg" crc="4205853555" ref="fast_read"/>
+    <file name="varya.jpg" crc="4127316752" ref="fast_read"/>
+    <file name="liza2.jpg" crc="4079753848" ref="fast_read"/>
+    <file name="arina2.jpg" crc="3931040657" ref="fast_read"/>
+    <file name="masha_sh.jpg" crc="3975482765" ref="fast_read"/>
+    <file name="pocherk2.jpg" crc="3844420685" ref="good_write"/>
+    <file name="banner_write_2.jpg" crc="77402376" ref="good_write"/>
+    <file name="pch_results.jpg" crc="3896519866" ref="good_write"/>
+  </folder>
+  <file name="index.html" crc="382035656" seo="true" mt="1598699608683" redirect="true"/>
+  <file name="order.html" crc="3879209856" mt="1598699608683" redirect="true"/>
+  <file name="contacts.html" crc="4193616956" seo="true" mt="1598699608683" redirect="true"/>
+  <file name="mental_math.html" crc="4285368893" seo="true" mt="1598699608683" redirect="true"/>
+  <file name="fast_read.html" crc="232073201" seo="true" mt="1598699608683" redirect="true"/>
+  <file name="good_write.html" crc="3847991258" seo="true" mt="1598699608683" redirect="true"/>
+</manifest>
