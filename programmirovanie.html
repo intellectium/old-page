@@ -1628,7 +1628,8 @@
       btn.textContent = 'Отправляем…';
 
       const data = new URLSearchParams(new FormData(leadForm));
-      data.append('source', 'Программирование — годовой курс');
+      const utm = new URLSearchParams(location.search).get('utm_content') || 'без метки';
+      data.append('source', 'Программирование — годовой курс / ' + utm);
 
       try {
         if (!SCRIPT_URL.startsWith('https://')) throw new Error('SCRIPT_URL не настроен');
