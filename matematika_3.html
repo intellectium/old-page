@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Математика для 1–7 класса — детский центр «Интеллектиум», ул. Оптиков</title>
+<meta name="description" content="Мини-группы до 6 человек, индивидуальная программа для каждого ребёнка. Подтянем школьную программу, увлечём олимпиадами или подготовим к поступлению. Бесплатная диагностика.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+
+<!-- Яндекс.Метрика -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+   ym(111831978, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111831978" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Яндекс.Метрика -->
+
+<!-- Пиксель VK Рекламы: вставить сюда после получения ID от клиента -->
+
+<style>
+  :root{
+    --blue:   #343F9E;
+    --blue-d: #242D76;
+    --blue-l: #5C68C9;
+    --sun:    #FFC53D;
+    --bg:     #F7F8FC;
+    --card:   #FFFFFF;
+    --text:   #22263D;
+    --muted:  #6B7190;
+    --mist:   #E4E7F5;
+    --warm:   #FFF8E6;
+    --r:      22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Nunito, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:72px 0}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Eyebrow pill */
+  .eyebrow{
+    display:inline-block;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    color:#fff;
+    font-weight:800;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .kicker{
+    display:inline-block;
+    color:var(--blue);
+    font-weight:800;
+    font-size:.8rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(160deg, var(--blue) 0%, var(--blue-d) 100%);
+    color:#fff;
+    padding:64px 0 56px;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 4vw, 2.7rem);
+    font-weight:900;
+    line-height:1.22;
+    max-width:780px;
+    margin-bottom:20px;
+  }
+  .hero h1 u{
+    text-decoration:none;
+    background:var(--sun);
+    color:var(--blue-d);
+    padding:0 8px;
+    border-radius:8px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+  .hero .sub{
+    font-size:1.08rem;
+    max-width:640px;
+    color:rgba(255,255,255,.92);
+    margin-bottom:28px;
+  }
+  .hero .sub b{color:#fff}
+  .cta{
+    display:inline-block;
+    background:var(--sun);
+    color:var(--blue-d);
+    font-weight:800;
+    font-size:1rem;
+    padding:16px 34px;
+    border-radius:999px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+  .hero-facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+    margin-top:36px;
+  }
+  .fact{display:flex;flex-direction:column;gap:2px}
+  .fact b{font-size:1.3rem;font-weight:900}
+  .fact span{font-size:.85rem;color:rgba(255,255,255,.78)}
+
+  /* Section headers */
+  .sec-head{max-width:680px;margin-bottom:36px}
+  .sec-head h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:900;line-height:1.28}
+  .sec-head p{margin-top:12px;color:var(--muted);font-size:1.02rem}
+
+  /* Pains */
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+  .pain{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .pain h3{font-size:1.08rem;font-weight:800;margin-bottom:10px}
+  .pain p{color:var(--muted);font-size:.96rem}
+  .objection{
+    background:var(--warm);
+    border-radius:var(--r);
+    padding:32px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  .objection h3{font-size:1.15rem;font-weight:800;margin-bottom:6px}
+  .objection .oq{color:var(--muted);font-size:.9rem;font-style:italic}
+  .objection p{font-size:.98rem}
+
+  /* Showcase (three paths) */
+  .showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .sc-card{background:var(--card);border-radius:var(--r);padding:28px;border:1px solid var(--mist)}
+  .sc-age{
+    display:inline-block;background:var(--mist);color:var(--blue);
+    font-weight:800;font-size:.78rem;padding:5px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .sc-card h3{font-size:1.15rem;font-weight:800;margin-bottom:10px}
+  .sc-card p{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+  .sc-fact{color:var(--blue) !important;font-weight:700;font-size:.88rem !important}
+  .showcase-note{text-align:center;margin-top:28px;color:var(--muted)}
+
+  /* Why / method */
+  .why{display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
+  .why-main{
+    background:var(--blue);color:#fff;border-radius:var(--r);padding:36px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .huge{font-size:3.4rem;font-weight:900;line-height:1;margin-bottom:8px}
+  .huge span{display:block;font-size:1rem;font-weight:600;color:rgba(255,255,255,.85);margin-top:8px}
+  .why-main h3{font-size:1.2rem;font-weight:800;margin:16px 0 10px}
+  .why-main p{color:rgba(255,255,255,.9);font-size:.98rem}
+  .why-side{display:flex;flex-direction:column;gap:16px}
+  .why-card{background:var(--card);border-radius:18px;padding:22px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .why-card h3{font-size:1.02rem;font-weight:800;margin-bottom:6px}
+  .why-card p{color:var(--muted);font-size:.92rem}
+
+  /* Pricing */
+  .formats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .fmt{background:var(--card);border-radius:var(--r);padding:32px;border:2px solid var(--mist);position:relative}
+  .fmt.hot{border-color:var(--sun)}
+  .fmt .badge{
+    position:absolute;top:-14px;left:28px;background:var(--sun);color:var(--blue-d);
+    font-weight:800;font-size:.78rem;padding:6px 14px;border-radius:999px;
+  }
+  .fmt h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+  .fmt .per{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+  .fmt .big{font-size:2.4rem;font-weight:900;color:var(--blue)}
+  .fmt .big span{font-size:1.2rem}
+  .fmt .per-lesson{color:var(--muted);font-size:.85rem;margin-bottom:16px}
+  .fmt ul{list-style:none;margin-bottom:22px}
+  .fmt li{
+    position:relative;padding-left:22px;margin-bottom:8px;font-size:.92rem;color:var(--text);
+  }
+  .fmt li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:900}
+  .fmt .cta{width:100%;text-align:center;background:var(--blue);color:#fff;box-shadow:none}
+  .fmt.hot .cta{background:var(--sun);color:var(--blue-d)}
+  .price-note{text-align:center;margin-top:24px;color:var(--muted);font-size:.92rem}
+
+  /* Schedule */
+  .sched{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
+  .sched-facts{display:flex;flex-direction:column;gap:16px}
+  .sched-fact{background:var(--card);border-radius:16px;padding:20px 24px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .sched-fact b{display:block;font-size:1.25rem;color:var(--blue);font-weight:900}
+  .sched-fact span{color:var(--muted);font-size:.88rem}
+  .sched-note{background:var(--warm);border-radius:var(--r);padding:30px}
+  .sched-note h3{font-size:1.1rem;font-weight:800;margin-bottom:10px}
+  .sched-note p{color:var(--text);font-size:.96rem}
+
+  /* Teacher */
+  .teacher{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border-radius:var(--r);padding:32px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .t-photo img{border-radius:18px;width:100%;aspect-ratio:1/1;object-fit:cover}
+  .t-info h3{font-size:1.3rem;font-weight:900;margin-bottom:4px}
+  .t-role{color:var(--blue);font-weight:700;font-size:.92rem;margin-bottom:12px}
+  .t-info p{color:var(--text);font-size:.96rem;margin-bottom:10px}
+  .t-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .t-badge{background:var(--mist);color:var(--blue);font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .g-item{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+  .g-item img{width:100%;height:100%;object-fit:cover}
+  .g-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top, rgba(34,38,61,.75), transparent);
+    color:#fff;font-weight:700;font-size:.88rem;padding:16px 14px 12px;
+  }
+
+  /* Reviews */
+  .rev-head-row{margin-top:6px}
+  .rev-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--warm);color:var(--text);font-weight:700;font-size:.9rem;
+    padding:8px 16px;border-radius:999px;
+  }
+  .stars{color:var(--sun)}
+  .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .review{background:var(--card);border-radius:var(--r);padding:26px;box-shadow:0 4px 18px rgba(34,38,61,.05);position:relative}
+  .review .quote{font-size:2.4rem;color:var(--mist);font-weight:900;line-height:1;position:absolute;top:14px;right:20px}
+  .review p{font-size:.95rem;color:var(--text);margin-bottom:16px;padding-right:20px}
+  .review .author{display:block;font-weight:800;font-size:.9rem}
+  .review .author span{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+  .r-stars{display:block;color:var(--sun);margin-top:6px;font-size:.9rem}
+
+  /* Diagnostic CTA block */
+  .diag{
+    background:linear-gradient(160deg, var(--blue) 0%, var(--blue-d) 100%);
+    color:#fff;border-radius:32px;padding:48px;text-align:center;
+  }
+  .free-pill{
+    display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    font-weight:800;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;
+    padding:8px 18px;border-radius:999px;margin-bottom:18px;
+  }
+  .diag h2{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:900;max-width:680px;margin:0 auto 16px}
+  .diag > p{max-width:640px;margin:0 auto 32px;color:rgba(255,255,255,.9)}
+  .diag-points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;text-align:left}
+  .diag-point{background:rgba(255,255,255,.09);border-radius:16px;padding:20px}
+  .diag-point h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+  .diag-point p{color:rgba(255,255,255,.85);font-size:.88rem}
+
+  /* Signup form */
+  .signup{background:var(--card);border-radius:32px;padding:48px;box-shadow:0 8px 32px rgba(34,38,61,.08)}
+  .signup h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:900;margin-bottom:10px;text-align:center}
+  .signup > p{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 28px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;margin:0 auto}
+  .signup.compact{padding:28px 28px 32px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .signup.compact h2{font-size:1.2rem;margin-bottom:6px}
+  .signup.compact > p{font-size:.9rem;margin-bottom:18px}
+  .form-grid input, .form-grid select{
+    padding:14px 16px;border:2px solid var(--mist);border-radius:14px;
+    font-family:Nunito, sans-serif;font-size:.96rem;background:var(--bg);color:var(--text);
+  }
+  .form-grid input:focus, .form-grid select:focus{outline:none;border-color:var(--blue)}
+  .form-grid button{
+    grid-column:1/-1;background:var(--blue);color:#fff;font-weight:800;font-size:1rem;
+    padding:16px;border:none;border-radius:14px;cursor:pointer;margin-top:6px;transition:background .15s ease;
+  }
+  .form-grid button:hover{background:var(--blue-d)}
+  .form-ok{display:none;text-align:center;max-width:520px;margin:0 auto;background:var(--warm);border-radius:16px;padding:24px}
+  .form-ok b{display:block;font-size:1.1rem;margin-bottom:6px}
+  .form-note{text-align:center;color:var(--muted);font-size:.82rem;max-width:560px;margin:16px auto 0}
+  .form-note a{color:var(--blue);text-decoration:underline}
+  .msgr-row{display:flex;justify-content:center;gap:12px;margin-top:24px}
+  .msgr-chip{
+    display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;
+    font-weight:700;font-size:.88rem;text-decoration:none;
+  }
+  .msgr-chip svg{width:18px;height:18px}
+  .msgr-chip.vk{background:#e8eaf9;color:var(--blue)}
+  .msgr-chip.tg{background:#e5f4ff;color:#0088cc}
+
+  footer{background:var(--blue-d);color:rgba(255,255,255,.8);padding:28px 0;font-size:.88rem;text-align:center}
+  footer a{text-decoration:none}
+
+  /* Header */
+  .site-header{background:var(--card);border-bottom:1px solid var(--mist);position:sticky;top:0;z-index:50}
+  .site-header .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding-top:14px;padding-bottom:14px;flex-wrap:wrap;
+  }
+  .site-header .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .site-header .logo img{height:38px;width:auto;display:block}
+  .site-header .contacts{
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .site-header .contacts .phone{
+    font-weight:800;font-size:1rem;color:var(--text);text-decoration:none;white-space:nowrap;
+  }
+  .site-header .contacts .cta{
+    background:var(--blue-d);color:#fff;font-size:.92rem;padding:12px 26px;box-shadow:none;
+  }
+  .site-header .contacts .cta:hover{background:var(--blue)}
+  @media (max-width: 640px){
+    .site-header .wrap{justify-content:center;text-align:center}
+    .site-header .contacts{justify-content:center;width:100%}
+  }
+
+  @media (max-width: 860px){
+    section{padding:52px 0}
+    .pains{grid-template-columns:1fr}
+    .objection{grid-template-columns:1fr}
+    .showcase{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+    .formats{grid-template-columns:1fr}
+    .sched{grid-template-columns:1fr}
+    .teacher{grid-template-columns:1fr;text-align:center}
+    .t-photo img{max-width:200px;margin:0 auto}
+    .gallery{grid-template-columns:1fr}
+    .reviews{grid-template-columns:1fr}
+    .diag-points{grid-template-columns:1fr}
+    .diag{padding:32px 24px}
+    .signup{padding:32px 22px}
+    .form-grid{grid-template-columns:1fr}
+    .hero{padding:44px 0 40px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Интеллектиум — на главную">
+      <img src="images/logo.png" alt="Интеллектиум — математика и программирование" width="147" height="38">
+    </a>
+    <div class="contacts">
+      <a class="phone" href="tel:+79818962575">+7 (981) 896-25-75</a>
+      <a class="cta" href="#signup-top">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">1–7 класс · мини-группы до 6 человек · учебный год</span>
+    <h1>Математика для 1–7 класса: <u>подтянем, увлечём олимпиадами</u> или подготовим к поступлению</h1>
+    <p class="sub">Каждый ребёнок занимается по <b>своей программе и в своём темпе</b> — рядом со сверстниками, но
+      не в общем потоке. С чего начать — решим вместе на <b>бесплатной диагностике</b>.</p>
+    <a class="cta" href="#signup">Записаться на бесплатную диагностику</a>
+    <div class="hero-facts">
+      <div class="fact"><b>1–7 класс</b><span>своя программа для каждого</span></div>
+      <div class="fact"><b>до 6 человек</b><span>в мини-группе</span></div>
+      <div class="fact"><b>7+ лет</b><span>опыта педагога</span></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section id="signup-top" style="padding:40px 0 0">
+    <div class="wrap">
+      <div class="signup compact reveal">
+        <h2>Запишитесь на бесплатную диагностику</h2>
+        <p>Оставьте заявку — перезвоним и подберём удобное время. Формат и направление обсудим вместе, если пока не знаете, что выбрать.</p>
+        <form class="form-grid" id="leadFormTop">
+          <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
+          <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
+          <select name="grade" required aria-label="В какой класс идёт ребёнок">
+            <option value="" selected disabled>В какой класс идёт ребёнок?</option>
+            <option>В 1 класс</option>
+            <option>Во 2 класс</option>
+            <option>В 3 класс</option>
+            <option>В 4 класс</option>
+            <option>В 5 класс</option>
+            <option>В 6 класс</option>
+            <option>В 7 класс</option>
+          </select>
+          <select name="interest" required aria-label="Что вас интересует">
+            <option value="" selected disabled>Что вас интересует?</option>
+            <option>Пока не знаю, посоветуйте</option>
+            <option>Подтянуть школьную программу</option>
+            <option>Олимпиадная математика</option>
+            <option>Подготовка к поступлению в физматшколу</option>
+          </select>
+          <input type="hidden" name="format" value="Пока не знаю — подскажите">
+          <button type="submit">Записаться на диагностику</button>
+        </form>
+        <p class="form-ok" id="formOkTop"><b>Заявка принята</b>Мы скоро вам перезвоним и всё расскажем.</p>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html">политикой обработки персональных данных</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pains">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Знакомая ситуация?</span>
+        <h2>С чем чаще всего приходят к нам родители</h2>
+      </div>
+      <div class="pains">
+        <div class="pain reveal">
+          <h3>Двойки и слёзы над домашкой</h3>
+          <p>Ребёнок не понимает тему, боится контрольных, а объяснить «на пальцах» ещё раз после школы уже нет сил ни у кого.</p>
+        </div>
+        <div class="pain reveal">
+          <h3>За лето всё забылось</h3>
+          <p>В сентябре класс идёт дальше, а прошлогодние темы уже не держатся в голове — и пробел копится незаметно.</p>
+        </div>
+        <div class="pain reveal">
+          <h3>Хочется дать больше сильному ребёнку</h3>
+          <p>Со школьной программой всё в порядке, но хочется интересных задач, олимпиад и подготовки к сильной школе.</p>
+        </div>
+      </div>
+      <div class="objection reveal">
+        <div>
+          <h3>«Нам, наверное, нужен репетитор один на один»</h3>
+          <p class="oq">— самое частое сомнение, с которым звонят родители</p>
+        </div>
+        <div>
+          <p>У каждого ребёнка — своя программа и свой темп, даже если рядом занимаются другие дети. Мы не тормозим
+            сильных и не торопим тех, кому нужно больше времени. При этом тревожному ребёнку легче в компании
+            сверстников: он видит, что ошибаться — нормально, и постепенно раскрывается. Внимания хватает каждому.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="showcase">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Направления</span>
+        <h2>Три пути — какой ваш, разберёмся на диагностике</h2>
+        <p>Многие родители сами не знают, что именно нужно ребёнку. Это нормально — для этого и существует бесплатная диагностика.</p>
+      </div>
+      <div class="showcase">
+        <div class="sc-card reveal">
+          <span class="sc-age">1–7 класс</span>
+          <h3>Школьная математика</h3>
+          <p>Разбираем именно те темы и ошибки, которые мешают ребёнку сейчас. Цель — уверенность на контрольных и без слёз над домашкой.</p>
+          <p class="sc-fact">Подходит, если в школе трудности здесь и сейчас</p>
+        </div>
+        <div class="sc-card reveal">
+          <span class="sc-age">1–5 класс</span>
+          <h3>Олимпиадная математика</h3>
+          <p>Учимся решать нестандартные задачи и участвуем в перечневых олимпиадах Санкт-Петербурга и России.</p>
+          <p class="sc-fact">Более 20 призёров и победителей за всё время — Санкт-Петербургская олимпиада начальной школы, «Дважды два», Всероссийская интернет-олимпиада</p>
+        </div>
+        <div class="sc-card reveal">
+          <span class="sc-age">3–4 класс</span>
+          <h3>Подготовка к поступлению</h3>
+          <p>Готовим к вступительным экзаменам в сильные физико-математические школы городского набора.</p>
+          <p class="sc-fact">Подходит, если планируете поступление в 5 класс сильной школы</p>
+        </div>
+      </div>
+      <p class="showcase-note reveal">Приходите на <b>бесплатную диагностику</b> — вместе поймём, что подойдёт именно вашему ребёнку.</p>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Как проходят занятия</span>
+        <h2>Индивидуальная программа — в компании сверстников</h2>
+      </div>
+      <div class="why">
+        <div class="why-main reveal">
+          <div class="huge">до 6<span>человек в мини-группе</span></div>
+          <h3>Не групповая программа на всех</h3>
+          <p>Дети сидят вместе, но каждый двигается по своей программе и со своей скоростью. Мы не тормозим тех, кто
+            идёт быстрее, и не торопим тех, кому нужно больше времени на тему.</p>
+        </div>
+        <div class="why-side">
+          <div class="why-card reveal">
+            <h3>60 минут на занятии</h3>
+            <p>Не 45 минут, как в школе, а полный час — успеваем не только разобрать тему, но и закрепить её в задачах.</p>
+          </div>
+          <div class="why-card reveal">
+            <h3>Обратная связь после каждого занятия</h3>
+            <p>Мы на связи с родителями напрямую и рассказываем, как прошло занятие и над чем работаем дальше.</p>
+          </div>
+          <div class="why-card reveal">
+            <h3>Опытный педагог</h3>
+            <p>Более 7 лет работы со школьниками, более 70 положительных отзывов от родителей на Яндекс Картах.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery-early">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Атмосфера</span>
+        <h2>Как проходят наши занятия</h2>
+      </div>
+      <div class="gallery reveal">
+        <div class="g-item">
+          <img src="images/matematika-klass-thumb.jpg" alt="Ученики на занятии по математике в мини-группе" loading="lazy" width="700" height="685">
+          <span class="g-caption">Мини-группа на занятии</span>
+        </div>
+        <div class="g-item">
+          <img src="images/matematika-zanyatie-thumb.jpg" alt="Педагог помогает ученикам разобрать задачу" loading="lazy" width="700" height="653">
+          <span class="g-caption">Индивидуальный подход</span>
+        </div>
+        <div class="g-item">
+          <img src="images/matematika-tetrad-thumb.jpg" alt="Ученицы разбирают задачу по рабочей тетради" loading="lazy" width="700" height="933">
+          <span class="g-caption">Разбираем вместе</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Стоимость</span>
+        <h2>Абонемент на месяц — без переплат за пятую неделю</h2>
+      </div>
+      <div class="formats">
+        <div class="fmt reveal">
+          <h3>1 раз в неделю</h3>
+          <p class="per">Абонемент на 4 занятия</p>
+          <div class="big">4 500 <span>₽</span></div>
+          <p class="per-lesson">1 125 ₽ за занятие</p>
+          <ul>
+            <li>60 минут, мини-группа до 6 человек</li>
+            <li>Подходит для поддерживающего темпа</li>
+            <li>Если 5-я неделя в месяце — занятие переходит на начало следующего абонемента</li>
+          </ul>
+          <a class="cta" href="#signup" data-format="1 раз в неделю — 4 занятия, 4500 ₽">Записаться на диагностику</a>
+        </div>
+        <div class="fmt hot reveal">
+          <span class="badge">Выгоднее за занятие</span>
+          <h3>2 раза в неделю</h3>
+          <p class="per">Абонемент на 8 занятий</p>
+          <div class="big">7 500 <span>₽</span></div>
+          <p class="per-lesson">937 ₽ за занятие</p>
+          <ul>
+            <li>60 минут, мини-группа до 6 человек</li>
+            <li>Быстрее закрываем пробелы и держим темп</li>
+            <li>Рекомендуем, если тема даётся тяжело или готовимся к поступлению</li>
+          </ul>
+          <a class="cta" href="#signup" data-format="2 раза в неделю — 8 занятий, 7500 ₽">Записаться на диагностику</a>
+        </div>
+      </div>
+      <p class="price-note reveal">Цены одинаковы для школьной математики, олимпиадной подготовки и подготовки к поступлению — какой формат подойдёт, определим на бесплатной диагностике.</p>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Расписание</span>
+        <h2>Гибкое расписание — наша главная особенность</h2>
+      </div>
+      <div class="sched">
+        <div class="sched-facts reveal">
+          <div class="sched-fact">
+            <b>6 дней</b>
+            <span>в неделю ведём занятия</span>
+          </div>
+          <div class="sched-fact">
+            <b>15:00–19:00</b>
+            <span>сразу после школы</span>
+          </div>
+          <div class="sched-fact">
+            <b>Много мини-групп</b>
+            <span>поэтому расписание получается гибким</span>
+          </div>
+        </div>
+        <div class="sched-note reveal">
+          <h3>Почему получается подобрать удобное время</h3>
+          <p>У нас маленькие группы и много занятий каждый день — поэтому расписание не жёсткое. Точное время подберём
+            вместе с вами после бесплатной диагностики, ориентируясь на школьное расписание и другие кружки ребёнка.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teacher">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Кто ведёт занятия</span>
+        <h2>Педагог, которому спокойно доверить ребёнка</h2>
+      </div>
+      <div class="teacher reveal">
+        <div class="t-photo">
+          <img src="images/matematika-selfie-sm.jpg" alt="Александр Харин — педагог по математике" loading="lazy" width="500" height="500">
+        </div>
+        <div class="t-info">
+          <h3>Александр Харин</h3>
+          <p class="t-role">Педагог по математике · 1–7 класс</p>
+          <p>Более 7 лет помогает школьникам разбираться в математике — от первого счёта до уравнений и олимпиадных
+            задач. Все занятия по математике веду лично я.</p>
+          <p>Родители в отзывах отмечают внимательность к каждому ребёнку и умение находить подход даже к тем, кто «не
+            дружит» с математикой.</p>
+          <div class="t-badges">
+            <span class="t-badge">7+ лет опыта</span>
+            <span class="t-badge">1–7 класс</span>
+            <span class="t-badge">Основатель центра</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Нам доверяют</span>
+        <h2>Что говорят родители наших учеников</h2>
+        <div class="rev-head-row">
+          <span class="rev-badge"><span class="stars">★★★★★</span> Более 70 положительных отзывов на Яндекс Картах</span>
+        </div>
+      </div>
+      <div class="reviews reveal">
+        <div class="review">
+          <span class="quote">"</span>
+          <p>Александр — большой профессионал, позитивный и чуткий педагог. Дочка с удовольствием ходит на занятия,
+            любит решать логические задачи.</p>
+          <span class="author">Николай<span>Отзыв с Яндекс Карт</span></span>
+          <span class="r-stars">★★★★★</span>
+        </div>
+        <div class="review">
+          <span class="quote">"</span>
+          <p>Александр — восхитительный учитель математики с индивидуальным подходом к каждому ученику, высоким
+            уровнем подачи материала и умением заинтересовать ребёнка.</p>
+          <span class="author">Татьяна<span>Отзыв с Яндекс Карт</span></span>
+          <span class="r-stars">★★★★★</span>
+        </div>
+        <div class="review">
+          <span class="quote">"</span>
+          <p>Детям нравятся занятия по олимпиадной математике у Александра. Теперь математика в школе — любимый
+            предмет! Нравится метод преподавателя, уважительное отношение к детям и родителям, подбор времени занятий.
+            Мы очень довольны!</p>
+          <span class="author">Анастасия<span>Отзыв с Яндекс Карт</span></span>
+          <span class="r-stars">★★★★★</span>
+        </div>
+        <div class="review">
+          <span class="quote">"</span>
+          <p>Очень хороший результат: дочь подтянулась по математике, участвовала в олимпиадах. Доброжелательная
+            атмосфера, индивидуальный подход. Дочь ходит с удовольствием.</p>
+          <span class="author">Евгения<span>Отзыв с Яндекс Карт</span></span>
+          <span class="r-stars">★★★★★</span>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:30px">
+        <a class="cta" style="padding:14px 32px;font-size:.9rem"
+          href="https://yandex.ru/maps/org/intellektium/24843162339/reviews" target="_blank" rel="noopener">Читать все отзывы на Яндекс Картах</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="diagnostic">
+    <div class="wrap">
+      <div class="diag reveal">
+        <span class="free-pill">Бесплатно · без обязательств</span>
+        <h2>Начните с бесплатной диагностики — дальше решим вместе</h2>
+        <p>Не нужно ничего оплачивать заранее и заранее выбирать формат. Приведите ребёнка на бесплатную диагностику:
+          педагог посмотрит уровень знаний, и мы вместе решим, что подойдёт — <b>закрыть пробелы в школе, готовиться к
+          олимпиадам или поступлению</b> в сильную школу.</p>
+        <div class="diag-points">
+          <div class="diag-point">
+            <h3>Без оплаты</h3>
+            <p>Диагностика полностью бесплатна и ни к чему вас не обязывает.</p>
+          </div>
+          <div class="diag-point">
+            <h3>Честная картина знаний</h3>
+            <p>Увидите сильные и слабые стороны ребёнка глазами педагога.</p>
+          </div>
+          <div class="diag-point">
+            <h3>Подберём формат и расписание</h3>
+            <p>Вместе решим, какое направление подходит, и найдём удобное время занятий.</p>
+          </div>
+        </div>
+        <a class="cta" href="#signup">Записаться на бесплатную диагностику</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="wrap">
+      <div class="signup reveal">
+        <h2>Запишитесь на бесплатную диагностику</h2>
+        <p>Оставьте заявку — мы свяжемся с вами и подберём удобное время. Ещё не знаете, что подойдёт ребёнку? Так
+          бывает почти всегда — определим формат вместе на диагностике.</p>
+        <form class="form-grid" id="leadForm">
+          <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
+          <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
+          <select name="grade" required aria-label="В какой класс идёт ребёнок">
+            <option value="" selected disabled>В какой класс идёт ребёнок?</option>
+            <option>В 1 класс</option>
+            <option>Во 2 класс</option>
+            <option>В 3 класс</option>
+            <option>В 4 класс</option>
+            <option>В 5 класс</option>
+            <option>В 6 класс</option>
+            <option>В 7 класс</option>
+          </select>
+          <select name="interest" required aria-label="Что вас интересует">
+            <option value="" selected disabled>Что вас интересует?</option>
+            <option>Пока не знаю, посоветуйте</option>
+            <option>Подтянуть школьную программу</option>
+            <option>Олимпиадная математика</option>
+            <option>Подготовка к поступлению в физматшколу</option>
+          </select>
+          <select name="format" required aria-label="Формат занятий">
+            <option value="" selected disabled>Какой формат интересен?</option>
+            <option>1 раз в неделю — 4 занятия, 4500 ₽</option>
+            <option>2 раза в неделю — 8 занятий, 7500 ₽</option>
+            <option>Пока не знаю — подскажите</option>
+          </select>
+          <button type="submit">Записаться на диагностику</button>
+        </form>
+        <p class="form-ok" id="formOk"><b>Заявка принята</b>Мы скоро вам перезвоним и всё расскажем.</p>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html">политикой обработки персональных данных</a>.</p>
+        <p style="margin-top:22px;font-size:.98rem;text-align:center">Или свяжитесь с нами напрямую: <a
+            href="tel:+79818962575" style="color:var(--blue);font-weight:800;text-decoration:none">+7 (981) 896-25-75</a><br>
+          <span style="font-size:.86rem;color:var(--muted)">Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1</span></p>
+        <div class="msgr-row">
+          <a class="msgr-chip vk" href="https://vk.com/intellectium_spb" target="_blank" rel="noopener"><svg
+              viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.16 18.5c-5.86 0-9.2-3.99-9.34-10.63h2.94c.1 4.88 2.26 6.95 3.97 7.38V7.87h2.77v4.21c1.69-.18 3.46-2.1 4.06-4.21h2.77c-.46 2.6-2.38 4.52-3.75 5.31 1.37.64 3.55 2.32 4.38 5.32h-3.05c-.65-2.03-2.26-3.6-4.41-3.81v3.81h-.34z"/>
+            </svg>ВКонтакте</a>
+          <a class="msgr-chip tg" href="https://t.me/+79818962575" target="_blank" rel="noopener"><svg
+              viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.9 3.4 2.9 10.7c-1 .4-1 1.4-.2 1.7l4.8 1.5 1.9 5.8c.2.7 1 .9 1.5.4l2.7-2.5 4.9 3.6c.6.4 1.4.1 1.6-.6l3-15.7c.2-1-.5-1.7-1.2-1.5zM8.5 13.5l9.5-6.2c.3-.2.6.2.4.4l-7.8 7.2-.3 3-1.8-4.4z"/>
+            </svg>Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1 · <a href="tel:+79818962575"
+      style="color:inherit;font-weight:700;text-decoration:none">+7 (981) 896-25-75</a><br>Математика для школьников ·
+    1–7 класс · Учебный год 2026/2027</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {e.target.classList.add('in'); io.unobserve(e.target);}
+  }), {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCVSASTT9KMfg7RSLCSmiUxcDL3afI5jhbtvyoFlywmsyG1Vm4Em5MMb6gjtk4_-K/exec";
+
+  function bindLeadForm(formId, okId){
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const oldText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Отправляем…';
+      const data = new URLSearchParams(new FormData(form));
+      data.append('source', 'Математика — годовой курс');
+      try {
+        if (!SCRIPT_URL.startsWith('https://')) throw new Error('SCRIPT_URL не настроен');
+        await fetch(SCRIPT_URL, {method: 'POST', mode: 'no-cors', body: data});
+        if (typeof ym === 'function') {ym(111831978, 'reachGoal', 'form_submit');}
+        form.style.display = 'none';
+        document.getElementById(okId).style.display = 'block';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = oldText;
+        alert('Не получилось отправить заявку. Пожалуйста, позвоните или напишите нам: +7 (981) 896-25-75');
+      }
+    });
+    return form;
+  }
+
+  bindLeadForm('leadFormTop', 'formOkTop');
+  const leadForm = bindLeadForm('leadForm', 'formOk');
+
+  const fmtSelect = leadForm.querySelector('select[name="format"]');
+  document.querySelectorAll('[data-format]').forEach(a => {
+    a.addEventListener('click', () => {fmtSelect.value = a.dataset.format;});
+  });
+</script>
+</body>
+</html>
