@@ -231,7 +231,10 @@
   .t-badge{background:var(--mist);color:var(--blue);font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px}
 
   /* Gallery */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width: 1080px){
+    .gallery{grid-template-columns:repeat(2,1fr)}
+  }
   .g-item{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3}
   .g-item img{width:100%;height:100%;object-fit:cover}
   .g-caption{
@@ -530,6 +533,10 @@
           <img src="images/matematika-tetrad-thumb.jpg" alt="Ученицы разбирают задачу по рабочей тетради" loading="lazy" width="700" height="933">
           <span class="g-caption">Разбираем вместе</span>
         </div>
+        <div class="g-item">
+          <img src="images/matematika-selfie-wide.jpg" alt="Александр Харин с учениками" loading="lazy" width="900" height="675">
+          <span class="g-caption">С учениками после занятия</span>
+        </div>
       </div>
     </div>
   </section>
@@ -609,7 +616,7 @@
       </div>
       <div class="teacher reveal">
         <div class="t-photo">
-          <img src="images/matematika-selfie-wide.jpg" alt="Александр Харин с учениками" loading="lazy" width="900" height="675">
+          <img src="images/matematika-portret.jpg" alt="Александр Харин — педагог по математике" loading="lazy" width="718" height="539">
         </div>
         <div class="t-info">
           <h3>Александр Харин</h3>
