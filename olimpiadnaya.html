@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Олимпиадная математика для 1–5 класса — детский центр «Интеллектиум», ул. Оптиков</title>
+<meta name="description" content="Олимпиадная математика для 1–5 класса в Приморском районе Санкт-Петербурга. Мини-группы до 6 человек, каждый идёт по своей программе. Каждый год 10 и больше учеников берут призовые места. Первое занятие — бесплатная диагностика.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<!-- ПИКСЕЛЬ ВК: вставить сюда, когда клиент пришлёт ID -->
+<style>
+  :root{
+    --blue:   #343F9E;
+    --blue-d: #242D76;
+    --blue-l: #5C68C9;
+    --sun:    #FFC53D;
+    --bg:     #F7F8FC;
+    --card:   #FFFFFF;
+    --text:   #22263D;
+    --muted:  #6B7190;
+    --mist:   #E4E7F5;
+    --warm:   #FFF8E6;
+    --r:      22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Nunito, sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block;height:auto}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0}
+
+  /* Шапка */
+  .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--mist)}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
+  .logo img{width:147px;height:38px;object-fit:contain}
+  .contacts{display:flex;align-items:center;gap:14px}
+  .phone{font-weight:800;text-decoration:none;white-space:nowrap}
+  .cta{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;padding:11px 20px;border-radius:999px;transition:background .2s}
+  .cta:hover{background:var(--blue-d)}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--blue) 0%,var(--blue-d) 100%);color:#fff;padding:56px 0 64px}
+  .eyebrow{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:800;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2rem,5.2vw,3.35rem);font-weight:900;line-height:1.08;letter-spacing:-.01em;max-width:16ch}
+  .hl{background:var(--sun);color:var(--text);padding:0 .12em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .hero p.lead{font-size:clamp(1.02rem,2.1vw,1.2rem);margin-top:22px;max-width:60ch;color:rgba(255,255,255,.93)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn-sun{display:inline-block;background:var(--sun);color:var(--text);text-decoration:none;font-weight:900;padding:15px 28px;border-radius:999px;transition:transform .15s}
+  .btn-sun:hover{transform:translateY(-2px)}
+  .btn-ghost{display:inline-block;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-weight:800;padding:15px 26px;border-radius:999px;white-space:nowrap}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+  .fact{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 18px;font-weight:700;font-size:.92rem}
+
+  /* Заголовки секций */
+  h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:900;line-height:1.16;letter-spacing:-.01em;max-width:22ch}
+  .sec-lead{color:var(--muted);margin-top:14px;max-width:62ch;font-size:1.04rem}
+
+  /* Карточки */
+  .grid{display:grid;gap:18px;margin-top:34px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--card);border:1px solid var(--mist);border-radius:var(--r);padding:26px}
+  .card h3{font-size:1.08rem;font-weight:800;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.98rem}
+
+  /* Результаты */
+  .results{background:var(--blue);color:#fff}
+  .results h2{max-width:26ch}
+  .results .sec-lead{color:rgba(255,255,255,.82)}
+  .res-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);border-radius:var(--r);padding:26px}
+  .res-year{display:inline-block;background:var(--sun);color:var(--text);font-weight:900;font-size:.8rem;letter-spacing:.06em;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+  .res-card p{color:rgba(255,255,255,.92);font-size:1rem}
+  .res-note{margin-top:26px;font-size:.92rem;color:rgba(255,255,255,.7);max-width:70ch}
+
+  /* Выделенный блок */
+  .highlight{background:var(--warm);border:1px solid #F2E3BC;border-radius:var(--r);padding:30px;margin-top:30px}
+  .highlight p{font-size:1.05rem;max-width:66ch}
+  .highlight p + p{margin-top:14px}
+
+  /* Список-галочки */
+  .checks{list-style:none;margin-top:30px;display:grid;gap:14px}
+  .checks li{background:var(--card);border:1px solid var(--mist);border-radius:16px;padding:18px 22px 18px 54px;position:relative;font-size:1.02rem}
+  .checks li::before{content:"";position:absolute;left:20px;top:22px;width:18px;height:18px;border-radius:50%;background:var(--sun)}
+
+  /* Педагог */
+  .teacher{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start;margin-top:32px}
+  .teacher img{border-radius:var(--r);aspect-ratio:4/3;height:auto;object-fit:cover;width:100%}
+  .teacher p{color:var(--muted);margin-top:12px}
+  .teacher p:first-of-type{color:var(--text);font-size:1.05rem;margin-top:0}
+
+  /* Цены */
+  .price{background:var(--card);border:2px solid var(--mist);border-radius:var(--r);padding:30px;text-align:center}
+  .price.acc{border-color:var(--blue)}
+  .price .num{font-size:2.3rem;font-weight:900;color:var(--blue);line-height:1.1}
+  .price .per{color:var(--muted);font-size:.95rem;margin-top:6px}
+  .price h3{font-weight:800;margin-bottom:12px;font-size:1.05rem}
+
+  /* Галерея */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .gal img{border-radius:16px;aspect-ratio:4/3;height:auto;object-fit:cover;width:100%}
+
+  /* Отзывы */
+  .rating{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:26px}
+  .rating .score{font-size:3rem;font-weight:900;color:var(--blue);line-height:1}
+
+  /* Формы */
+  .signup{background:var(--card);border:1px solid var(--mist);border-radius:var(--r);padding:34px}
+  .signup.compact{padding:26px}
+  .signup h2{max-width:24ch}
+  .signup p{color:var(--muted);margin-top:10px;max-width:62ch}
+  .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+  .form-grid input,.form-grid select{font-family:inherit;font-size:1rem;padding:14px 16px;border:1px solid var(--mist);border-radius:14px;background:var(--bg);color:var(--text);width:100%}
+  .form-grid button{grid-column:1/-1;background:var(--blue);color:#fff;font-family:inherit;font-weight:900;font-size:1.02rem;padding:16px;border:0;border-radius:999px;cursor:pointer;transition:background .2s}
+  .form-grid button:hover{background:var(--blue-d)}
+  .policy{grid-column:1/-1;font-size:.82rem;color:var(--muted)}
+  .policy a{color:var(--blue)}
+  .form-ok{grid-column:1/-1;background:var(--warm);border:1px solid #F2E3BC;border-radius:14px;padding:16px;font-weight:700}
+
+  /* Футер */
+  footer{background:var(--blue-d);color:rgba(255,255,255,.82);padding:34px 0;font-size:.94rem}
+  footer a{color:#fff;font-weight:700}
+  footer p + p{margin-top:8px;color:rgba(255,255,255,.6)}
+
+  [hidden]{display:none!important}
+
+  @media(max-width:860px){
+    section{padding:48px 0}
+    .g3,.g2,.gal{grid-template-columns:1fr}
+    .teacher{grid-template-columns:1fr}
+    .teacher img{max-width:320px}
+    .form-grid{grid-template-columns:1fr}
+    .phone{display:none}
+    .hero-actions .btn-sun,.hero-actions .btn-ghost{width:100%;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Интеллектиум — на главную">
+      <img src="images/logo.png" alt="Интеллектиум — математика и программирование" width="147" height="38">
+    </a>
+    <div class="contacts">
+      <a class="phone js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a>
+      <a class="cta" href="#signup-top">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">1–5 класс · Приморский район · Набор 2026/2027</span>
+    <h1><span class="hl">Олимпиадная математика</span> для тех, кому мало школьной</h1>
+    <p class="lead">Ребёнок решает быстрее класса и скучает на уроке? Ему нужны задачи, к которым не подходит готовый шаблон. Занимаемся олимпиадной математикой с 2021 года — каждый год десять и больше наших учеников берут призовые места.</p>
+    <div class="hero-actions">
+      <a class="btn-sun" href="#signup-top">Записаться на бесплатную диагностику</a>
+      <a class="btn-ghost js-tel" href="tel:+79818962575">Позвонить: +7 (981) 896-25-75</a>
+    </div>
+    <div class="facts">
+      <span class="fact">Направлению 5 лет</span>
+      <span class="fact">10+ призёров каждый год</span>
+      <span class="fact">Группы до 6 человек</span>
+      <span class="fact">От 4 500 ₽ в месяц</span>
+    </div>
+  </div>
+</div>
+
+<!-- ФОРМА СВЕРХУ -->
+<section id="signup-top" style="padding:40px 0 0">
+  <div class="wrap">
+    <div class="signup compact">
+      <h2>Запишитесь на бесплатную диагностику</h2>
+      <p>Посмотрим, что ребёнок уже умеет и где ему интересно, и подберём группу по уровню. Перезвоним и согласуем удобное время.</p>
+      <form class="form-grid" id="leadFormTop" novalidate>
+        <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
+        <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
+        <select name="grade" required aria-label="В какой класс идёт ребёнок">
+          <option value="" selected disabled>В какой класс идёт ребёнок?</option>
+          <option>В 1 класс</option>
+          <option>Во 2 класс</option>
+          <option>В 3 класс</option>
+          <option>В 4 класс</option>
+          <option>В 5 класс</option>
+        </select>
+        <select name="format" required aria-label="Удобный формат">
+          <option value="" selected disabled>Удобный формат</option>
+          <option>1 раз в неделю — 4 500 ₽/мес</option>
+          <option>2 раза в неделю — 7 500 ₽/мес</option>
+          <option>Пока не решили</option>
+        </select>
+        <input type="hidden" name="interest" value="Олимпиадная математика">
+        <input type="hidden" name="source" value="Олимпиадная математика">
+        <button type="submit">Записаться на диагностику</button>
+        <p class="policy">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- РЕЗУЛЬТАТЫ -->
+<section class="results">
+  <div class="wrap">
+    <h2>Каждый год десять и больше наших учеников берут призовые места</h2>
+    <p class="sec-lead">Это не разовые занятия «для развития мышления». Это направление, которое работает с 2021 года и даёт результат, который видно.</p>
+    <!-- Названия сверены по первоисточникам: open30.zaokruzhok.ru и vk.com/mo_spb (matolimp-spb.org) -->
+    <div class="grid g3">
+      <div class="res-card">
+        <span class="res-year">2026</span>
+        <p>Дипломы II и III степени Всероссийской открытой олимпиады по математике для начальной школы губернаторского физико-математического лицея № 30.</p>
+      </div>
+      <div class="res-card">
+        <span class="res-year">2026</span>
+        <p>Дипломы Санкт-Петербургской открытой математической олимпиады начальной школы.</p>
+      </div>
+      <div class="res-card">
+        <span class="res-year">2025</span>
+        <p>Сопоставимый результат: призовые места на тех же соревнованиях.</p>
+      </div>
+    </div>
+    <p class="res-note">Рейтинг центра на Яндекс Картах — 5,0 при более чем 70 отзывах, награда «Хорошее место».</p>
+  </div>
+</section>
+
+<!-- КАК УСТРОЕНО -->
+<section>
+  <div class="wrap">
+    <h2>В одной группе шесть детей — и шесть разных программ</h2>
+    <p class="sec-lead">Олимпиадная математика у нас не отдельный кружок, а направление внутри занятий. В группе до шести человек трое могут разбирать школьную программу, а трое — олимпиадные задачи. Каждый идёт по своему маршруту и в своём темпе.</p>
+    <div class="highlight">
+      <p><strong>Поэтому сильного ребёнка никто не тормозит.</strong> Он не ждёт, пока класс догонит, и получает следующую задачу тогда, когда готов её взять, а не когда до неё дошла программа.</p>
+      <p>И наоборот: если ребёнку нужно время, его не гонят вперёд. Это одна и та же комната, один педагог и шесть разных траекторий.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>Почему не репетитор</h3>
+        <p>Один на один ребёнок остаётся наедине со взрослым и своими ошибками. В группе он видит, как думают другие, слышит чужие ходы решения и перестаёт бояться ошибиться вслух.</p>
+      </div>
+      <div class="card">
+        <h3>Почему не большая группа</h3>
+        <p>В классе из пятнадцати человек преподаватель ведёт одну общую программу — по среднему уровню. Сильному там скучно, отстающий не успевает. Шесть человек — предел, при котором можно вести каждого отдельно.</p>
+      </div>
+      <div class="card">
+        <h3>Занятия только очно</h3>
+        <p>Олимпиадную задачу нужно обсуждать: объяснить ход, услышать возражение, поспорить. Через экран это теряется, поэтому онлайн-групп у нас нет.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОМУ ПОДХОДИТ -->
+<section style="background:var(--card);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)">
+  <div class="wrap">
+    <h2>Кому подходит олимпиадное направление</h2>
+    <p class="sec-lead">Отбора у нас нет — берём всех, кому интересно. Программа подстраивается под ребёнка, а не наоборот.</p>
+    <ul class="checks">
+      <li>Решает быстрее класса, а на уроке ему нечем заняться</li>
+      <li>Любит задачи со звёздочкой, головоломки и вопросы «а что если»</li>
+      <li>Готовится поступать в школу городского набора</li>
+      <li>Уже ходит на олимпиады, но хочет разбираться, а не угадывать</li>
+      <li>Просто любит математику — ходить на олимпиады при этом не обязательно</li>
+    </ul>
+    <div class="highlight" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between">
+      <p style="margin:0"><strong>А если нужно просто подтянуть школьную программу?</strong><br>Тогда вам на страницу школьной математики — там про то, как разобраться с темами, двойками и контрольными. Занятия те же, в тех же группах, просто программа другая.</p>
+      <a class="cta" href="/matematika.html" style="white-space:nowrap">Школьная математика</a>
+    </div>
+  </div>
+</section>
+
+<!-- ШГН -->
+<section>
+  <div class="wrap">
+    <h2>Поступление в школы городского набора</h2>
+    <p class="sec-lead">Школы городского набора — сильные петербургские школы, куда берут не по прописке, а по вступительному испытанию. Задачи там сложнее школьных и требуют другого подхода: одной хорошей успеваемости не хватает.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Что делаем на занятиях</h3>
+        <p>Разбираем формат вступительного испытания, решаем задания прошлых лет, учимся укладываться в отведённое время и закрываем пробелы, из-за которых теряются баллы.</p>
+      </div>
+      <div class="card">
+        <h3>Почему олимпиадный трек помогает</h3>
+        <p>Вступительные задачи ближе к олимпиадным, чем к школьным. Ребёнок, который привык к нестандартным условиям, на экзамене не встречает ничего незнакомого.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЧЕМУ УЧИТСЯ -->
+<section style="background:var(--card);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)">
+  <div class="wrap">
+    <h2>Чему ребёнок учится на самом деле</h2>
+    <p class="sec-lead">Не «проходит темы», а приобретает привычки, которых школьная программа не даёт.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Решать без шаблона</h3>
+        <p>Олимпиадная задача не подписана темой урока. К ней не подходит только что выученный приём — надо понять, что вообще происходит в условии.</p>
+      </div>
+      <div class="card">
+        <h3>Рассуждать и доказывать</h3>
+        <p>Мало получить ответ — надо объяснить, почему он единственный. Это тот навык, который потом вытаскивает и на экзамене, и в старших классах.</p>
+      </div>
+      <div class="card">
+        <h3>Не бросать трудное</h3>
+        <p>Задача, которая не решается за минуту, — это нормально. Ребёнок привыкает сидеть над ней, пробовать, ошибаться и возвращаться, а не закрывать тетрадь.</p>
+      </div>
+      <div class="card">
+        <h3>Держать себя на туре</h3>
+        <p>Разбираем задачи прошлых олимпиад, учимся выбирать, за какие браться первыми, и не терять время на той, что не идёт.</p>
+      </div>
+    </div>
+    <div class="gal">
+      <img src="images/matematika-klass-thumb.jpg" alt="Ученики на занятии по математике в мини-группе" loading="lazy" width="360" height="270">
+      <img src="images/matematika-zanyatie-thumb.jpg" alt="Педагог помогает ученикам разобрать задачу" loading="lazy" width="360" height="270">
+      <img src="images/matematika-tetrad-thumb.jpg" alt="Ученицы разбирают задачу по рабочей тетради" loading="lazy" width="360" height="270">
+    </div>
+  </div>
+</section>
+
+<!-- ПЕДАГОГ -->
+<section>
+  <div class="wrap">
+    <h2>Кто ведёт занятия</h2>
+    <div class="teacher">
+      <img src="images/matematika-portret.jpg" alt="Александр Харин — педагог по математике" loading="lazy" width="300" height="225">
+      <div>
+        <p><strong>Александр Харин</strong> — руководитель центра «Интеллектиум». Математику ведёт сам, никому не передаёт.</p>
+        <p>Пять лет работал учителем начальных классов в школе. Потом открыл собственный кабинет математики, из которого вырос детский центр. Олимпиадной математикой занимается с 2021 года — программу, задачи и разборы собирает сам, под своих учеников.</p>
+        <p>Разборы олимпиадных задач публикует в телеграм-канале <a href="https://t.me/intellectium_lab" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">«Интеллектиум · Лаборатория»</a> — можно посмотреть, как выглядят занятия изнутри, ещё до записи.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section style="background:var(--card);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)">
+  <div class="wrap">
+    <h2>Стоимость и формат</h2>
+    <p class="sec-lead">Цена та же, что на школьной математике: олимпиадное направление не стоит дороже.</p>
+    <div class="grid g2">
+      <div class="price">
+        <h3>Раз в неделю</h3>
+        <div class="num">4 500 ₽</div>
+        <div class="per">в месяц · абонемент на 4 занятия</div>
+      </div>
+      <div class="price acc">
+        <h3>Два раза в неделю</h3>
+        <div class="num">7 500 ₽</div>
+        <div class="per">в месяц · абонемент на 8 занятий</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <p><strong>Первое занятие — бесплатная диагностика.</strong> Смотрим, что ребёнок уже умеет, где ему интересно и с какого уровня начинать. После неё вы решаете, продолжать или нет.</p>
+      <p>Занимаемся по адресу: Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. Группы до 6 человек, только очно.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section>
+  <div class="wrap">
+    <h2>Что о нас говорят родители</h2>
+    <div class="rating">
+      <span class="score">5,0</span>
+      <div>
+        <p style="font-weight:800">Более 70 отзывов на Яндекс Картах</p>
+        <p style="color:var(--muted)">Награда «Хорошее место»</p>
+      </div>
+      <!-- ВНИМАНИЕ: вставить точную ссылку на карточку центра в Яндекс Картах (взять из кабинета Яндекс Бизнеса) -->
+      <a class="cta" href="#" target="_blank" rel="noopener">Читать отзывы</a>
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА ВНИЗУ -->
+<section id="signup" style="background:var(--card);border-top:1px solid var(--mist)">
+  <div class="wrap">
+    <div class="signup">
+      <h2>Запишитесь на бесплатную диагностику</h2>
+      <p>Оставьте заявку — перезвоним, ответим на вопросы и подберём удобное время. Если удобнее голосом, звоните: <a class="js-tel" href="tel:+79818962575" style="color:var(--blue);font-weight:800">+7 (981) 896-25-75</a></p>
+      <form class="form-grid" id="leadForm" novalidate>
+        <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
+        <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
+        <select name="grade" required aria-label="В какой класс идёт ребёнок">
+          <option value="" selected disabled>В какой класс идёт ребёнок?</option>
+          <option>В 1 класс</option>
+          <option>Во 2 класс</option>
+          <option>В 3 класс</option>
+          <option>В 4 класс</option>
+          <option>В 5 класс</option>
+        </select>
+        <select name="format" required aria-label="Удобный формат">
+          <option value="" selected disabled>Удобный формат</option>
+          <option>1 раз в неделю — 4 500 ₽/мес</option>
+          <option>2 раза в неделю — 7 500 ₽/мес</option>
+          <option>Пока не решили</option>
+        </select>
+        <input type="hidden" name="interest" value="Олимпиадная математика">
+        <input type="hidden" name="source" value="Олимпиадная математика">
+        <button type="submit">Записаться на диагностику</button>
+        <p class="policy">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1 · <a class="js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a></p>
+    <p>Олимпиадная математика · 1–5 класс · Учебный год 2026/2027 · <a href="/privacy.html">Политика конфиденциальности</a></p>
+  </div>
+</footer>
+
+<script>
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCVSASTT9KMfg7RSLCSmiUxcDL3afI5jhbtvyoFlywmsyG1Vm4Em5MMb6gjtk4_-K/exec";
+
+  function goal(name){
+    try { if (typeof ym === 'function') ym(111831978, 'reachGoal', name); } catch(e){}
+  }
+
+  // Цель «клик по телефону» — аудитория звонит чаще, чем заполняет форму
+  document.querySelectorAll('a.js-tel').forEach(function(a){
+    a.addEventListener('click', function(){ goal('phone_click'); });
+  });
+
+  function bindForm(form){
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      if(btn){ btn.disabled = true; btn.textContent = 'Отправляем…'; }
+      fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:new FormData(form) })
+        .catch(function(){})
+        .finally(function(){
+          goal('form_submit');
+          var ok = document.createElement('p');
+          ok.className = 'form-ok';
+          ok.textContent = 'Заявка принята. Перезвоним в ближайшее время — обычно в течение рабочего дня.';
+          form.replaceWith(ok);
+        });
+    });
+  }
+  bindForm(document.getElementById('leadFormTop'));
+  bindForm(document.getElementById('leadForm'));
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+ym(111831978, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111831978" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
