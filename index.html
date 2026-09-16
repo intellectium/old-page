@@ -80,12 +80,39 @@
 
   [hidden]{display:none!important}
 
+  /* Ссылка на календарь в шапке */
+  .navlink{font-weight:800;text-decoration:none;color:var(--blue);white-space:nowrap;font-size:.98rem}
+  .navlink:hover{color:var(--blue-d)}
+  .navlink .short{display:none}
+
+  /* Ссылка на календарь внутри карточки направления */
+  .dir-extra{margin-top:12px;font-size:.95rem}
+  .dir-extra a{color:var(--blue);font-weight:800;text-decoration:none}
+  .dir-extra a:hover{text-decoration:underline}
+
+  /* Полоса с календарём олимпиад */
+  .cal-band{background:var(--warm);border-top:1px solid #F2E3BC;border-bottom:1px solid #F2E3BC}
+  .cal-card{display:grid;grid-template-columns:1.2fr .9fr;gap:40px;align-items:center}
+  .cal-badge{display:inline-block;background:var(--card);border:1px solid #F2E3BC;color:#8A6A12;font-weight:800;font-size:.76rem;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:14px}
+  .cal-card h2{max-width:23ch}
+  .cal-card p{color:var(--muted);margin-top:14px;font-size:1.04rem;max-width:56ch}
+  .cal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .cal-dates{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .cal-dates li{background:var(--card);border:1px solid #F2E3BC;border-radius:16px;padding:13px 18px}
+  .cal-dates b{display:block;font-weight:900;color:var(--blue);font-size:1.02rem}
+  .cal-dates span{display:block;color:var(--muted);font-size:.92rem;margin-top:2px}
+  .cal-note{margin-top:12px;font-size:.86rem;color:var(--muted);text-align:center}
+
   @media(max-width:860px){
     section{padding:48px 0}
     .dir-grid{grid-template-columns:1fr}
     .form-grid{grid-template-columns:1fr}
     .phone{display:none}
     .hero-actions .btn-sun,.hero-actions .btn-ghost{width:100%;text-align:center}
+    .cal-card{grid-template-columns:1fr;gap:26px}
+    .cal-actions .btn-sun{width:100%;text-align:center}
+    .navlink .full{display:none}
+    .navlink .short{display:inline}
   }
 </style>
 </head>
@@ -97,6 +124,7 @@
       <img src="images/logo.png" alt="Интеллектиум — математика и программирование" width="147" height="38">
     </a>
     <div class="contacts">
+      <a class="navlink js-cal" href="/olimpiady/"><span class="full">Календарь олимпиад</span><span class="short">Олимпиады</span></a>
       <a class="phone js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a>
       <a class="cta" href="#signup">Записаться</a>
     </div>
@@ -141,6 +169,7 @@
         <p>Для тех, кому мало школьной программы: нестандартные задачи, подготовка к олимпиадам и к поступлению в школы городского набора. Занимаемся с 2021 года, каждый год 10 и больше призёров. 1–5 класс.</p>
         <div class="dir-price">от 4 500 ₽/мес <span>1 раз в неделю</span></div>
         <a class="dir-cta" href="olimpiadnaya.html">Подробнее и записаться</a>
+        <p class="dir-extra"><a class="js-cal" href="/olimpiady/">Календарь олимпиад сезона 2026/27 →</a></p>
       </div>
 
       <div class="dir-card">
@@ -157,6 +186,7 @@
         <p>Не просто пользоваться гаджетами, а создавать: игры, 3D-графика, олимпиадное программирование на Python.</p>
         <div class="dir-price">7 500 ₽/мес <span>1 раз в неделю, 90 минут</span></div>
         <a class="dir-cta" href="programmirovanie.html">Подробнее и записаться</a>
+        <p class="dir-extra"><a class="js-cal" href="/olimpiady/">Олимпиады по программированию: даты сезона →</a></p>
       </div>
 
       <div class="dir-card wide">
@@ -168,6 +198,30 @@
         <a class="dir-cta soon js-tel" href="tel:+79818962575">Записаться по телефону</a>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- КАЛЕНДАРЬ ОЛИМПИАД -->
+<section class="cal-band" id="kalendar">
+  <div class="wrap">
+    <div class="cal-card">
+      <div>
+        <span class="cal-badge">Бесплатно, без регистрации</span>
+        <h2>Календарь олимпиад 2026/27 для 1–7 класса</h2>
+        <p>Все даты городских и всероссийских олимпиад по математике и программированию в одном месте. Выбираете класс ребёнка — видите только то, что подходит ему: когда тур, онлайн или ехать, нужна ли регистрация и куда. Мы сверяем даты с сайтами организаторов каждые две недели, а вы можете добавить любую олимпиаду себе в телефонный календарь.</p>
+        <div class="cal-actions">
+          <a class="btn-sun js-cal" href="/olimpiady/">Открыть календарь</a>
+        </div>
+      </div>
+      <div>
+        <ul class="cal-dates" id="calDates">
+          <li><b>до 28 сентября</b><span>Олимпиада Учи.ру по информатике, онлайн</span></li>
+          <li><b>6–10 октября</b><span>«Невский интеграл», онлайн, 1–5 класс</span></li>
+          <li><b>19–23 октября</b><span>ВсОШ по информатике, 5–7 класс</span></li>
+        </ul>
+        <p class="cal-note">Ближайшие олимпиады сезона</p>
+      </div>
     </div>
   </div>
 </section>
@@ -232,7 +286,7 @@
 <footer>
   <div class="wrap">
     <p>Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1 · <a class="js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a></p>
-    <p>Математика · Олимпиадная математика · Русский язык · Английский язык · Программирование · Учебный год 2026/2027 · <a href="/privacy.html">Политика конфиденциальности</a></p>
+    <p>Математика · Олимпиадная математика · Русский язык · Английский язык · Программирование · <a class="js-cal" href="/olimpiady/">Календарь олимпиад</a> · Учебный год 2026/2027 · <a href="/privacy.html">Политика конфиденциальности</a></p>
   </div>
 </footer>
 
@@ -245,6 +299,10 @@
 
   document.querySelectorAll('a.js-tel').forEach(function(a){
     a.addEventListener('click', function(){ goal('phone_click'); });
+  });
+
+  document.querySelectorAll('a.js-cal').forEach(function(a){
+    a.addEventListener('click', function(){ goal('calendar_click'); });
   });
 
   var form = document.getElementById('leadForm');
@@ -265,6 +323,62 @@
         });
     });
   }
+</script>
+
+<!-- Ближайшие олимпиады подтягиваются из календаря: /olimpiady/data.js.
+     Если файл не найден, в блоке остаются три строки, прописанные в HTML. -->
+<script src="/olimpiady/data.js"></script>
+<script>
+(function () {
+  var D = window.OLYMP_DATA;
+  var box = document.getElementById('calDates');
+  if (!D || !box) return;
+
+  var MG = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+  var n = new Date(), today = new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  function d(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  var list = (D.math || []).concat(D.prog || [])
+    .filter(function (e) { return e.start && e.kind !== 'tbd'; })
+    .map(function (e) { return { e: e, s: d(e.start), x: e.end ? d(e.end) : null }; })
+    .filter(function (o) { return (o.x || o.s) >= today; })
+    .sort(function (a, b) {
+      var ka = (a.x && a.s <= today) ? a.x : a.s, kb = (b.x && b.s <= today) ? b.x : b.s;
+      return ka - kb;
+    })
+    .slice(0, 3);
+
+  if (!list.length) return;
+
+  function when(o) {
+    var s = o.s, x = o.x, approx = o.e.kind === 'approx';
+    var pre = approx ? 'ориентировочно ' : '';
+    if (x && x.getTime() !== s.getTime()) {
+      if (x.getMonth() !== s.getMonth()) {
+        return s <= today ? 'до ' + x.getDate() + ' ' + MG[x.getMonth()]
+                          : pre + 'с ' + s.getDate() + ' ' + MG[s.getMonth()];
+      }
+      return pre + s.getDate() + '–' + x.getDate() + ' ' + MG[x.getMonth()];
+    }
+    return pre + s.getDate() + ' ' + MG[s.getMonth()];
+  }
+
+  function classes(c) {
+    if (c.length === 1) return c[0] + ' класс';
+    var run = c[c.length - 1] - c[0] + 1 === c.length;
+    return (run ? c[0] + '–' + c[c.length - 1] : c.join(', ')) + ' класс';
+  }
+
+  box.innerHTML = list.map(function (o) {
+    var title = o.e.t.split(' — ')[0];
+    var li = document.createElement('li');
+    var b = document.createElement('b'); b.textContent = when(o);
+    var sp = document.createElement('span');
+    sp.textContent = title + ' · ' + classes(o.e.cls) + (o.e.fmt ? ', ' + o.e.fmt : '');
+    li.appendChild(b); li.appendChild(sp);
+    return li.outerHTML;
+  }).join('');
+})();
 </script>
 
 <!-- Yandex.Metrika counter -->
