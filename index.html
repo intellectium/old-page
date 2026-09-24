@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Детский центр «Интеллектиум» — математика, олимпиадная математика, русский язык, английский, программирование в СПб</title>
-<meta name="description" content="Детский центр «Интеллектиум» на ул. Оптиков, 45к1 в Приморском районе. Математика, олимпиадная математика, русский язык, английский и программирование для 1–7 класса. Мини-группы до 6 человек, каждому ребёнку своя программа. Рейтинг 5,0 на Яндекс Картах.">
+<title>Детский центр «Интеллектиум», ул. Оптиков — Приморский район</title>
+<meta name="description" content="Детский центр в Приморском районе СПб: математика, олимпиадная математика, русский язык, программирование. Мини-группы до 6 человек. Бесплатная диагностика.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
@@ -73,6 +73,21 @@
   .policy{grid-column:1/-1;font-size:.82rem;color:var(--muted)}
   .policy a{color:var(--blue)}
   .form-ok{grid-column:1/-1;background:var(--warm);border:1px solid #F2E3BC;border-radius:14px;padding:16px;font-weight:700}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+  .faq-item{background:var(--card);border:1px solid var(--mist);border-radius:16px;padding:4px 26px}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 30px 20px 0;position:relative;
+    font-weight:800;font-size:1.02rem;color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{
+    content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
+    font-size:1.6rem;font-weight:700;color:var(--blue);line-height:1;
+  }
+  .faq-item[open] summary::after{content:"–"}
+  .faq-item p{color:var(--muted);font-size:.96rem;padding-bottom:22px;max-width:72ch}
 
   footer{background:var(--blue-d);color:rgba(255,255,255,.82);padding:34px 0;font-size:.94rem}
   footer a{color:#fff;font-weight:700}
@@ -245,6 +260,96 @@
     <p class="sec-lead">Центр работает на ул. Оптиков, 45к1 в Приморском районе — 15–20 минут пешком от Беговой и Старой Деревни. Занятия проходят только очно.</p>
   </div>
 </section>
+
+<!-- FAQ -->
+<section style="background:var(--card);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)">
+  <div class="wrap">
+    <h2>Частые вопросы о центре</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Какие направления есть в детском центре «Интеллектиум»?</summary>
+        <p>Математика, олимпиадная математика, русский язык, программирование и английский язык. Математику и олимпиадную математику ведёт лично основатель центра, английский и программирование — по методикам Учи.ру. Занимаемся с учениками 1–7 класса.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько стоят занятия?</summary>
+        <p>От 4 500 ₽ в месяц при формате 1 раз в неделю, 7 500 ₽ при формате 2 раза в неделю — в зависимости от направления. Точную цену и формат по конкретному предмету смотрите на странице направления.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Где находится центр?</summary>
+        <p>Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько детей занимается в одной группе?</summary>
+        <p>Мини-группы до 6 человек. У каждого ребёнка своя программа и свой темп даже внутри одной группы — сильного не тормозят, а тому, кому нужно больше времени, не гонят вперёд.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как узнать даты олимпиад по математике и программированию?</summary>
+        <p>На сайте есть календарь олимпиад на 2026/27 учебный год — все городские и всероссийские олимпиады для 1–7 класса в одном месте, с фильтром по классу ребёнка. Даты сверяются с сайтами организаторов каждые две недели.</p>
+      </details>
+      <details class="faq-item">
+        <summary>С чего начать, если не знаю, какое направление подойдёт ребёнку?</summary>
+        <p>Оставьте заявку на сайте или позвоните — расскажем подробнее про каждое направление и запишем на бесплатную диагностику. На ней педагог посмотрит уровень ребёнка и поможет определиться.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Какие направления есть в детском центре «Интеллектиум»?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Математика, олимпиадная математика, русский язык, программирование и английский язык. Математику и олимпиадную математику ведёт лично основатель центра, английский и программирование — по методикам Учи.ру. Занимаемся с учениками 1–7 класса."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько стоят занятия?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "От 4 500 ₽ в месяц при формате 1 раз в неделю, 7 500 ₽ при формате 2 раза в неделю — в зависимости от направления. Точную цену и формат по конкретному предмету смотрите на странице направления."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Где находится центр?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько детей занимается в одной группе?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Мини-группы до 6 человек. У каждого ребёнка своя программа и свой темп даже внутри одной группы — сильного не тормозят, а тому, кому нужно больше времени, не гонят вперёд."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как узнать даты олимпиад по математике и программированию?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "На сайте есть календарь олимпиад на 2026/27 учебный год — все городские и всероссийские олимпиады для 1–7 класса в одном месте, с фильтром по классу ребёнка. Даты сверяются с сайтами организаторов каждые две недели."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "С чего начать, если не знаю, какое направление подойдёт ребёнку?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Оставьте заявку на сайте или позвоните — расскажем подробнее про каждое направление и запишем на бесплатную диагностику. На ней педагог посмотрит уровень ребёнка и поможет определиться."
+      }
+    }
+  ]
+}
+</script>
 
 <!-- ФОРМА -->
 <section id="signup" style="background:var(--card);border-top:1px solid var(--mist)">
