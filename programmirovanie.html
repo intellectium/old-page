@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Программирование для 1–7 класса в СПб — детский центр «Интеллектиум»</title>
-<meta name="description" content="Программирование для 1–7 класса на ул. Оптиков, 45к1. Minecraft, Roblox, Unity, Python. Мини-группы до 6 человек, занятия 90 минут, программа Учи.ру. Бесплатная диагностика.">
+<title>Программирование для детей в Приморском районе — «Интеллектиум»</title>
+<meta name="description" content="Программирование для детей, Приморский район, ул. Оптиков. Создаём игры и приложения, а не просто играем. Мини-группы до 6 человек. Бесплатная диагностика.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
@@ -329,6 +329,21 @@
 
   footer{background:var(--blue-d);color:rgba(255,255,255,.8);padding:28px 0;font-size:.88rem;text-align:center}
   footer a{text-decoration:none}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:14px}
+  .faq-item{background:var(--card);border:1px solid var(--mist);border-radius:18px;padding:4px 26px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 30px 20px 0;position:relative;
+    font-weight:800;font-size:1.02rem;color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{
+    content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
+    font-size:1.6rem;font-weight:700;color:var(--blue);line-height:1;
+  }
+  .faq-item[open] summary::after{content:"–"}
+  .faq-item p{color:var(--muted);font-size:.96rem;padding-bottom:22px;max-width:72ch}
 
   @media (max-width: 860px){
     section{padding:52px 0}
@@ -692,6 +707,98 @@
       </p>
     </div>
   </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Вопросы родителей</span>
+        <h2>Что чаще всего спрашивают о занятиях</h2>
+      </div>
+      <div class="faq reveal">
+        <details class="faq-item">
+          <summary>Сколько стоит программирование для детей в Приморском районе?</summary>
+          <p>7 500 ₽ в месяц — абонемент на 4 занятия по 90 минут, 1 раз в неделю. Стоимость одинакова для всех курсов и для олимпиадного программирования на Python.</p>
+        </details>
+        <details class="faq-item">
+          <summary>С какого возраста можно начать заниматься программированием?</summary>
+          <p>Занимаемся с учениками 1–7 класса — есть пять курсов по возрасту и уровню: от первого знакомства с кодом в игровой форме до собственных 3D-игр и приложений. Какой курс подойдёт, определяем на бесплатной диагностике.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Что изучают дети на занятиях?</summary>
+          <p>В зависимости от курса — от простых блоков в Minecraft и Scratch до Python, JavaScript, Unity 3D и создания настоящих игр, сайтов и мобильных приложений. Ребёнок учится не просто пользоваться готовым, а создавать своё.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Где находится центр «Интеллектиум»?</summary>
+          <p>Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно, компьютеры и программы предоставляет центр.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Нужен ли ребёнку свой компьютер?</summary>
+          <p>Нет, приносить ничего не нужно — всё необходимое оборудование и программы уже установлены и настроены в центре. Дома компьютер для занятий тоже не обязателен.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Есть ли олимпиадное программирование?</summary>
+          <p>Да, с этого учебного года — олимпиадное программирование на Python с 3 класса. Здесь дети не копируют готовый код с экрана, а решают задачи и учатся рассуждать: изучают математику через программирование и готовятся к олимпиадам по информатике так же, как это делают участники настоящих соревнований.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Сколько стоит программирование для детей в Приморском районе?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "7 500 ₽ в месяц — абонемент на 4 занятия по 90 минут, 1 раз в неделю. Стоимость одинакова для всех курсов и для олимпиадного программирования на Python."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "С какого возраста можно начать заниматься программированием?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Занимаемся с учениками 1–7 класса — есть пять курсов по возрасту и уровню: от первого знакомства с кодом в игровой форме до собственных 3D-игр и приложений. Какой курс подойдёт, определяем на бесплатной диагностике."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Что изучают дети на занятиях?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "В зависимости от курса — от простых блоков в Minecraft и Scratch до Python, JavaScript, Unity 3D и создания настоящих игр, сайтов и мобильных приложений. Ребёнок учится не просто пользоваться готовым, а создавать своё."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Где находится центр «Интеллектиум»?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно, компьютеры и программы предоставляет центр."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Нужен ли ребёнку свой компьютер?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет, приносить ничего не нужно — всё необходимое оборудование и программы уже установлены и настроены в центре. Дома компьютер для занятий тоже не обязателен."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Есть ли олимпиадное программирование?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, с этого учебного года — олимпиадное программирование на Python с 3 класса. Здесь дети не копируют готовый код с экрана, а решают задачи и учатся рассуждать: изучают математику через программирование и готовятся к олимпиадам по информатике так же, как это делают участники настоящих соревнований."
+        }
+      }
+    ]
+  }
+  </script>
 
   <section id="diagnostic">
     <div class="wrap">
