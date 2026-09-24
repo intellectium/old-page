@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Олимпиадная математика для 1–5 класса — детский центр «Интеллектиум», ул. Оптиков</title>
-<meta name="description" content="Олимпиадная математика для 1–5 класса в Приморском районе Санкт-Петербурга. Мини-группы до 6 человек, каждый идёт по своей программе. Каждый год 10 и больше учеников берут призовые места. Первое занятие — бесплатная диагностика.">
+<title>Олимпиадная математика для 1–5 класса — Приморский район, «Интеллектиум»</title>
+<meta name="description" content="Олимпиадная математика, Приморский район, ул. Оптиков. Мини-группы до 6 человек, своя программа каждому. Каждый год 10+ призёров. Диагностика бесплатно.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
@@ -117,6 +117,21 @@
   .policy{grid-column:1/-1;font-size:.82rem;color:var(--muted)}
   .policy a{color:var(--blue)}
   .form-ok{grid-column:1/-1;background:var(--warm);border:1px solid #F2E3BC;border-radius:14px;padding:16px;font-weight:700}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+  .faq-item{background:var(--card);border:1px solid var(--mist);border-radius:16px;padding:4px 26px}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 30px 20px 0;position:relative;
+    font-weight:800;font-size:1.02rem;color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{
+    content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
+    font-size:1.6rem;font-weight:700;color:var(--blue);line-height:1;
+  }
+  .faq-item[open] summary::after{content:"–"}
+  .faq-item p{color:var(--muted);font-size:.96rem;padding-bottom:22px;max-width:72ch}
 
   /* Футер */
   footer{background:var(--blue-d);color:rgba(255,255,255,.82);padding:34px 0;font-size:.94rem}
@@ -373,6 +388,96 @@
     </div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section style="background:var(--card);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)">
+  <div class="wrap">
+    <h2>Что чаще всего спрашивают о занятиях</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Сколько стоит олимпиадная математика в Приморском районе?</summary>
+        <p>1 раз в неделю — 4 500 ₽ в месяц (4 занятия), 2 раза в неделю — 7 500 ₽ в месяц (8 занятий). Цена та же, что на школьной математике — олимпиадное направление не стоит дороже.</p>
+      </details>
+      <details class="faq-item">
+        <summary>С какого класса можно начать олимпиадную математику?</summary>
+        <p>Занимаемся с учениками 1–5 класса. Отбора нет — берём всех, кому интересно, программа подстраивается под ребёнка. Первое занятие — бесплатная диагностика, на ней смотрим уровень и подбираем группу.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Где находится центр «Интеллектиум»?</summary>
+        <p>Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия только очно.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Какие результаты у учеников на олимпиадах?</summary>
+        <p>Направлению 5 лет, работаем с 2021 года. Каждый год десять и больше наших учеников берут призовые места на Всероссийской олимпиаде для начальной школы лицея №30 и на Санкт-Петербургской открытой математической олимпиаде начальной школы.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чем олимпиадная математика отличается от школьной?</summary>
+        <p>Занятия идут в тех же мини-группах до 6 человек, что и школьная математика, но по другой программе: без готовых шаблонов, с нестандартными задачами и разбором, почему ответ единственный. Подходит и тем, кто просто любит математику, без цели идти на олимпиады.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Помогает ли это поступить в сильную школу?</summary>
+        <p>Да. Вступительные испытания в школы городского набора ближе к олимпиадным задачам, чем к школьным. На занятиях разбираем формат экзамена, решаем задания прошлых лет и закрываем пробелы, из-за которых теряются баллы.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Сколько стоит олимпиадная математика в Приморском районе?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1 раз в неделю — 4 500 ₽ в месяц (4 занятия), 2 раза в неделю — 7 500 ₽ в месяц (8 занятий). Цена та же, что на школьной математике — олимпиадное направление не стоит дороже."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "С какого класса можно начать олимпиадную математику?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Занимаемся с учениками 1–5 класса. Отбора нет — берём всех, кому интересно, программа подстраивается под ребёнка. Первое занятие — бесплатная диагностика, на ней смотрим уровень и подбираем группу."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Где находится центр «Интеллектиум»?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия только очно."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какие результаты у учеников на олимпиадах?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Направлению 5 лет, работаем с 2021 года. Каждый год десять и больше наших учеников берут призовые места на Всероссийской олимпиаде для начальной школы лицея №30 и на Санкт-Петербургской открытой математической олимпиаде начальной школы."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Чем олимпиадная математика отличается от школьной?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Занятия идут в тех же мини-группах до 6 человек, что и школьная математика, но по другой программе: без готовых шаблонов, с нестандартными задачами и разбором, почему ответ единственный. Подходит и тем, кто просто любит математику, без цели идти на олимпиады."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Помогает ли это поступить в сильную школу?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да. Вступительные испытания в школы городского набора ближе к олимпиадным задачам, чем к школьным. На занятиях разбираем формат экзамена, решаем задания прошлых лет и закрываем пробелы, из-за которых теряются баллы."
+      }
+    }
+  ]
+}
+</script>
 
 <!-- ФОРМА ВНИЗУ -->
 <section id="signup" style="background:var(--card);border-top:1px solid var(--mist)">
