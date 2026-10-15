@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тренажёр к олимпиаде — Интеллектиум</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="yandex" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#343F9E;--blue-d:#262E78;--ink:#1E2440;--muted:#4A5172;--bg:#F3F5FC;--card:#FFFFFF;--yellow:#FFC83D;--cream:#FFF4D6;--lav:#E8EBFA;--line:#D5DAF0;--line2:#C9CFEA;--goldtext:#7A5A00}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%}
+button{font-family:inherit;font-size:inherit;color:inherit}
+.screen{max-width:480px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:16px}
+.brand{display:flex;flex-direction:column;gap:6px}.logo{width:210px;height:auto}.descr{font-size:14px;font-weight:800;color:var(--blue)}
+.hero{background:var(--blue);color:#fff;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.hero h1{margin:0;font-size:30px;line-height:1.15;font-weight:900}.hero p{margin:0;font-weight:600;color:#E3E7FF}.hero .olymp{font-weight:800;color:#fff}
+.chip{align-self:flex-start;background:var(--yellow);color:var(--ink);font-weight:900;font-size:14px;padding:6px 12px;border-radius:999px}
+.card{background:var(--card);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 0 rgba(30,36,64,.06)}
+.card.row{flex-direction:row;align-items:center;gap:14px}
+h2{margin:0;font-size:19px;font-weight:900}.h1dark{margin:0;font-size:25px;line-height:1.2;font-weight:900}.h2dark{margin:0;font-size:20px;font-weight:900}
+.muted{color:var(--muted)}.small{font-size:14px}.b{font-weight:900}.grow{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px}
+.kicker{font-size:13px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:.04em}
+.label{font-size:14px;font-weight:900;color:var(--blue-d);text-transform:uppercase;letter-spacing:.04em}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.klass{min-height:64px;border-radius:16px;border:3px solid var(--line2);background:#fff;color:var(--blue-d);font-size:26px;font-weight:900;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.klass small{font-size:12px;font-weight:800;margin-top:4px}.klass.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.chipbtn{min-height:48px;border-radius:14px;border:2px solid var(--line);background:#fff;color:var(--blue-d);font-weight:800;font-size:12px;overflow-wrap:anywhere;line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:4px}
+.chipbtn.on{border:3px solid var(--blue);background:var(--lav);color:var(--ink)}
+.dot{display:inline-block;border-radius:50%;border:2px solid rgba(30,36,64,.25);flex-shrink:0}
+.btn{min-height:56px;border-radius:16px;border:none;font-size:19px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 16px;text-decoration:none;width:100%}
+.btn.primary{background:var(--yellow);color:var(--ink)}.btn.primary:disabled{opacity:.55;cursor:default}
+.btn.ghost{background:#fff;border:2px solid var(--blue);color:var(--blue);min-height:50px;font-size:17px}
+.link{background:none;border:none;color:var(--blue);font-weight:800;font-size:16px;cursor:pointer;min-height:44px;padding:0;display:flex;align-items:center;gap:4px}
+.link.center{align-self:center;text-decoration:underline;text-underline-offset:4px}
+.note{font-size:15px;color:var(--blue-d);font-weight:700}.note:empty{display:none}
+.tip{display:flex;gap:12px;align-items:flex-start;font-weight:700;color:var(--blue-d)}.tip.small{font-size:15px}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ic.big{width:72px;height:72px}.ic.gold{color:var(--yellow)}.win .ic.big{fill:var(--yellow);color:var(--yellow)}
+.namebox{background:var(--cream);border:3px dashed var(--yellow);border-radius:18px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.bigname{font-size:30px;line-height:1.1;font-weight:900}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:var(--muted)}.who.big .nm{font-size:18px;font-weight:900;color:var(--ink);line-height:1.1}
+.bars{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}.bar{height:10px;border-radius:5px;background:#DDE1F2}.bar.done{background:var(--blue)}.bar.tried{background:var(--yellow)}
+.olympbtn{display:flex;align-items:center;gap:14px;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:18px;text-align:left;cursor:pointer}
+.olympbtn b{font-size:19px;font-weight:900}.olympbtn span span{color:#E3E7FF;font-size:14px;font-weight:700}.olympbtn .ic{width:36px;height:36px}
+.row-between{display:flex;justify-content:space-between;align-items:baseline}
+.list{display:flex;flex-direction:column;gap:10px}
+.typecard,.review summary{display:flex;align-items:center;gap:12px;background:#fff;border:none;border-radius:16px;padding:12px 14px;text-align:left;cursor:pointer;box-shadow:0 2px 0 rgba(30,36,64,.06);min-height:60px;width:100%}
+.typecard b,.review b{font-size:16px;font-weight:900;line-height:1.2}
+.num{width:28px;text-align:center;font-size:18px;font-weight:900;color:var(--blue);flex-shrink:0}
+.status{display:flex;flex-direction:column;align-items:center;gap:2px;width:72px;flex-shrink:0;text-align:center;line-height:1.1;color:var(--muted);font-weight:800}
+.mark{width:24px;height:24px;border-radius:50%;border:3px solid var(--line2);background:#fff}
+.mark.done{background:var(--blue);border-color:var(--blue);box-shadow:inset 0 0 0 4px #fff}
+.mark.tried{border-color:#D4A72C;background:linear-gradient(90deg,var(--yellow) 50%,#fff 50%)}
+.streak{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:800;color:var(--blue-d)}
+.dots{display:flex;gap:6px}.dots .d{width:16px;height:16px;border-radius:50%;border:3px solid var(--line2);background:#fff}.dots .d.on{background:var(--blue);border-color:var(--blue)}
+.dots.big .d{width:22px;height:22px}
+.task .tasktext{margin:0;font-size:19px;line-height:1.5;font-weight:600}
+.answer{display:flex;flex-direction:column;gap:8px}.answer label{font-size:16px;color:var(--ink);text-transform:none;letter-spacing:0}
+.ansrow{display:flex;align-items:center;gap:10px}
+.frame{font-family:inherit;width:150px;font-size:30px;font-weight:900;text-align:center;color:var(--ink);padding:8px;border:3px solid var(--ink);border-radius:6px;background:#fff}
+.frame.small{width:110px;font-size:26px}.frame:focus{outline:3px solid var(--yellow);outline-offset:2px}
+.unit{font-size:18px;font-weight:800;color:var(--muted)}
+.multi{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.plus{background:none;border:2px dashed var(--blue);color:var(--blue);border-radius:12px;min-height:48px;padding:0 14px;font-weight:800;cursor:pointer}
+.choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}.choices.two{grid-template-columns:1fr 1fr}
+.choice{min-height:52px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:17px;font-weight:800;color:var(--blue-d);cursor:pointer;padding:6px}
+.choice.on{border:3px solid var(--blue);background:var(--lav);color:var(--ink)}
+.feedback:empty{display:none}.feedback.soft{background:var(--lav);border-radius:18px;padding:14px 16px;color:var(--blue-d);font-weight:700}
+.fbrow{display:flex;gap:12px;align-items:flex-start}.fbrow b{display:block;font-size:18px;font-weight:900;margin-bottom:2px}.fbrow .ic{width:32px;height:32px}
+.hints{display:flex;flex-direction:column;gap:10px}.hints:empty{display:none}
+.hint{background:var(--cream);border-radius:16px;padding:14px 16px;font-size:17px;font-weight:700;display:flex;flex-direction:column;gap:4px}
+.hint.full{background:#fff;border:2px solid var(--blue)}
+.hlabel{font-size:13px;font-weight:900;color:var(--goldtext);text-transform:uppercase;letter-spacing:.04em}.hint.full .hlabel{color:var(--blue)}
+.actions{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.win{background:var(--blue);color:#fff;border-radius:24px;padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.win h1{margin:0;font-size:32px;font-weight:900}.win p{margin:0;font-size:18px;color:#E3E7FF;font-weight:700}.win b{color:#fff}
+.trick{background:var(--cream);border-radius:18px;padding:16px;font-size:17px;font-weight:700;display:flex;flex-direction:column;gap:4px}
+.review{background:none}.review summary{list-style:none}.review summary::-webkit-details-marker{display:none}
+.review[open] summary{border-radius:16px 16px 0 0}.review > .hint, .review > .btn{margin-top:8px}
+@media (min-width:700px){.screen{padding-top:32px}}
+</style>
+</head>
+<body>
+<div id="app"><main class="screen"><p>Загружаем тренажёр…</p></main></div>
+<noscript><p style="padding:16px">Для тренажёра нужен включённый JavaScript.</p></noscript>
+<script>
+/* ===== НАСТРОЙКИ — правится только этот блок ===== */
+window.TRAINER_CONFIG = {
+  SHEET_URL: 'https://script.google.com/macros/s/AKfycbyWXAt3S18oClM-ilPUVLV8G_p0NIH_oTzF59WwoTirbegh_DdRSeddfsvFCA2EJ5ej/exec',          // адрес веб-приложения Google Таблицы (см. инструкцию, шаг 6)
+  METRIKA_ID: 111831978   // счётчик Яндекс.Метрики сайта; 0 — не отправлять
+};
+</script>
+<script>window.LOGO_SRC = 'data:image/png;base64,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';</script>
+<script>
+/* Тренажёр к олимпиаде «Интеллектиум» — генераторы задач, 3 класс.
+   10 видов × 3 уровня. Генератор возвращает:
+   { text, answer, hints: [толчок, полшага, разбор], params }
+   answer: {kind:'num', value, unit} | {kind:'choice', value, options} | {kind:'yesno', value} | {kind:'multi', value:[...]}
+   params — сырые данные задачи: по ним независимая проверка на Python пересчитывает ответ перебором. */
+(function (root) {
+  'use strict';
+
+  // ---------- помощники ----------
+  function makeRng(seed) {
+    if (seed == null) return Math.random;
+    var s = seed >>> 0;
+    return function () { s = (s + 0x6D2B79F5) >>> 0; var t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function ri(r, a, b) { return a + Math.floor(r() * (b - a + 1)); }
+  function pick(r, arr) { return arr[Math.floor(r() * arr.length)]; }
+  function shuffle(r, arr) { var a = arr.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function sample(r, arr, k) { return shuffle(r, arr).slice(0, k); }
+  function plural(n, f) { var a = Math.abs(n) % 100, b = a % 10; if (a > 10 && a < 20) return f[2]; if (b === 1) return f[0]; if (b >= 2 && b <= 4) return f[1]; return f[2]; }
+  function pn(n, f) { return n + ' ' + plural(n, f); }
+  function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function joinAnd(list) { return list.length === 1 ? list[0] : list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1]; }
+  var YEARS = ['год', 'года', 'лет'], PEOPLE = ['человек', 'человека', 'человек'], METERS = ['метр', 'метра', 'метров'], METERS_DAT = ['метру', 'метрам', 'метрам'];
+  var WAYS_INS = ['способом', 'способами', 'способами'];
+
+  // имена и падежи (все имена кончаются на -а или -я)
+  var BOYS = ['Петя', 'Коля', 'Дима', 'Саша', 'Ваня', 'Миша', 'Гоша', 'Лёша', 'Вова', 'Толя', 'Костя', 'Боря'];
+  var GIRLS = ['Маша', 'Оля', 'Катя', 'Аня', 'Лена', 'Ира', 'Вера', 'Соня', 'Таня', 'Марина', 'Яна', 'Даша'];
+  function stem(n) { return n.slice(0, -1); }
+  function hush(n) { return 'гкхжшщч'.indexOf(n.charAt(n.length - 2)) >= 0; }
+  function gen(n) { return n.slice(-1) === 'я' ? stem(n) + 'и' : stem(n) + (hush(n) ? 'и' : 'ы'); }
+  function dat(n) { return stem(n) + 'е'; }
+  function acc(n) { return stem(n) + (n.slice(-1) === 'я' ? 'ю' : 'у'); }
+  function ins(n) { return n.slice(-1) === 'я' ? stem(n) + 'ей' : stem(n) + ('жшщчц'.indexOf(n.charAt(n.length - 2)) >= 0 ? 'ей' : 'ой'); }
+  function person(name, f) { return { name: name, f: f, gen: gen(name), dat: dat(name), acc: acc(name), ins: ins(name), v: function (m, w) { return f ? w : m; } }; }
+  function kid(r, sex) { var f = sex == null ? r() < 0.5 : sex; return person(pick(r, f ? GIRLS : BOYS), f); }
+  function kids(r, k) { var all = BOYS.map(function (b) { return [b, false]; }).concat(GIRLS.map(function (g) { return [g, true]; })); return sample(r, all, k).map(function (x) { return person(x[0], x[1]); }); }
+
+  // =====================================================================
+  // 1. Не меньше, чем
+  // =====================================================================
+  var T1_SKINS = [
+    { place: 'В пенале', item: ['ручка', 'ручки', 'ручек'], all: 'синие и красные', where: 'в пенале',
+      A: { g: 'синих', acc: ['синюю ручку', 'синие ручки', 'синих ручек'] }, B: { g: 'красных', acc: ['красную ручку', 'красные ручки', 'красных ручек'] },
+      take: ['достал', 'достала'], from: 'из пенала', back: ['положил их обратно', 'положила их обратно'], add: 'Мама купила ещё {k} и положила в пенал.' },
+    { place: 'В копилке', item: ['монета', 'монеты', 'монет'], all: 'пятирублёвые и десятирублёвые', where: 'в копилке',
+      A: { g: 'пятирублёвых', acc: ['пятирублёвую монету', 'пятирублёвые монеты', 'пятирублёвых монет'] }, B: { g: 'десятирублёвых', acc: ['десятирублёвую монету', 'десятирублёвые монеты', 'десятирублёвых монет'] },
+      take: ['вытряхнул', 'вытряхнула'], from: 'из копилки', back: ['сложил их обратно', 'сложила их обратно'], add: 'Бабушка опустила в копилку ещё {k}.' },
+    { place: 'В ящике', item: ['носок', 'носка', 'носков'], all: 'белые и чёрные', where: 'в ящике',
+      A: { g: 'белых', acc: ['белый носок', 'белых носка', 'белых носков'] }, B: { g: 'чёрных', acc: ['чёрный носок', 'чёрных носка', 'чёрных носков'] },
+      take: ['вытащил', 'вытащила'], from: 'из ящика', back: ['убрал их обратно', 'убрала их обратно'], add: 'Папа положил в ящик ещё {k}.' },
+    { place: 'В коробке', item: ['карандаш', 'карандаша', 'карандашей'], all: 'простые и цветные', where: 'в коробке',
+      A: { g: 'простых', acc: ['простой карандаш', 'простых карандаша', 'простых карандашей'] }, B: { g: 'цветных', acc: ['цветной карандаш', 'цветных карандаша', 'цветных карандашей'] },
+      take: ['достал', 'достала'], from: 'из коробки', back: ['сложил их обратно', 'сложила их обратно'], add: 'Мама купила ещё {k} и положила в коробку.' }
+  ];
+
+  function t1(level, r) {
+    var s = pick(r, T1_SKINS), who = kid(r), sx = function (p) { return p[who.f ? 1 : 0]; };
+    if (level === 3) {
+      var N = ri(r, 8, 14), yes = r() < 0.5, a, c;
+      if (yes) { a = ri(r, 3, N - 3); c = ri(r, 2, N - a); } else { a = ri(r, 4, N - 2); c = ri(r, N - a + 1, Math.min(N - 1, N - a + 3)); }
+      var p1 = a + ri(r, 1, 2), p2 = c + ri(r, 1, 2);
+      if (p1 > N || p2 > N || c < 2) return null;
+      var two = kids(r, 2), A1 = two[0], B1 = two[1];
+      var text = s.place + ' лежат ' + pn(N, s.item) + ' — ' + s.all + '. ' +
+        A1.name + ' ' + A1.v(s.take[0], s.take[1]) + ' ' + s.from + ' ' + pn(p1, s.item) + ' и сказал' + A1.v('', 'а') + ': «' + cap(s.A.g) + ' среди них ' + a + '». ' +
+        A1.v('Он ', 'Она ') + A1.v(s.back[0], s.back[1]) + '. ' +
+        B1.name + ' ' + B1.v(s.take[0], s.take[1]) + ' ' + s.from + ' ' + pn(p2, s.item) + ' и сказал' + B1.v('', 'а') + ': «' + cap(s.B.g) + ' среди них ' + c + '». ' +
+        'Могут ли оба говорить правду?';
+      var needA = Math.max(a, p2 - c), needB = Math.max(c, p1 - a);
+      var ans = (needA + needB <= N) ? 'да' : 'нет';
+      if ((ans === 'да') !== yes) return null;
+      return {
+        text: text, answer: { kind: 'yesno', value: ans },
+        params: { N: N, p1: p1, a: a, p2: p2, c: c, mode: 'claim' },
+        hints: [
+          'Если оба правы, сколько ' + s.A.g + ' точно есть? А ' + s.B.g + '?',
+          cap(s.A.g) + ' не меньше ' + a + ', ' + s.B.g + ' не меньше ' + c + '. Сколько тогда всего хотя бы? Сравни с ' + N + '.',
+          ans === 'нет'
+            ? 'Если оба правы, ' + s.A.g + ' не меньше ' + a + ', ' + s.B.g + ' не меньше ' + c + ', а всего не меньше ' + a + ' + ' + c + ' = ' + (a + c) + '. Но всего ' + N + ' — так не бывает. Ответ: нет.'
+            : cap(s.A.g) + ' не меньше ' + needA + ', ' + s.B.g + ' не меньше ' + needB + ': вместе ' + (needA + needB) + ', это не больше ' + N + '. Например, ' + s.A.g + ' ' + needA + ', ' + s.B.g + ' ' + (N - needA) + ' — тогда оба могли сказать правду. Ответ: да.'
+        ]
+      };
+    }
+    var N2 = ri(r, 6, 14), a2 = ri(r, 2, N2 - 2), c2 = N2 - a2;
+    var b = ri(r, 1, Math.min(2, c2 - 1)), d = ri(r, 1, Math.min(2, a2 - 1));
+    if (b < 1 || d < 1 || b >= c2 || d >= a2) return null;
+    var askB = r() < 0.5, k = level === 2 ? ri(r, 2, 4) : 0;
+    var exact = askB ? c2 : a2, kind = askB ? s.B : s.A;
+    var t = s.place + ' у ' + who.gen + ' ' + pn(N2, s.item) + ' — ' + s.all + '. ' +
+      'Однажды ' + who.name + ' ' + sx(s.take) + ' ' + s.from + ' ' + pn(a2 + b, s.item) + ': ' + s.A.g + ' среди них ' + a2 + ', ' + s.B.g + ' — ' + b + '. ' +
+      cap(sx(s.back)) + ', а в другой раз ' + sx(s.take) + ' ' + pn(c2 + d, s.item) + ': ' + s.B.g + ' среди них ' + c2 + ', ' + s.A.g + ' — ' + d + '. ';
+    if (level === 2) t += s.add.replace('{k}', pn(k, kind.acc)) + ' Сколько теперь ' + kind.g + ' ' + s.item[2] + ' ' + s.where + '?';
+    else t += 'Сколько ' + kind.g + ' ' + s.item[2] + ' ' + s.where + '?';
+    var ansN = exact + k;
+    return {
+      text: t, answer: { kind: 'num', value: ansN, unit: s.item[2] },
+      params: { N: N2, a: a2, b: b, c: c2, d: d, askB: askB, k: k, mode: 'exact' },
+      hints: [
+        'Что ' + who.name + ' точно узнал' + who.v('', 'а') + ' в первый раз? ' + cap(s.A.g) + ' ' + s.where + ' не меньше скольких?',
+        cap(s.A.g) + ' не меньше ' + a2 + ', ' + s.B.g + ' не меньше ' + c2 + ', а всего ' + N2 + '. ' + a2 + ' + ' + c2 + ' = ' + N2 + ' — запаса не осталось. Сколько ' + kind.g + ' на самом деле?',
+        cap(s.A.g) + ' не меньше ' + a2 + ', ' + s.B.g + ' не меньше ' + c2 + '. ' + a2 + ' + ' + c2 + ' = ' + N2 + ' — это всё, значит, ' + kind.g + ' ровно ' + exact + '.' +
+          (k ? ' ' + exact + ' + ' + k + ' = ' + ansN + '.' : '') + ' Ответ: ' + ansN + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 2. Никто не на своём месте
+  // =====================================================================
+  function derangements(n) {
+    var out = [];
+    (function rec(p, used) {
+      if (p.length === n) { out.push(p.slice()); return; }
+      for (var i = 0; i < n; i++) if (!used[i] && i !== p.length) { used[i] = true; p.push(i); rec(p, used); p.pop(); used[i] = false; }
+    })([], []);
+    return out;
+  }
+  var JAR_LABELS = ['Малина', 'Вишня', 'Слива', 'Груша'], JAR_JAM = ['малиновое', 'вишнёвое', 'сливовое', 'грушевое'];
+
+  function t2(level, r) {
+    if (level === 2) {
+      var pairs = [[1, 6], [2, 5], [3, 4]];
+      var erased = pairs.map(function (p) { return r() < 0.5 ? p[0] : p[1]; });
+      if (r() < 0.4) erased = r() < 0.5 ? [1, 2, 3] : [4, 5, 6];
+      var kept = erased.map(function (e) { return 7 - e; });          // грань стёртой erased[i] — напротив kept[i]
+      var der = pick(r, derangements(3));                               // на грань «напротив kept[i]» пишут erased[der[i]]
+      var fi = ri(r, 0, 2), ai = (fi + ri(r, 1, 2)) % 3;
+      if (der[fi] === ai) return null;                                  // факт не должен сразу называть ответ
+      var place = der.indexOf(ai), ans = kept[place];
+      var two = kids(r, 2);
+      var text = two[0].name + ' ' + two[0].v('написал', 'написала') + ' на гранях кубика цифры от 1 до 6 так, что на противоположных гранях сумма цифр равна 7. ' +
+        two[1].name + ' ' + two[1].v('стёр', 'стёрла') + ' цифры ' + joinAnd(erased.slice().sort().map(String)) + '. ' + two[0].name + ' снова ' + two[0].v('написал', 'написала') +
+        ' их на пустых гранях, но каждую — не на той грани, где она была раньше. Теперь напротив цифры ' + kept[fi] + ' написана цифра ' + erased[der[fi]] + '. Какая цифра стоит напротив цифры ' + erased[ai] + '?';
+      return {
+        text: text, answer: { kind: 'choice', value: String(ans), options: [1, 2, 3, 4, 5, 6].filter(function (x) { return x !== erased[ai]; }).map(String) },
+        params: { mode: 'cube', erased: erased, fact: [kept[fi], erased[der[fi]]], ask: erased[ai] },
+        hints: [
+          'Выпиши пары противоположных граней: 1 и 6, 2 и 5, 3 и 4. Где цифра ' + erased[ai] + ' стояла раньше?',
+          'Цифра ' + erased[ai] + ' не может стоять напротив ' + (7 - erased[ai]) + ' — это её старое место, и не может стоять напротив ' + kept[fi] + ' — там уже ' + erased[der[fi]] + '. Какое место осталось?',
+          'Раньше ' + erased[ai] + ' стояла напротив ' + (7 - erased[ai]) + '. Напротив ' + kept[fi] + ' уже ' + erased[der[fi]] + '. Остаётся одно место — напротив ' + ans + '. Ответ: ' + ans + '.'
+        ]
+      };
+    }
+    var n = level === 1 ? 3 : 4, skin = r() < 0.5 ? 'jars' : 'hooks';
+    var der2 = pick(r, derangements(n)), askItem = ri(r, 0, n - 1);
+    var facts = [], cand = derangements(n);
+    var order = shuffle(r, Array.from({ length: n }, function (_, i) { return i; }));
+    for (var oi = 0; oi < order.length; oi++) {
+      var pl = order[oi];
+      if (der2[pl] === askItem) continue;
+      facts.push(pl);
+      cand = cand.filter(function (p) { return facts.every(function (q) { return p[q] === der2[q]; }); });
+      var places = {}; cand.forEach(function (p) { places[p.indexOf(askItem)] = 1; });
+      if (Object.keys(places).length === 1) break;
+    }
+    var fin = {}; cand.forEach(function (p) { fin[p.indexOf(askItem)] = 1; });
+    if (Object.keys(fin).length !== 1 || facts.length > (n === 3 ? 1 : 2)) return null;
+    if (n === 4 && facts.length < 2) return null;
+    var ansPlace = der2.indexOf(askItem), text2, options, ans2, full, what;
+    if (skin === 'jars') {
+      var helper = kid(r), labels = JAR_LABELS.slice(0, n), jam = JAR_JAM.slice(0, n);
+      text2 = 'На полке стоят ' + (n === 3 ? 'три банки' : 'четыре банки') + ' с наклейками ' + joinAnd(labels.map(function (l) { return '«' + l + '»'; })) +
+        ', и в каждой было своё варенье. ' + helper.name + ' ' + helper.v('переложил', 'переложила') + ' варенье так, что ни одно не осталось в своей банке. ' +
+        facts.map(function (q) { return 'В банке «' + labels[q] + '» теперь ' + jam[der2[q]] + ' варенье.'; }).join(' ') +
+        ' В какой банке теперь ' + jam[askItem] + ' варенье?';
+      options = labels.map(function (l) { return '«' + l + '»'; });
+      ans2 = '«' + labels[ansPlace] + '»';
+      what = jam[askItem] + ' варенье';
+      full = 'Вот как всё разложено: ' + labels.map(function (l, i) { return 'в банке «' + l + '» — ' + jam[der2[i]]; }).join(', ') + '. Другого способа нет. Ответ: в банке ' + ans2 + '.';
+    } else {
+      var ppl = kids(r, n).map(function (p) { return p.name; });
+      text2 = 'В раздевалке ' + (n === 3 ? 'три крючка' : 'четыре крючка') + ' с табличками: ' + joinAnd(ppl.map(function (p) { return '«' + p + '»'; })) +
+        '. После физкультуры ребята повесили рюкзаки так, что ни один рюкзак не попал на крючок с именем хозяина. ' +
+        facts.map(function (q) { return 'На крючке «' + ppl[q] + '» висит рюкзак ' + gen(ppl[der2[q]]) + '.'; }).join(' ') +
+        ' На каком крючке висит рюкзак ' + gen(ppl[askItem]) + '?';
+      options = ppl.map(function (p) { return '«' + p + '»'; });
+      ans2 = '«' + ppl[ansPlace] + '»';
+      what = 'рюкзак ' + gen(ppl[askItem]);
+      full = 'Вот как висят рюкзаки: ' + ppl.map(function (p, i) { return 'на крючке «' + p + '» — рюкзак ' + gen(ppl[der2[i]]); }).join(', ') + '. Другого способа нет. Ответ: на крючке ' + ans2 + '.';
+    }
+    return {
+      text: text2, answer: { kind: 'choice', value: ans2, options: options },
+      params: { mode: 'perm', n: n, facts: facts.map(function (q) { return [q, der2[q]]; }), ask: askItem, ansPlace: ansPlace },
+      hints: [
+        'Нарисуй таблицу: строки — что перекладывали, столбцы — места. Крестиком отметь старое место каждого.',
+        'Отметь крестиками и места, которые уже заняты. Куда ещё можно поместить ' + what + '?' + (n === 4 ? ' Если вариантов два — попробуй каждый и посмотри, не останется ли кто-то на своём месте.' : ''),
+        full
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 3. Каждый взял по несколько разных
+  // =====================================================================
+  var T3_SKINS = [
+    { intro: 'Клоун Бим на празднике дарил каждому гостю по {k} {thing} разного цвета.', thing: ['воздушный шарик', 'воздушных шарика', 'воздушных шариков'],
+      kinds: ['красных', 'синих', 'жёлтых', 'зелёных', 'оранжевых', 'белых'], one: ['красный', 'синий', 'жёлтый', 'зелёный', 'оранжевый', 'белый'],
+      list: function (ks, cs) { return 'Всего он раздал ' + joinAnd(ks.map(function (k, i) { return cs[i] + ' ' + k; })) + ' шариков.'; },
+      q: function (u, x) { return 'Сколько гостей получили ' + u + ' шарик, но не получили ' + x + '?'; },
+      many: function (u) { return u + ' шариков'; }, every: function (u) { return u + ' шарик достался каждому гостю'; }, got: function (x, c) { return cap(x) + ' шарик получили ' + c; },
+      who: 'гостей', people: 'гостей' },
+    { intro: 'После экскурсии на конфетной фабрике каждому разрешили взять по {k} {thing} разных названий.', thing: ['конфета', 'конфеты', 'конфет'],
+      kinds: ['«Арктика»', '«Белочка»', '«Василёк»', '«Грильяж»', '«Джигит»', '«Ералаш»'], one: null,
+      list: function (ks, cs) { return 'Всего ребята унесли ' + ks.map(function (k, i) { return (i === 0 ? pn(cs[i], ['конфету', 'конфеты', 'конфет']) + ' ' : cs[i] + ' — ') + k; }).join(', ') + '.'; },
+      q: function (u, x) { return 'Сколько ребят взяли конфету ' + u + ', но не взяли конфету ' + x + '?'; },
+      many: function (u) { return 'конфет ' + u; }, every: function (u) { return 'конфету ' + u + ' взял каждый'; }, got: function (x, c) { return 'Конфету ' + x + ' взяли ' + c; },
+      who: 'ребят', people: 'ребят' },
+    { intro: 'В музее каждый из ребят купил по {k} {thing}, и все они были разные.', thing: ['значок', 'значка', 'значков'],
+      kinds: ['«Ракета»', '«Луна»', '«Звезда»', '«Солнце»', '«Комета»', '«Спутник»'], one: null,
+      list: function (ks, cs) { return 'Всего купили ' + ks.map(function (k, i) { return (i === 0 ? pn(cs[i], ['значок', 'значка', 'значков']) + ' ' : cs[i] + ' — ') + k; }).join(', ') + '.'; },
+      q: function (u, x) { return 'Сколько ребят купили значок ' + u + ', но не купили значок ' + x + '?'; },
+      many: function (u) { return 'значков ' + u; }, every: function (u) { return 'значок ' + u + ' купил каждый'; }, got: function (x, c) { return 'Значок ' + x + ' купили ' + c; },
+      who: 'ребят', people: 'ребят' }
+  ];
+  var CLUBS = ['«Шахматы»', '«Рисование»', '«Танцы»', '«Футбол»', '«Пение»', '«Лепка»'];
+
+  function t3(level, r) {
+    if (level === 3) {
+      var n = ri(r, 6, 12), a = ri(r, 2, n), b = ri(r, 2, n), c = 2 * n - a - b;
+      if (c < 2 || c > n - 1 || a === n || b === n) return null;
+      var cl = sample(r, CLUBS, 3), ans = n - c;
+      var text = 'В летнем лагере три кружка: ' + joinAnd(cl) + '. Каждый ребёнок записался ровно в два кружка. ' +
+        'В кружок ' + cl[0] + ' ходят ' + pn(a, PEOPLE) + ', в кружок ' + cl[1] + ' — ' + b + ', в кружок ' + cl[2] + ' — ' + c + '. ' +
+        'Сколько ребят ходят и в кружок ' + cl[0] + ', и в кружок ' + cl[1] + '?';
+      return {
+        text: text, answer: { kind: 'num', value: ans, unit: 'ребят' },
+        params: { mode: 'clubs', counts: [a, b, c], k: 2 },
+        hints: [
+          'Сколько всего записей в кружки? У каждого ребёнка их ровно 2 — сколько тогда ребят?',
+          'Записей ' + a + ' + ' + b + ' + ' + c + ' = ' + (2 * n) + ', ребят ' + (2 * n) + ' : 2 = ' + n + '. Каждый пропускает ровно один кружок. Куда ходит тот, кто не ходит в ' + cl[2] + '?',
+          'Ребят ' + n + '. В кружок ' + cl[2] + ' ходят ' + c + ', не ходят ' + n + ' − ' + c + ' = ' + ans + '. Кто не ходит в ' + cl[2] + ', тот ходит в оба других. Ответ: ' + ans + '.'
+        ]
+      };
+    }
+    var s = pick(r, T3_SKINS), k = level === 1 ? 2 : 3;
+    var m = level === 1 ? ri(r, 3, 4) : ri(r, 5, 6), n2 = ri(r, level === 1 ? 6 : 8, 12);
+    var rest = m - 1, need = n2 * (k - 1), cs = [], left = need;
+    for (var i = 0; i < rest; i++) {
+      var lo = Math.max(2, left - (n2 - 1) * (rest - i - 1)), hi = Math.min(n2 - 1, left - 2 * (rest - i - 1));
+      if (lo > hi) return null;
+      var v = (i === rest - 1) ? left : ri(r, lo, hi);
+      if (v < 2 || v > n2 - 1) return null;
+      cs.push(v); left -= v;
+    }
+    if (left !== 0) return null;
+    var kinds = sample(r, s.kinds.map(function (x, j) { return j; }), m), uPos = ri(r, 0, m - 1), counts = [], ci = 0;
+    for (var j = 0; j < m; j++) counts.push(j === uPos ? n2 : cs[ci++]);
+    var xPos; do { xPos = ri(r, 0, m - 1); } while (xPos === uPos);
+    var uName = s.one ? s.one[kinds[uPos]] : s.kinds[kinds[uPos]], xName = s.one ? s.one[kinds[xPos]] : s.kinds[kinds[xPos]];
+    var uMany = s.one ? s.kinds[kinds[uPos]] : s.kinds[kinds[uPos]];
+    var text2 = s.intro.replace('{k}', k).replace('{thing}', plural(k, s.thing)) + ' ' + s.list(kinds.map(function (ix) { return s.kinds[ix]; }), counts) + ' ' + s.q(uName, xName);
+    var total = sum(counts), ans2 = n2 - counts[xPos];
+    return {
+      text: text2, answer: { kind: 'num', value: ans2, unit: s.who },
+      params: { mode: 'take', counts: counts, k: k, u: uPos, x: xPos },
+      hints: [
+        'Сначала посчитай, сколько было ' + s.people + ': сколько всего ' + s.thing[2] + ' и по сколько досталось каждому?',
+        'Всего ' + counts.join(' + ') + ' = ' + total + ', каждому по ' + k + ' — значит, ' + s.people + ' ' + total + ' : ' + k + ' = ' + n2 + '. А ' + s.many(uMany) + ' — тоже ' + n2 + '. Что это значит?',
+        cap(s.people) + ' ' + n2 + ', и ' + s.every(uName) + '. ' + s.got(xName, counts[xPos]) + ', значит, без него ' + n2 + ' − ' + counts[xPos] + ' = ' + ans2 + '. Ответ: ' + ans2 + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 4. Число способов обмена
+  // =====================================================================
+  var T4_SKINS = [
+    { two: true, Apl: 'машинки', Bpl: 'солдатики', A: ['машинка', 'машинки', 'машинок'], B: ['солдатик', 'солдатика', 'солдатиков'], Bins: 'солдатиками', oneA: 'одну машинку', pron: 'её',
+      intro: function (o, p) { return 'У ' + o.gen + ' есть несколько разных машинок, а у ' + p.gen + ' — несколько разных солдатиков.'; },
+      have: function (o, p, a, b) { return 'У ' + o.gen + ' ' + pn(a, ['машинка', 'машинки', 'машинок']) + ', все разные, а у ' + p.gen + ' — ' + pn(b, ['солдатик', 'солдатика', 'солдатиков']) + ', тоже все разные.'; },
+      claim: function (p) { return 'У меня разные машинки, а у ' + p.gen + ' — разные солдатики.'; },
+      act: 'обменять одну машинку на одного солдатика', lose: ['потерял одну машинку', 'потеряла одну машинку'], buy: ['нашёл ещё одну машинку', 'нашла ещё одну машинку'], willLose: 'я потеряю одну машинку' },
+    { girl: true, Apl: 'юбки', Bpl: 'кофточки', A: ['юбка', 'юбки', 'юбок'], B: ['кофточка', 'кофточки', 'кофточек'], Bins: 'кофточками', oneA: 'одну юбку', pron: 'её',
+      intro: function (o) { return 'У ' + o.gen + ' есть несколько разных юбок и несколько разных кофточек.'; },
+      have: function (o, p, a, b) { return 'У ' + o.gen + ' ' + pn(a, ['юбка', 'юбки', 'юбок']) + ' и ' + pn(b, ['кофточка', 'кофточки', 'кофточек']) + ', все разные.'; },
+      claim: function () { return 'У меня несколько разных юбок и несколько разных кофточек.'; },
+      act: 'составить наряд из одной юбки и одной кофточки', lose: ['', 'порвала одну юбку'], buy: ['', 'получила в подарок ещё одну юбку'], willLose: 'одна юбка порвётся' },
+    { boy: true, Apl: 'брюки', Bpl: 'рубашки', A: ['пара брюк', 'пары брюк', 'пар брюк'], B: ['рубашка', 'рубашки', 'рубашек'], Bins: 'рубашками', oneA: 'одни брюки', pron: 'их',
+      intro: function (o) { return 'У ' + o.gen + ' есть несколько разных пар брюк и несколько разных рубашек.'; },
+      have: function (o, p, a, b) { return 'У ' + o.gen + ' ' + pn(a, ['пара брюк', 'пары брюк', 'пар брюк']) + ' и ' + pn(b, ['рубашка', 'рубашки', 'рубашек']) + ', все разные.'; },
+      claim: function () { return 'У меня несколько разных пар брюк и несколько разных рубашек.'; },
+      act: 'составить костюм из одних брюк и одной рубашки', lose: ['вырос из одних брюк', ''], buy: ['получил в подарок ещё одни брюки', ''], willLose: 'я вырасту из одних брюк' }
+  ];
+  function t4(level, r) {
+    var s = pick(r, T4_SKINS);
+    var o = s.girl ? kid(r, true) : s.boy ? kid(r, false) : kid(r);
+    var p = kid(r, false); if (p.name === o.name) return null;
+    var sx = function (arr) { return arr[o.f ? 1 : 0]; };
+    var bOwner = s.two ? p : o;
+    var a = ri(r, 2, 7), b = ri(r, 3, 9);
+    if (level === 1) {
+      return {
+        text: s.have(o, p, a, b) + ' Сколькими способами можно ' + s.act + '?',
+        answer: { kind: 'num', value: a * b, unit: 'способов' }, params: { mode: 'forward', a: a, b: b },
+        hints: [
+          'Возьми ' + s.oneA + '. Со сколькими ' + s.Bins + ' ' + s.pron + ' можно соединить?',
+          'Нарисуй таблицу: строки — ' + s.Apl + ' (их ' + a + '), столбцы — ' + s.Bpl + ' (их ' + b + '). Каждая клетка — один способ.',
+          'Строк ' + a + ', в каждой ' + pn(b, ['клетка', 'клетки', 'клеток']) + ': ' + a + ' × ' + b + ' = ' + (a * b) + '. Ответ: ' + (a * b) + '.'
+        ]
+      };
+    }
+    if (level === 2) {
+      var lose = r() < 0.6, W = a * b, W2 = lose ? (a - 1) * b : (a + 1) * b, askA = r() < 0.6, d = Math.abs(W - W2);
+      var text = s.intro(o, p) + ' ' + cap(s.act) + ' можно ' + pn(W, WAYS_INS) + '. Однажды ' + o.name + ' ' + sx(lose ? s.lose : s.buy) + ', и способов стало ' + W2 + '. ' +
+        (askA ? 'Сколько ' + s.A[2] + ' было у ' + o.gen + ' сначала?' : 'Сколько ' + s.B[2] + ' у ' + bOwner.gen + '?');
+      var ans = askA ? a : b;
+      return {
+        text: text, answer: { kind: 'num', value: ans, unit: askA ? s.A[2] : s.B[2] }, params: { mode: lose ? 'lose' : 'buy', W: W, W2: W2, askA: askA },
+        hints: [
+          'Нарисуй таблицу: строки — ' + s.Apl + ', столбцы — ' + s.Bpl + '. Каждая клетка — один способ. Что случилось с таблицей?',
+          (lose ? 'Пропала' : 'Добавилась') + ' целая строка. В ней столько клеток, сколько ' + s.B[2] + ': ' + Math.max(W, W2) + ' − ' + Math.min(W, W2) + ' = ' + d + '.',
+          cap(s.B[2]) + ' ' + d + ' — столько клеток в строке. ' + cap(s.A[2]) + ' сначала: ' + W + ' : ' + d + ' = ' + a + '. Ответ: ' + ans + '.'
+        ]
+      };
+    }
+    var yes = r() < 0.5, W3, W4;
+    if (yes) { W3 = a * b; W4 = (a - 1) * b; } else { W3 = ri(r, 12, 40); W4 = W3 - ri(r, 3, 9); }
+    var dd = W3 - W4, ok = W4 > 0 && W3 % dd === 0 && W3 / dd >= 2;
+    if (ok !== yes) return null;
+    var text3 = o.name + ' ' + o.v('рассказал', 'рассказала') + ': «' + s.claim(p) + ' ' + cap(s.act) + ' можно ' + pn(W3, WAYS_INS) + '. А если ' + s.willLose + ', способов станет ' + W4 + '». ' +
+      o.v('Мог', 'Могла') + ' ли ' + o.name + ' говорить правду?';
+    return {
+      text: text3, answer: { kind: 'yesno', value: yes ? 'да' : 'нет' }, params: { mode: 'claim', W: W3, W2: W4 },
+      hints: [
+        'Если пропадёт одна строка таблицы, сколько способов исчезнет? Сколько клеток в строке?',
+        'Исчезнет ' + W3 + ' − ' + W4 + ' = ' + dd + ' способов — столько ' + s.B[2] + '. Тогда строк должно быть ' + W3 + ' : ' + dd + '. Делится ли?',
+        yes ? cap(s.B[2]) + ' ' + dd + ', строк ' + W3 + ' : ' + dd + ' = ' + (W3 / dd) + ' — всё сходится. Ответ: да.'
+            : 'В строке ' + dd + ' клеток, а ' + W3 + ' на ' + dd + ' не делится: ' + W3 + ' : ' + dd + ' = ' + Math.floor(W3 / dd) + ' (остаток ' + (W3 % dd) + '). Так не бывает. Ответ: нет.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 5. Сумма всего и самое большое
+  // =====================================================================
+  var T5_SKINS = [
+    { eachOn: 'на каждом', ball: ['шарик', 'шарика', 'шариков'], onPl: 'шариках', box: ['коробка', 'коробки', 'коробок'], fem: true, boxGen: 'коробки', every: 'каждую' },
+    { eachOn: 'на каждой', ball: ['карточка', 'карточки', 'карточек'], onPl: 'карточках', box: ['конверт', 'конверта', 'конвертов'], fem: false, boxGen: 'конверта', every: 'каждый' },
+    { eachOn: 'на каждой', ball: ['бусина', 'бусины', 'бусин'], onPl: 'бусинах', box: ['мешочек', 'мешочка', 'мешочков'], fem: false, boxGen: 'мешочка', every: 'каждый' }
+  ];
+  var ORD_F = ['первой', 'второй', 'третьей', 'четвёртой'], ORD_M = ['первом', 'втором', 'третьем', 'четвёртом'];
+  function inBox(s, i) { return (i === 1 ? 'во ' : 'в ') + (s.fem ? ORD_F[i] : ORD_M[i]) + ' ' + (s.fem ? 'коробке' : s.box[0] === 'конверт' ? 'конверте' : 'мешочке'); }
+  function inBoxShort(s, i) { return (i === 1 ? 'во ' : 'в ') + (s.fem ? ORD_F[i] : ORD_M[i]); }
+  function t5(level, r) {
+    var s = pick(r, T5_SKINS), who = kid(r);
+    if (level === 3) {
+      var kk = pick(r, [3, 5]), f = [ri(r, 0, 4), ri(r, 0, 4)], f3 = 6 - f[0] - f[1];
+      if (f3 < 0 || f3 > 4) return null;
+      var sums = f.map(function (x) { return x * kk + (4 - x); });
+      return {
+        text: 'У ' + who.gen + ' 12 ' + s.ball[2] + ': на шести написана цифра 1, на шести — цифра ' + kk + '. ' + who.name + ' ' + who.v('разложил', 'разложила') + ' их в 3 ' + plural(3, s.box) +
+          ', по 4 ' + plural(4, s.ball) + ' в ' + s.every + '. Сумма цифр ' + inBox(s, 0) + ' — ' + sums[0] + ', ' + inBoxShort(s, 1) + ' — ' + sums[1] + '. Сколько ' + s.ball[2] + ' с цифрой ' + kk + ' ' + inBox(s, 2) + '?',
+        answer: { kind: 'num', value: f3, unit: s.ball[2] }, params: { mode: 'two', k: kk, sums: sums },
+        hints: [
+          'Сколько ' + s.ball[2] + ' с цифрой ' + kk + ' может быть там, где сумма ' + sums[0] + '? Попробуй 0, 1, 2…',
+          'Каждая цифра ' + kk + ' вместо единицы прибавляет к сумме ' + (kk - 1) + '. ' + cap(inBox(s, 0)) + ' таких ' + s.ball[2] + ' ' + f[0] + ', ' + inBoxShort(s, 1) + ' — ' + f[1] + '. Сколько осталось?',
+          cap(inBox(s, 0)) + ' ' + f[0] + ' с цифрой ' + kk + ', ' + inBoxShort(s, 1) + ' — ' + f[1] + '. Всего их 6: 6 − ' + f[0] + ' − ' + f[1] + ' = ' + f3 + '. Ответ: ' + f3 + '.'
+        ]
+      };
+    }
+    var digits = level === 1 ? [1, 2, 3] : [1, 2, 3, 4], c = level === 1 ? 5 : pick(r, [5, 9]), m = digits.length;
+    var extreme = r() < 0.7 ? digits[m - 1] : 1, rest = [];
+    digits.forEach(function (d) { if (d !== extreme) for (var i = 0; i < c; i++) rest.push(d); });
+    rest = shuffle(r, rest);
+    var boxes = []; for (var bI = 0; bI < m - 1; bI++) boxes.push(rest.slice(bI * c, bI * c + c));
+    var sums2 = boxes.map(sum), total = sum(digits) * c, R = total - sum(sums2);
+    var lastBox = (s.fem ? 'последней коробки' : 'последнего ' + s.boxGen);
+    var q = level === 2
+      ? who.name + ' ' + who.v('вынул', 'вынула') + ' из ' + lastBox + ' ' + (s.ball[0] === 'шарик' ? 'один шарик' : s.ball[0] === 'карточка' ? 'одну карточку' : 'одну бусину') + '. Какая цифра на ' + (s.ball[0] === 'шарик' ? 'нём' : 'ней') + ' написана?'
+      : 'Какие цифры написаны на ' + s.onPl + ' ' + inBox(s, m - 1) + '?';
+    var text2 = 'У ' + who.gen + ' есть ' + pn(m * c, s.ball) + ', ' + s.eachOn + ' — одна цифра: ' + digits.slice(0, -1).join(', ') + ' или ' + digits[m - 1] + '. Каждая цифра написана на ' + c + ' ' + s.onPl + '. ' +
+      who.name + ' ' + who.v('разложил', 'разложила') + ' их в ' + m + ' ' + plural(m, s.box) + ', по ' + c + ' ' + plural(c, s.ball) + ' в ' + s.every + '. ' +
+      'Сумма цифр ' + inBox(s, 0) + ' — ' + sums2[0] + ', ' + inBoxShort(s, 1) + ' — ' + sums2[1] + (m === 4 ? ', ' + inBoxShort(s, 2) + ' — ' + sums2[2] : '') + '. ' + q;
+    var lastAcc = s.fem ? 'последнюю коробку' : 'последний ' + s.box[0];
+    return {
+      text: text2,
+      answer: level === 2 ? { kind: 'num', value: extreme, unit: '' } : { kind: 'choice', value: 'все ' + extreme, options: digits.map(function (d) { return 'все ' + d; }).concat(['разные']) },
+      params: { mode: 'last', digits: digits, c: c, sums: sums2 },
+      hints: [
+        'Сколько получится, если сложить цифры на всех ' + s.onPl + '?',
+        'Всего ' + digits.map(function (d) { return c + ' × ' + d; }).join(' + ') + ' = ' + total + '. На ' + lastAcc + ' остаётся ' + total + ' − ' + sums2.join(' − ') + ' = ' + R + '. Какая самая ' + (extreme === 1 ? 'маленькая' : 'большая') + ' сумма бывает у ' + c + ' цифр?',
+        'Остаётся ' + R + '. ' + c + ' × ' + extreme + ' = ' + R + ' — ' + (extreme === 1 ? 'меньше' : 'больше') + ' из ' + c + ' цифр не набрать, значит, там все цифры ' + extreme + '. Ответ: ' + (level === 2 ? extreme : 'все ' + extreme) + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 6. Доровняем возраст
+  // =====================================================================
+  function yearsWord(n) { return pn(n, YEARS); }
+  function t6(level, r) {
+    if (level === 3) {
+      var three = kids(r, 3), x = ri(r, 1, 4), y = ri(r, 1, 4), cAge = ri(r, 3, 8);
+      var ages = [cAge + x + y, cAge + y, cAge], S = sum(ages), askI = r() < 0.6 ? 0 : 1;
+      var A = three[0], B = three[1], C = three[2];
+      return {
+        text: 'В семье трое детей. ' + A.name + ' старше ' + B.gen + ' на ' + yearsWord(x) + ', а ' + B.name + ' старше ' + C.gen + ' на ' + yearsWord(y) + '. Если сложить их возраст, получится ' + yearsWord(S) + '. Сколько лет ' + three[askI].dat + '?',
+        answer: { kind: 'num', value: ages[askI], unit: plural(ages[askI], YEARS) }, params: { mode: 'chain', x: x, y: y, S: S, ask: askI },
+        hints: [
+          'Сделаем всех ровесниками самого младшего — ' + C.gen + '. Сколько лет надо отнять у ' + B.gen + ' и у ' + A.gen + '?',
+          'У ' + B.gen + ' отнимем ' + y + ', у ' + A.gen + ' — ' + x + ' + ' + y + ' = ' + (x + y) + '. Останется ' + S + ' − ' + y + ' − ' + (x + y) + ' = ' + (3 * cAge) + ' — столько было бы троим ровесникам ' + C.gen + '.',
+          (3 * cAge) + ' : 3 = ' + cAge + ' — столько ' + C.dat + '. ' + B.name + ': ' + cAge + ' + ' + y + ' = ' + ages[1] + ', ' + A.name + ': ' + ages[1] + ' + ' + x + ' = ' + ages[0] + '. Ответ: ' + ages[askI] + '.'
+        ]
+      };
+    }
+    var hero = kid(r), h = ri(r, 7, 12), groups;
+    if (level === 1) groups = [[ri(r, 2, 5), -ri(r, 1, 2)], [ri(r, 2, 6), ri(r, 1, 3)]];
+    else groups = shuffle(r, [[ri(r, 2, 5), -ri(r, 1, 3)], [ri(r, 3, 7), ri(r, 1, 3)], [ri(r, 2, 4), ri(r, 3, 5)]]);
+    if (level === 2 && groups[1][1] === groups[2][1]) return null;
+    var n = 1 + sum(groups.map(function (g) { return g[0]; }));
+    var S = h + sum(groups.map(function (g) { return g[0] * (h + g[1]); }));
+    var desc = groups.map(function (g, i) {
+      var who = (i === groups.length - 1 && level === 2 ? 'оставшиеся ' + g[0] : pn(g[0], PEOPLE));
+      return (i === 0 ? cap(who) : who) + ' ' + (i === 0 ? 'были ' : '— ') + (g[1] < 0 ? 'младше' : 'старше') + (i === 0 ? ' ' + hero.v('его', 'её') : '') + ' на ' + yearsWord(Math.abs(g[1]));
+    });
+    var text = 'Однажды ' + hero.name + ' ' + hero.v('оказался', 'оказалась') + ' в большой компании. ' + desc.slice(0, -1).join(', ') + ', а ' + desc[desc.length - 1] + '. ' +
+      'Всем вместе (считая ' + hero.acc + ') оказалось ' + yearsWord(S) + '. Сколько лет ' + hero.dat + '?';
+    var add = groups.filter(function (g) { return g[1] < 0; }), sub = groups.filter(function (g) { return g[1] > 0; });
+    var addSum = sum(add.map(function (g) { return g[0] * -g[1]; })), subSum = sum(sub.map(function (g) { return g[0] * g[1]; }));
+    var E = S + addSum - subSum;
+    return {
+      text: text, answer: { kind: 'num', value: h, unit: plural(h, YEARS) }, params: { mode: 'groups', groups: groups, S: S },
+      hints: [
+        'Сделаем всех ровесниками ' + hero.gen + ': младшим добавим лет, у старших отнимем. Сколько всего человек, считая ' + hero.acc + '?',
+        'Человек: 1 + ' + groups.map(function (g) { return g[0]; }).join(' + ') + ' = ' + n + '. Младшим добавим ' + add.map(function (g) { return g[0] + ' × ' + (-g[1]); }).join(' + ') + ' = ' + addSum + ', у старших отнимем ' + sub.map(function (g) { return g[0] + ' × ' + g[1]; }).join(' + ') + ' = ' + subSum + '. Сколько станет вместе?',
+        S + ' + ' + addSum + ' − ' + subSum + ' = ' + E + ' — столько было бы ' + n + ' ровесникам ' + hero.gen + '. ' + E + ' : ' + n + ' = ' + h + '. Ответ: ' + h + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 7. Оценка с двух сторон
+  // =====================================================================
+  function t7options(S, T, B) {
+    var lo = Math.ceil(B / 2), hi = Math.floor(T / 3), M = S - T - B, res = [];
+    if (B < 2 || T < 3 || M < 0 || lo > hi) return res;
+    if (M === 0) res.push(0);
+    for (var m = 1; m * lo <= M; m++) if (M <= m * hi) res.push(m);
+    return res;
+  }
+  function t7example(S, T, B, m) {
+    var x2 = Math.ceil(B / 2), x1 = B - x2, y1 = Math.floor(T / 3), y2 = Math.floor((T - y1) / 2), y3 = T - y1 - y2, M = S - T - B;
+    var mid = []; for (var i = 0; i < m; i++) mid.push(x2);
+    var left = M - m * x2;
+    for (var j = 0; j < m && left > 0; j++) { var add = Math.min(y1 - x2, left); mid[j] += add; left -= add; }
+    return [x1, x2].concat(mid.sort(function (a, b) { return a - b; })).concat([y1, y2, y3]);
+  }
+  function t7(level, r) {
+    if (level === 3) {
+      var n = ri(r, 5, 8), S = ri(r, 20, 45), T = ri(r, 6, S - (n - 3));
+      var ok = (S - T >= n - 3) && (S - T <= (n - 3) * Math.floor(T / 3));
+      if (ok !== (r() < 0.5)) return null;
+      var who = kid(r), lo = S - T, hi3 = Math.floor(T / 3);
+      return {
+        text: 'На доске написали ' + n + ' натуральных чисел (не обязательно разных), их сумма равна ' + S + '. ' + who.name + ' ' + who.v('посмотрел', 'посмотрела') + ' и ' + who.v('сказал', 'сказала') + ', что сумма трёх самых больших из них равна ' + T + '. ' +
+          who.v('Может', 'Может') + ' ли ' + who.name + ' быть ' + who.v('прав', 'права') + '?',
+        answer: { kind: 'yesno', value: ok ? 'да' : 'нет' }, params: { mode: 'claim', n: n, S: S, T: T },
+        hints: [
+          'Если ' + who.name + ' ' + who.v('прав', 'права') + ', сколько вместе дают остальные ' + pn(n - 3, ['число', 'числа', 'чисел']) + '?',
+          'Остальные вместе: ' + S + ' − ' + T + ' = ' + lo + '. Самое маленькое из трёх больших не больше ' + hi3 + ' (иначе три больших вместе больше ' + T + '). А каждое из остальных — не больше него.',
+          ok ? 'Остальные ' + pn(n - 3, ['число', 'числа', 'чисел']) + ' вместе дают ' + lo + ', и каждое может быть не больше ' + hi3 + ': ' + (n - 3) + ' × ' + hi3 + ' = ' + ((n - 3) * hi3) + ' — это не меньше ' + lo + '. Пример: ' + t7claimExample(n, S, T).join(', ') + '. Ответ: да.'
+             : (lo < n - 3 ? 'Остальным ' + pn(n - 3, ['числу', 'числам', 'числам']) + ' достаётся только ' + lo + ', а каждое не меньше 1. Не хватает. Ответ: нет.'
+                : 'Остальные ' + pn(n - 3, ['число', 'числа', 'чисел']) + ' — каждое не больше ' + hi3 + ', вместе не больше ' + (n - 3) + ' × ' + hi3 + ' = ' + ((n - 3) * hi3) + '. А должно быть ' + lo + ' — больше. Ответ: нет.')
+        ]
+      };
+    }
+    var S2, T2, B2, opts, tries = 0;
+    do {
+      tries++;
+      if (level === 1) { S2 = ri(r, 18, 32); T2 = ri(r, 9, 18); B2 = ri(r, 3, 7); }
+      else { S2 = ri(r, 36, 60); T2 = ri(r, 18, 33); B2 = ri(r, 5, 11); }
+      opts = t7options(S2, T2, B2);
+    } while ((opts.length !== 1 || opts[0] < 1 || opts[0] > 4) && tries < 500);
+    if (opts.length !== 1 || opts[0] < 1) return null;
+    var m2 = opts[0], M2 = S2 - T2 - B2, lo2 = Math.ceil(B2 / 2), hi2 = Math.floor(T2 / 3), ex = t7example(S2, T2, B2, m2);
+    var lines = [];
+    for (var mm = 1; mm <= Math.max(m2 + 1, 3); mm++) {
+      if (mm === m2) continue;
+      if (mm * lo2 > M2) lines.push(mm + ' средн' + (mm === 1 ? 'ее' : 'их') + ' — не меньше ' + mm + ' × ' + lo2 + ' = ' + (mm * lo2) + ', а их сумма ' + M2 + ' — нельзя');
+      else if (M2 > mm * hi2) lines.push(mm + ' средн' + (mm === 1 ? 'ее' : 'их') + ' — не больше ' + mm + ' × ' + hi2 + ' = ' + (mm * hi2) + ', а их сумма ' + M2 + ' — нельзя');
+    }
+    return {
+      text: 'На доске написано несколько натуральных чисел (не обязательно разных), их сумма равна ' + S2 + '. Сумма трёх самых больших из них равна ' + T2 + ', а сумма двух самых маленьких — ' + B2 + '. Сколько чисел написано на доске?',
+      answer: { kind: 'num', value: m2 + 5, unit: 'чисел' }, params: { mode: 'count', S: S2, T: T2, B: B2 },
+      hints: [
+        'Расставь числа по возрастанию: два самых маленьких, потом «средние», потом три самых больших. Сколько вместе дают средние?',
+        'Средние вместе: ' + S2 + ' − ' + T2 + ' − ' + B2 + ' = ' + M2 + '. Каждое среднее не меньше ' + lo2 + ' (большее из двух маленьких не меньше ' + B2 + ' : 2) и не больше ' + hi2 + ' (меньшее из трёх больших не больше ' + T2 + ' : 3). Сколько их может быть?',
+        'Средних ' + m2 + ': это возможно. ' + (lines.length ? cap(lines.join('; ')) + '. ' : '') + 'Пример: ' + ex.join(', ') + ' — сумма ' + S2 + '. Чисел ' + m2 + ' + 5 = ' + (m2 + 5) + '. Ответ: ' + (m2 + 5) + '.'
+      ]
+    };
+  }
+  function t7claimExample(n, S, T) {
+    var y1 = Math.floor(T / 3), y2 = Math.floor((T - y1) / 2), y3 = T - y1 - y2, rest = n - 3, left = S - T, xs = [];
+    for (var i = 0; i < rest; i++) xs.push(1);
+    left -= rest;
+    for (var j = 0; j < rest && left > 0; j++) { var add = Math.min(y1 - 1, left); xs[j] += add; left -= add; }
+    return xs.sort(function (a, b) { return a - b; }).concat([y1, y2, y3]);
+  }
+
+  // =====================================================================
+  // 8. Кто кому сколько отдал
+  // =====================================================================
+  function deltas(n, right) { var d = []; for (var i = 1; i <= n; i++) d.push(right ? 2 * i - n - 1 : n + 1 - 2 * i); return d; }
+  function signed(x) { return x > 0 ? '+' + x : x < 0 ? '−' + Math.abs(x) : '0'; }
+  function moreLess(D) { return Math.abs(D) + ' ' + plural(Math.abs(D), ['конфету', 'конфеты', 'конфет']) + ' ' + (D > 0 ? 'больше' : 'меньше'); }
+  function t8(level, r) {
+    var right = level === 3 ? false : r() < 0.75;
+    var dirText = right ? 'правее' : 'левее';
+    if (level === 1) {
+      var n = ri(r, 5, 9), ds = deltas(n, right), pos = ri(r, 1, n), D = ds[pos - 1];
+      if (D === 0) return null;
+      var who = kid(r);
+      return {
+        text: 'В ряд стоят ' + n + ' детей. Каждый дал по одной конфете каждому, кто стоит ' + dirText + ' него. После этого у ' + who.gen + ' конфет стало на ' + Math.abs(D) + ' ' + (D > 0 ? 'больше' : 'меньше') + ', чем было. Каким по счёту слева стоит ' + who.name + '?',
+        answer: { kind: 'num', value: pos, unit: '' }, params: { mode: 'pos', n: n, right: right, D: D },
+        hints: [
+          'Возьми того, кто стоит первым слева. Сколько конфет он отдал? Сколько получил?',
+          'Изменения по местам слева: ' + ds.map(signed).join(', ') + '. Где ' + signed(D) + '?',
+          signed(D) + ' — у ' + pos + '-го слева: он получил ' + (right ? pos - 1 : n - pos) + ', а отдал ' + (right ? n - pos : pos - 1) + '. Ответ: ' + pos + '.'
+        ]
+      };
+    }
+    var n2 = ri(r, 6, 9), ds2 = deltas(n2, right), girlsMajor = r() < 0.5;
+    var maj = girlsMajor ? 'девочек' : 'мальчиков', min = girlsMajor ? 'мальчиков' : 'девочек', majAll = girlsMajor ? 'девочек' : 'мальчиков';
+    // перебираем все расстановки: группа большинства — любое подмножество размера > n/2
+    var bySum = {};
+    for (var mask = 0; mask < (1 << n2); mask++) {
+      var cnt = 0, s = 0;
+      for (var i = 0; i < n2; i++) if (mask & (1 << i)) { cnt++; s += ds2[i]; }
+      if (cnt * 2 <= n2 || cnt === n2) continue;
+      (bySum[s] = bySum[s] || {})[cnt] = mask;
+    }
+    var good = Object.keys(bySum).filter(function (k) { return Object.keys(bySum[k]).length === 1 && Number(k) !== 0; });
+    if (!good.length) return null;
+    var D2 = Number(pick(r, good)), majCnt = Number(Object.keys(bySum[D2])[0]), exMask = bySum[D2][majCnt], minCnt = n2 - majCnt;
+    var exPos = []; for (var q = 0; q < n2; q++) if (exMask & (1 << q)) exPos.push(q + 1);
+    var text = 'В ряд стояли ' + n2 + ' детей, ' + maj + ' больше, чем ' + min + '. У каждого был мешок конфет. Каждый отдал всем, кто стоит ' + dirText + ' него, по конфете. ' +
+      'У всех ' + majAll + ' вместе стало на ' + moreLess(D2) + ', чем было. Сколько было ' + min + '?';
+    return {
+      text: text, answer: { kind: 'num', value: minCnt, unit: min }, params: { mode: 'group', n: n2, right: right, D: D2 },
+      hints: [
+        'Выпиши для каждого места слева направо: сколько он отдал и сколько получил.',
+        'Изменения по местам слева: ' + ds2.map(signed).join(', ') + '. ' + cap(maj) + ' больше половины — не меньше ' + (Math.floor(n2 / 2) + 1) + '. Какие изменения вместе дают ' + signed(D2) + '?',
+        cap(maj) + ' может быть только ' + majCnt + ': например, места ' + exPos.join(', ') + ': ' + exPos.map(function (p) { return signed(ds2[p - 1]); }).join(' ') + ' = ' + signed(D2) + '. Другим числом ' + maj + ' так не получить. Значит, ' + min + ' ' + n2 + ' − ' + majCnt + ' = ' + minCnt + '. Ответ: ' + minCnt + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 9. Разбери все случаи
+  // =====================================================================
+  // Расписание существует? (Гейл — Райзер) люди со степенями deg, дни с числом мест caps
+  function schedule(deg, caps) {
+    var d = deg.slice().sort(function (a, b) { return b - a; });
+    if (sum(d) !== sum(caps)) return false;
+    if (d[0] > caps.length) return false;
+    for (var t = 1; t <= d.length; t++) {
+      var left = sum(d.slice(0, t)), right = sum(caps.map(function (c) { return Math.min(c, t); }));
+      if (left > right) return false;
+    }
+    return true;
+  }
+  function t9cases(caps) {
+    var P = sum(caps), k = caps.length, res = [], lines = [];
+    for (var rr = 2; rr <= k; rr++) {
+      for (var h = 1; h < rr; h++) {
+        if ((P - h) % rr !== 0) continue;
+        var q = (P - h) / rr, g = q + 1, deg = [];
+        for (var i = 0; i < q; i++) deg.push(rr);
+        deg.push(h);
+        if (q < 1) continue;
+        var ok = schedule(deg, caps);
+        res.push({ r: rr, h: h, g: g, ok: ok });
+      }
+    }
+    return res;
+  }
+  var DAYS_ORD = ['первый', 'второй', 'третий', 'четвёртый', 'пятый'];
+  var T9_SKINS = [
+    { place: 'в деревню у реки', go: ['поехал', 'поехала'], act: 'купались', did: 'искупаться', each: ['искупался', 'искупалась'], times: 'искупались', noun: 'купаний', rule: 'Никто не купался больше одного раза в день.' },
+    { place: 'в бассейн', go: ['ходил', 'ходила'], act: 'плавали', did: 'поплавать', each: ['поплавал', 'поплавала'], times: 'плавали', noun: 'заплывов', rule: 'Никто не плавал больше одного раза в день.' },
+    { place: 'в парк', go: ['ездил', 'ездила'], act: 'катались на велосипедах', did: 'покататься', each: ['покатался', 'покаталась'], times: 'катались', noun: 'поездок', rule: 'Никто не катался больше одного раза в день.' }
+  ];
+  function t9(level, r) {
+    var k = ri(r, 4, 5), caps = [];
+    for (var i = 0; i < k; i++) caps.push(ri(r, 1, 11));
+    caps.sort(function (a, b) { return b - a; });
+    if (caps[0] < 4) return null;
+    caps = level === 3 ? shuffle(r, caps) : caps;
+    var cases = t9cases(caps), answers = [];
+    cases.forEach(function (c) { if (c.ok && answers.indexOf(c.g) < 0) answers.push(c.g); });
+    answers.sort(function (a, b) { return a - b; });
+    var want = level === 1 ? 1 : level === 2 ? 2 : (r() < 0.5 ? 1 : 2);
+    if (answers.length !== want) return null;
+    var s = pick(r, T9_SKINS), hero = kid(r), comp = hero.f ? 'с подругами' : 'с друзьями';
+    var P = sum(caps), maxc = Math.max.apply(null, caps);
+    var dayList = caps.map(function (c, i) { return (i === 0 ? 'В ' : i === 1 ? 'во ' : 'в ') + DAYS_ORD[i] + (i === 0 ? ' день ' + s.act + ' ' + pn(c, PEOPLE) : ' — ' + c); }).join(', ');
+    var text = 'Летом ' + hero.name + ' ' + comp + ' ' + hero.v(s.go[0], s.go[1]) + ' ' + s.place + ' на ' + k + ' ' + plural(k, ['день', 'дня', 'дней']) + '. ' +
+      dayList + '. ' + s.rule + ' Каждый успел ' + s.did + ' хотя бы раз. Все, кроме ' + hero.gen + ', ' + s.times + ' одинаковое число раз, а ' + hero.name + ' — меньше всех. ' +
+      'Сколько человек было в компании вместе с ' + hero.ins + '? Если ответов несколько, впиши все.';
+    var lines = [];
+    var byR = {};
+    cases.forEach(function (c) { (byR[c.r] = byR[c.r] || []).push(c); });
+    for (var rr = 2; rr <= k; rr++) {
+      var cs = byR[rr] || [];
+      var hs = []; for (var h = 1; h < rr; h++) hs.push(h);
+      if (!cs.length) { lines.push('Все по ' + rr + ' раза' + (rr >= 5 ? '' : '') + ', ' + hero.name + ' ' + hs.join(' или ') + ': ' + hs.map(function (h) { return P + ' − ' + h + ' = ' + (P - h); }).join(', ') + ' — на ' + rr + ' не делится, не подходит'); continue; }
+      cs.forEach(function (c) {
+        lines.push('Все по ' + rr + ' раза, ' + hero.name + ' ' + c.h + ': ' + (P - c.h) + ' : ' + rr + ' = ' + (c.g - 1) + ', всего ' + c.g + (c.ok ? ' — подходит' : (c.g < maxc ? ' — но в один день ' + s.act + ' ' + maxc + ', а людей меньше, не подходит' : ' — так не разложить по дням, не подходит')));
+      });
+    }
+    var fix = function (x) { return x.replace(/по (\d+) раза/g, function (_, d) { return 'по ' + d + ' ' + plural(Number(d), ['разу', 'раза', 'раз']); }); };
+    return {
+      text: text, answer: { kind: 'multi', value: answers }, params: { mode: 'cases', caps: caps },
+      hints: [
+        'Сколько всего ' + s.noun + ' за все дни? И сколько человек было хотя бы — посмотри на самый людный день.',
+        'Всего ' + s.noun + ': ' + caps.join(' + ') + ' = ' + P + '. Людей не меньше ' + maxc + '. Пусть все, кроме ' + hero.gen + ', ' + s.times + ' по 2 раза, по 3, по 4… Разбери каждый случай: делится ли остаток?',
+        lines.map(fix).join('. ') + '. Ответ: ' + answers.join(' или ') + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 10. Где стоит точка
+  // =====================================================================
+  var T10_SKINS = [
+    { kind: 'people' }, { kind: 'houses' }, { kind: 'trees' }
+  ];
+  function t10(level, r) {
+    var g1, g2, D, x;
+    if (level === 3) { g1 = ri(r, 8, 30); g2 = ri(r, 8, 30); D = g1 + g2; x = g1; }
+    else {
+      g1 = ri(r, 12, 50); g2 = ri(r, 5, g1 - 4);
+      var lo = level === 1 ? g1 + g2 + 1 : g1 + 2 * g2 + 1, hi = 2 * g1 + g2 - 1;
+      if (lo > hi) return null;
+      D = ri(r, lo, hi); x = 2 * g1 + g2 - D;
+      if (x <= 0 || x >= g1) return null;
+    }
+    var askFirst = level === 3 ? true : r() < 0.6, ans = askFirst ? x : g1 - x;
+    var skin = level === 3 ? pick(r, [{ kind: 'trees' }, { kind: 'houses' }]) : pick(r, T10_SKINS);
+    var P, Xn, text, between = level === 1;
+    if (skin.kind === 'people') {
+      var four = kids(r, 4); P = four.slice(0, 3); Xn = four[3];
+      text = 'Вдоль прямой дороги стоят ' + P[0].name + ', ' + P[1].name + ', ' + P[2].name + ' и ' + Xn.name + '. ' + P[1].name + ' стоит правее ' + P[0].gen + ' на ' + pn(g1, METERS) + ', а ' + P[2].name + ' — правее ' + P[1].gen + ' на ' + pn(g2, METERS) + '. ' +
+        (between ? Xn.name + ' стоит между ' + P[0].ins + ' и ' + P[1].ins + '. ' : P[2].name + ' стоит правее всех. ') +
+        'Сумма расстояний от ' + Xn.gen + ' до ' + P[0].gen + ', до ' + P[1].gen + ' и до ' + P[2].gen + ' равна ' + pn(D, METERS_DAT) + '. Чему равно расстояние от ' + Xn.gen + ' до ' + (askFirst ? P[0].gen : P[1].gen) + '?';
+      P = P.map(function (p) { return { nom: p.name, gen: p.gen, ins: p.ins }; }); Xn = { nom: Xn.name, gen: Xn.gen };
+    } else if (skin.kind === 'houses') {
+      var three = kids(r, 3).map(function (p) { return p; });
+      P = three.map(function (p) { return { nom: 'дом ' + p.gen, gen: 'дома ' + p.gen, ins: 'домом ' + p.gen }; }); Xn = { nom: 'киоск', gen: 'киоска' };
+      text = 'На прямой улице стоят дома ' + joinAnd(three.map(function (p) { return p.gen; })) + '. Дом ' + three[1].gen + ' правее дома ' + three[0].gen + ' на ' + g1 + ' м, а дом ' + three[2].gen + ' правее дома ' + three[1].gen + ' на ' + g2 + ' м. ' +
+        (between ? 'Киоск стоит между домами ' + three[0].gen + ' и ' + three[1].gen + '. ' : (level === 3 ? 'На этой улице стоит киоск. ' : 'Киоск стоит левее дома ' + three[2].gen + '. ')) +
+        'Сумма расстояний от киоска до трёх домов равна ' + D + ' м. На каком расстоянии от дома ' + (askFirst ? three[0].gen : three[1].gen) + ' стоит киоск?';
+    } else {
+      P = [{ nom: 'дуб', gen: 'дуба', ins: 'дубом' }, { nom: 'клён', gen: 'клёна', ins: 'клёном' }, { nom: 'липа', gen: 'липы', ins: 'липой' }]; Xn = { nom: 'клад', gen: 'клада' };
+      text = 'Вдоль прямой тропинки растут дуб, клён и липа. Клён растёт в ' + g1 + ' м правее дуба, а липа — в ' + g2 + ' м правее клёна. ' +
+        (between ? 'Пират зарыл клад на тропинке между дубом и клёном. ' : level === 3 ? 'Пират зарыл клад на тропинке. ' : 'Пират зарыл клад на тропинке левее липы. ') +
+        'Сумма расстояний от клада до трёх деревьев — ' + D + ' м. На каком расстоянии от ' + (askFirst ? 'дуба' : 'клёна') + ' зарыт клад?';
+    }
+    var unit = skin.kind === 'people' ? 'м' : 'м';
+    var hints;
+    if (level === 3) {
+      hints = [
+        'Нарисуй прямую и отметь всех. Сумма расстояний до ' + P[0].gen + ' и до ' + P[2].gen + ' — какой она бывает?',
+        'Где бы ни был ' + Xn.nom + ', до ' + P[0].gen + ' и до ' + P[2].gen + ' вместе не меньше ' + g1 + ' + ' + g2 + ' = ' + (g1 + g2) + ' м, и ровно столько — только между ними. А вся сумма как раз ' + D + '. Сколько тогда остаётся до ' + P[1].gen + '?',
+        'До ' + P[0].gen + ' и ' + P[2].gen + ' уходит ' + (g1 + g2) + ' м, до ' + P[1].gen + ' остаётся ' + D + ' − ' + (g1 + g2) + ' = 0: ' + Xn.nom + ' там же, где ' + P[1].nom + '. От ' + P[0].gen + ' — ' + g1 + ' м. Ответ: ' + g1 + '.'
+      ];
+    } else {
+      hints = [
+        'Нарисуй прямую и отметь всех. ' + (between ? 'Сколько вместе от ' + Xn.gen + ' до ' + P[0].gen + ' и до ' + P[1].gen + ', если ' + Xn.nom + ' между ними?' : 'Где может быть ' + Xn.nom + ': левее ' + P[0].gen + ', между ' + P[0].ins + ' и ' + P[1].ins + ', между ' + P[1].ins + ' и ' + P[2].ins + '?'),
+        between ? 'До ' + P[0].gen + ' и ' + P[1].gen + ' вместе ровно ' + g1 + ' м. До ' + P[2].gen + ' — это расстояние до ' + P[1].gen + ' плюс ' + g2 + '. Сколько остаётся на расстояние до ' + P[1].gen + '?'
+          : 'Между ' + P[1].ins + ' и ' + P[2].ins + ' сумма не больше ' + (g1 + 2 * g2) + ' м, левее ' + P[0].gen + ' — больше ' + (2 * g1 + g2) + ' м. А у нас ' + D + '. Значит, ' + Xn.nom + ' между ' + P[0].ins + ' и ' + P[1].ins + '.',
+        'Между ' + P[0].ins + ' и ' + P[1].ins + ': до них вместе ' + g1 + ' м, до ' + P[2].gen + ' — расстояние до ' + P[1].gen + ' плюс ' + g2 + '. ' + D + ' − ' + g1 + ' − ' + g2 + ' = ' + (D - g1 - g2) + ', и это два раза расстояние до ' + P[1].gen + '? Нет — один раз: до ' + P[1].gen + ' ' + (D - g1 - g2) + ' м.'
+      ];
+      // точный разбор
+      var toB = g1 - x;
+      hints[2] = 'Между ' + P[0].ins + ' и ' + P[1].ins + ' до них двоих вместе ' + g1 + ' м, а до ' + P[2].gen + ' — расстояние до ' + P[1].gen + ' плюс ' + g2 + '. ' +
+        D + ' − ' + g1 + ' − ' + g2 + ' = ' + toB + ' — от ' + Xn.gen + ' до ' + P[1].gen + '. От ' + P[0].gen + ': ' + g1 + ' − ' + toB + ' = ' + x + '. Ответ: ' + ans + '.';
+    }
+    return { text: text, answer: { kind: 'num', value: ans, unit: unit }, params: { mode: level === 3 ? 'min' : between ? 'between' : 'region', g1: g1, g2: g2, D: D, askFirst: askFirst, constraint: level === 2 ? 'leftOfThird' : 'none' }, hints: hints };
+  }
+
+  // ---------- каталог ----------
+  var TYPES = [
+    { id: 1, title: 'Не меньше, чем', story: 'Ручки в пенале', gen: t1, trick: '«Достал столько-то» значит «есть не меньше». Если эти «не меньше» вместе дают всё — числа точные.' },
+    { id: 2, title: 'Никто не на своём месте', story: 'Перепутанный кубик', gen: t2, trick: 'Записываем все запреты и вычёркиваем — последний вариант и есть ответ.' },
+    { id: 3, title: 'Каждый взял по несколько разных', story: 'Конфеты после экскурсии', gen: t3, trick: 'Сначала посчитай людей: все предметы раздели на «по сколько». Потом ищи то, что досталось каждому.' },
+    { id: 4, title: 'Число способов обмена', story: 'Машинки на солдатиков', gen: t4, trick: 'Способов = одних × других. Пропала одна вещь — пропала целая строка таблицы.' },
+    { id: 5, title: 'Сумма всего и самое большое', story: 'Шарики в коробках', gen: t5, trick: 'Найди, сколько осталось на последнюю коробку. Если это самая большая (или самая маленькая) сумма — всё ясно.' },
+    { id: 6, title: 'Доровняем возраст', story: 'Сколько лет Толе', gen: t6, trick: 'Делаем всех ровесниками и следим за суммой. Потом делим поровну.' },
+    { id: 7, title: 'Оценка с двух сторон', story: 'Числа на доске', gen: t7, trick: 'Каждое среднее число — не меньше маленьких и не больше больших. Проверь, сколько средних помещается.' },
+    { id: 8, title: 'Кто кому сколько отдал', story: 'Конфеты всем, кто правее', gen: t8, trick: 'Выпиши, сколько прибавилось у каждого места. Потом подбирай, кто мог стоять где.' },
+    { id: 9, title: 'Разбери все случаи', story: 'Кто сколько купался', gen: t9, trick: 'Разбери каждый случай по очереди: «по 2 раза», «по 3 раза»… Ответов бывает два — пиши оба.' },
+    { id: 10, title: 'Где стоит точка', story: 'Ребята на дороге', gen: t10, trick: 'Нарисуй прямую. Проверь каждый участок: левее всех, между, правее — и отбрось невозможные.' }
+  ];
+  function generate(typeId, level, seed) {
+    var r = makeRng(seed), T = TYPES[typeId - 1];
+    for (var i = 0; i < 5000; i++) {
+      var x = T.gen(level, r);
+      if (x) { x.type = typeId; x.level = level; return x; }
+    }
+    throw new Error('Не удалось сгенерировать задачу вида ' + typeId + ', уровень ' + level);
+  }
+  var API = { TYPES: TYPES, generate: generate, helpers: { gen: gen, dat: dat, acc: acc, ins: ins, plural: plural } };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.GEN3 = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* Тренажёр к олимпиаде «Интеллектиум» — логика страницы. Генераторы задач — GEN3 (gen3.js). */
+(function () {
+  'use strict';
+  var CFG = window.TRAINER_CONFIG || {};
+  var KLASS_READY = { 3: GEN3 };
+  var OLYMPIAD_DAY = new Date(2026, 10, 13);           // 13 ноября 2026
+
+  // ---------- имена ----------
+  var COLORS = [
+    ['красный', 'красная', '#E5484D'], ['оранжевый', 'оранжевая', '#F07B22'], ['жёлтый', 'жёлтая', '#FFC83D'], ['зелёный', 'зелёная', '#2FA05A'],
+    ['голубой', 'голубая', '#5BB8F0'], ['синий', 'синяя', '#343F9E'], ['фиолетовый', 'фиолетовая', '#8A4FD0'], ['розовый', 'розовая', '#F17DB4'],
+    ['золотой', 'золотая', '#D4A72C'], ['серебряный', 'серебряная', '#B8BDC9'], ['бирюзовый', 'бирюзовая', '#2BB5A8'], ['белый', 'белая', '#FFFFFF']
+  ];
+  var THINGS = [['ракета', 1], ['кит', 0], ['лиса', 1], ['кактус', 0], ['сова', 1], ['жираф', 0], ['комета', 1], ['дракон', 0], ['черепаха', 1], ['енот', 0], ['панда', 1], ['пингвин', 0]];
+  function nameOf(ci, ti) { var w = COLORS[ci][THINGS[ti][1]]; return w.charAt(0).toUpperCase() + w.slice(1) + ' ' + THINGS[ti][0]; }
+  function colorOfName(name) {
+    var low = (name || '').toLowerCase();
+    for (var i = 0; i < COLORS.length; i++) if (low.indexOf(COLORS[i][0]) === 0 || low.indexOf(COLORS[i][1]) === 0) return COLORS[i][2];
+    return '#343F9E';
+  }
+
+  // ---------- хранилище (может не работать — тогда всё живёт в памяти) ----------
+  var mem = {};
+  function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return mem[k] || d; } }
+  function save(k, v) { mem[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } }
+  function device() { var d = load('olymp.device', null); if (!d) { d = 'd' + Math.random().toString(36).slice(2, 10); save('olymp.device', d); } return d; }
+
+  var profile = load('olymp.profile', null);        // {name, klass}
+  function stateKey() { return 'olymp.state.' + profile.klass + '.' + profile.name; }
+  var state = null;                                  // {types: {id: {tried, done, streak, level}}}
+  function freshState() { var s = { types: {} }; for (var i = 1; i <= 10; i++) s.types[i] = { tried: false, done: false, streak: 0, level: 1 }; return s; }
+  function applyEvent(st, ev) {
+    if (ev.mode !== 'тренировка') return;
+    var t = st.types[ev.type]; if (!t) return;
+    t.tried = true;
+    if (ev.result === 'верно') { t.streak++; if (t.streak >= 2) { t.done = true; t.streak = 0; t.level = Math.min(4, t.level + 1); } }
+    else if (ev.result === 'разбор') t.streak = 0;
+  }
+
+  // ---------- связь с таблицей ----------
+  var queue = load('olymp.queue', []);
+  function sheetOn() { return !!CFG.SHEET_URL; }
+  function api(params) {
+    if (!sheetOn()) return Promise.reject(new Error('нет адреса таблицы'));
+    var q = Object.keys(params).map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); }).join('&');
+    return fetch(CFG.SHEET_URL + '?' + q, { method: 'GET' }).then(function (r) { return r.json(); });
+  }
+  var flushing = false;
+  function flush() {
+    if (!sheetOn() || flushing || !queue.length) return;
+    flushing = true;
+    var batch = queue.slice(0, 40);
+    fetch(CFG.SHEET_URL, { method: 'POST', body: JSON.stringify({ action: 'events', events: batch }) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) { if (res && res.ok) { queue = queue.slice(batch.length); save('olymp.queue', queue); } })
+      .catch(function () { })
+      .then(function () { flushing = false; if (queue.length && navigator.onLine !== false) setTimeout(flush, 4000); });
+  }
+  function record(ev) {
+    ev.time = new Date().toISOString(); ev.klass = profile.klass; ev.name = profile.name; ev.device = device();
+    applyEvent(state, ev); save(stateKey(), state);
+    queue.push(ev); save('olymp.queue', queue); flush();
+    try { if (window.ym && CFG.METRIKA_ID) window.ym(CFG.METRIKA_ID, 'reachGoal', 'trainer_task', { klass: ev.klass, type: ev.type, level: ev.level, mode: ev.mode, result: ev.result }); } catch (e) { }
+  }
+
+  // ---------- маленький построитель DOM (без innerHTML) ----------
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v == null || v === false) return;
+      if (k === 'class') el.className = v;
+      else if (k === 'text') el.textContent = v;
+      else if (k.slice(0, 2) === 'on') el.addEventListener(k.slice(2), v);
+      else if (k === 'style') el.setAttribute('style', v);
+      else el.setAttribute(k, v === true ? '' : v);
+    });
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    return el;
+  }
+  function add(el, c) { if (c == null || c === false) return; if (Array.isArray(c)) c.forEach(function (x) { add(el, x); }); else el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); }
+  var root = document.getElementById('app');
+  function show() { root.textContent = ''; for (var i = 0; i < arguments.length; i++) add(root, arguments[i]); window.scrollTo(0, 0); }
+  function icon(name, cls) {
+    var paths = {
+      back: '<path d="M15 18l-6-6 6-6"/>', next: '<path d="M9 18l6-6-6-6"/>',
+      bulb: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>',
+      cup: '<path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/>',
+      smile: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/>',
+      pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+      star: '<path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/>'
+    };
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('aria-hidden', 'true'); s.setAttribute('class', 'ic ' + (cls || ''));
+    s.innerHTML = paths[name];  // константы выше, не пользовательский текст
+    return s;
+  }
+  function dot(hex, size) { return h('span', { class: 'dot', 'aria-hidden': 'true', style: 'width:' + size + 'px;height:' + size + 'px;background:' + hex }); }
+  function logoBlock() { return h('div', { class: 'brand' }, h('img', { src: window.LOGO_SRC, alt: 'Интеллектиум', class: 'logo' }), h('div', { class: 'descr', text: 'Олимпиадная математика' })); }
+  function topBar(backLabel, onBack) {
+    return h('div', { class: 'topbar' },
+      h('button', { class: 'link back', type: 'button', onclick: onBack }, icon('back'), backLabel),
+      profile ? h('div', { class: 'who' }, dot(colorOfName(profile.name), 14), profile.name) : null);
+  }
+  function daysLeft() { var now = new Date(); now.setHours(0, 0, 0, 0); return Math.round((OLYMPIAD_DAY - now) / 86400000); }
+
+  // =================== ЭКРАН 1: ВХОД ===================
+  var pickedKlass = 3;
+  function screenStart() {
+    var klassBtns = [1, 2, 3, 4].map(function (n) {
+      return h('button', { type: 'button', class: 'klass' + (n === pickedKlass ? ' on' : ''), 'aria-pressed': n === pickedKlass ? 'true' : 'false', onclick: function () { pickedKlass = n; screenStart(); } },
+        String(n), h('small', { text: 'класс' }));
+    });
+    var ready = !!KLASS_READY[pickedKlass];
+    var msg = h('div', { class: 'note', role: 'status' });
+    var getBtn = h('button', { type: 'button', class: 'btn primary', disabled: !ready, onclick: function () {
+      getBtn.disabled = true; msg.textContent = 'Придумываю имя…';
+      var done = function (name) { profile = { name: name, klass: pickedKlass }; save('olymp.profile', profile); state = load(stateKey(), null) || freshState(); screenNewName(); };
+      api({ action: 'newName', klass: pickedKlass, device: device() }).then(function (res) {
+        if (res && res.ok && res.name) done(res.name); else throw new Error();
+      }).catch(function () { done(nameOf(Math.floor(Math.random() * 12), Math.floor(Math.random() * 12))); });
+    } }, 'Получить имя');
+    show(
+      h('main', { class: 'screen' },
+        logoBlock(),
+        h('section', { class: 'hero' },
+          h('div', { class: 'chip', text: '13 ноября 2026' }),
+          h('h1', { text: 'Тренажёр к олимпиаде' }),
+          h('p', { class: 'olymp', text: 'XIII Санкт-Петербургская математическая олимпиада начальной школы' }),
+          h('p', { text: 'Те же 10 видов задач, что были на олимпиаде в прошлом году. Задачи каждый раз новые — решай сколько хочешь.' })),
+        h('section', { class: 'card' },
+          h('h2', { id: 'kl', text: 'В каком ты классе?' }),
+          h('div', { class: 'grid4', role: 'group', 'aria-labelledby': 'kl' }, klassBtns),
+          ready ? null : h('div', { class: 'note', text: 'Тренажёр для этого класса скоро появится. Пока открыт 3 класс.' })),
+        h('section', { class: 'card' },
+          h('h2', { text: 'Секретное имя' }),
+          h('p', { class: 'muted', text: 'Тренажёр придумает тебе смешное имя. По нему преподаватель увидит твои успехи.' }),
+          getBtn, msg),
+        h('button', { type: 'button', class: 'link center', onclick: screenLogin }, 'У меня уже есть имя'),
+        h('div', { class: 'tip' }, icon('bulb'), h('span', { text: 'Ошибаться можно. Неправильный ответ — это значит, мозг работал. Пустая рамочка хуже ошибки.' }))
+      ));
+  }
+  function screenNewName() {
+    show(h('main', { class: 'screen' },
+      logoBlock(),
+      h('section', { class: 'card' },
+        h('h2', { text: 'Твоё секретное имя' }),
+        h('div', { class: 'namebox' }, dot(colorOfName(profile.name), 30), h('div', { class: 'bigname', text: profile.name })),
+        h('div', { class: 'tip small' }, icon('pen'), h('span', { text: 'Запиши имя в тетрадь и скажи его преподавателю. В следующий раз тренажёр сам тебя узнает.' })),
+        h('button', { type: 'button', class: 'btn primary', onclick: screenHome }, 'Начать'))));
+  }
+
+  // =================== ЭКРАН 1а: «У МЕНЯ УЖЕ ЕСТЬ ИМЯ» ===================
+  var lk = 3, lc = 0, lt = 0;
+  function screenLogin() {
+    var fem = THINGS[lt][1] === 1;
+    var chip = function (on, label, onclick, extra) { return h('button', { type: 'button', class: 'chipbtn' + (on ? ' on' : ''), 'aria-pressed': on ? 'true' : 'false', onclick: onclick }, extra || null, label); };
+    var msg = h('div', { class: 'note', role: 'status' });
+    var name = nameOf(lc, lt);
+    var go = h('button', { type: 'button', class: 'btn primary', onclick: function () {
+      go.disabled = true; msg.textContent = 'Ищу тебя…';
+      var enter = function (events) {
+        profile = { name: name, klass: lk }; save('olymp.profile', profile);
+        state = freshState(); (events || []).forEach(function (e) { applyEvent(state, e); });
+        var local = load(stateKey(), null); if (!events && local) state = local;
+        save(stateKey(), state); screenHome();
+      };
+      if (!KLASS_READY[lk]) { msg.textContent = 'Тренажёр для этого класса скоро появится.'; go.disabled = false; return; }
+      api({ action: 'login', klass: lk, name: name }).then(function (res) {
+        if (res && res.ok && res.exists) enter(res.events);
+        else if (res && res.ok) { msg.textContent = 'Такого имени в ' + lk + ' классе нет. Проверь цвет и слово — может, ты в другом классе?'; go.disabled = false; }
+        else throw new Error();
+      }).catch(function () { msg.textContent = 'Нет связи с таблицей. Твои старые успехи подтянутся позже, а решать можно уже сейчас.'; setTimeout(function () { enter(null); }, 1200); });
+    } }, 'Да, это я');
+    show(h('main', { class: 'screen' },
+      topBar('Назад', screenStart),
+      h('h1', { class: 'h1dark', text: 'Найдём тебя' }),
+      h('p', { class: 'muted', text: 'Собери своё секретное имя — и тренажёр покажет всё, что ты уже решил.' }),
+      h('section', { class: 'card' },
+        h('div', { class: 'label', id: 'lk', text: 'Класс' }),
+        h('div', { class: 'grid4', role: 'group', 'aria-labelledby': 'lk' }, [1, 2, 3, 4].map(function (n) { return chip(n === lk, n + ' класс', function () { lk = n; screenLogin(); }); })),
+        h('div', { class: 'label', id: 'lc', text: 'Цвет' }),
+        h('div', { class: 'grid4', role: 'group', 'aria-labelledby': 'lc' }, COLORS.map(function (c, i) { return chip(i === lc, c[fem ? 1 : 0], function () { lc = i; screenLogin(); }, dot(c[2], 16)); })),
+        h('div', { class: 'label', id: 'lt', text: 'Кто или что' }),
+        h('div', { class: 'grid4', role: 'group', 'aria-labelledby': 'lt' }, THINGS.map(function (t, i) { return chip(i === lt, t[0], function () { lt = i; screenLogin(); }); }))),
+      h('div', { class: 'namebox' }, h('div', { class: 'muted', text: 'Ты —' }), h('div', { class: 'bigname', text: name + '?' })),
+      go, msg));
+  }
+
+  // =================== ЭКРАН 2: КАРТА ВИДОВ ===================
+  function statusOf(t) { return t.done ? 'done' : t.tried ? 'tried' : 'new'; }
+  var STATUS_LABEL = { done: 'получилось', tried: 'пробовал', new: 'ещё не пробовал' };
+  function screenHome() {
+    var G = KLASS_READY[profile.klass];
+    if (!G) { profile = null; save('olymp.profile', null); return screenStart(); }
+    if (!state) state = load(stateKey(), null) || freshState();
+    var tried = 0; for (var i = 1; i <= 10; i++) if (state.types[i].tried) tried++;
+    var dl = daysLeft();
+    show(h('main', { class: 'screen' },
+      h('div', { class: 'topbar' },
+        h('div', { class: 'who big' }, dot(colorOfName(profile.name), 32), h('div', null, h('div', { class: 'nm', text: profile.name }), h('div', { class: 'muted small', text: profile.klass + ' класс' }))),
+        h('button', { type: 'button', class: 'link', onclick: function () { profile = null; state = null; save('olymp.profile', null); screenStart(); } }, 'Это не я')),
+      h('section', { class: 'card' },
+        h('h2', { text: tried ? 'Уже попробовано ' + tried + ' ' + plural3(tried, ['вид', 'вида', 'видов']) + ' задач из 10' : 'Привет! Выбери любой вид задач и начни' }),
+        h('div', { class: 'bars', 'aria-hidden': 'true' }, G.TYPES.map(function (T) { return h('span', { class: 'bar ' + statusOf(state.types[T.id]) }); })),
+        dl > 0 ? h('div', { class: 'muted small', text: 'До олимпиады ' + dl + ' ' + plural3(dl, ['день', 'дня', 'дней']) + '. Каждый день по чуть-чуть — и всё получится.' }) : null),
+      h('button', { type: 'button', class: 'olympbtn', onclick: startTrial },
+        icon('cup', 'gold'), h('span', { class: 'grow' }, h('b', { text: 'Пробная олимпиада' }), h('span', { text: '10 задач, по одной каждого вида — как 13 ноября' })), icon('next')),
+      h('div', { class: 'row-between' }, h('h2', { class: 'h2dark', text: 'Тренировка' }), h('span', { class: 'muted small', text: 'выбери вид задач' })),
+      h('div', { class: 'list' }, G.TYPES.map(function (T) {
+        var st = statusOf(state.types[T.id]);
+        return h('button', { type: 'button', class: 'typecard', onclick: function () { startTraining(T.id); } },
+          h('span', { class: 'num', text: String(T.id) }),
+          h('span', { class: 'grow' }, h('b', { text: T.title }), h('span', { class: 'muted small', text: T.story })),
+          h('span', { class: 'status' }, h('span', { class: 'mark ' + st, 'aria-hidden': 'true' }), h('span', { class: 'small', text: STATUS_LABEL[st] })));
+      }))));
+  }
+  function plural3(n, f) { var a = n % 100, b = n % 10; if (a > 10 && a < 20) return f[2]; if (b === 1) return f[0]; if (b >= 2 && b <= 4) return f[1]; return f[2]; }
+
+  // =================== ЭКРАН 3–5: ЗАДАЧА ===================
+  var cur = null;   // {T, task, attempts, hints, finished, mode, lastAnswer}
+  function pickLevel(t) { if (t.level <= 3) return t.level; var x = Math.random(); return x < 0.2 ? 1 : x < 0.6 ? 2 : 3; }
+  function startTraining(typeId) {
+    var G = KLASS_READY[profile.klass], T = G.TYPES[typeId - 1], lv = pickLevel(state.types[typeId]);
+    cur = { T: T, task: G.generate(typeId, lv), level: lv, attempts: 0, hints: 0, finished: false, mode: 'тренировка', taskNo: (cur && cur.T.id === typeId ? cur.taskNo + 1 : 1) };
+    screenTask();
+  }
+  function normalize(s) { return String(s).replace(/\s+/g, ' ').trim().toLowerCase().replace(/ё/g, 'е'); }
+  function parseNum(s) { var m = String(s).replace(/\s/g, '').replace(',', '.').match(/^-?\d+(\.\d+)?/); return m ? Number(m[0]) : null; }
+  function isRight(task, given) {
+    var a = task.answer;
+    if (a.kind === 'num') return parseNum(given) === a.value;
+    if (a.kind === 'multi') { var g = given.map(parseNum).filter(function (x) { return x != null; }).sort(function (x, y) { return x - y; }); var w = a.value.slice().sort(function (x, y) { return x - y; }); return g.length === w.length && g.every(function (x, i) { return x === w[i]; }); }
+    return normalize(given) === normalize(a.value);
+  }
+  function answerText(task, given) { return task.answer.kind === 'multi' ? given.filter(function (x) { return String(x).trim(); }).join(' и ') : String(given); }
+
+  // поле ответа: возвращает {el, get()}
+  function answerInput(task, trial) {
+    var a = task.answer;
+    if (a.kind === 'num') {
+      var inp = h('input', { id: 'ans', type: 'text', inputmode: 'numeric', autocomplete: 'off', placeholder: '?', class: 'frame' });
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter' && cur && cur.submit) cur.submit(); });
+      return { el: h('div', { class: 'ansrow' }, inp, a.unit ? h('span', { class: 'unit', text: a.unit }) : null), get: function () { return inp.value; }, focus: function () { inp.focus(); } };
+    }
+    if (a.kind === 'multi') {
+      var box = h('div', { class: 'multi' }), inputs = [];
+      var addOne = function () { if (inputs.length >= 4) return; var i = h('input', { type: 'text', inputmode: 'numeric', autocomplete: 'off', placeholder: '?', class: 'frame small', 'aria-label': 'Ответ ' + (inputs.length + 1) }); inputs.push(i); box.insertBefore(i, plus); i.focus(); };
+      var plus = h('button', { type: 'button', class: 'plus', onclick: addOne }, '+ ещё ответ');
+      box.appendChild(plus); addOne();
+      return { el: box, get: function () { return inputs.map(function (i) { return i.value; }); }, focus: function () { inputs[0].focus(); } };
+    }
+    var opts = a.kind === 'yesno' ? ['да', 'нет'] : a.options, chosen = { v: null }, btns = [];
+    var wrap = h('div', { class: a.kind === 'yesno' ? 'choices two' : 'choices', role: 'radiogroup', 'aria-labelledby': 'anslabel' });
+    opts.forEach(function (o) {
+      var b = h('button', { type: 'button', role: 'radio', 'aria-checked': 'false', class: 'choice', onclick: function () { chosen.v = o; btns.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); x.classList.toggle('on', x === b); }); } }, a.kind === 'yesno' ? (o === 'да' ? 'Да' : 'Нет') : o);
+      btns.push(b); wrap.appendChild(b);
+    });
+    return { el: wrap, get: function () { return chosen.v == null ? '' : chosen.v; }, focus: function () { } };
+  }
+  function empty(task, given) { return task.answer.kind === 'multi' ? !given.some(function (x) { return String(x).trim(); }) : !String(given).trim(); }
+
+  function screenTask() {
+    var c = cur, t = state.types[c.T.id];
+    var inp = answerInput(c.task);
+    var hintBox = h('div', { class: 'hints' }), fb = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' });
+    var hintBtn = h('button', { type: 'button', class: 'btn ghost' }, icon('bulb'), 'Подсказка');
+    var check = h('button', { type: 'button', class: 'btn primary' }, 'Проверить');
+    var nextBtn = h('button', { type: 'button', class: 'btn primary', style: 'display:none', onclick: function () { finish('разбор'); startTraining(c.T.id); } }, 'Следующая задача');
+    function renderHints() {
+      hintBox.textContent = '';
+      for (var i = 0; i < c.hints; i++) {
+        var last = i === 2;
+        hintBox.appendChild(h('div', { class: last ? 'hint full' : 'hint' }, h('div', { class: 'hlabel', text: last ? 'Разбор' : 'Подсказка ' + (i + 1) }), h('div', { text: c.task.hints[i] }),
+          last ? h('div', { class: 'muted small', text: 'Эту задачу не засчитываем, но следующая будет такая же по трудности — попробуй сам!' }) : null));
+      }
+      hintBtn.style.display = c.hints >= 3 ? 'none' : '';
+      hintBtn.lastChild.textContent = c.hints === 0 ? 'Подсказка' : c.hints === 1 ? 'Ещё подсказка' : 'Показать разбор';
+      if (c.hints >= 3) { check.style.display = 'none'; nextBtn.style.display = ''; }
+    }
+    hintBtn.addEventListener('click', function () { c.hints = Math.min(3, c.hints + 1); renderHints(); });
+    c.submit = function () {
+      var given = inp.get();
+      if (empty(c.task, given)) { fb.className = 'feedback soft'; fb.textContent = 'Впиши ответ в рамочку — даже если сомневаешься.'; return; }
+      c.attempts++; c.lastAnswer = answerText(c.task, given);
+      if (isRight(c.task, given)) {
+        if (c.hints >= 3) { finish('разбор'); screenRightAfterReveal(); }
+        else { finish('верно'); screenRight(); }
+        return;
+      }
+      fb.className = 'feedback soft';
+      fb.textContent = '';
+      fb.appendChild(h('div', { class: 'fbrow' }, icon('smile'), h('div', null, h('b', { text: 'Пока не сходится — давай подумаем вместе' }), h('div', { text: 'Твой ответ: ' + c.lastAnswer + '. Хорошо, что есть попытка: так мозг и тренируется.' }))));
+      c.hints = Math.min(3, Math.max(c.hints, c.attempts));
+      renderHints();
+    };
+    check.addEventListener('click', c.submit);
+    var dots = h('div', { class: 'streak' }, h('span', { class: 'dots', 'aria-hidden': 'true' }, h('span', { class: 'd' + (t.streak >= 1 ? ' on' : '') }), h('span', { class: 'd' })),
+      h('span', { text: t.done ? (t.streak ? 'Ещё одна верная — и задачи станут чуть труднее!' : 'Вид уже засчитан. Реши две подряд — и задачи станут труднее.') : (t.streak ? 'Ещё одна верная — и этот вид засчитан!' : 'Реши две задачи подряд — и вид засчитан') }));
+    show(h('main', { class: 'screen' },
+      topBar('Все задачи', function () { if (c.attempts && !c.finished) finish('ушёл'); screenHome(); }),
+      h('div', null, h('div', { class: 'kicker', text: 'Вид ' + c.T.id + ' из 10' }), h('h1', { class: 'h1dark', text: c.T.title })),
+      dots,
+      h('section', { class: 'card task' }, h('div', { class: 'muted small b', text: 'Задача ' + c.taskNo }), h('p', { class: 'tasktext', text: c.task.text })),
+      h('div', { class: 'answer' }, h('div', { class: 'label', id: 'anslabel' }, h('label', { for: 'ans', text: 'Ответ' })), inp.el,
+        h('div', { class: 'muted small', text: 'Решение запиши в тетради, как на олимпиаде, а сюда — только ответ.' })),
+      fb, hintBox,
+      h('div', { class: 'actions' }, check, nextBtn, hintBtn)));
+    renderHints();
+  }
+  function finish(result) {
+    var c = cur; if (c.finished) return; c.finished = true;
+    record({ mode: c.mode, type: c.T.id, level: c.level, result: result, attempts: c.attempts, hints: Math.min(c.hints, 2), shown: c.hints >= 3, answer: c.lastAnswer || '', task: c.task.text.slice(0, 300) });
+  }
+  function screenRight() {
+    var c = cur, t = state.types[c.T.id];
+    var justDone = t.streak === 0 && t.done;   // только что засчитано (счётчик обнулился)
+    show(h('main', { class: 'screen' },
+      topBar('Все задачи', screenHome),
+      h('section', { class: 'win' }, icon('star', 'big'), h('h1', { text: 'Получилось!' }), h('p', null, 'Ответ ', h('b', { text: answerShow(c.task) }), ' — верно.')),
+      justDone ? h('section', { class: 'card row' }, h('span', { class: 'dots big', 'aria-hidden': 'true' }, h('span', { class: 'd on' }), h('span', { class: 'd on' })),
+        h('div', null, h('b', { text: 'Две верных подряд!' }), h('div', { class: 'muted', text: 'Вид «' + c.T.title + '» засчитан.' }))) :
+        h('section', { class: 'card row' }, h('span', { class: 'dots big', 'aria-hidden': 'true' }, h('span', { class: 'd on' }), h('span', { class: 'd' })), h('div', { class: 'muted', text: t.done ? 'Ещё одна верная подряд — и задачи станут чуть труднее.' : 'Ещё одна верная подряд — и этот вид засчитан.' })),
+      h('section', { class: 'trick' }, h('div', { class: 'hlabel', text: 'Запомни приём' }), h('div', { text: c.T.trick })),
+      h('p', { class: 'muted', text: 'Решение в тетради покажи преподавателю — на олимпиаде за него тоже дают баллы.' }),
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn primary', onclick: function () { startTraining(c.T.id); } }, justDone ? 'Ещё задачу — чуть труднее' : 'Ещё задачу'),
+        h('button', { type: 'button', class: 'btn ghost', onclick: screenHome }, 'Выбрать другой вид'))));
+  }
+  function screenRightAfterReveal() {
+    var c = cur;
+    show(h('main', { class: 'screen' },
+      topBar('Все задачи', screenHome),
+      h('section', { class: 'card' }, h('h2', { text: 'Верно!' }), h('p', null, 'Ответ ', h('b', { text: answerShow(c.task) }), '. Эту задачу мы разобрали вместе, поэтому она не в счёт. Следующую попробуй сам — она такая же по трудности.')),
+      h('section', { class: 'trick' }, h('div', { class: 'hlabel', text: 'Запомни приём' }), h('div', { text: c.T.trick })),
+      h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn primary', onclick: function () { startTraining(c.T.id); } }, 'Следующая задача'), h('button', { type: 'button', class: 'btn ghost', onclick: screenHome }, 'Выбрать другой вид'))));
+  }
+  function answerShow(task) { var a = task.answer; if (a.kind === 'multi') return a.value.join(' или '); if (a.kind === 'yesno') return a.value === 'да' ? 'да' : 'нет'; return String(a.value) + (a.unit ? ' ' + a.unit : ''); }
+
+  // =================== ПРОБНАЯ ОЛИМПИАДА ===================
+  var trial = null;
+  function startTrial() {
+    var G = KLASS_READY[profile.klass];
+    trial = { i: 0, items: G.TYPES.map(function (T) { return { T: T, task: G.generate(T.id, 2), answer: null, right: null }; }) };
+    screenTrialTask();
+  }
+  function screenTrialTask() {
+    var it = trial.items[trial.i];
+    var inp = answerInput(it.task), fb = h('div', { class: 'feedback', role: 'status' });
+    var go = function (skip) {
+      var given = inp.get();
+      if (!skip && empty(it.task, given)) { fb.className = 'feedback soft'; fb.textContent = 'Впиши ответ или нажми «Пропустить».'; return; }
+      it.answer = skip ? null : answerText(it.task, given); it.right = skip ? null : isRight(it.task, given);
+      record({ mode: 'олимпиада', type: it.T.id, level: 2, result: skip ? 'пропуск' : it.right ? 'верно' : 'неверно', attempts: skip ? 0 : 1, hints: 0, shown: false, answer: it.answer || '', task: it.task.text.slice(0, 300) });
+      trial.i++;
+      if (trial.i < trial.items.length) screenTrialTask(); else screenTrialEnd();
+    };
+    cur = { submit: function () { go(false); } };
+    show(h('main', { class: 'screen' },
+      topBar('Выйти', function () { trial = null; screenHome(); }),
+      h('div', null, h('div', { class: 'kicker', text: 'Пробная олимпиада' }), h('h1', { class: 'h1dark', text: 'Задача ' + (trial.i + 1) + ' из 10' })),
+      h('div', { class: 'bars', 'aria-hidden': 'true' }, trial.items.map(function (x, j) { return h('span', { class: 'bar ' + (j < trial.i ? 'done' : j === trial.i ? 'tried' : 'new') }); })),
+      h('section', { class: 'card task' }, h('p', { class: 'tasktext', text: it.task.text })),
+      h('div', { class: 'answer' }, h('div', { class: 'label', id: 'anslabel' }, h('label', { for: 'ans', text: 'Ответ' })), inp.el),
+      fb,
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn primary', onclick: function () { go(false); } }, trial.i < 9 ? 'Ответить и дальше' : 'Ответить и закончить'),
+        h('button', { type: 'button', class: 'btn ghost', onclick: function () { go(true); } }, 'Пропустить'))));
+  }
+  function screenTrialEnd() {
+    var tried = trial.items.filter(function (x) { return x.answer != null; }).length;
+    show(h('main', { class: 'screen' },
+      topBar('К карте задач', screenHome),
+      h('section', { class: 'win' }, icon('cup', 'big gold'), h('h1', { text: 'Олимпиада пройдена!' }), h('p', { text: 'Ответ есть в ' + tried + ' ' + plural3(tried, ['задаче', 'задачах', 'задачах']) + ' из 10. Это и есть главное — не бояться и пробовать.' })),
+      h('h2', { class: 'h2dark', text: 'Как прошло' }),
+      h('div', { class: 'list' }, trial.items.map(function (x) {
+        var st = x.right ? 'done' : x.answer == null ? 'new' : 'tried';
+        var lab = x.right ? 'верно' : x.answer == null ? 'пропущено' : 'потренируй ещё';
+        var det = h('details', { class: 'review' },
+          h('summary', null, h('span', { class: 'num', text: String(x.T.id) }), h('span', { class: 'grow' }, h('b', { text: x.T.title }), h('span', { class: 'muted small', text: x.answer != null ? 'Твой ответ: ' + x.answer : 'Без ответа' })),
+            h('span', { class: 'status' }, h('span', { class: 'mark ' + st, 'aria-hidden': 'true' }), h('span', { class: 'small', text: lab }))),
+          h('div', { class: 'hint full' }, h('div', { class: 'hlabel', text: 'Разбор' }), h('div', { text: x.task.hints[2] })),
+          h('button', { type: 'button', class: 'btn ghost', onclick: function () { startTraining(x.T.id); } }, 'Тренировать этот вид'));
+        return det;
+      })),
+      h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn primary', onclick: screenHome }, 'К карте задач'))));
+  }
+
+  // ---------- старт ----------
+  if (CFG.METRIKA_ID) {
+    (function (m, e, t, r, i, k, a) { m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); }; m[i].l = 1 * new Date(); k = e.createElement(t); a = e.getElementsByTagName(t)[0]; k.async = 1; k.src = r; a.parentNode.insertBefore(k, a); })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    try { window.ym(CFG.METRIKA_ID, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true }); } catch (e) { }
+  }
+  if (CFG.DEBUG) window.__trainer = { cur: function () { return cur; }, state: function () { return state; }, queue: function () { return queue; } };
+  window.addEventListener('online', flush);
+  flush();
+  if (profile && KLASS_READY[profile.klass]) {
+    state = load(stateKey(), null) || freshState();
+    screenHome();
+    // подтянуть прогресс с других устройств
+    api({ action: 'login', klass: profile.klass, name: profile.name }).then(function (res) {
+      if (res && res.ok && res.exists && res.events) {
+        var st = freshState(); res.events.forEach(function (e) { applyEvent(st, e); });
+        queue.forEach(function (e) { if (e.name === profile.name) applyEvent(st, e); });
+        var before = JSON.stringify(state); state = st; save(stateKey(), state);
+        if (before !== JSON.stringify(state) && root.querySelector('.typecard')) screenHome();
+      }
+    }).catch(function () { });
+  } else screenStart();
+})();
+
+</script>
+</body>
+</html>
