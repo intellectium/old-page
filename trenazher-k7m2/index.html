@@ -69,7 +69,7 @@ h2{margin:0;font-size:19px;font-weight:900}.h1dark{margin:0;font-size:25px;line-
 .multi{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .plus{background:none;border:2px dashed var(--blue);color:var(--blue);border-radius:12px;min-height:48px;padding:0 14px;font-weight:800;cursor:pointer}
 .choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}.choices.two{grid-template-columns:1fr 1fr}
-.choice{min-height:52px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:17px;font-weight:800;color:var(--blue-d);cursor:pointer;padding:6px}
+.choice{min-height:52px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:16px;overflow-wrap:anywhere;line-height:1.2;font-weight:800;color:var(--blue-d);cursor:pointer;padding:6px}
 .choice.on{border:3px solid var(--blue);background:var(--lav);color:var(--ink)}
 .feedback:empty{display:none}.feedback.soft{background:var(--lav);border-radius:18px;padding:14px 16px;color:var(--blue-d);font-weight:700}
 .fbrow{display:flex;gap:12px;align-items:flex-start}.fbrow b{display:block;font-size:18px;font-weight:900;margin-bottom:2px}.fbrow .ic{width:32px;height:32px}
@@ -82,6 +82,7 @@ h2{margin:0;font-size:19px;font-weight:900}.h1dark{margin:0;font-size:25px;line-
 .win h1{margin:0;font-size:32px;font-weight:900}.win p{margin:0;font-size:18px;color:#E3E7FF;font-weight:700}.win b{color:#fff}
 .trick{background:var(--cream);border-radius:18px;padding:16px;font-size:17px;font-weight:700;display:flex;flex-direction:column;gap:4px}
 .review{background:none}.review summary{list-style:none}.review summary::-webkit-details-marker{display:none}
+.pic{display:flex;justify-content:center;margin-top:4px}.pic svg{width:100%;max-width:340px;height:auto;max-height:300px}
 .review[open] summary{border-radius:16px 16px 0 0}.review > .hint, .review > .btn{margin-top:8px}
 @media (min-width:700px){.screen{padding-top:32px}}
 </style>
@@ -97,6 +98,960 @@ window.TRAINER_CONFIG = {
 };
 </script>
 <script>window.LOGO_SRC = 'data:image/png;base64,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';</script>
+<script>
+/* Тренажёр к олимпиаде «Интеллектиум» — генераторы задач, 1 класс.
+   10 видов × 3 уровня — по задачам XII СПб олимпиады начальной школы (14 ноября 2025).
+   Тексты короткие, почти к каждой задаче — рисунок. Генератор возвращает: { text, answer, hints, params, svg? } */
+(function (root) {
+  'use strict';
+
+  // ---------- помощники ----------
+  function makeRng(seed) {
+    if (seed == null) return Math.random;
+    var s = seed >>> 0;
+    return function () { s = (s + 0x6D2B79F5) >>> 0; var t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function ri(r, a, b) { return a + Math.floor(r() * (b - a + 1)); }
+  function pick(r, arr) { return arr[Math.floor(r() * arr.length)]; }
+  function shuffle(r, arr) { var a = arr.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function sample(r, arr, k) { return shuffle(r, arr).slice(0, k); }
+  function plural(n, f) { var a = Math.abs(n) % 100, b = a % 10; if (a > 10 && a < 20) return f[2]; if (b === 1) return f[0]; if (b >= 2 && b <= 4) return f[1]; return f[2]; }
+  function pn(n, f) { return n + ' ' + plural(n, f); }
+  function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function joinAnd(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1]; }
+  function joinOr(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' или ' + list[list.length - 1]; }
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function lcm(a, b) { return a / gcd(a, b) * b; }
+  function range(a, b) { var o = []; for (var i = a; i <= b; i++) o.push(i); return o; }
+  function isqrt(n) { var s = Math.floor(Math.sqrt(n)); while (s * s > n) s--; while ((s + 1) * (s + 1) <= n) s++; return s; }
+  function fmtN(n) { var s = String(n); return s.length > 4 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : s; }   // 12000 → «12 000»
+  var CARDS = ['карточка', 'карточки', 'карточек'], CM = ['сантиметр', 'сантиметра', 'сантиметров'], DAYS = ['день', 'дня', 'дней'];
+  var HOURS = ['час', 'часа', 'часов'], NUMBERS = ['число', 'числа', 'чисел'], DIGITS = ['цифра', 'цифры', 'цифр'], SECONDS = ['секунда', 'секунды', 'секунд'];
+  var TOADS = ['жаба', 'жабы', 'жаб'], ROWS = ['ряд', 'ряда', 'рядов'], TIMES = ['раз', 'раза', 'раз'];
+  var NUM_GEN = ['', 'одной', 'двух', 'трёх', 'четырёх', 'пяти', 'шести', 'семи', 'восьми', 'девяти'];
+  var NUM_NOM = ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'];
+  var PAIRS = ['пару', 'пары', 'пар'], SIDES = ['сторона', 'стороны', 'сторон'];
+
+  var BOYS = ['Петя', 'Коля', 'Дима', 'Саша', 'Ваня', 'Миша', 'Гоша', 'Лёша', 'Вова', 'Толя', 'Костя', 'Боря'];
+  var GIRLS = ['Маша', 'Оля', 'Катя', 'Аня', 'Лена', 'Ира', 'Вера', 'Соня', 'Таня', 'Марина', 'Яна', 'Даша'];
+  function stem(n) { return n.slice(0, -1); }
+  function hush(n) { return 'гкхжшщч'.indexOf(n.charAt(n.length - 2)) >= 0; }
+  function gen(n) { return n.slice(-1) === 'я' ? stem(n) + 'и' : stem(n) + (hush(n) ? 'и' : 'ы'); }
+  function dat(n) { return stem(n) + 'е'; }
+  function person(name, f) { return { name: name, f: f, gen: gen(name), dat: dat(name), v: function (m, w) { return f ? w : m; } }; }
+  function kid(r, sex) { var f = sex == null ? r() < 0.5 : sex; return person(pick(r, f ? GIRLS : BOYS), f); }
+
+
+  var INK = '#343F9E', FILL = '#E8EBFA', MILK = '#BFD4EE';
+  function svgWrap(W, H, body, label) { return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + Math.round(W) + ' ' + Math.round(H) + '" role="img" aria-label="' + label + '">' + body + '</svg>'; }
+  function tx(x, y, s, size, extra) { return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-size="' + (size || 18) + '" font-weight="800" fill="#1E2440"' + (extra || '') + '>' + s + '</text>'; }
+  function addList(arr) { return arr.join(' + '); }
+  var BRICKS = ['кирпич', 'кирпича', 'кирпичей'], CUPS = ['стакан', 'стакана', 'стаканов'], MUSH = ['гриб', 'гриба', 'грибов'];
+  var ORD_F = ['', 'первой', 'второй', 'третьей', 'четвёртой', 'пятой'];
+
+  // =====================================================================
+  // 1. Дыра в стене
+  // =====================================================================
+  function t1(level, r) {
+    var stag = level === 3, C = level === 1 ? ri(r, 4, 5) : ri(r, 5, 6), R = level === 1 ? ri(r, 4, 5) : ri(r, 5, 6);
+    var bw = 60, bh = 30, bricks = [];
+    for (var y = 0; y < R; y++) {
+      if (stag && y % 2 === 1) {
+        bricks.push({ y: y, x0: 0, x1: 0.5, half: true });
+        for (var i = 0; i < C - 1; i++) bricks.push({ y: y, x0: 0.5 + i, x1: 1.5 + i, half: false });
+        bricks.push({ y: y, x0: C - 0.5, x1: C, half: true });
+      } else for (var j = 0; j < C; j++) bricks.push({ y: y, x0: j, x1: j + 1, half: false });
+    }
+    bricks.forEach(function (b, i) { b.id = i; b.inner = !b.half && b.y > 0 && b.y < R - 1 && b.x0 > 0 && b.x1 < C; });
+    var adj = function (a, b) { if (a.y === b.y) return a.x1 === b.x0 || b.x1 === a.x0; return Math.abs(a.y - b.y) === 1 && Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0) > 0.01; };
+    var inner = bricks.filter(function (b) { return b.inner; }), want = level === 1 ? ri(r, 2, 4) : ri(r, 5, 9);
+    if (inner.length < want) return null;
+    var hole = [pick(r, inner)];
+    for (var t = 0; t < 200 && hole.length < want; t++) {
+      var cand = inner.filter(function (b) { return hole.indexOf(b) < 0 && hole.some(function (h) { return adj(h, b); }); });
+      if (!cand.length) break; hole.push(pick(r, cand));
+    }
+    if (hole.length !== want) return null;
+    var ox = 10, oy = 10, body = bricks.filter(function (b) { return hole.indexOf(b) < 0; }).map(function (b) {
+      return '<rect class="brick" x="' + (ox + b.x0 * bw) + '" y="' + (oy + b.y * bh) + '" width="' + (b.x1 - b.x0) * bw + '" height="' + bh + '" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3"/>';
+    }).join('');
+    var perRow = range(0, R - 1).map(function (y) { return hole.filter(function (h) { return h.y === y; }).length; }).filter(function (n) { return n > 0; });
+    var n = hole.length;
+    return {
+      text: 'В кирпичной стене появилась дырка (посмотри на рисунок). Сколько кирпичей нужно, чтобы заделать дырку?',
+      svg: svgWrap(C * bw + 20, R * bh + 20, body, 'Кирпичная стена с дыркой'),
+      answer: { kind: 'num', value: n, unit: plural(n, BRICKS) }, params: { C: C, R: R, stag: stag, hole: hole.map(function (h) { return [h.y, h.x0]; }) },
+      hints: ['Считай пустые места по рядам: сначала в верхнем ряду с дыркой, потом ниже.', 'Пустых мест по рядам сверху вниз: в первом ряду с дыркой — ' + perRow[0] + '. А дальше?', 'Пустых мест по рядам сверху вниз: ' + (perRow.length > 1 ? addList(perRow) + ' = ' + n : n) + '. Ответ: ' + n + '.']
+    };
+  }
+
+  // =====================================================================
+  // 2. Две половинки — один полный
+  // =====================================================================
+  function glass(x, kind) {
+    var top = 10, bot = 110, w = 56, inset = 7, pts = function (y0, y1) { var k0 = (y0 - top) / (bot - top), k1 = (y1 - top) / (bot - top); return [[x + inset * k0, y0], [x + w - inset * k0, y0], [x + w - inset * k1, y1], [x + inset * k1, y1]]; };
+    var poly = function (p, fill, cls) { return '<polygon class="' + cls + '" points="' + p.map(function (q) { return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' ') + '" fill="' + fill + '" stroke="' + INK + '" stroke-width="4" stroke-linejoin="round"/>'; };
+    var out = poly(pts(top, bot), kind === 'full' ? MILK : '#FFFFFF', 'glass-' + kind);
+    if (kind === 'half') out += poly(pts(60, bot), MILK, 'milk');
+    if (kind === 'empty') out += '<line x1="' + (x + 14) + '" y1="22" x2="' + (x + 17) + '" y2="96" stroke="' + MILK + '" stroke-width="4" stroke-linecap="round"/>';
+    return out;
+  }
+  function t2(level, r) {
+    var F = ri(r, level === 2 ? 1 : 0, 3), E = ri(r, 1, 3), H = 2 * ri(r, 1, 2);
+    if (F + E + H > 8 || F + E + H < 4) return null;
+    var kinds = shuffle(r, Array(F).fill('full').concat(Array(E).fill('empty'), Array(H).fill('half'))), body = kinds.map(function (k, i) { return glass(10 + i * 70, k); }).join('');
+    var ans, text, expl, h1;
+    var see = 'На столе стоят полные, пустые и налитые наполовину стаканы с молоком (посмотри на рисунок). ';
+    if (level === 1) {
+      ans = F + H / 2;
+      text = see + 'Мама перелила молоко из одних стаканов в другие так, что каждый стакан стал или полным, или пустым. Сколько стало полных стаканов?';
+      expl = 'Полных было ' + F + '. Из ' + H + ' половинок получится ' + pn(H / 2, ['полный стакан', 'полных стакана', 'полных стаканов']) + ': две половинки — один полный. ' + F + ' + ' + H / 2 + ' = ' + ans + '.';
+      h1 = 'Две половинки — это один полный стакан.';
+    } else if (level === 2) {
+      ans = E + H / 2 + 1;
+      text = see + 'Дядя Фёдор перелил молоко так, что каждый стакан стал или полным, или пустым. Потом он выпил один полный стакан и поставил его на место. Сколько пустых стаканов стало на столе?';
+      expl = 'Пустых было ' + E + '. Из ' + H + ' половинок получится ' + pn(H / 2, ['полный стакан', 'полных стакана', 'полных стаканов']) + ', а ещё ' + pn(H / 2, ['стакан станет пустым', 'стакана станут пустыми', 'стаканов станут пустыми']) + ': ' + E + ' + ' + H / 2 + ' = ' + (E + H / 2) + '. Дядя Фёдор выпил один стакан — пустых стало ещё на один больше: ' + (E + H / 2) + ' + 1 = ' + ans + '.';
+      h1 = 'Две половинки — это один полный стакан. А второй стакан из этой пары станет пустым.';
+    } else {
+      if (F === 0) return null;
+      ans = 2 * F + H;
+      text = see + 'Боря хочет разлить всё молоко так, чтобы в каждом стакане было ровно по половине. Сколько стаканов ему понадобится?';
+      expl = 'Каждый полный стакан — это две половинки: ' + F + ' ' + plural(F, ['полный даёт', 'полных дают', 'полных дают']) + ' ' + (F === 1 ? '2 половинки' : range(1, F).map(function () { return 2; }).join(' + ') + ' = ' + pn(2 * F, ['половинка', 'половинки', 'половинок'])) + '. И ещё ' + pn(H, ['половинка', 'половинки', 'половинок']) + ' уже есть: ' + 2 * F + ' + ' + H + ' = ' + ans + '.';
+      h1 = 'Сколько половинок получится из одного полного стакана?';
+    }
+    return {
+      text: text, svg: svgWrap(kinds.length * 70 + 10, 120, body, 'Стаканы с молоком'),
+      answer: { kind: 'num', value: ans, unit: plural(ans, CUPS) }, params: { level: level, kinds: kinds },
+      hints: ['Посчитай, сколько стаканов полных, сколько пустых и сколько наполовину.', 'Полных ' + F + ', пустых ' + E + ', наполовину ' + H + '. ' + h1, expl + ' Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 3. Отмотай назад
+  // =====================================================================
+  var TOYS = [
+    { nom: 'кубик', acc: 'кубик', draw: function (x) { return '<rect x="' + (x + 8) + '" y="34" width="40" height="40" fill="#BFD4EE" stroke="' + INK + '" stroke-width="4"/><path d="M' + (x + 8) + ' 34 l10 -10 h40 l-10 10 z M' + (x + 48) + ' 34 l10 -10 v40 l-10 10" fill="' + FILL + '" stroke="' + INK + '" stroke-width="4" stroke-linejoin="round"/>'; } },
+    { nom: 'мяч', acc: 'мяч', draw: function (x) { return '<circle cx="' + (x + 33) + '" cy="50" r="24" fill="' + FILL + '" stroke="' + INK + '" stroke-width="4"/><path d="M' + (x + 10) + ' 46 q23 -16 46 0" fill="none" stroke="#2E86C1" stroke-width="4"/>'; } },
+    { nom: 'пирамидка', acc: 'пирамидку', draw: function (x) { return '<rect x="' + (x + 6) + '" y="62" width="54" height="12" rx="6" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3.5"/><rect x="' + (x + 12) + '" y="49" width="42" height="12" rx="6" fill="#BFD4EE" stroke="' + INK + '" stroke-width="3.5"/><rect x="' + (x + 18) + '" y="36" width="30" height="12" rx="6" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3.5"/><circle cx="' + (x + 33) + '" cy="28" r="7" fill="#2E86C1" stroke="' + INK + '" stroke-width="3.5"/>'; } },
+    { nom: 'кукла', acc: 'куклу', draw: function (x) { return '<circle cx="' + (x + 33) + '" cy="20" r="11" fill="#FFFFFF" stroke="' + INK + '" stroke-width="3.5"/><path d="M' + (x + 26) + ' 32 h14 l10 34 h-34 z" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3.5" stroke-linejoin="round"/><path d="M' + (x + 28) + ' 66 v8 M' + (x + 38) + ' 66 v8" stroke="' + INK + '" stroke-width="3.5"/><path d="M' + (x + 22) + ' 18 q11 -14 22 0" fill="none" stroke="#2E86C1" stroke-width="4"/>'; } },
+    { nom: 'машинка', acc: 'машинку', draw: function (x) { return '<path d="M' + (x + 4) + ' 62 v-14 h14 l8 -12 h20 l8 12 h8 v14 z" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3.5" stroke-linejoin="round"/><circle cx="' + (x + 18) + '" cy="64" r="8" fill="#FFFFFF" stroke="' + INK + '" stroke-width="3.5"/><circle cx="' + (x + 50) + '" cy="64" r="8" fill="#FFFFFF" stroke="' + INK + '" stroke-width="3.5"/>'; } },
+    { nom: 'барабан', acc: 'барабан', draw: function (x) { return '<rect x="' + (x + 8) + '" y="38" width="50" height="34" fill="#BFD4EE" stroke="' + INK + '" stroke-width="3.5"/><ellipse cx="' + (x + 33) + '" cy="38" rx="25" ry="8" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3.5"/><path d="M' + (x + 8) + ' 46 l12 22 l12 -22 l12 22 l14 -22" fill="none" stroke="' + INK + '" stroke-width="2.5"/>'; } }
+  ];
+  function shelfSvg(row) {
+    var body = row.map(function (t, i) { return TOYS[t].draw(14 + i * 80) + tx(14 + i * 80 + 33, 102, TOYS[t].nom, 14); }).join('');
+    body += '<rect x="6" y="76" width="' + (row.length * 80 + 10) + '" height="10" rx="4" fill="#BFD4EE" stroke="' + INK + '" stroke-width="3"/>';
+    return svgWrap(row.length * 80 + 22, 112, body, 'Игрушки на полке');
+  }
+  function t3(level, r) {
+    var w = kid(r, true), n = level === 1 ? 4 : 5, start = sample(r, range(0, 5), n), now = start.slice(), ops = [];
+    var removed = null;
+    if (level >= 2) { var left = level === 3; removed = left ? now.shift() : now.pop(); ops.push(left ? 'забрала самую левую игрушку' : 'забрала самую правую игрушку'); }
+    var sw = sample(r, range(0, now.length - 1), 2), a = now[sw[0]], b = now[sw[1]];
+    now[sw[0]] = b; now[sw[1]] = a;
+    ops.push('поменяла местами ' + TOYS[a].acc + ' и ' + TOYS[b].acc);
+    var askPos = level === 2 ? 3 : level === 1 ? ri(r, 1, 4) : ri(r, 2, 4), target = start[askPos - 1];
+    if (now.indexOf(target) < 0) return null;
+    if (start[askPos - 1] === now[askPos - 1 - (level === 3 ? 1 : 0)] && level !== 2) return null;
+    var back = now.slice(); back[sw[0]] = a; back[sw[1]] = b;
+    var names = function (arr) { return arr.map(function (t) { return TOYS[t].nom; }).join(', '); };
+    var text = 'У ' + w.gen + ' на полке в ряд стояли ' + (n === 4 ? 'четыре игрушки' : 'пять игрушек') + '. Сестра ' + joinAnd(ops) + '. Теперь игрушки стоят так, как на рисунке. Какая игрушка вначале стояла ' + (level === 2 ? 'посередине' : ORD_F[askPos] + ' слева') + '?';
+    var expl = 'Поменяем ' + TOYS[a].acc + ' и ' + TOYS[b].acc + ' обратно: ' + names(back) + '.' +
+      (level === 2 ? ' Самую правую игрушку забрали, поэтому эти четыре стояли первыми: посередине из пяти — третья.' : level === 3 ? ' Самую левую игрушку забрали, поэтому эти четыре стояли со второго места по пятое: ' + ['', 'первое', 'второе', 'третье', 'четвёртое'][askPos] + ' место — это ' + ['', 'первая', 'вторая', 'третья', 'четвёртая'][askPos - 1] + ' из них.' : '') +
+      ' ' + cap(ORD_F[askPos]) + ' слева стоял' + (TOYS[target].nom === 'кукла' || TOYS[target].nom === 'пирамидка' || TOYS[target].nom === 'машинка' ? 'а' : '') + ' ' + TOYS[target].nom + '.';
+    return {
+      text: text, svg: shelfSvg(now),
+      answer: { kind: 'choice', value: TOYS[target].nom, options: now.map(function (t) { return TOYS[t].nom; }) },
+      params: { start: start, now: now, level: level, askPos: askPos, swap: [a, b] },
+      hints: ['Иди назад: сначала верни на место игрушки, которые поменяли.', 'Поменяем ' + TOYS[a].acc + ' и ' + TOYS[b].acc + ' обратно. ' + (level === 2 ? 'А правую игрушку забрали — где же середина?' : level === 3 ? 'А левую игрушку забрали — значит, все сдвинулись.' : 'Как они стояли?'), expl + ' Ответ: ' + TOYS[target].nom + '.']
+    };
+  }
+
+  // =====================================================================
+  // 4. Сравни по буквам
+  // =====================================================================
+  var BOYN = ['ГЛЕБ', 'ОЛЕГ', 'ЛЁША', 'САША', 'ЛЁНЯ', 'ПЕТЯ', 'ВАНЯ', 'ВАСЯ', 'ГОША', 'ВОВА', 'ТОЛЯ', 'КОЛЯ', 'ЮРА', 'ЖЕНЯ', 'СЕНЯ', 'ДИМА', 'ЕГОР', 'РОМА', 'ЛЕВ', 'ЛЁВА', 'ЯША', 'ТИМА', 'СЛАВА', 'СТАС', 'МАКС', 'ИГОРЬ', 'БОРЯ', 'ГРИША'];
+  var GIRLN = ['ЮЛЯ', 'ОЛЯ', 'ИРА', 'ЛЕНА', 'ТАНЯ', 'ВАЛЯ', 'ГАЛЯ', 'ДАША', 'МАША', 'ЛИЗА', 'КАТЯ', 'ВЕРА', 'ВАРЯ', 'ЛЕРА', 'ЛЮБА', 'МИЛА', 'ЛИЛЯ', 'СОНЯ', 'ТОНЯ', 'НАДЯ', 'ЗОЯ', 'АСЯ', 'ЯНА', 'НИНА', 'ИННА'];
+  function letterDiff(a, b) {
+    if (a.length !== b.length) return 99;
+    var ca = {}; a.split('').forEach(function (c) { ca[c] = (ca[c] || 0) + 1; });
+    b.split('').forEach(function (c) { ca[c] = (ca[c] || 0) - 1; });
+    return Object.keys(ca).reduce(function (s, k) { return s + Math.max(0, ca[k]); }, 0);
+  }
+  function sameOrderDiff(a, b) { if (a.length !== b.length) return 99; var d = 0; for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) d++; return d; }
+  function t4(level, r) {
+    var girls = r() < 0.5, bank = girls ? GIRLN : BOYN, k = level === 1 ? 4 : level === 2 ? 5 : 6;
+    var names = sample(r, bank, k), good = [], bad = false;
+    for (var i = 0; i < k; i++) for (var j = i + 1; j < k; j++) {
+      var d = letterDiff(names[i], names[j]);
+      if (d === 0) bad = true;
+      if (d === 1) good.push([names[i], names[j]]);
+    }
+    if (bad || good.length !== 1) return null;
+    var pr = good[0], reordered = sameOrderDiff(pr[0], pr[1]) > 1;
+    if (level === 1 && reordered) return null;
+    if (level === 3 && !reordered) return null;
+    var all = [];
+    for (var i2 = 0; i2 < k; i2++) for (var j2 = i2 + 1; j2 < k; j2++) all.push([names[i2], names[j2]]);
+    var key = function (p) { return p.slice().sort().join('|'); };
+    var others = sample(r, all.filter(function (p) { return key(p) !== key(pr); }), 3);
+    var cap1 = function (s) { return s.charAt(0) + s.slice(1).toLowerCase(); };
+    var fmt = function (p) { return cap1(p[0]) + ' и ' + cap1(p[1]); };
+    var opts = shuffle(r, others.concat([pr]).map(fmt));
+    var common = pr[0].split(''), diffA = '', b2 = pr[1].split('');
+    var shared = [];
+    pr[0].split('').forEach(function (c) { var ix = b2.indexOf(c); if (ix >= 0) { shared.push(c); b2.splice(ix, 1); } else diffA = c; });
+    var diffB = b2[0];
+    return {
+      text: (girls ? 'Девочек зовут ' : 'Мальчиков зовут ') + joinAnd(names) + '. В именах ' + (girls ? 'двух сестёр' : 'двух братьев') + ' все буквы, кроме одной, одинаковые. Как их зовут?',
+      answer: { kind: 'choice', value: fmt(pr), options: opts }, params: { names: names, girls: girls },
+      hints: ['Сначала посмотри на длину: у братьев и сестёр в этой задаче имена одинаковой длины.', 'Сравнивай буквы, а не порядок: буквы могут стоять на других местах.',
+        cap1(pr[0]) + ' и ' + cap1(pr[1]) + ': общие буквы ' + shared.join(', ') + ', разные только ' + diffA + ' и ' + diffB + '. В других парах отличаются хотя бы две буквы или длина разная. Ответ: ' + fmt(pr) + '.']
+    };
+  }
+
+  // =====================================================================
+  // 5. Середина — лифты
+  // =====================================================================
+  function houseSvg(N, lifts, star) {
+    var fh = 22, W = 170, H = N * fh + 30, body = '<rect x="40" y="20" width="110" height="' + N * fh + '" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3"/><path d="M30 22 L95 2 L160 22" fill="none" stroke="' + INK + '" stroke-width="3"/>';
+    for (var f = 1; f <= N; f++) {
+      var y = 20 + (N - f) * fh;
+      body += '<line x1="40" y1="' + y + '" x2="150" y2="' + y + '" stroke="' + INK + '" stroke-width="1.5"/>' + tx(22, y + 16, String(f), 13);
+      if (star === f) body += tx(95, y + 17, '★ Вася', 14, ' fill="#C0392B"');
+    }
+    lifts.forEach(function (L, i) { var y = 20 + (N - L) * fh; body += '<rect class="lift" x="' + (i ? 124 : 48) + '" y="' + (y + 3) + '" width="18" height="' + (fh - 6) + '" fill="#FFC83D" stroke="' + INK + '" stroke-width="2.5"/>'; });
+    return svgWrap(W, H, body, 'Дом с лифтами');
+  }
+  var FLOOR_PREP = function (f) { return f + '-м этаже'; };
+  function t5(level, r) {
+    var N = ri(r, 6, 12), a, b, m, text, ans, expl, svg;
+    if (level < 3) {
+      a = level === 2 ? 2 : ri(r, 1, N - 2); b = level === 2 ? N : ri(r, a + 2, N);
+      if ((a + b) % 2) return null; m = (a + b) / 2; ans = m;
+      text = 'В доме ' + N + ' этажей и 2 лифта. Один лифт стоял на ' + (level === 2 ? 'втором' : FLOOR_PREP(a)) + ' этаже'.replace('этаже этаже', 'этаже') + ', а другой — на ' + (level === 2 ? 'последнем' : FLOOR_PREP(b)) + '. Вася вызвал лифт на своём этаже. Оба лифта поехали к нему с одинаковой скоростью и приехали одновременно. На каком этаже живёт Вася?';
+      text = text.replace('на втором этаже', 'на втором этаже').replace(/на (\d+)-м этаже этаже/, 'на $1-м этаже');
+      expl = 'Лифты ехали одинаково быстро и приехали вместе — значит, проехали одинаково этажей. От ' + a + '-го до ' + b + '-го — ' + (b - a) + ' ' + plural(b - a, ['этаж', 'этажа', 'этажей']) + ', пополам — по ' + (b - a) / 2 + '. ' + a + ' + ' + (b - a) / 2 + ' = ' + m + '.';
+      svg = houseSvg(N, [a, b], null);
+    } else {
+      m = ri(r, 3, N - 1); a = ri(r, m + 1, N); b = 2 * m - a; if (b < 1) return null; ans = b;
+      text = 'В доме ' + N + ' этажей и 2 лифта. Вася живёт на ' + FLOOR_PREP(m) + ' и вызвал лифт. Один лифт ехал к нему с ' + a + '-го этажа, другой — снизу. Лифты едут с одинаковой скоростью и приехали к Васе одновременно. С какого этажа ехал второй лифт?';
+      expl = 'Первый лифт проехал от ' + a + '-го до ' + m + '-го — ' + (a - m) + ' ' + plural(a - m, ['этаж', 'этажа', 'этажей']) + '. Второй проехал столько же, но снизу: ' + m + ' − ' + (a - m) + ' = ' + b + '.';
+      svg = houseSvg(N, [a], m);
+    }
+    return {
+      text: text, svg: svg, answer: { kind: 'num', value: ans, unit: '' }, params: { N: N, a: a, b: level < 3 ? b : null, m: level === 3 ? m : null, level: level },
+      hints: ['Лифты едут одинаково быстро и приехали одновременно. Что можно сказать про то, сколько этажей проехал каждый?', level < 3 ? 'Каждый проехал одинаково этажей — Вася ровно посередине между ' + a + '-м и ' + b + '-м.' : 'Второй лифт проехал столько же этажей, сколько первый, только снизу вверх.', expl + ' Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 6. Сравни с полной корзинкой
+  // =====================================================================
+  var FRIENDS = [['Антон', false], ['Игорь', false], ['Юра', false], ['Глаша', true], ['Нина', true], ['Петя', false], ['Маша', true], ['Оля', true], ['Костя', false], ['Ваня', false]];
+  function offs(o) { return o === 0 ? 'полная' : o > 0 ? 'полная + ' + o : 'полная − ' + (-o); }
+  function t6(level, r) {
+    var n = level === 1 ? 2 : 3, F = sample(r, FRIENDS, n), o = F.map(function () { return ri(r, -3, 3); });
+    var g = ri(r, 0, n - 1), give = F.map(function () { return 0; }), others = range(0, n - 1).filter(function (i) { return i !== g; });
+    others.forEach(function (i) { give[i] = ri(r, level === 1 ? 1 : 0, 3); });
+    var tot = sum(give); if (tot === 0) return null;
+    var fin = o.map(function (x, i) { return i === g ? x - tot : x + give[i]; });
+    var mx = Math.max.apply(null, fin), winners = fin.filter(function (x) { return x === mx; });
+    var said = function (i) {
+      var who = F[i][0], f = F[i][1], v = function (m, w) { return f ? w : m; };
+      if (o[i] === 0) return who + ' собрал' + v('', 'а') + ' полную корзинку грибов.';
+      if (o[i] > 0) return who + ' собрал' + v('', 'а') + ' полную корзинку и ещё ' + pn(o[i], MUSH) + '.';
+      return 'Если бы ' + who + ' ' + v('нашёл', 'нашла') + ' ещё ' + pn(-o[i], MUSH) + ', у ' + (f ? 'неё' : 'него') + ' была бы полная корзинка.';
+    };
+    var gv = F[g], gf = gv[1];
+    var giveText = gv[0] + ' отдал' + (gf ? 'а' : '') + ' ' + others.filter(function (i) { return give[i] > 0; }).map(function (i) { return pn(give[i], MUSH) + ' ' + dat2(F[i][0], F[i][1]); }).join(' и ') + '.';
+    var askDiff = level === 3;
+    if (!askDiff && winners.length !== 1) return null;
+    var text = (n === 2 ? 'Двое друзей' : 'Трое друзей') + ' пошли за грибами. В каждую корзинку помещается одинаковое число грибов. ' + range(0, n - 1).map(said).join(' ') + ' Потом ' + giveText.charAt(0).toLowerCase() + giveText.slice(1);
+    text = text.replace('Потом ' + gv[0].charAt(0).toLowerCase(), 'Потом ' + gv[0].charAt(0));
+    var ans, ansShow, qa, qb;
+    var lines = range(0, n - 1).map(function (i) { var parts = [offs(o[i])]; return F[i][0] + ': ' + (i === g ? offs(o[i]) + ' − ' + tot + ' = ' + offs(fin[i]) : give[i] ? offs(o[i]) + ' + ' + give[i] + ' = ' + offs(fin[i]) : offs(fin[i])); });
+    if (!askDiff) {
+      text += n === 2 ? ' У кого теперь больше грибов?' : ' У кого теперь больше всех грибов?';
+      ans = F[fin.indexOf(mx)][0];
+      return {
+        text: text, answer: { kind: 'choice', value: ans, options: F.map(function (x) { return x[0]; }) }, params: { o: o, g: g, give: give, ask: 'max', names: F.map(function (x) { return x[0]; }) },
+        hints: ['Не нужно знать, сколько грибов в корзинке. Сравнивай с полной корзинкой: «полная и ещё 2», «полная без 3».', 'Запиши каждого: ' + range(0, n - 1).map(function (i) { return F[i][0] + ' — ' + offs(o[i]); }).join(', ') + '. Теперь отдай и прибавь грибы.',
+          lines.join('; ') + '. Больше всех у ' + genName(F[fin.indexOf(mx)]) + '. Ответ: ' + ans + '.']
+      };
+    }
+    qa = ri(r, 0, n - 1); qb = range(0, n - 1).filter(function (i) { return i !== qa; })[ri(r, 0, n - 2)];
+    if (fin[qa] <= fin[qb]) return null;
+    ans = fin[qa] - fin[qb];
+    text += ' На сколько грибов у ' + genName(F[qa]) + ' теперь больше, чем у ' + genName(F[qb]) + '?';
+    return {
+      text: text, answer: { kind: 'num', value: ans, unit: plural(ans, MUSH) }, params: { o: o, g: g, give: give, ask: 'diff', qa: qa, qb: qb },
+      hints: ['Сравнивай с полной корзинкой: «полная и ещё 2», «полная без 3».', 'Запиши, что стало у каждого после того, как ' + F[g][0] + ' отдал' + (gf ? 'а' : '') + ' грибы.',
+        lines.join('; ') + '. Разница: ' + (fin[qb] >= 0 ? fin[qa] + ' − ' + fin[qb] : fin[qb] >= 0 ? '' : (fin[qa] >= 0 ? fin[qa] + ' + ' + (-fin[qb]) : (-fin[qb]) + ' − ' + (-fin[qa]))) + ' = ' + ans + '. Ответ: ' + ans + '.']
+    };
+  }
+  function genName(f) { var n = f[0]; if (/[ая]$/.test(n)) return gen(n); if (/й$/.test(n)) return n.slice(0, -1) + 'я'; if (/ь$/.test(n)) return n.slice(0, -1) + 'я'; return n + 'а'; }
+  function dat2(n, f) { if (/[ая]$/.test(n)) return dat(n); if (/[йь]$/.test(n)) return n.slice(0, -1) + 'ю'; return n + 'у'; }
+
+  // =====================================================================
+  // 7. Куски, разрезы, узлы
+  // =====================================================================
+  function t7(level, r) {
+    var KNOT = 'Когда связываешь две верёвочки, от каждой на узел уходит по 1 см. ', ans, text, expl;
+    if (level === 1) {
+      var a = ri(r, 4, 9), b = ri(r, 4, 9); ans = a + b - 2;
+      text = KNOT + 'Связали верёвочку ' + a + ' см и верёвочку ' + b + ' см. Какой длины получилась верёвка?';
+      expl = 'Вместе ' + a + ' + ' + b + ' = ' + (a + b) + ' см. На узел ушло 1 + 1 = 2 см: ' + (a + b) + ' − 2 = ' + ans + '.';
+      return { text: text, answer: { kind: 'num', value: ans, unit: 'см' }, params: { mode: 'two', a: a, b: b },
+        hints: ['Сколько сантиметров уходит на один узел?', 'На узел уходит 1 см от одной верёвочки и 1 см от другой — 2 см.', expl + ' Ответ: ' + ans + ' см.'] };
+    }
+    if (level === 2) {
+      var L = ri(r, 10, 20), k = ri(r, 2, 4), knots = k - 1; ans = L - 2 * knots;
+      text = KNOT + 'Верёвку длиной ' + L + ' см разрезали на ' + (k === 2 ? 'две части' : k === 3 ? 'три части' : 'четыре части') + ', а потом связали кусочки обратно в одну верёвку. Какой длины она получилась?';
+      expl = (k === 2 ? 'Две части' : k === 3 ? 'Три части' : 'Четыре части') + ' связывают ' + pn(knots, ['узлом', 'узлами', 'узлами']) + '. На каждый узел уходит 2 см: ' + range(1, knots).map(function () { return 2; }).join(' + ') + ' = ' + 2 * knots + ' см. ' + L + ' − ' + 2 * knots + ' = ' + ans + '.';
+      return { text: text, answer: { kind: 'num', value: ans, unit: 'см' }, params: { mode: 'cut', L: L, k: k },
+        hints: ['Нарисуй части верёвки. Сколько узлов нужно, чтобы связать их в одну?', 'Узлов на один меньше, чем частей. На каждый узел уходит 2 см.', expl + ' Ответ: ' + ans + ' см.'] };
+    }
+    var p = ri(r, 4, 7), n = ri(r, 3, 5), T = n * p - 2 * (n - 1);
+    text = KNOT + 'Папа связал несколько верёвочек по ' + p + ' см в одну верёвку. Она получилась длиной ' + T + ' см. Сколько узелков завязал папа?';
+    var seq = [p], cur = p; for (var i = 1; i < n; i++) { cur += p - 2; seq.push(cur); }
+    expl = 'Первая верёвочка — ' + p + ' см. Каждая следующая добавляет ' + p + ' − 2 = ' + (p - 2) + ' см (2 см уходит на узел): ' + seq.join(', ') + '. Верёвочек ' + n + ', узелков на один меньше: ' + (n - 1) + '.';
+    return { text: text, answer: { kind: 'num', value: n - 1, unit: plural(n - 1, ['узелок', 'узелка', 'узелков']) }, params: { mode: 'knots', p: p, T: T },
+      hints: ['Сколько сантиметров добавляет к верёвке каждая новая верёвочка?', 'Новая верёвочка добавляет ' + p + ' см, но 2 см уходит на узел.', expl + ' Ответ: ' + (n - 1) + '.'] };
+  }
+
+  // =====================================================================
+  // 8. Узор повторяется — Карлсон
+  // =====================================================================
+  var SWEETS = ['мороженое', 'варенье', 'торт'];
+  var WDN = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+  var WDIN = ['в понедельник', 'во вторник', 'в среду', 'в четверг', 'в пятницу', 'в субботу', 'в воскресенье'];
+  function t8(level, r) {
+    var cyc = shuffle(r, SWEETS), base = 'Карлсон очень любит сладкое. Каждый день он ест или мороженое, или варенье, или торт. ';
+    var day = function (d) { return cyc[((d % 3) + 3) % 3]; };
+    if (level === 1) {
+      var d0 = ri(r, 0, 2), d1 = ri(r, d0 + 2, 6);
+      var text, at = function (d) { return cyc[(((d - d0) % 3) + 3) % 3]; };
+      text = base + 'Ест он по кругу: ' + cyc[0] + ', потом ' + cyc[1] + ', потом ' + cyc[2] + ', потом снова ' + cyc[0] + ' и так далее. ' + cap(WDIN[d0]) + ' Карлсон ел ' + cyc[0] + '. Что он будет есть ' + WDIN[d1] + '?';
+      var seq = range(d0, d1).map(function (d) { return WDN[d] + ' — ' + at(d); });
+      return { text: text, answer: { kind: 'choice', value: at(d1), options: SWEETS.slice() }, params: { mode: 'cycle', cyc: cyc, d0: d0, d1: d1 },
+        hints: ['Выпиши дни недели по порядку и под каждым — сладость.', 'Начни так: ' + seq.slice(0, 2).join(', ') + '…', seq.join(', ') + '. Ответ: ' + at(d1) + '.'] };
+    }
+    var dA = ri(r, 0, 3), dB = ri(r, dA + 1, 6);
+    if ((dB - dA) % 3 === 0) return null;
+    var off = ri(r, 0, 2), at2 = function (d) { return cyc[(((d + off) % 3) + 3) % 3]; };
+    var today = ri(r, Math.max(dB, level === 2 ? 4 : 3), 6), target = level === 2 ? today + 1 : today + ri(r, 3, 6);
+    var tName = target <= 6 ? WDIN[target] : (target === 7 ? 'в следующий понедельник' : 'в ' + (target % 7 === 1 ? 'следующий вторник' : target % 7 === 2 ? 'следующую среду' : target % 7 === 3 ? 'следующий четверг' : target % 7 === 4 ? 'следующую пятницу' : target % 7 === 5 ? 'следующую субботу' : 'следующее воскресенье'));
+    tName = tName.replace(/^в в /, 'в ');
+    var q = level === 2 ? 'Какую сладость Карлсон будет есть завтра, если сегодня ' + WDN[today] + '?' : 'Какую сладость он будет есть ' + tName + ', если сегодня ' + WDN[today] + '?';
+    var text2 = base + 'Причём в любые три дня подряд сладости разные. Малыш помнит, что на этой неделе ' + WDIN[dA] + ' Карлсон ел ' + at2(dA) + ', а ' + WDIN[dB] + ' — ' + at2(dB) + '. ' + q;
+    var groups = [0, 1, 2].map(function (m) { return range(0, Math.max(target, 6)).filter(function (d) { return ((d - dA) % 3 + 3) % 3 === m; }); });
+    var dname = function (d) { var w = WDN[d % 7]; return d <= 6 ? w : (/а$/.test(w) ? 'следующая ' : w === 'воскресенье' ? 'следующее ' : 'следующий ') + w; };
+    var lines = groups.map(function (g) { return g.map(dname).join(', ') + ' — ' + at2(g[0]); });
+    return { text: text2, answer: { kind: 'choice', value: at2(target), options: SWEETS.slice() }, params: { mode: 'two', dA: dA, sA: at2(dA), dB: dB, sB: at2(dB), target: target },
+      hints: ['В любые три дня подряд всё разное. Значит, через три дня сладость повторяется! Проверь: почему?', 'Через 3 дня — та же сладость: ' + WDN[dA] + ', ' + dname(dA + 3) + (dA + 6 <= Math.max(target, 6) ? ', ' + dname(dA + 6) : '') + ' — ' + at2(dA) + '. Что остаётся для других дней?',
+        'Сладости повторяются через 3 дня. ' + cap(lines.join('; ')) + '. ' + cap(level === 2 ? 'завтра' : tName) + ' — ' + at2(target) + '. Ответ: ' + at2(target) + '.'] };
+  }
+
+  // =====================================================================
+  // 9. Сравни две покупки
+  // =====================================================================
+  function basketIcon(x, y) { return '<path d="M' + x + ' ' + (y + 10) + ' h30 l-4 18 h-22 z" fill="#E8C98A" stroke="' + INK + '" stroke-width="2.5" stroke-linejoin="round"/><path d="M' + (x + 6) + ' ' + (y + 10) + ' q9 -14 18 0" fill="none" stroke="' + INK + '" stroke-width="2.5"/>'; }
+  function appleIcon(x, y) { return '<circle cx="' + (x + 12) + '" cy="' + (y + 18) + '" r="10" fill="#E74C3C" stroke="' + INK + '" stroke-width="2.5"/><path d="M' + (x + 12) + ' ' + (y + 8) + ' q2 -6 7 -6" fill="none" stroke="' + INK + '" stroke-width="2.5"/>'; }
+  function pearIcon(x, y) { return '<path d="M' + (x + 12) + ' ' + (y + 4) + ' c-4 0 -4 8 -8 12 c-5 6 -2 13 8 13 c10 0 13 -7 8 -13 c-4 -4 -4 -12 -8 -12 z" fill="#A9CF54" stroke="' + INK + '" stroke-width="2.5"/>'; }
+  function buySvg(rows) {
+    var body = rows.map(function (rw, i) {
+      var y = 8 + i * 42, x = 10, out = '';
+      for (var k = 0; k < rw[0]; k++) { out += basketIcon(x, y); x += 36; }
+      for (var a = 0; a < rw[1]; a++) { out += appleIcon(x, y); x += 28; }
+      for (var p = 0; p < rw[2]; p++) { out += pearIcon(x, y); x += 28; }
+      return out + tx(270, y + 25, '= ' + rw[3] + ' р.', 18);
+    }).join('');
+    return svgWrap(320, rows.length * 42 + 10, body, 'Покупки и цены');
+  }
+  function t9(level, r) {
+    if (level === 1) {
+      var K = ri(r, 3, 9), A = ri(r, 1, 6), s1 = K + A, s2 = K + 2 * A;
+      return {
+        text: 'Корзинка и яблоко стоят ' + s1 + ' рублей. Корзинка и два яблока стоят ' + s2 + ' рублей. Сколько стоит одно яблоко?'.replace(/(\d+) рублей/g, function (m, d) { return pn(+d, ['рубль', 'рубля', 'рублей']); }),
+        svg: buySvg([[1, 1, 0, s1], [1, 2, 0, s2]]), answer: { kind: 'num', value: A, unit: plural(A, ['рубль', 'рубля', 'рублей']) }, params: { mode: 'simple', s1: s1, s2: s2 },
+        hints: ['Чем отличаются две покупки?', 'Во второй покупке на одно яблоко больше — и она дороже. На сколько?', 'Во второй покупке лишнее яблоко, и она дороже на ' + s2 + ' − ' + s1 + ' = ' + A + '. Ответ: ' + A + '.']
+      };
+    }
+    var K2 = ri(r, 2, 9), A2 = ri(r, 1, 5), P2 = ri(r, 1, 5), b1 = K2 + 2 * A2 + P2, b2 = K2 + A2 + 2 * P2, b3 = K2 + 2 * A2;
+    if (b1 > 20 || b2 > 20) return null;
+    var ask = level === 2 ? pick(r, ['twoA', 'P']) : 'K', ans = ask === 'twoA' ? 2 * A2 : ask === 'P' ? P2 : K2;
+    var R = function (n) { return pn(n, ['рубль', 'рубля', 'рублей']); };
+    var qText = ask === 'twoA' ? 'Сколько стоят два яблока?' : ask === 'P' ? 'Сколько стоит одна груша?' : 'Сколько стоит корзинка?';
+    var expl = 'Сравним первую и третью покупки: в первой лишняя груша — груша стоит ' + b1 + ' − ' + b3 + ' = ' + P2 + '. ';
+    if (ask === 'P') expl = expl.trim();
+    if (ask !== 'P') expl += 'Сравним первую и вторую: во второй вместо одного яблока груша, ' + (b2 === b1 ? 'а цена та же — яблоко стоит столько же, сколько груша: ' + A2 + '.' : 'и цена ' + (b2 > b1 ? 'больше' : 'меньше') + ' на ' + Math.abs(b2 - b1) + ' — яблоко стоит ' + A2 + '.') + ' ';
+    if (ask === 'twoA') expl += 'Два яблока: ' + A2 + ' + ' + A2 + ' = ' + 2 * A2 + '.';
+    if (ask === 'K') expl += 'Корзинка: ' + b3 + ' − ' + A2 + ' − ' + A2 + ' = ' + K2 + '.';
+    return {
+      text: 'Корзинка, яблоко и груша стоят какое-то, может быть разное, число рублей (посмотри на рисунок). Корзинка, два яблока и груша стоят ' + R(b1) + '. Корзинка, яблоко и две груши стоят ' + R(b2) + '. Корзинка и два яблока стоят ' + R(b3) + '. ' + qText,
+      svg: buySvg([[1, 2, 1, b1], [1, 1, 2, b2], [1, 2, 0, b3]]), answer: { kind: 'num', value: ans, unit: plural(ans, ['рубль', 'рубля', 'рублей']) },
+      params: { mode: 'three', b1: b1, b2: b2, b3: b3, ask: ask },
+      hints: ['Найди две покупки, которые отличаются только одной вещью.', 'Первая и третья покупки отличаются одной грушей. Сколько же стоит груша?', expl + ' Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 10. И то, и другое
+  // =====================================================================
+  var KIDS = ['ребёнок', 'ребёнка', 'детей'], PEOPLE = ['человек', 'человека', 'человек'];
+  function t10(level, r) {
+    if (level === 1) {
+      var N = ri(r, 5, 12), both = ri(r, 1, 4), a = ri(r, both + 1, N - 1), b = N - a + both;
+      if (b <= both || b > N) return null;
+      return {
+        text: 'На полдник ' + pn(N, KIDS).replace('ребёнка', 'ребят').replace('детей', 'ребят') + ' взяли фрукты. Каждый взял яблоко или банан, а кто-то — и то, и другое. Яблоки взяли ' + pn(a, PEOPLE) + ', бананы — ' + pn(b, PEOPLE) + '. Сколько ребят взяли и яблоко, и банан?',
+        answer: { kind: 'num', value: both, unit: '' }, params: { mode: 'simple', N: N, a: a, b: b },
+        hints: ['Сложи тех, кто взял яблоко, и тех, кто взял банан. Почему получилось больше, чем ребят?', 'Кто взял и то, и другое, тот посчитан два раза.', a + ' + ' + b + ' = ' + (a + b) + ', а ребят ' + N + '. Лишние ' + (a + b) + ' − ' + N + ' = ' + both + ' — это те, кого посчитали два раза. Ответ: ' + both + '.']
+      };
+    }
+    if (level === 2) {
+      var fr = ri(r, 4, 7), people = fr + 1, both2 = ri(r, 2, 4), c = ri(r, both2, people), p = people - c + both2;
+      if (p < both2 || p > people || c === people && p === people) return null;
+      var friendsBoth = both2 - 1;
+      return {
+        text: 'Аня позвала ' + ['', '', '', '', 'четырёх', 'пятерых', 'шестерых', 'семерых'][fr] + ' друзей, и все вместе стали есть сладости. Торт ели ' + pn(c, PEOPLE) + ', пирожные — ' + pn(p, PEOPLE) + '. Каждый что-нибудь съел, а некоторые (и сама Аня тоже) попробовали и то, и другое. Сколько друзей Ани попробовали и то, и другое?',
+        answer: { kind: 'num', value: friendsBoth, unit: '' }, params: { mode: 'anya', fr: fr, c: c, p: p },
+        hints: ['Сколько всего человек ели сладости? Не забудь саму Аню!', 'Всего ' + fr + ' + 1 = ' + people + ' человек. Торт и пирожные вместе: ' + c + ' + ' + p + ' = ' + (c + p) + '. Кого посчитали два раза?',
+          'Всего ' + fr + ' + 1 = ' + people + ' человек. ' + c + ' + ' + p + ' = ' + (c + p) + ', лишние ' + (c + p) + ' − ' + people + ' = ' + both2 + ' — это те, кто ел и то, и другое. Среди них Аня, значит, друзей ' + both2 + ' − 1 = ' + friendsBoth + '. Ответ: ' + friendsBoth + '.']
+      };
+    }
+    var N3 = ri(r, 8, 15), none = ri(r, 1, 3), both3 = ri(r, 1, 5), a3 = ri(r, both3 + 1, N3 - none - 1), b3 = N3 - none - a3 + both3;
+    if (b3 <= both3 || a3 + b3 - both3 + none !== N3) return null;
+    var did = N3 - none;
+    return {
+      text: 'В кружке ' + pn(N3, KIDS).replace('ребёнка', 'ребят').replace('детей', 'ребят') + '. Сегодня ' + pn(a3, KIDS) + ' рисовали, ' + b3 + ' лепили, а ' + none + ' только смотрели. Сколько ребят и рисовали, и лепили?',
+      answer: { kind: 'num', value: both3, unit: '' }, params: { mode: 'none', N: N3, a: a3, b: b3, none: none },
+      hints: ['Сначала узнай, сколько ребят что-то делали.', 'Что-то делали ' + N3 + ' − ' + none + ' = ' + did + '. Рисовали и лепили вместе: ' + a3 + ' + ' + b3 + ' = ' + (a3 + b3) + '.',
+        'Что-то делали ' + N3 + ' − ' + none + ' = ' + did + '. ' + a3 + ' + ' + b3 + ' = ' + (a3 + b3) + ', лишние ' + (a3 + b3) + ' − ' + did + ' = ' + both3 + ' — их посчитали два раза. Ответ: ' + both3 + '.']
+    };
+  }
+
+  // ---------- каталог ----------
+  var TYPES = [
+    { id: 1, title: 'Дыра в стене', story: 'Сколько кирпичей', gen: t1, trick: 'Считай пустые места по рядам: сверху вниз, ряд за рядом.' },
+    { id: 2, title: 'Две половинки — один полный', story: 'Стаканы с молоком', gen: t2, trick: 'Две половинки — это один полный стакан. А второй стакан из пары становится пустым.' },
+    { id: 3, title: 'Отмотай назад', story: 'Игрушки на полке', gen: t3, trick: 'Иди назад: верни на место то, что поменяли, и вспомни, какую игрушку забрали.' },
+    { id: 4, title: 'Сравни по буквам', story: 'Имена братьев', gen: t4, trick: 'Сначала сравни длину имён, потом — сами буквы. Порядок букв может быть другим.' },
+    { id: 5, title: 'Середина', story: 'Два лифта', gen: t5, trick: 'Приехали одновременно с одинаковой скоростью — значит, проехали поровну. Ищи середину.' },
+    { id: 6, title: 'Сравни с полной корзинкой', story: 'Грибы у друзей', gen: t6, trick: 'Не нужно знать, сколько в корзинке. Пиши «полная + 2», «полная − 3» и сравнивай.' },
+    { id: 7, title: 'Куски и узлы', story: 'Верёвочка', gen: t7, trick: 'Узлов на один меньше, чем кусочков. На каждый узел уходит 2 см.' },
+    { id: 8, title: 'Узор повторяется', story: 'Сладости Карлсона', gen: t8, trick: 'В любые три дня подряд всё разное — значит, через 3 дня всё повторяется.' },
+    { id: 9, title: 'Сравни две покупки', story: 'Корзинки и яблоки', gen: t9, trick: 'Найди две покупки, которые отличаются одной вещью: разница цен — это её цена.' },
+    { id: 10, title: 'И то, и другое', story: 'Торт и пирожные', gen: t10, trick: 'Сложи две группы и сравни с тем, сколько всего: лишние — это те, кто и там, и там.' }
+  ];
+  function generate(typeId, level, seed) {
+    var r = makeRng(seed), T = TYPES[typeId - 1];
+    for (var i = 0; i < 20000; i++) {
+      var x = T.gen(level, r);
+      if (x) { x.type = typeId; x.level = level; return x; }
+    }
+    throw new Error('Не удалось сгенерировать задачу вида ' + typeId + ', уровень ' + level);
+  }
+  var API = { TYPES: TYPES, generate: generate };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.GEN1 = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* Тренажёр к олимпиаде «Интеллектиум» — генераторы задач, 2 класс.
+   10 видов × 3 уровня — по задачам XII СПб олимпиады начальной школы (14 ноября 2025).
+   Генератор возвращает: { text, answer, hints: [толчок, полшага, разбор], params, svg? } */
+(function (root) {
+  'use strict';
+
+  // ---------- помощники ----------
+  function makeRng(seed) {
+    if (seed == null) return Math.random;
+    var s = seed >>> 0;
+    return function () { s = (s + 0x6D2B79F5) >>> 0; var t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function ri(r, a, b) { return a + Math.floor(r() * (b - a + 1)); }
+  function pick(r, arr) { return arr[Math.floor(r() * arr.length)]; }
+  function shuffle(r, arr) { var a = arr.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function sample(r, arr, k) { return shuffle(r, arr).slice(0, k); }
+  function plural(n, f) { var a = Math.abs(n) % 100, b = a % 10; if (a > 10 && a < 20) return f[2]; if (b === 1) return f[0]; if (b >= 2 && b <= 4) return f[1]; return f[2]; }
+  function pn(n, f) { return n + ' ' + plural(n, f); }
+  function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function joinAnd(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1]; }
+  function joinOr(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' или ' + list[list.length - 1]; }
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function lcm(a, b) { return a / gcd(a, b) * b; }
+  function range(a, b) { var o = []; for (var i = a; i <= b; i++) o.push(i); return o; }
+  function isqrt(n) { var s = Math.floor(Math.sqrt(n)); while (s * s > n) s--; while ((s + 1) * (s + 1) <= n) s++; return s; }
+  function fmtN(n) { var s = String(n); return s.length > 4 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : s; }   // 12000 → «12 000»
+  var CARDS = ['карточка', 'карточки', 'карточек'], CM = ['сантиметр', 'сантиметра', 'сантиметров'], DAYS = ['день', 'дня', 'дней'];
+  var HOURS = ['час', 'часа', 'часов'], NUMBERS = ['число', 'числа', 'чисел'], DIGITS = ['цифра', 'цифры', 'цифр'], SECONDS = ['секунда', 'секунды', 'секунд'];
+  var TOADS = ['жаба', 'жабы', 'жаб'], ROWS = ['ряд', 'ряда', 'рядов'], TIMES = ['раз', 'раза', 'раз'];
+  var NUM_GEN = ['', 'одной', 'двух', 'трёх', 'четырёх', 'пяти', 'шести', 'семи', 'восьми', 'девяти'];
+  var NUM_NOM = ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'];
+  var PAIRS = ['пару', 'пары', 'пар'], SIDES = ['сторона', 'стороны', 'сторон'];
+
+  var BOYS = ['Петя', 'Коля', 'Дима', 'Саша', 'Ваня', 'Миша', 'Гоша', 'Лёша', 'Вова', 'Толя', 'Костя', 'Боря'];
+  var GIRLS = ['Маша', 'Оля', 'Катя', 'Аня', 'Лена', 'Ира', 'Вера', 'Соня', 'Таня', 'Марина', 'Яна', 'Даша'];
+  function stem(n) { return n.slice(0, -1); }
+  function hush(n) { return 'гкхжшщч'.indexOf(n.charAt(n.length - 2)) >= 0; }
+  function gen(n) { return n.slice(-1) === 'я' ? stem(n) + 'и' : stem(n) + (hush(n) ? 'и' : 'ы'); }
+  function dat(n) { return stem(n) + 'е'; }
+  function person(name, f) { return { name: name, f: f, gen: gen(name), dat: dat(name), v: function (m, w) { return f ? w : m; } }; }
+  function kid(r, sex) { var f = sex == null ? r() < 0.5 : sex; return person(pick(r, f ? GIRLS : BOYS), f); }
+
+
+  var INK = '#343F9E', FILL = '#E8EBFA', WARM = '#FFF4D6';
+  function svgWrap(W, H, body, label) { return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + Math.round(W) + ' ' + Math.round(H) + '" role="img" aria-label="' + label + '">' + body + '</svg>'; }
+  function tx(x, y, s, size, extra) { return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-size="' + (size || 18) + '" font-weight="800" fill="#1E2440" stroke="#FFFFFF" stroke-width="5" paint-order="stroke"' + (extra || '') + '>' + s + '</text>'; }
+  function addList(n, v) { var a = []; for (var i = 0; i < n; i++) a.push(v); return a.join(' + '); }
+  function rep(n, v) { return n <= 6 ? addList(n, v) : n + ' раз по ' + v; }
+  function acc(n) { return n.slice(0, -1) + (n.slice(-1) === 'я' ? 'ю' : 'у'); }
+  var KIDS = ['ребёнок', 'ребёнка', 'детей'];
+
+  // =====================================================================
+  // 1. Найди лишнюю букву
+  // =====================================================================
+  var LETTERS = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ';
+  var FLIP_OK = 'БВГЕЗКРСЧЭЯ';
+  var WORDS = {
+    3: ['ГОД', 'КОТ', 'ЛЕС', 'ДОМ', 'МИР', 'СОК', 'СЫР', 'ЛУК', 'МАК', 'НОС', 'ЛЕВ', 'КИТ', 'ЖУК', 'ДУБ', 'СОМ', 'ПАР', 'МЯЧ', 'РАК', 'ЛОБ', 'ЗУБ', 'ЛЁД', 'ПОЛ', 'ЛУГ', 'ЧАС'],
+    4: ['ЛУНА', 'КОЗА', 'РЕКА', 'РЫБА', 'ЗИМА', 'ЛИСА', 'СОВА', 'ГОРА', 'НОТА', 'ВОДА', 'ЛЕТО', 'ЛАПА', 'ЛУЖА', 'ПОЛЕ', 'КАША', 'ЖУКИ', 'ТОРТ', 'СУП', 'ГРИБ', 'СНЕГ', 'ДОЖДЬ', 'ВОЛК', 'МОСТ', 'ЛИСТ'].filter(function (w) { return w.length === 4; }),
+    5: ['КНИГА', 'ЛОДКА', 'ЛАМПА', 'КОШКА', 'ПТИЦА', 'РУЧКА', 'ТУЧКА', 'СЛОВО', 'ЗАМОК', 'ВЕТЕР', 'ЗВЕРЬ', 'КАПЛЯ', 'ЛОЖКА', 'ПАРТА', 'ГРУША']
+  };
+  var FEAT = {
+    color: { set: { fill: '#E67E22' }, say: 'другого цвета' },
+    size: { set: { 'font-size': 30 }, say: 'меньше остальных' },
+    big: { set: { 'font-size': 76 }, say: 'больше остальных' },
+    tilt: { set: {}, tr: ' skewX(-20)', say: 'наклонена, а остальные стоят прямо' },
+    hollow: { set: { fill: 'none', stroke: INK, 'stroke-width': 2.5 }, say: 'пустая внутри' },
+    flip: { set: {}, tr: ' scale(-1,1)', say: 'повёрнута в другую сторону, как в зеркале' },
+    thin: { set: { 'font-weight': 400 }, say: 'тоньше остальных' }
+  };
+  function t1(level, r) {
+    var len = level === 1 ? 3 : level === 2 ? pick(r, [3, 4]) : pick(r, [4, 5]), cols = level === 3 ? 5 : 4;
+    var word = pick(r, WORDS[len]), letters = word.split('');
+    if (letters.some(function (c) { return LETTERS.indexOf(c) < 0 && c !== 'Ы' && c !== 'Ь' && c !== 'Ё'; })) return null;
+    var pool = level === 1 ? ['color', 'size', 'big'] : level === 2 ? ['size', 'big', 'tilt', 'hollow', 'flip'] : ['tilt', 'hollow', 'flip', 'thin', 'size'];
+    var feats = [], rows = [], body = [], W = cols * 74 + 20, H = len * 84 + 16, expl = [];
+    for (var i = 0; i < len; i++) {
+      var f = pool[(i + Math.floor(r() * pool.length)) % pool.length];
+      if (f === 'flip' && FLIP_OK.indexOf(letters[i]) < 0) f = 'tilt';
+      if (level > 1 && i > 0 && f === feats[i - 1]) f = pool.filter(function (x) { return x !== feats[i - 1] && (x !== 'flip' || FLIP_OK.indexOf(letters[i]) >= 0); })[0];
+      feats.push(f);
+      var others = sample(r, LETTERS.split('').filter(function (c) { return c !== letters[i]; }), cols - 1), pos = ri(r, 0, cols - 1);
+      var row = others.slice(); row.splice(pos, 0, letters[i]); rows.push({ letters: row, odd: pos });
+      row.forEach(function (c, j) {
+        var x = 47 + j * 74, y = 70 + i * 84, F = j === pos ? FEAT[f] : null;
+        var at = { 'font-size': 56, 'font-weight': 900, fill: INK };
+        if (F) for (var key in F.set) at[key] = F.set[key];
+        body.push('<text data-row="' + i + '" transform="translate(' + x + ',' + y + ')' + (F && F.tr ? F.tr : '') + '" text-anchor="middle" font-family="Nunito, Arial, sans-serif"' + Object.keys(at).map(function (kk) { return ' ' + kk + '="' + at[kk] + '"'; }).join('') + '>' + c + '</text>');
+      });
+      expl.push((i + 1) + '-я строка: ' + letters[i] + ' ' + FEAT[f].say + '.');
+    }
+    var decoys = sample(r, WORDS[len].filter(function (w) { return w !== word; }), 3), opts = shuffle(r, decoys.concat([word]));
+    return {
+      text: 'В каждой строке найди букву, которая заметно отличается от остальных букв своей строки. Запиши эти буквы по порядку сверху вниз. Какое слово получилось?',
+      svg: svgWrap(W, H, body.join(''), 'Строки букв'),
+      answer: { kind: 'choice', value: word, options: opts },
+      params: { word: word, rows: rows, feats: feats },
+      hints: ['Смотри не на сами буквы, а на то, как они нарисованы: размер, наклон, цвет, заливка.',
+        expl[0] + ' Найди такую же «странную» букву в каждой строке.',
+        expl.join(' ') + ' Ответ: ' + word + '.']
+    };
+  }
+
+  // =====================================================================
+  // 2. Шкатулки в шкатулках
+  // =====================================================================
+  var BOX = [
+    { noun: ['шкатулка', 'шкатулки', 'шкатулок'], owner: 'У бабушки', who: 'Внук' },
+    { noun: ['коробка', 'коробки', 'коробок'], owner: 'У мамы', who: 'Петя' },
+    { noun: ['корзинка', 'корзинки', 'корзинок'], owner: 'У тёти Оли', who: 'Маша' }
+  ];
+  var BIG = ['большая', 'больших', 'больших'], SMALL = ['маленькая', 'маленьких', 'маленьких'], EMPTY = ['пустая', 'пустых', 'пустых'];
+  function np(n, adj, noun, adj2) { var k = plural(n, ['a', 'b', 'c']) === 'a' ? 0 : plural(n, ['a', 'b', 'c']) === 'b' ? 1 : 2; return n + ' ' + adj[k] + (adj2 ? ' ' + adj2[k] : '') + ' ' + noun[k]; }
+  function t2(level, r) {
+    var S = pick(r, BOX), N = S.noun, who = S.who, did = who === 'Маша' ? 'убрала' : 'убрал';
+    if (level === 3 && r() < 0.45) {
+      var a = ri(r, 2, 5), b = ri(r, 2, 4), tot = 1 + a + a * b;
+      return {
+        text: 'В большую ' + N[0].replace(/а$/, 'у') + ' положили ' + np(a, ['среднюю', 'средние', 'средних'], [N[0].replace(/а$/, 'у'), N[1], N[2]]) + ', а в каждую среднюю — по ' + b + ' ' + (b === 1 ? 'маленькой' : 'маленьких') + '. Сколько всего ' + N[2] + '?',
+        answer: { kind: 'num', value: tot, unit: plural(tot, N) }, params: { mode: 'nest', a: a, b: b },
+        hints: ['Посчитай отдельно маленькие, средние и большую. Не забудь саму большую!', 'Маленьких: ' + addList(a, b) + ' = ' + a * b + '.',
+          'Маленьких: ' + addList(a, b) + ' = ' + a * b + '. Всего: 1 большая, ' + a + ' средних и ' + a * b + ' маленьких: 1 + ' + a + ' + ' + a * b + ' = ' + tot + '. Ответ: ' + tot + '.']
+      };
+    }
+    var B = ri(r, 5, 12), k2 = level === 1 ? 1 : ri(r, 2, 3), k3 = level === 3 ? ri(r, 1, 2) : 0;
+    var used = 2 * k2 + 3 * k3, rest = ri(r, 1, 4), Sm = used + rest, occ = k2 + k3 + rest, empty = B - occ;
+    if (empty < 1) return null;
+    var accN = [N[0].replace(/а$/, 'у'), N[1], N[2]], bigAcc = function (k) { return k === 1 ? 'одну большую ' + accN[0] : np(k, BIG, accN); };
+    var put = 'положил' + (who === 'Маша' ? 'а' : '');
+    var cond = 'в ' + bigAcc(k2) + ' ' + put + (k2 === 1 ? ' 2 маленьких' : ' по 2 маленьких') + (k3 ? ', в ' + bigAcc(k3) + (k3 === 1 ? ' — 3 маленьких' : ' — по 3 маленьких') : '') + ', а в остальные — по одной';
+    var text = S.owner + ' есть ' + np(B, BIG, N, EMPTY) + ' и ' + np(Sm, SMALL, N) + '. ' + who + ' ' + did + ' все маленькие ' + N[1] + ' в большие: ' + cond + '. Сколько больших ' + N[2] + ' осталось пустыми?';
+    var part = function (k, m) { return k === 1 ? 'в одну большую — ' + m : 'в ' + k + ' больших — ' + addList(k, m) + ' = ' + k * m; };
+    var line1 = cap(part(k2, 2)) + (k3 ? ', ' + part(k3, 3) : '') + ' маленьких.';
+    return {
+      text: text, answer: { kind: 'num', value: empty, unit: plural(empty, N) }, params: { mode: 'boxes', B: B, S: Sm, k2: k2, k3: k3 },
+      hints: ['Сначала посчитай, сколько маленьких ушло в ' + (k3 ? 'большие по 2 и по 3' : 'большие по 2') + '. Куда попали остальные маленькие?',
+        line1 + ' Остальные маленькие лежат по одной — каждая занимает свою большую.',
+        line1 + ' Осталось ' + Sm + ' − ' + used + ' = ' + pn(rest, ['маленькая', 'маленьких', 'маленьких']) + ' — каждая в свою большую. Заняты ' + (k3 ? k2 + ' + ' + k3 + ' + ' + rest : k2 + ' + ' + rest) + ' = ' + occ + ' больших, пустых ' + B + ' − ' + occ + ' = ' + empty + '. Ответ: ' + empty + '.']
+    };
+  }
+
+  // =====================================================================
+  // 3. Сдвинь кусочки линии
+  // =====================================================================
+  function polyline(pts, sc, ox, oy, dash, color, w) { return '<polyline points="' + pts.map(function (p) { return (ox + p[0] * sc).toFixed(1) + ',' + (oy + p[1] * sc).toFixed(1); }).join(' ') + '" fill="none" stroke="' + color + '" stroke-width="' + (w || 6) + '" stroke-linecap="round" stroke-linejoin="round"' + (dash ? ' stroke-dasharray="12 9"' : '') + '/>'; }
+  function plen(pts) { var s = 0; for (var i = 1; i < pts.length; i++) s += Math.abs(pts[i][0] - pts[i - 1][0]) + Math.abs(pts[i][1] - pts[i - 1][1]); return s; }
+  function t3(level, r) {
+    var DASH = '#2E86C1';
+    if (level === 1) {
+      var w = ri(r, 4, 8), h = ri(r, 2, 5), corner = [[0, h], [w, h], [w, 0]], stair = [[0, h]], x = 0, y = h;
+      var nSteps = ri(r, 2, Math.min(w, h)), xs = sample(r, range(1, w - 1), nSteps - 1).sort(function (a, b) { return a - b; }).concat([w]), ys = sample(r, range(1, h - 1), nSteps - 1).sort(function (a, b) { return b - a; }).concat([0]);
+      for (var i = 0; i < nSteps; i++) { y = ys[i]; stair.push([x, y]); x = xs[i]; stair.push([x, y]); }
+      var sc = 34, grid = [];
+      for (var gx = 0; gx <= w; gx++) grid.push('<line x1="' + (20 + gx * sc) + '" y1="20" x2="' + (20 + gx * sc) + '" y2="' + (20 + h * sc) + '" stroke="#D5DAF0" stroke-width="1.5"/>');
+      for (var gy = 0; gy <= h; gy++) grid.push('<line x1="20" y1="' + (20 + gy * sc) + '" x2="' + (20 + w * sc) + '" y2="' + (20 + gy * sc) + '" stroke="#D5DAF0" stroke-width="1.5"/>');
+      var L = (w + h) * ri(r, 1, 3), askFirst = r() < 0.5;
+      return {
+        text: 'Два муравья ползли из нижнего левого угла клетчатого прямоугольника в верхний правый. Первый полз по краю (сплошная линия), второй — лесенкой (пунктир). ' + (askFirst ? 'Второй' : 'Первый') + ' прополз ' + L + ' метров. Сколько метров прополз ' + (askFirst ? 'первый' : 'второй') + '?',
+        svg: svgWrap(w * sc + 40, h * sc + 40, grid.join('') + polyline(corner, sc, 20, 20, false, INK) + polyline(stair, sc, 20, 20, true, DASH), 'Два пути муравьёв'),
+        answer: { kind: 'num', value: L, unit: 'м' }, params: { mode: 'equal', A: corner, B: stair, given: L },
+        hints: ['Мысленно сдвинь все горизонтальные кусочки лесенки вниз, а вертикальные — вправо. Что получится?', 'Горизонтальные кусочки лесенки вместе — это нижний край, вертикальные — правый край.',
+          'Сдвинем горизонтальные кусочки лесенки вниз — получится нижний край. Вертикальные — вправо — получится правый край. Значит, пути одинаковой длины. Ответ: ' + L + '.']
+      };
+    }
+    if (level === 2) {
+      var Wd = ri(r, 9, 14), Hh = ri(r, 5, 8), xa = ri(r, 3, Wd - 5), d1 = ri(r, 1, 2), d2 = ri(r, 1, 2), e = ri(r, 1, 2);
+      var A = [[0, 0], [xa, 0], [xa, Hh], [Wd, Hh]], Bp = [[0, d1], [xa + e, d1], [xa + e, Hh - d2], [Wd, Hh - d2]];
+      var LA = plen(A), LB = plen(Bp), askA = r() < 0.6, sc2 = 30, ox = 50, oy = 20;
+      var lab = function (x1, y1, x2, y2, t, tx2, ty2) { return '<line x1="' + (ox + x1 * sc2) + '" y1="' + (oy + y1 * sc2) + '" x2="' + (ox + x2 * sc2) + '" y2="' + (oy + y2 * sc2) + '" stroke="#1E2440" stroke-width="3"/>' + tx(ox + tx2 * sc2, oy + ty2 * sc2, t, 18); };
+      var body = polyline(A, sc2, ox, oy, false, INK) + polyline(Bp, sc2, ox, oy, true, DASH) +
+        tx(ox - 26, oy + 7, 'А', 24) + tx(ox - 26, oy + d1 * sc2 + 7, 'Б', 24) +
+        lab(1.2, 0.25, 1.2, d1 - 0.25, d1 + ' м', 2.6, d1 / 2 + 0.25) +
+        lab(xa + 0.2, Hh / 2, xa + e - 0.2, Hh / 2, e + ' м', xa - 1.3, Hh / 2 + 0.25) +
+        lab(Wd + 0.6, Hh - d2 + 0.25, Wd + 0.6, Hh - 0.25, d2 + ' м', Wd + 1.8, Hh - d2 / 2 + 0.25);
+      return {
+        text: 'Первый муравей прополз по всей линии А (сплошная), а второй — по всей линии Б (пунктир). ' + (askA ? 'Второй муравей прополз ' + LB + ' метров. Сколько метров прополз первый?' : 'Первый муравей прополз ' + LA + ' метров. Сколько метров прополз второй?'),
+        svg: svgWrap(Wd * sc2 + ox + 90, Hh * sc2 + oy + 20, body, 'Линии А и Б'),
+        answer: { kind: 'num', value: askA ? LA : LB, unit: 'м' }, params: { mode: 'z', A: A, B: Bp, askA: askA, given: askA ? LB : LA },
+        hints: ['Сравни горизонтальные кусочки линий А и Б. А потом — вертикальные.', 'Горизонтальные кусочки вместе у обеих линий одинаковые: начинаются и кончаются в одних местах. А вертикальный кусочек Б короче сверху на ' + d1 + ' м и снизу на ' + d2 + ' м.',
+          'Горизонтальные кусочки вместе одинаковые. Вертикальный кусочек Б короче на ' + d1 + ' + ' + d2 + ' = ' + (d1 + d2) + ' м. Подпись «' + e + ' м» посередине — расстояние между линиями, на длину она не влияет. ' + (askA ? LB + ' + ' + (d1 + d2) + ' = ' + LA : LA + ' − ' + (d1 + d2) + ' = ' + LB) + '. Ответ: ' + (askA ? LA : LB) + '.']
+      };
+    }
+    var hill = r() < 0.4, hgt = ri(r, 6, 20), wid = ri(r, 10, 30), n = ri(r, 3, 5), pts = [[0, hgt]], cx = 0, cy = hgt;
+    var stepW = wid / (hill ? 2 * n : n), stepH = hgt / n;
+    for (var s = 0; s < n; s++) { cy -= stepH; pts.push([cx, cy]); cx += stepW; pts.push([cx, cy]); }
+    if (hill) for (var s2 = 0; s2 < n; s2++) { cy += stepH; pts.push([cx, cy]); if (s2 < n - 1) { cx += stepW; pts.push([cx, cy]); } }
+    if (hill) { cx += stepW; pts.push([cx, cy]); }
+    var scl = Math.min(260 / wid, 190 / hgt), oy3 = 20, ox3 = 86, body3 = polyline(pts, scl, ox3, oy3, false, INK, 5);
+    body3 += '<line x1="' + (ox3 - 20) + '" y1="' + oy3 + '" x2="' + (ox3 - 20) + '" y2="' + (oy3 + hgt * scl) + '" stroke="#1E2440" stroke-width="2" marker-start="" />' + tx(ox3 - 52, oy3 + hgt * scl / 2 + 6, hgt + ' см', 16);
+    body3 += '<line x1="' + ox3 + '" y1="' + (oy3 + hgt * scl + 18) + '" x2="' + (ox3 + wid * scl) + '" y2="' + (oy3 + hgt * scl + 18) + '" stroke="#1E2440" stroke-width="2"/>' + tx(ox3 + wid * scl / 2, oy3 + hgt * scl + 40, wid + ' см', 16);
+    var ans = hill ? 2 * hgt + wid : hgt + wid;
+    return {
+      text: hill ? 'Муравей ползёт через горку из ступенек: сначала вверх до самой вершины, потом вниз до конца. Высота горки ' + hgt + ' см, а длина ' + wid + ' см (см. рисунок). Сколько сантиметров проползёт муравей?'
+        : 'Муравей ползёт по лесенке от низа до самого верха. Вся лесенка высотой ' + hgt + ' см и длиной ' + wid + ' см (см. рисунок). Сколько сантиметров проползёт муравей?',
+      svg: svgWrap(wid * scl + ox3 + 30, hgt * scl + oy3 + 52, body3, 'Лесенка'),
+      answer: { kind: 'num', value: ans, unit: 'см' }, params: { mode: hill ? 'hill' : 'stairs', h: hgt, w: wid, pts: pts },
+      hints: ['Не нужно знать, какой высоты каждая ступенька. Сложи все вертикальные кусочки вместе. А горизонтальные?', hill ? 'Вертикальные кусочки: вверх — вся высота, вниз — ещё раз вся высота. Горизонтальные вместе — вся длина.' : 'Все вертикальные кусочки вместе — это высота лесенки, все горизонтальные — её длина.',
+        hill ? 'Вверх: ' + hgt + ' см, вниз: ещё ' + hgt + ' см, горизонтальные кусочки вместе: ' + wid + ' см. ' + hgt + ' + ' + hgt + ' + ' + wid + ' = ' + ans + '. Ответ: ' + ans + '.'
+          : 'Вертикальные кусочки вместе — ' + hgt + ' см, горизонтальные — ' + wid + ' см. ' + hgt + ' + ' + wid + ' = ' + ans + '. Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 4. Сначала посчитай клетки
+  // =====================================================================
+  var SHAPES = { sq: [[0, 0], [1, 0], [0, 1], [1, 1]], c1: [[0, 0], [1, 0], [0, 1]], c2: [[0, 0], [1, 0], [1, 1]], c3: [[0, 0], [0, 1], [1, 1]], c4: [[1, 0], [0, 1], [1, 1]] };
+  function buildFigure(r, q, k) {
+    var pieces = shuffle(r, Array(q).fill('sq').concat(Array(k).fill('c'))), occ = {}, cells = [];
+    function free(sh, x, y) { return sh.every(function (c) { return !occ[(x + c[0]) + ',' + (y + c[1])]; }); }
+    function touches(sh, x, y) { return sh.some(function (c) { var X = x + c[0], Y = y + c[1]; return occ[(X + 1) + ',' + Y] || occ[(X - 1) + ',' + Y] || occ[X + ',' + (Y + 1)] || occ[X + ',' + (Y - 1)]; }); }
+    for (var i = 0; i < pieces.length; i++) {
+      var sh = pieces[i] === 'sq' ? SHAPES.sq : SHAPES['c' + ri(r, 1, 4)], placed = false;
+      for (var t = 0; t < 400 && !placed; t++) {
+        var x = i === 0 ? 4 : ri(r, 0, 8), y = i === 0 ? 4 : ri(r, 0, 8);
+        if (x > 7 || y > 7) continue;
+        if (free(sh, x, y) && (i === 0 || touches(sh, x, y))) { sh.forEach(function (c) { occ[(x + c[0]) + ',' + (y + c[1])] = true; cells.push([x + c[0], y + c[1]]); }); placed = true; }
+      }
+      if (!placed) return null;
+    }
+    return cells;
+  }
+  function figureSvg(cells, rot, legend) {
+    var s = 30, minx = Math.min.apply(null, cells.map(function (c) { return c[0]; })), miny = Math.min.apply(null, cells.map(function (c) { return c[1]; }));
+    var maxx = Math.max.apply(null, cells.map(function (c) { return c[0]; })), maxy = Math.max.apply(null, cells.map(function (c) { return c[1]; }));
+    var w = (maxx - minx + 1) * s, h = (maxy - miny + 1) * s, D = Math.ceil(Math.sqrt(w * w + h * h)) + 10;
+    var Wf = rot ? D : w + 10, Hf = rot ? D : h + 10, cx = Wf / 2, cy = Hf / 2;
+    var g = cells.map(function (c) { return '<rect class="cell" x="' + ((c[0] - minx) * s - w / 2).toFixed(1) + '" y="' + ((c[1] - miny) * s - h / 2).toFixed(1) + '" width="' + s + '" height="' + s + '" fill="' + FILL + '" stroke="' + INK + '" stroke-width="3"/>'; }).join('');
+    var body = '<g transform="translate(' + cx.toFixed(1) + ',' + cy.toFixed(1) + ')' + (rot ? ' rotate(45)' : '') + '">' + g + '</g>';
+    if (legend) {
+      var lx = Wf + 30, ls = 22;
+      body += '<g>' + [[0, 0], [0, 1], [1, 1]].map(function (c) { return '<rect x="' + (lx + c[0] * ls) + '" y="' + (20 + c[1] * ls) + '" width="' + ls + '" height="' + ls + '" fill="#BFD4EE" stroke="' + INK + '" stroke-width="2.5"/>'; }).join('') +
+        [[0, 0], [1, 0], [0, 1], [1, 1]].map(function (c) { return '<rect x="' + (lx + c[0] * ls) + '" y="' + (90 + c[1] * ls) + '" width="' + ls + '" height="' + ls + '" fill="#BFD4EE" stroke="' + INK + '" stroke-width="2.5"/>'; }).join('') + '</g>';
+    }
+    return svgWrap(Wf + (legend ? 100 : 0), Math.max(Hf, legend ? 150 : 0), body, 'Фигура из клеток');
+  }
+  function t4(level, r) {
+    var q, k, rev = level === 3;
+    if (level === 1) { k = 1; q = ri(r, 2, 3); } else if (level === 2) { k = ri(r, 2, 3); q = ri(r, 3, 5); } else { k = ri(r, 2, 4); q = ri(r, 2, 4); }
+    var cells = buildFigure(r, q, k); if (!cells) return null;
+    var N = cells.length, rot = level === 3 && r() < 0.6, corners = 3 * k, rest = N - corners;
+    var ck = addList(k, 3), sq = addList(q, 4);
+    if (!rev) return {
+      text: 'Из фигуры на рисунке вырезали по линиям клеток ' + pn(k, ['трёхклеточный уголок', 'трёхклеточных уголка', 'трёхклеточных уголков']) + ', а остальное разрезали на квадратики 2 × 2 без остатка. Сколько получилось квадратиков?',
+      svg: figureSvg(cells, false, true), answer: { kind: 'num', value: q, unit: plural(q, ['квадратик', 'квадратика', 'квадратиков']) },
+      params: { mode: 'squares', k: k, cells: cells },
+      hints: ['Не пытайся сразу резать. Сначала посчитай, сколько в фигуре клеток. Отмечай сосчитанные точкой!', 'В фигуре ' + pn(N, ['клетка', 'клетки', 'клеток']) + '. Сколько клеток заберут уголки? Сколько клеток в одном квадратике 2 × 2?',
+        'В фигуре ' + pn(N, ['клетка', 'клетки', 'клеток']) + '. ' + (k === 1 ? 'Уголок — 3 клетки' : 'Уголки: ' + ck + ' = ' + corners + ' клеток') + ', осталось ' + N + ' − ' + corners + ' = ' + rest + '. В квадратике 4 клетки: ' + sq + ' = ' + rest + ' — это ' + pn(q, ['квадратик', 'квадратика', 'квадратиков']) + '. Ответ: ' + q + '.']
+    };
+    return {
+      text: 'Фигуру на рисунке разрезали по линиям клеток на ' + pn(q, ['квадратик', 'квадратика', 'квадратиков']) + ' 2 × 2 и несколько трёхклеточных уголков. Сколько получилось уголков?',
+      svg: figureSvg(cells, rot, true), answer: { kind: 'num', value: k, unit: plural(k, ['уголок', 'уголка', 'уголков']) },
+      params: { mode: 'corners', q: q, cells: cells, rot: rot },
+      hints: ['Сначала посчитай клетки в фигуре' + (rot ? ' — можно повернуть телефон или голову!' : '.') + ' Отмечай сосчитанные.', 'В фигуре ' + pn(N, ['клетка', 'клетки', 'клеток']) + '. Сколько клеток займут квадратики? Сколько останется на уголки?',
+        'В фигуре ' + pn(N, ['клетка', 'клетки', 'клеток']) + '. Квадратики: ' + sq + ' = ' + 4 * q + ' клеток. На уголки осталось ' + N + ' − ' + 4 * q + ' = ' + corners + ', в уголке 3 клетки: ' + ck + ' = ' + corners + ' — это ' + pn(k, ['уголок', 'уголка', 'уголков']) + '. Ответ: ' + k + '.']
+    };
+  }
+
+  // =====================================================================
+  // 5. Сколько способов с условием
+  // =====================================================================
+  function perms(a) { if (a.length <= 1) return [a.slice()]; var o = []; a.forEach(function (x, i) { perms(a.slice(0, i).concat(a.slice(i + 1))).forEach(function (p) { o.push([x].concat(p)); }); }); return o; }
+  var DRESS = [{ acc: 'кофту', gen: 'кофты', nom: 'кофта' }, { acc: 'куртку', gen: 'куртки', nom: 'куртка' }, { acc: 'шапку', gen: 'шапки', nom: 'шапка' }, { acc: 'шарф', gen: 'шарфа', nom: 'шарф' }, { acc: 'варежки', gen: 'варежек', nom: 'варежки' }];
+  var KIDS5 = ['Аня', 'Боря', 'Вика', 'Гоша', 'Даша'];
+  function t5(level, r) {
+    var n = level === 1 ? 3 : 4, photo = r() < 0.5;
+    var conds = level === 1 ? ['after', 'edge', 'adjacent', 'notFirst'] : level === 2 ? ['after', 'after', 'edge'] : ['adjacent', 'notFirst', 'two'];
+    var cond = pick(r, conds);
+    if (!photo && cond !== 'after' && cond !== 'two') photo = true;
+    var items = photo ? sample(r, KIDS5, n) : sample(r, DRESS, n), P = perms(range(0, n - 1)), X = 0, Y = 1, U = 2, V = 3;
+    var ok = function (p) {
+      var at = function (i) { return p.indexOf(i); };
+      if (cond === 'after') return at(X) > at(Y);
+      if (cond === 'edge') return at(X) === 0 || at(X) === n - 1;
+      if (cond === 'adjacent') return Math.abs(at(X) - at(Y)) === 1;
+      if (cond === 'notFirst') return at(X) !== 0;
+      return at(X) > at(Y) && at(U) > at(V);
+    };
+    var good = P.filter(ok), cnt = good.length, nm = function (i) { return photo ? items[i] : items[i].nom; };
+    var head, condText, expl;
+    if (photo) {
+      head = joinAnd(items) + ' встают в ряд для фото. ';
+      condText = cond === 'after' ? items[X] + ' хочет стоять правее, чем ' + items[Y] + ' (можно не рядом).' : cond === 'edge' ? items[X] + ' хочет стоять с краю.' : cond === 'adjacent' ? items[X] + ' и ' + items[Y] + ' хотят стоять рядом.' : cond === 'notFirst' ? items[X] + ' не хочет стоять первым слева.'.replace('первым', /а$|я$/.test(items[X]) && ['Боря', 'Гоша'].indexOf(items[X]) < 0 ? 'первой' : 'первым') : items[X] + ' стоит правее, чем ' + items[Y] + ', а ' + items[U] + ' — правее, чем ' + items[V] + ' (можно не рядом).';
+      head += condText + ' Сколькими способами ребята могут встать?';
+    } else {
+      var girl = kid(r, true);
+      head = girl.name + ' надевает по очереди ' + joinAnd(items.map(function (x) { return x.acc; })) + '. ';
+      condText = cond === 'after' ? cap(items[X].acc) + ' она надевает после ' + items[Y].gen + ' (можно не сразу).' : cap(items[X].acc) + ' она надевает после ' + items[Y].gen + ', а ' + items[U].acc + ' — после ' + items[V].gen + ' (можно не сразу).';
+      head += condText + ' Сколькими способами ' + girl.name + ' может одеться?';
+    }
+    var fact = n === 3 ? 2 : 6, list = good.map(function (p) { return p.map(nm).join(', '); });
+    if (n === 3) expl = 'Выпишем все способы: ' + list.join('; ') + '. Всего ' + cnt + '.';
+    else if (cond === 'after') expl = 'Сначала выберем места для «' + nm(Y) + '» и «' + nm(X) + '» (' + nm(Y) + ' раньше): 1-е и 2-е, 1-е и 3-е, 1-е и 4-е, 2-е и 3-е, 2-е и 4-е, 3-е и 4-е — 6 способов. В оставшиеся два места двое других встают двумя способами: 6 + 6 = 12.';
+    else if (cond === 'edge') expl = nm(X) + ' слева: остальные трое встают 6 способами. ' + nm(X) + ' справа — ещё 6. 6 + 6 = 12.';
+    else if (cond === 'adjacent') expl = 'Склеим ' + acc(nm(X)) + ' и ' + acc(nm(Y)) + ' в одну карточку. Три карточки встают 6 способами, а внутри склейки двое могут поменяться местами: 6 + 6 = 12.';
+    else if (cond === 'notFirst') expl = 'Первым слева может стоять любой из трёх других. Для каждого остальные трое встают 6 способами: 6 + 6 + 6 = 18.';
+    else expl = 'Без условий способов 24. Первое условие оставляет ровно половину — 12. Второе — ещё половину: 6.';
+    return {
+      text: head, answer: { kind: 'num', value: cnt, unit: plural(cnt, ['способ', 'способа', 'способов']) }, params: { n: n, cond: cond },
+      hints: [n === 3 ? 'Выпиши все способы по порядку — так ничего не потеряешь.' : 'Без условия способов 24. Подумай, какую часть из них оставляет условие.',
+        n === 3 ? 'Всего без условия ' + fact * 3 + ' способов. Вычеркни те, где условие не выполняется.' : (cond === 'after' ? 'Сначала поставь «' + nm(Y) + '» и «' + nm(X) + '», а уже потом остальных.' : cond === 'edge' || cond === 'notFirst' ? 'Разбери, кто стоит первым слева.' : cond === 'adjacent' ? 'Склей двоих, кто стоит рядом, в одну карточку.' : 'Каждое условие оставляет половину способов.'),
+        expl + ' Ответ: ' + cnt + '.']
+    };
+  }
+
+  // =====================================================================
+  // 6. Головы и ноги
+  // =====================================================================
+  var FARM = [
+    { two: ['гусь', 'гуся', 'гусей'], four: ['коза', 'козы', 'коз'], twoN: 'гуси', fourN: 'козы', twoIns: 'гусями', each4: 'у каждой козы', place: 'на лугу', where: 'На лугу гуляют гуси и козы.' },
+    { two: ['курица', 'курицы', 'кур'], four: ['кролик', 'кролика', 'кроликов'], twoN: 'куры', fourN: 'кролики', twoIns: 'курами', each4: 'у каждого кролика', place: 'во дворе', where: 'Во дворе гуляют куры и кролики.' },
+    { two: ['утка', 'утки', 'уток'], four: ['овца', 'овцы', 'овец'], twoN: 'утки', fourN: 'овцы', twoIns: 'утками', each4: 'у каждой овцы', place: 'на ферме', where: 'На ферме гуляют утки и овцы.' }
+  ];
+  var LEGS = ['нога', 'ноги', 'ног'];
+  function t6(level, r) {
+    var F = pick(r, FARM), g, k, text, expl, ans, askTwo = r() < 0.5, L;
+    if (level === 1) {
+      k = ri(r, 2, 6); g = k; L = 6 * k;
+      text = F.where + ' ' + cap(F.twoN) + ' и ' + F.fourN + ' — поровну. Всего у них ' + pn(L, LEGS) + '. Сколько ' + (askTwo ? F.two[2] : F.four[2]) + '?';
+      expl = 'Пара «' + F.two[0] + ' и ' + F.four[0] + '» — это 2 + 4 = 6 ног. ' + addList(k, 6) + ' = ' + L + ' — это ' + k + ' таких пар.';
+    } else if (level === 2) {
+      k = ri(r, 2, 7); var d = pick(r, [1, 2, 3]); g = k + d; L = 2 * g + 4 * k;
+      text = F.where + ' Всего у них ' + pn(L, LEGS) + ', а ' + F.two[2] + ' на ' + d + ' больше, чем ' + F.four[2] + '. Сколько ' + F.place + ' ' + (askTwo ? F.two[2] : F.four[2]) + '?';
+      expl = 'Уберём лишних: ' + pn(d, F.two) + ', у ' + (d === 1 ? (F.two[0] === 'гусь' ? 'него' : 'неё') : 'них') + ' ' + (d === 1 ? '2 ноги' : addList(d, 2) + ' = ' + pn(2 * d, LEGS)) + '.';
+      expl += ' Осталось ' + L + ' − ' + 2 * d + ' = ' + pn(L - 2 * d, LEGS) + ', а ' + F.two[2] + ' и ' + F.four[2] + ' теперь поровну.';
+      expl += ' В паре 2 + 4 = 6 ног: ' + addList(k, 6) + ' = ' + (L - 2 * d) + ' — это ' + pn(k, ['пара', 'пары', 'пар']) + '. ' + cap(F.four[2]) + ' ' + k + ', ' + F.two[2] + ' ' + k + ' + ' + d + ' = ' + g + '.';
+    } else {
+      var Hd = ri(r, 4, 12); k = ri(r, 2, Hd - 2); g = Hd - k; L = 2 * g + 4 * k;
+      text = F.where + ' У них всего ' + Hd + ' голов и ' + pn(L, LEGS) + '. Сколько ' + (askTwo ? F.two[2] : F.four[2]) + '?';
+      expl = 'Если бы все ' + Hd + ' были ' + F.twoIns + ', ног было бы ' + Hd + ' + ' + Hd + ' = ' + 2 * Hd + '. А ног ' + L + ' — на ' + (L - 2 * Hd) + ' больше. ' + cap(F.each4) + ' не 2 ноги, а 4 — на 2 больше: ' + (L - 2 * Hd) + ' — это ' + addList(k, 2) + ', значит, ' + F.four[2] + ' ' + k + ', ' + F.two[2] + ' ' + Hd + ' − ' + k + ' = ' + g + '.';
+    }
+    ans = askTwo ? g : k;
+    return {
+      text: text, answer: { kind: 'num', value: ans, unit: '' }, params: { level: level, g: g, k: k, L: L, askTwo: askTwo, heads: level === 3 ? g + k : null, diff: level === 2 ? g - k : null },
+      hints: [level === 2 ? 'Сделай, чтобы стало поровну: мысленно убери лишних ' + F.two[2] + '.' : level === 3 ? 'Представь, что все — ' + F.twoN + '. Сколько тогда было бы ног?' : 'Сколько ног у одной пары: ' + F.two[0] + ' и ' + F.four[0] + '?',
+        level === 2 ? 'Без лишних (' + pn(g - k, F.two) + ') останется ' + (L - 2 * (g - k)) + ' ног, а животных поровну. Сколько ног у пары?' : level === 3 ? 'Если все — ' + F.twoN + ', ног ' + 2 * (g + k) + '. Откуда берутся лишние ноги?' : 'В паре 2 + 4 = 6 ног. Сколько раз по 6 в ' + L + '?',
+        expl + ' Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 7. Замени одно на другое
+  // =====================================================================
+  function t7(level, r) {
+    if (level < 3) {
+      var c = ri(r, 2, 4), h = ri(r, 1, 3), a = level === 1 ? ri(r, 1, 3) : ri(r, 3, 8), b = level === 1 ? 1 : ri(r, 2, 4), pig = c * h, W = a * h + b * pig, m = a + b * c;
+      var pigs = b === 1 ? 'морская свинка' : pn(b, ['морская свинка', 'морские свинки', 'морских свинок']), hamsters = pn(a, ['хомяк', 'хомяка', 'хомяков']);
+      return {
+        text: (level === 1 ? cap(pigs) + ' и ' + hamsters + ' весят ' + pn(W, ['фунт', 'фунта', 'фунтов']) + ', а ' + pn(c, ['хомяк', 'хомяка', 'хомяков']) + ' весят как одна свинка.' : cap(hamsters) + ' и ' + pigs + ' весят ' + pn(W, ['фунт', 'фунта', 'фунтов']) + ', а ' + pn(c, ['хомяк', 'хомяка', 'хомяков']) + ' весят как одна свинка.') + ' Сколько фунтов весит одна свинка? (Все хомяки весят одинаково, и все свинки весят одинаково.)',
+        answer: { kind: 'num', value: pig, unit: plural(pig, ['фунт', 'фунта', 'фунтов']) }, params: { a: a, b: b, c: c, W: W, ask: 'pig' },
+        hints: ['Замени каждую свинку на ' + pn(c, ['хомяк', 'хомяка', 'хомяков']) + ' — вес не изменится.', 'Тогда на весах ' + a + ' + ' + addList(b, c) + ' = ' + pn(m, ['хомяк', 'хомяка', 'хомяков']) + ', и они весят ' + pn(W, ['фунт', 'фунта', 'фунтов']) + '. Сколько весит один хомяк?',
+          'Заменим свинок хомяками: ' + a + ' + ' + addList(b, c) + ' = ' + pn(m, ['хомяк', 'хомяка', 'хомяков']) + ' весят ' + pn(W, ['фунт', 'фунта', 'фунтов']) + ', значит, хомяк весит ' + pn(h, ['фунт', 'фунта', 'фунтов']) + ' (' + rep(m, h) + ' — это ' + W + '). Свинка — как ' + pn(c, ['хомяк', 'хомяка', 'хомяков']) + ': ' + addList(c, h) + ' = ' + pig + '. Ответ: ' + pig + '.']
+      };
+    }
+    var c3 = ri(r, 2, 4), dm = ri(r, 1, 3), na = ri(r, 1, 3), nd = ri(r, 1, 4), arb = c3 * dm, W3 = na * arb + nd * dm, m3 = na * c3 + nd;
+    return {
+      text: 'Арбуз весит столько же, сколько ' + pn(c3, ['дыня', 'дыни', 'дынь']) + '. ' + cap(pn(na, ['арбуз', 'арбуза', 'арбузов'])) + ' и ' + pn(nd, ['дыня', 'дыни', 'дынь']) + ' вместе весят ' + W3 + ' кг. Сколько килограммов весит один арбуз? (Все арбузы весят одинаково, и все дыни — тоже.)',
+      answer: { kind: 'num', value: arb, unit: 'кг' }, params: { a: nd, b: na, c: c3, W: W3, ask: 'big' },
+      hints: ['Замени каждый арбуз на ' + c3 + ' дыни — вес не изменится.', 'Тогда на весах ' + addList(na, c3) + ' + ' + nd + ' = ' + pn(m3, ['дыня', 'дыни', 'дынь']) + '. Сколько весит одна дыня?',
+        'Заменим арбузы дынями: ' + addList(na, c3) + ' + ' + nd + ' = ' + pn(m3, ['дыня', 'дыни', 'дынь']) + ' весят ' + W3 + ' кг, значит, дыня весит ' + dm + ' кг (' + rep(m3, dm) + ' — это ' + W3 + '). Арбуз — как ' + c3 + ' дыни: ' + addList(c3, dm) + ' = ' + arb + '. Ответ: ' + arb + '.']
+    };
+  }
+
+  // =====================================================================
+  // 8. Чтобы стало поровну
+  // =====================================================================
+  var FOOD = [['пирожок', 'пирожка', 'пирожков'], ['конфета', 'конфеты', 'конфет'], ['марка', 'марки', 'марок'], ['наклейка', 'наклейки', 'наклеек']];
+  function t8(level, r) {
+    var two = [kid(r, false), kid(r, true)]; if (r() < 0.5) two.reverse();
+    var A = two[0], B = two[1], F = pick(r, FOOD), d, ans, text, expl;
+    var gave = A.v('передаст', 'передаст'), had = function (p) { return p.v('был', 'была'); };
+    if (level === 1) {
+      d = 2 * ri(r, 1, 9); ans = d / 2;
+      text = 'У ' + A.gen + ' на ' + pn(d, F) + ' больше, чем у ' + B.gen + '. Сколько ' + F[2] + ' ' + A.name + ' должен отдать ' + B.dat + ', чтобы у них стало поровну?';
+      text = text.replace(' должен ', A.f ? ' должна ' : ' должен ');
+      expl = 'Если ' + A.name + ' отдаст ' + ans + ', у ' + A.gen.replace(/^/, '') + ' станет на ' + ans + ' меньше, а у ' + B.gen + ' — на ' + ans + ' больше: разница ' + d + ' исчезнет (' + ans + ' + ' + ans + ' = ' + d + ').';
+    } else if (level === 2) {
+      d = 2 * ri(r, 1, 8); var R0 = d / 2, P0 = R0 + d; var askP = r() < 0.7; ans = askP ? P0 : R0;
+      text = 'У ' + A.gen + ' на ' + pn(d, F) + ' больше, чем у ' + B.gen + '. Если ' + A.name + ' передаст ' + B.dat + ' столько ' + F[2] + ', сколько уже есть у ' + B.gen + ', то у них станет поровну. Сколько ' + F[2] + ' было у ' + (askP ? A.gen : B.gen) + '?';
+      expl = 'Чтобы стало поровну, ' + A.name + ' должен отдать половину разницы: ' + R0 + ' + ' + R0 + ' = ' + d + ', значит, ' + R0 + '. Это столько, сколько было у ' + B.gen + ': у ' + B.gen + ' ' + R0 + ', у ' + A.gen + ' ' + R0 + ' + ' + d + ' = ' + P0 + '.';
+      expl = expl.replace(' должен ', A.f ? ' должна ' : ' должен ');
+    } else {
+      var R1 = ri(r, 2, 12), P1 = 3 * R1, N = 4 * R1; var askA = r() < 0.6; ans = askA ? P1 : R1;
+      text = 'У ' + A.gen + ' и ' + B.gen + ' вместе ' + pn(N, F) + '. ' + A.name + ' передал' + A.v('', 'а') + ' ' + B.dat + ' столько ' + F[2] + ', сколько у ' + B.gen + ' уже было, и у них стало поровну. Сколько ' + F[2] + ' было у ' + (askA ? A.gen : B.gen) + ' сначала?';
+      expl = 'После передачи у обоих поровну: ' + N + ' — это ' + 2 * R1 + ' + ' + 2 * R1 + '. У ' + B.gen + ' стало вдвое больше, чем было: ' + 2 * R1 + ' = ' + R1 + ' + ' + R1 + ', значит, было ' + R1 + '. У ' + A.gen + ' было ' + N + ' − ' + R1 + ' = ' + P1 + '.';
+    }
+    return {
+      text: text, answer: { kind: 'num', value: ans, unit: plural(ans, F) }, params: { level: level, d: d || null, N: level === 3 ? N : null, ask: level === 1 ? 'give' : (level === 2 ? (ans === P0 ? 'A' : 'B') : (ans === P1 ? 'A' : 'B')) },
+      hints: [level === 3 ? 'Сколько станет у каждого в конце, если поровну?' : 'Нарисуй две полоски: у ' + A.gen + ' длиннее на ' + d + '. Какой кусок надо перенести, чтобы стали равны?',
+        level === 3 ? 'В конце у каждого ' + N / 2 + '. У ' + B.gen + ' стало вдвое больше, чем было. Сколько было?' : 'Перенести нужно половину разницы: ' + d / 2 + '.',
+        expl + ' Ответ: ' + ans + '.']
+    };
+  }
+
+  // =====================================================================
+  // 9. Наверняка: худший случай
+  // =====================================================================
+  var COLORS9 = ['красных', 'синих', 'зелёных', 'жёлтых', 'белых'];
+  var COLORS9_ONE = ['красный', 'синий', 'зелёный', 'жёлтый', 'белый'];
+  function t9(level, r) {
+    var w = kid(r), a = w.v('', 'а');
+    if (level === 1) {
+      var c = ri(r, 2, 8), ans = c + 1;
+      return {
+        text: 'В ящике лежат носки ' + pn(c, ['цвета', 'цветов', 'цветов']).replace(/^(\d+) цвета$/, '$1 цвета') + ', каждого цвета много. В комнате темно. Какое наименьшее число носков нужно достать, чтобы среди них точно оказалась пара одного цвета?',
+        answer: { kind: 'num', value: ans, unit: plural(ans, ['носок', 'носка', 'носков']) }, params: { mode: 'pair', c: c },
+        hints: ['Представь, что не везёт: каждый новый носок другого цвета. Сколько носков можно так достать?', 'Не везёт: ' + c + ' носков — все разных цветов. А следующий?',
+          'Если не везёт, первые ' + c + ' носков будут все разных цветов. Следующий, ' + ans + '-й, точно совпадёт по цвету с одним из них. Ответ: ' + ans + '.']
+      };
+    }
+    if (level === 2) {
+      var n = ri(r, 3, 10), cc = n - 1;
+      return {
+        text: w.name + ' знает, сколько разных цветов у носков в ящике. В комнате темно, и ' + w.name + ' понял' + a + ', что придётся достать хотя бы ' + n + ' носков, чтобы среди них точно оказалась пара одного цвета. Сколько цветов у носков?',
+        answer: { kind: 'num', value: cc, unit: plural(cc, ['цвет', 'цвета', 'цветов']) }, params: { mode: 'colors', n: n },
+        hints: ['Если цветов, например, 3, сколько носков надо достать, чтобы точно была пара?', 'При 3 цветах не везёт так: 3 носка разных цветов, а 4-й точно даст пару. Носков на 1 больше, чем цветов.',
+          'Если цветов столько-то, то в худшем случае первые носки — все разных цветов, по одному каждого, а следующий даёт пару. Значит, носков нужно на 1 больше, чем цветов: ' + n + ' − 1 = ' + cc + '. Ответ: ' + cc + '.']
+      };
+    }
+    var k = ri(r, 2, 3), cols = sample(r, range(0, 4), k), cnt = cols.map(function () { return ri(r, 2, 8); }), mode = pick(r, ['one', 'two', 'both']), t = cols[0];
+    var others = sum(cnt) - cnt[0], ans3 = mode === 'one' ? others + 1 : mode === 'two' ? others + 2 : Math.max.apply(null, cnt) + 1;
+    if (mode === 'two' && cnt[0] < 2) return null;
+    if (mode === 'both' && k !== 2) return null;
+    var list = cols.map(function (ci, i) { return pn(cnt[i], [COLORS9_ONE[ci], COLORS9[ci], COLORS9[ci]]); });
+    var q = mode === 'one' ? 'чтобы среди них точно был хотя бы один ' + COLORS9_ONE[t] : mode === 'two' ? 'чтобы среди них точно было два ' + COLORS9[t].replace(/х$/, 'х') + ' шарика' : 'чтобы среди них точно были шарики обоих цветов';
+    var expl = mode === 'one' ? 'Если не везёт, сначала достанем все остальные: ' + others + ' шариков. Следующий точно ' + COLORS9_ONE[t] + ': ' + others + ' + 1 = ' + ans3 + '.'
+      : mode === 'two' ? 'Если не везёт, сначала достанем все остальные: ' + others + ' шариков, потом два ' + COLORS9[t] + ': ' + others + ' + 2 = ' + ans3 + '.'
+        : 'Если не везёт, сначала достанем все шарики одного цвета — самого частого, их ' + Math.max.apply(null, cnt) + '. Следующий точно другого цвета: ' + Math.max.apply(null, cnt) + ' + 1 = ' + ans3 + '.';
+    return {
+      text: 'В мешке ' + joinAnd(list) + ' шариков. Какое наименьшее число шариков нужно достать не глядя, ' + q + '?',
+      answer: { kind: 'num', value: ans3, unit: plural(ans3, ['шарик', 'шарика', 'шариков']) }, params: { mode: mode, cnt: cnt },
+      hints: ['Представь, что совсем не везёт. Какие шарики будут попадаться первыми?', mode === 'both' ? 'Не везёт — это когда долго попадается один и тот же цвет. Какого цвета больше?' : 'Не везёт — это когда сначала попадаются все шарики других цветов.', expl + ' Ответ: ' + ans3 + '.']
+    };
+  }
+
+  // =====================================================================
+  // 10. И то, и другое
+  // =====================================================================
+  var SHOWS = [['«Смешариков»', '«Лунтика»'], ['«Фиксиков»', '«Машу и Медведя»'], ['«Простоквашино»', '«Ну, погоди!»']];
+  function t10(level, r) {
+    var S = pick(r, SHOWS), N, both, onlyA, onlyB, none, text, expl;
+    if (level === 1) {
+      N = ri(r, 12, 30); both = ri(r, 1, 8); onlyA = ri(r, 1, N - both - 1); onlyB = N - both - onlyA; none = 0;
+      var a = onlyA + both, b = onlyB + both;
+      text = 'В классе ' + pn(N, KIDS) + '. Каждый смотрел хотя бы один из мультфильмов: ' + S[0] + ' смотрели ' + pn(a, KIDS) + ', а ' + S[1] + ' — ' + b + '. Сколько детей смотрели оба мультфильма?';
+      expl = a + ' + ' + b + ' = ' + (a + b) + '. Это больше, чем детей в классе, потому что тех, кто смотрел оба, посчитали дважды: ' + (a + b) + ' − ' + N + ' = ' + both + '.';
+      return { text: text, answer: { kind: 'num', value: both, unit: '' }, params: { mode: 'union', N: N, a: a, b: b },
+        hints: ['Сложи тех, кто смотрел первый мультфильм, и тех, кто смотрел второй. Почему получилось больше, чем детей в классе?', 'Кто смотрел оба, тот посчитан дважды.', expl + ' Ответ: ' + both + '.'] };
+    }
+    if (level === 2) {
+      N = ri(r, 20, 34); none = ri(r, 1, 5); both = ri(r, 3, 15); onlyA = ri(r, 1, 8); onlyB = N - none - both - onlyA; if (onlyB < 1) return null;
+      var notA = onlyB + none, notB = onlyA + none;
+      text = 'В классе ' + pn(N, KIDS) + '. Ровно ' + pn(notA, KIDS) + ' не смотрели ' + S[0] + ', ровно ' + notB + ' не смотрели ' + S[1] + ', и ровно ' + none + ' не смотрели ни того, ни другого. Сколько детей смотрели оба мультфильма?';
+      text = text.replace(/Ровно 1 ребёнок не смотрели/, 'Ровно 1 ребёнок не смотрел');
+      expl = 'Не смотрели ' + S[0] + ' ' + notA + ', из них ' + none + ' не смотрели ничего — значит, только ' + S[1] + ' смотрели ' + notA + ' − ' + none + ' = ' + onlyB + '. Так же только ' + S[0] + ': ' + notB + ' − ' + none + ' = ' + onlyA + '. Оба: ' + N + ' − ' + none + ' − ' + onlyB + ' − ' + onlyA + ' = ' + both + '.';
+      return { text: text, answer: { kind: 'num', value: both, unit: '' }, params: { mode: 'olymp', N: N, notA: notA, notB: notB, none: none },
+        hints: ['Нарисуй два круга: кто смотрел ' + S[0] + ' и кто смотрел ' + S[1] + '. Кто где окажется?', 'Кто не смотрел ' + S[0] + ', но что-то смотрел, — тот смотрел только ' + S[1] + '. Сколько таких?', expl + ' Ответ: ' + both + '.'] };
+    }
+    N = ri(r, 16, 34); both = ri(r, 2, 8); var d = ri(r, 1, 6);
+    if ((N - d + both) % 2) return null; var D = (N - d + both) / 2, Sw = D + d;
+    if (D - both < 1) return null;
+    text = 'В классе ' + pn(N, KIDS) + '. Каждый занимается плаванием или танцами, а ' + pn(both, KIDS) + ' — и тем, и другим. Плаванием занимаются на ' + d + ' человек' + (d > 1 && d < 5 ? 'а' : '') + ' больше, чем танцами. Сколько детей занимается танцами?';
+    expl = 'Если сложить пловцов и танцоров, тех, кто делает и то, и другое, посчитаем дважды: пловцов и танцоров вместе ' + N + ' + ' + both + ' = ' + (N + both) + '. Пловцов на ' + d + ' больше: уберём ' + d + ' — останется ' + (N + both - d) + ', поровну: ' + D + ' + ' + D + '. Танцами занимаются ' + D + '.';
+    return { text: text, answer: { kind: 'num', value: D, unit: '' }, params: { mode: 'diff', N: N, both: both, d: d },
+      hints: ['Сколько получится, если сложить всех пловцов и всех танцоров? Кого посчитаем дважды?', 'Пловцов и танцоров вместе ' + N + ' + ' + both + ' = ' + (N + both) + '. А пловцов на ' + d + ' больше.', expl + ' Ответ: ' + D + '.'] };
+  }
+
+  // ---------- каталог ----------
+  var TYPES = [
+    { id: 1, title: 'Найди лишнюю букву', story: 'Слово из лишних букв', gen: t1, trick: 'Смотри не что за буква, а как она нарисована: размер, наклон, заливка, цвет.' },
+    { id: 2, title: 'Шкатулки в шкатулках', story: 'Бабушкины шкатулки', gen: t2, trick: 'Сначала посчитай, сколько маленьких ушло по две. Остальные маленькие лежат по одной — каждая занимает свою большую.' },
+    { id: 3, title: 'Сдвинь кусочки линии', story: 'Муравьи на линиях', gen: t3, trick: 'Сложи отдельно все горизонтальные кусочки и все вертикальные. Ступеньки можно сдвинуть к краю.' },
+    { id: 4, title: 'Сначала посчитай клетки', story: 'Уголки и квадратики', gen: t4, trick: 'Резать не нужно! Посчитай клетки, вычти клетки уголков и раздели остаток на 4.' },
+    { id: 5, title: 'Сколько способов с условием', story: 'Белоснежка одевается', gen: t5, trick: 'Выписывай способы по порядку. Сначала ставь тех, про кого условие, потом остальных.' },
+    { id: 6, title: 'Головы и ноги', story: 'Гуси и козы', gen: t6, trick: 'Сделай, чтобы стало поровну, или представь, что все одинаковые, — и посчитай лишние ноги.' },
+    { id: 7, title: 'Замени одно на другое', story: 'Хомяки на весах', gen: t7, trick: 'Замени большое на маленькие — вес не изменится. Потом найди вес одного маленького.' },
+    { id: 8, title: 'Чтобы стало поровну', story: 'Пирожки Пети и Ромы', gen: t8, trick: 'Чтобы стало поровну, нужно отдать половину разницы.' },
+    { id: 9, title: 'Наверняка: худший случай', story: 'Носки в темноте', gen: t9, trick: 'Представь, что совсем не везёт, — и добавь ещё один.' },
+    { id: 10, title: 'И то, и другое', story: 'Кто смотрел мультики', gen: t10, trick: 'Нарисуй два круга. Кто в обоих — того считают дважды.' }
+  ];
+  function generate(typeId, level, seed) {
+    var r = makeRng(seed), T = TYPES[typeId - 1];
+    for (var i = 0; i < 20000; i++) {
+      var x = T.gen(level, r);
+      if (x) { x.type = typeId; x.level = level; return x; }
+    }
+    throw new Error('Не удалось сгенерировать задачу вида ' + typeId + ', уровень ' + level);
+  }
+  var API = { TYPES: TYPES, generate: generate };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.GEN2 = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
 <script>
 /* Тренажёр к олимпиаде «Интеллектиум» — генераторы задач, 3 класс.
    10 видов × 3 уровня. Генератор возвращает:
@@ -809,11 +1764,760 @@ window.TRAINER_CONFIG = {
 
 </script>
 <script>
-/* Тренажёр к олимпиаде «Интеллектиум» — логика страницы. Генераторы задач — GEN3 (gen3.js). */
+/* Тренажёр к олимпиаде «Интеллектиум» — генераторы задач, 4 класс.
+   10 видов × 3 уровня — по задачам XII СПб олимпиады начальной школы (14 ноября 2025).
+   Генератор возвращает: { text, answer, hints: [толчок, полшага, разбор], params, svg? }
+   answer: {kind:'num', value, unit} | {kind:'choice', value, options} | {kind:'multi', value:[...]}
+   params — сырые данные задачи: по ним независимая проверка на Python пересчитывает ответ перебором. */
+(function (root) {
+  'use strict';
+
+  // ---------- помощники ----------
+  function makeRng(seed) {
+    if (seed == null) return Math.random;
+    var s = seed >>> 0;
+    return function () { s = (s + 0x6D2B79F5) >>> 0; var t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function ri(r, a, b) { return a + Math.floor(r() * (b - a + 1)); }
+  function pick(r, arr) { return arr[Math.floor(r() * arr.length)]; }
+  function shuffle(r, arr) { var a = arr.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function sample(r, arr, k) { return shuffle(r, arr).slice(0, k); }
+  function plural(n, f) { var a = Math.abs(n) % 100, b = a % 10; if (a > 10 && a < 20) return f[2]; if (b === 1) return f[0]; if (b >= 2 && b <= 4) return f[1]; return f[2]; }
+  function pn(n, f) { return n + ' ' + plural(n, f); }
+  function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function joinAnd(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1]; }
+  function joinOr(list) { return list.length === 1 ? String(list[0]) : list.slice(0, -1).join(', ') + ' или ' + list[list.length - 1]; }
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function lcm(a, b) { return a / gcd(a, b) * b; }
+  function range(a, b) { var o = []; for (var i = a; i <= b; i++) o.push(i); return o; }
+  function isqrt(n) { var s = Math.floor(Math.sqrt(n)); while (s * s > n) s--; while ((s + 1) * (s + 1) <= n) s++; return s; }
+  function fmtN(n) { var s = String(n); return s.length > 4 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : s; }   // 12000 → «12 000»
+  var CARDS = ['карточка', 'карточки', 'карточек'], CM = ['сантиметр', 'сантиметра', 'сантиметров'], DAYS = ['день', 'дня', 'дней'];
+  var HOURS = ['час', 'часа', 'часов'], NUMBERS = ['число', 'числа', 'чисел'], DIGITS = ['цифра', 'цифры', 'цифр'], SECONDS = ['секунда', 'секунды', 'секунд'];
+  var TOADS = ['жаба', 'жабы', 'жаб'], ROWS = ['ряд', 'ряда', 'рядов'], TIMES = ['раз', 'раза', 'раз'];
+  var NUM_GEN = ['', 'одной', 'двух', 'трёх', 'четырёх', 'пяти', 'шести', 'семи', 'восьми', 'девяти'];
+  var NUM_NOM = ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'];
+  var PAIRS = ['пару', 'пары', 'пар'], SIDES = ['сторона', 'стороны', 'сторон'];
+
+  var BOYS = ['Петя', 'Коля', 'Дима', 'Саша', 'Ваня', 'Миша', 'Гоша', 'Лёша', 'Вова', 'Толя', 'Костя', 'Боря'];
+  var GIRLS = ['Маша', 'Оля', 'Катя', 'Аня', 'Лена', 'Ира', 'Вера', 'Соня', 'Таня', 'Марина', 'Яна', 'Даша'];
+  function stem(n) { return n.slice(0, -1); }
+  function hush(n) { return 'гкхжшщч'.indexOf(n.charAt(n.length - 2)) >= 0; }
+  function gen(n) { return n.slice(-1) === 'я' ? stem(n) + 'и' : stem(n) + (hush(n) ? 'и' : 'ы'); }
+  function dat(n) { return stem(n) + 'е'; }
+  function person(name, f) { return { name: name, f: f, gen: gen(name), dat: dat(name), v: function (m, w) { return f ? w : m; } }; }
+  function kid(r, sex) { var f = sex == null ? r() < 0.5 : sex; return person(pick(r, f ? GIRLS : BOYS), f); }
+
+  // =====================================================================
+  // 1. Сколько не хватает — треугольник из карточек
+  // =====================================================================
+  var CULPRITS = [
+    { who: 'кот Пушок', did: 'смахнул хвостом', ask: 'смахнул Пушок' },
+    { who: 'щенок Бублик', did: 'утащил', ask: 'утащил Бублик' },
+    { who: 'сквозняк из форточки', did: 'сдул', ask: 'сдул сквозняк' },
+    { who: 'попугай Кеша', did: 'унёс в клюве', ask: 'унёс Кеша' }
+  ];
+  function triangleSvg(R, missing, outline) {
+    var s = 40, hh = s * Math.sqrt(3) / 2, W = R * s + 8, H = R * hh + 8, cx = W / 2, out = [];
+    if (outline) out.push('<polygon points="' + [[cx - R * s / 2, 4 + R * hh], [cx + R * s / 2, 4 + R * hh], [cx, 4]].map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '" fill="none" stroke="#9AA3CF" stroke-width="2" stroke-dasharray="6 5"/>');
+    var gone = {}; missing.forEach(function (m) { gone[m[0] + ',' + m[1]] = true; });
+    for (var i = 0; i < R; i++) {
+      var x0 = cx - (i + 1) * s / 2, yt = 4 + i * hh, yb = 4 + (i + 1) * hh;
+      for (var j = 0; j <= 2 * i; j++) {
+        if (gone[i + ',' + j]) continue;
+        var k = Math.floor(j / 2), pts;
+        if (j % 2 === 0) pts = [[x0 + k * s, yb], [x0 + (k + 1) * s, yb], [x0 + k * s + s / 2, yt]];
+        else pts = [[x0 + k * s + s / 2, yt], [x0 + (k + 1) * s + s / 2, yt], [x0 + (k + 1) * s, yb]];
+        out.push('<polygon points="' + pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '" fill="' + (j % 2 ? '#FFF4D6' : '#E8EBFA') + '" stroke="#343F9E" stroke-width="2" stroke-linejoin="round"/>');
+      }
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W.toFixed(0) + ' ' + H.toFixed(0) + '" role="img" aria-label="Треугольник из карточек, часть карточек пропала">' + out.join('') + '</svg>';
+  }
+  function t1(level, r) {
+    var who = kid(r), a = who.v('', 'а');
+    if (level === 3) {
+      var N = ri(r, 30, 120), R = isqrt(N);
+      if (R * R === N) return null;
+      var extra = r() < 0.5, ans = extra ? N - R * R : (R + 1) * (R + 1) - N;
+      var sq = range(1, R + 1).map(function (k) { return k + ' — ' + k * k; }).join(', ');
+      return {
+        text: 'У ' + who.gen + ' ' + pn(N, CARDS) + ' в форме треугольника. Из них можно складывать большой треугольник: сверху одна карточка, а в каждом следующем ряду на 2 карточки больше. ' +
+          (extra ? who.name + ' сложил' + a + ' самый большой треугольник, какой смог. Сколько карточек остались лишними?'
+            : who.name + ' хочет, чтобы в треугольник ушли все карточки до одной. Сколько карточек нужно докупить, чтобы так получилось? Докупить надо как можно меньше.'),
+        answer: { kind: 'num', value: ans, unit: plural(ans, CARDS) },
+        params: { mode: extra ? 'extra' : 'need', N: N },
+        hints: [
+          'Посчитай, сколько карточек в треугольнике из 1 ряда, из 2 рядов, из 3 рядов… Видишь закономерность?',
+          'В рядах 1, 3, 5, 7… карточек. Всего: 1, 4, 9, 16… — в треугольнике из n рядов n × n карточек. Какой самый большой такой треугольник ' + (extra ? 'получится из ' + N : 'близко к ' + N) + '?',
+          'Рядов и карточек: ' + sq + '. ' + R + ' × ' + R + ' = ' + R * R + ' — не больше ' + N + ', а ' + (R + 1) + ' × ' + (R + 1) + ' = ' + (R + 1) * (R + 1) + ' — уже больше. ' +
+            (extra ? 'Самый большой треугольник — ' + pn(R, ROWS) + ', ' + R * R + ' карточек. ' + N + ' − ' + R * R + ' = ' + ans + '.'
+              : 'Без лишних нужно ' + (R + 1) * (R + 1) + ' карточек: ' + (R + 1) * (R + 1) + ' − ' + N + ' = ' + ans + '.') + ' Ответ: ' + ans + '.'
+        ]
+      };
+    }
+    var Rw = level === 1 ? ri(r, 3, 4) : ri(r, 5, 6), cells = [];
+    for (var i = 0; i < Rw; i++) for (var j = 0; j < 2 * i; j++) cells.push([i, j]);   // правый край (j = 2i) не трогаем
+    var edge = cells.filter(function (c) { return c[1] === 0 || c[0] === Rw - 1; }), inner = cells.filter(function (c) { return c[1] !== 0 && c[0] !== Rw - 1; });
+    var miss;
+    if (level === 1) miss = sample(r, edge, ri(r, 2, Math.min(4, edge.length)));
+    else {
+      var nIn = ri(r, 2, Math.min(5, inner.length)), nEd = ri(r, 3, 7);
+      miss = sample(r, inner, nIn).concat(sample(r, edge, Math.min(nEd, edge.length)));
+    }
+    var M = miss.length, total = Rw * Rw, rowsLeft = range(0, Rw - 1).map(function (i) { return 2 * i + 1 - miss.filter(function (m) { return m[0] === i; }).length; });
+    var left = sum(rowsLeft), C = pick(r, CULPRITS);
+    var odd = range(0, Rw - 1).map(function (i) { return 2 * i + 1; });
+    return {
+      text: who.name + ' сложил' + a + ' большой треугольник из маленьких треугольных карточек, а ' + C.who + ' ' + C.did + ' несколько карточек. Посмотри на рисунок. Сколько карточек ' + C.ask + '?',
+      svg: triangleSvg(Rw, miss, level === 1),
+      answer: { kind: 'num', value: M, unit: plural(M, CARDS) },
+      params: { R: Rw, missing: miss },
+      hints: [
+        'Сначала узнай, сколько карточек было в целом треугольнике. Сколько в нём рядов? Посмотри на правый край — он целый.',
+        'Рядов ' + Rw + '. В рядах сверху вниз ' + odd.join(', ') + ' карточек. Сколько должно быть всего и сколько осталось?',
+        'Рядов ' + Rw + ': ' + odd.join(' + ') + ' = ' + total + ' карточек. Осталось по рядам сверху вниз: ' + rowsLeft.join(' + ') + ' = ' + left + '. ' + total + ' − ' + left + ' = ' + M + '. Ответ: ' + M + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 2. Цифры по возрастанию
+  // =====================================================================
+  var ORD = ['', 'первая', 'вторая', 'третья', 'четвёртая', 'пятая', 'шестая', 'седьмая', 'восьмая', 'девятая'];
+  var CODE_SKINS = [
+    { head: function (p) { return 'Номер телефона ' + p.gen; }, noun: 'номер', many: 'номеров' },
+    { head: function () { return 'Код от сейфа пирата Флинта'; }, noun: 'код', many: 'кодов' },
+    { head: function (p) { return 'Пароль от планшета ' + p.gen; }, noun: 'пароль', many: 'паролей' },
+    { head: function (p) { return 'Номер шкафчика ' + p.gen + ' в бассейне'; }, noun: 'номер', many: 'номеров' }
+  ];
+  function ascCombos(n) {           // все наборы из n разных цифр по возрастанию
+    var out = [];
+    (function rec(start, acc) {
+      if (acc.length === n) { out.push(acc.slice()); return; }
+      for (var d = start; d <= 9; d++) { acc.push(d); rec(d + 1, acc); acc.pop(); }
+    })(0, []);
+    return out;
+  }
+  function prod(a) { return a.reduce(function (x, y) { return x * y; }, 1); }
+  function codeStr(c) { return c.join(''); }
+  function t2(level, r) {
+    var p = kid(r), S = pick(r, CODE_SKINS), head = S.head(p), n, sols, text, ans, hints, params;
+    var intro = function (n, nz) { return head + ' состоит из ' + NUM_GEN[n] + ' разных цифр, и идут они по возрастанию' + (nz ? ', нуля среди них нет' : '') + '. '; };
+    if (level === 1 || (level === 3 && r() < 0.5)) {
+      // сумма цифр — самая большая или самая маленькая (почти)
+      n = ri(r, 3, 6);
+      var mode = pick(r, ['max', 'max1', 'min', 'min1']), nz = mode === 'min' || mode === 'min1';
+      var top = range(10 - n, 9), low = range(1, n), maxS = sum(top), minS = sum(low), t = level === 3 ? ri(r, 2, 4) : (mode === 'max1' || mode === 'min1' ? 1 : 0);
+      var target = mode.indexOf('max') === 0 ? maxS - t : minS + t;
+      sols = ascCombos(n).filter(function (c) { return sum(c) === target && (!nz || c[0] !== 0); });
+      if (level === 1 && (sols.length !== 1 || sols[0][0] === 0)) return null;
+      if (level === 3 && (sols.length < 2 || sols.length > 6)) return null;
+      text = intro(n, nz) + 'Сумма всех цифр равна ' + target + '. ' + (level === 1 ? 'Какой это ' + S.noun + '?' : 'Сколько разных ' + S.many + ' подходит под это описание?');
+      var base = mode.indexOf('max') === 0 ? top : low, baseS = mode.indexOf('max') === 0 ? maxS : minS, big = mode.indexOf('max') === 0;
+      ans = level === 1 ? Number(codeStr(sols[0])) : sols.length;
+      params = { family: 'sum', n: n, target: target, nozero: nz, ask: level === 1 ? 'code' : 'count' };
+      hints = [
+        'Какие ' + NUM_NOM[n] + ' разных цифр дают самую ' + (big ? 'большую' : 'маленькую') + ' сумму' + (nz ? ' (без нуля)' : '') + '?',
+        'Самые ' + (big ? 'большие' : 'маленькие') + ': ' + base.join(', ') + ' — сумма ' + baseS + '. ' + (t ? 'А нужно ' + target + ' — на ' + t + (big ? ' меньше' : ' больше') + '.' : 'Как раз столько и нужно! Могут ли другие цифры дать такую же сумму?'),
+        level === 1
+          ? (t === 0 ? 'Самая ' + (big ? 'большая' : 'маленькая') + ' сумма ' + NUM_GEN[n] + ' разных цифр — ' + base.join(' + ') + ' = ' + baseS + ', и получается она только из этих цифр. Ответ: ' + codeStr(sols[0]) + '.'
+            : base.join(' + ') + ' = ' + baseS + ', а нужно на 1 ' + (big ? 'меньше' : 'больше') + '. ' + (big ? 'Уменьшить на 1 можно только самую маленькую цифру' : 'Увеличить на 1 можно только самую большую цифру') + ': любая другая совпадёт с соседкой. Получаем ' + sols[0].join(' + ') + ' = ' + target + '. Ответ: ' + codeStr(sols[0]) + '.')
+          : 'Начинаем с ' + base.join(', ') + ' (сумма ' + baseS + ') и ' + (big ? 'уменьшаем' : 'увеличиваем') + ' цифры на ' + t + ' так, чтобы они не совпали. Подходят: ' + sols.map(codeStr).join(', ') + '. Ответ: ' + sols.length + '.'
+      ];
+      return { text: text, answer: { kind: 'num', value: ans, unit: '' }, params: params, hints: hints };
+    }
+    // произведение первых m цифр равно (m+1)-й цифре
+    var m = pick(r, [2, 3]), k = m + 1;
+    n = level === 2 ? ri(r, k, k + 3) : ri(r, k, k + 2);
+    var all = ascCombos(n).filter(function (c) { return c[k - 1] === prod(c.slice(0, m)); });
+    var useSum = false, target2 = 0, goal;
+    if (level === 2) {
+      if (all.length === 1) goal = all[0];
+      else {
+        var bySum = {}; all.forEach(function (c) { var s = sum(c); (bySum[s] = bySum[s] || []).push(c); });
+        var uniq = all.filter(function (c) { return bySum[sum(c)].length === 1; });
+        if (!uniq.length) return null;
+        goal = pick(r, uniq); useSum = true; target2 = sum(goal);
+      }
+      if (goal[0] === 0) return null;
+    } else if (all.length < 2 || all.length > 6) return null;
+    var condText = cap(ORD[k]) + ' цифра равна произведению ' + (m === 2 ? 'первых двух' : 'первых трёх') + '.';
+    text = intro(n, false) + condText + (useSum ? ' А сумма всех цифр равна ' + target2 + '.' : '') + ' ' + (level === 2 ? 'Какой это ' + S.noun + '?' : 'Сколько разных ' + S.many + ' подходит под это описание?');
+    var bound = 9 - (n - k);
+    var prefixes = m === 3 ? [[1, 2, 3], [1, 2, 4]] : [[2, 3], [2, 4]];
+    var okPre = prefixes.filter(function (q) { return prod(q) <= bound; });
+    var lines = [];
+    lines.push('Нуля среди первых ' + (m === 2 ? 'двух' : 'трёх') + ' цифр нет: иначе произведение 0, а ' + ORD[k] + ' цифра больше их.' + (m === 2 ? ' И первая цифра не 1: тогда произведение равно второй цифре, а ' + ORD[k] + ' должна быть больше.' : ''));
+    lines.push('Произведение не меньше ' + prefixes[0].join(' × ') + ' = ' + prod(prefixes[0]) + '; кроме ' + prefixes.map(function (q) { return q.join(' × ') + ' = ' + prod(q); }).join(' и ') + ', все остальные дают 10 и больше.');
+    if (n > k) lines.push('После ' + (k === 3 ? 'третьей' : 'четвёртой') + ' цифры идут ещё ' + (n - k) + ' — значит, она не больше ' + bound + '.');
+    ans = level === 2 ? Number(codeStr(goal)) : all.length;
+    var finalLine = level === 2
+      ? (useSum ? 'Подходят ' + all.map(codeStr).join(', ') + '. Сумма цифр ' + target2 + ' только у ' + codeStr(goal) + '.' : 'Остаётся только ' + codeStr(goal) + '.') + ' Ответ: ' + codeStr(goal) + '.'
+      : 'Подходят: ' + all.map(codeStr).join(', ') + '. Ответ: ' + all.length + '.';
+    params = { family: 'prod', n: n, m: m, sumTarget: useSum ? target2 : null, ask: level === 2 ? 'code' : 'count' };
+    hints = [
+      'Может ли среди первых ' + (m === 2 ? 'двух' : 'трёх') + ' цифр быть 0? Какое самое маленькое произведение у них получится?',
+      'Самое маленькое произведение — ' + prefixes[0].join(' × ') + ' = ' + prod(prefixes[0]) + '.' + (n > k ? ' А ' + ORD[k] + ' цифра не может быть больше ' + bound + ': после неё ещё ' + (n - k) + '.' : '') + ' Какие варианты остаются?',
+      lines.join(' ') + ' ' + (okPre.length === 1 ? 'Значит, начало ' + okPre[0].join(', ') + ', ' + prod(okPre[0]) + '.' : 'Начало: ' + okPre.map(function (q) { return q.join(', ') + ', ' + prod(q); }).join(' или ') + '.') + ' ' + finalLine
+    ];
+    return { text: text, answer: { kind: 'num', value: ans, unit: '' }, params: params, hints: hints };
+  }
+
+  // =====================================================================
+  // 3. Красивые даты и дни недели
+  // =====================================================================
+  var WD = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+  var MON_PREP = ['январе', 'феврале', 'марте', 'апреле', 'мае', 'июне', 'июле', 'августе', 'сентябре', 'октябре', 'ноябре', 'декабре'];
+  function dim(y, m) { return new Date(Date.UTC(y, m, 0)).getUTCDate(); }            // дней в месяце m (1–12)
+  function wday(y, m, d) { return (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7; }
+  function dnum(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000; }
+  function two(n) { return (n < 10 ? '0' : '') + n; }
+  function fdate(y, m, d) { return two(d) + '.' + two(m) + '.' + two(y % 100); }
+  function beautiful(y) { var yy = y % 100, out = []; for (var m = 1; m <= 12; m++) { var d = yy - m; if (d >= 1 && d <= dim(y, m)) out.push([y, m, d]); } return out; }
+  function daysExpr(a, b) {     // как посчитать дни от даты a до даты b (по месяцам)
+    var y = a[0], m = a[1], parts = [];
+    if (a[0] === b[0] && a[1] === b[1]) return { text: b[2] + ' − ' + a[2], n: b[2] - a[2] };
+    parts.push({ t: '(' + dim(y, m) + ' − ' + a[2] + ')', v: dim(y, m) - a[2], note: 'в ' + MON_PREP[m - 1] + ' ' + pn(dim(y, m), DAYS) });
+    m++; if (m > 12) { m = 1; y++; }
+    while (!(y === b[0] && m === b[1])) { parts.push({ t: String(dim(y, m)), v: dim(y, m), note: 'в ' + MON_PREP[m - 1] + ' ' + pn(dim(y, m), DAYS) }); m++; if (m > 12) { m = 1; y++; } }
+    parts.push({ t: String(b[2]), v: b[2] });
+    return { text: parts.map(function (p) { return p.t; }).join(' + '), n: sum(parts.map(function (p) { return p.v; })), notes: parts.filter(function (p) { return p.note; }).map(function (p) { return p.note; }) };
+  }
+  function weekLine(n, w0) {
+    var q = Math.floor(n / 7), rem = n % 7, w1 = (w0 + n) % 7;
+    if (rem === 0) return n + ' = ' + q + ' × 7 — ровно ' + pn(q, ['неделя', 'недели', 'недель']) + ', день недели тот же: ' + WD[w1] + '.';
+    return n + ' = ' + (q ? q + ' × 7 + ' + rem : rem) + ' — ' + (q ? pn(q, ['полная неделя', 'полные недели', 'полных недель']) + ' и ещё ' + pn(rem, DAYS) : pn(rem, DAYS)) + ': ' + WD[w0] + ' плюс ' + pn(rem, DAYS) + ' — ' + WD[w1] + '.';
+  }
+  function t3(level, r) {
+    var y, A, B, text, ex, extraHint = '', params;
+    if (level === 1) {
+      y = ri(r, 2026, 2028); var m = ri(r, 1, 12), d = ri(r, 1, dim(y, m)), n = ri(r, 9, 45);
+      var t2d = new Date(Date.UTC(y, m - 1, d + n));
+      A = [y, m, d]; B = [t2d.getUTCFullYear(), t2d.getUTCMonth() + 1, t2d.getUTCDate()];
+      if ((B[0] - A[0]) * 12 + B[1] - A[1] > 1) return null;
+      text = 'Сегодня ' + fdate(A[0], A[1], A[2]) + ', ' + WD[wday(A[0], A[1], A[2])] + '. Какой день недели будет ' + fdate(B[0], B[1], B[2]) + '?';
+      params = { mode: 'shift', a: A, b: B };
+    } else if (level === 2) {
+      y = ri(r, 2026, 2035); var list = beautiful(y);
+      var i = ri(r, 0, list.length - 2); A = list[i]; B = list[i + 1];
+      text = 'Дата ' + fdate(A[0], A[1], A[2]) + ' красива тем, что ' + A[2] + ' + ' + A[1] + ' = ' + (y % 100) + '. Это ' + WD[wday(A[0], A[1], A[2])] + '. В какой день недели наступит следующая дата такой же красоты?';
+      extraHint = 'Следующая красивая дата: день + месяц = ' + (y % 100) + '. ';
+      params = { mode: 'next', a: A };
+    } else {
+      if (r() < 0.5) {
+        y = ri(r, 2026, 2030); var lastL = beautiful(y), firstL = beautiful(y + 1);
+        A = lastL[lastL.length - 1]; B = firstL[0];
+        if (A[1] !== 12 || B[1] !== 1) return null;
+        text = 'Последняя красивая дата ' + y + ' года — ' + fdate(A[0], A[1], A[2]) + ': ' + A[2] + ' + 12 = ' + (y % 100) + '. Это ' + WD[wday(A[0], A[1], A[2])] + '. В какой день недели наступит первая красивая дата ' + (y + 1) + ' года?';
+        extraHint = 'В ' + (y + 1) + ' году день + месяц = ' + ((y + 1) % 100) + ', а не ' + (y % 100) + '! ';
+        params = { mode: 'newyear', a: A };
+      } else {
+        y = ri(r, 2029, 2040); var L = beautiful(y);
+        var lines = range(1, 12).map(function (mm) { var dd = (y % 100) - mm; return dd > dim(y, mm) ? null : dd < 1 ? null : two(dd) + '.' + two(mm); }).filter(Boolean);
+        var bad = range(1, 12).filter(function (mm) { var dd = (y % 100) - mm; return dd > dim(y, mm); });
+        return {
+          text: 'Назовём дату красивой, если день плюс номер месяца равно двум последним цифрам года. Например, 14.11.25 красивая: 14 + 11 = 25. Сколько красивых дат будет в ' + y + ' году?',
+          answer: { kind: 'num', value: L.length, unit: plural(L.length, ['дата', 'даты', 'дат']) },
+          params: { mode: 'count', y: y },
+          hints: [
+            'В каждом месяце может быть не больше одной красивой даты: день = ' + (y % 100) + ' − номер месяца. Проверь каждый месяц.',
+            'День не бывает больше 31, а в некоторых месяцах дней 30, в феврале 28 (в високосный год 29). В ' + y + ' году в феврале ' + pn(dim(y, 2), DAYS) + '.',
+            'День = ' + (y % 100) + ' − месяц. ' + (bad.length ? 'Не подходят месяцы ' + bad.join(', ') + ': такого дня в них нет. ' : '') + 'Красивые даты: ' + lines.join(', ') + '. Ответ: ' + L.length + '.'
+          ]
+        };
+      }
+    }
+    var w0 = wday(A[0], A[1], A[2]), w1 = wday(B[0], B[1], B[2]), de = daysExpr(A, B);
+    if (de.n !== dnum(B[0], B[1], B[2]) - dnum(A[0], A[1], A[2])) throw new Error('дни не сходятся');
+    var opts = WD.slice();
+    return {
+      text: text, answer: { kind: 'choice', value: WD[w1], options: opts }, params: params,
+      hints: [
+        extraHint + 'Найди, какая это дата, и посчитай, сколько дней до неё пройдёт.',
+        (level > 1 ? 'Это ' + fdate(B[0], B[1], B[2]) + '. ' : '') + (de.notes && de.notes.length ? cap(de.notes.join(', ')) + '. ' : '') + 'Каждые 7 дней день недели повторяется. Что остаётся после полных недель?',
+        (level > 1 ? 'Это ' + fdate(B[0], B[1], B[2]) + '. ' : '') + 'Дней пройдёт: ' + de.text + ' = ' + de.n + '. ' + weekLine(de.n, w0) + ' Ответ: ' + WD[w1] + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 4. Квадратные залы
+  // =====================================================================
+  function decs(N) { var o = []; for (var a = 1; a * a < N; a++) { var b2 = N - a * a, b = isqrt(b2); if (b * b === b2 && a > b && b >= 1) o.push([a, b]); } return o; }
+  function hasEqual(N) { var b = isqrt(N / 2); return 2 * b * b === N; }
+  var HALL_SKINS = [
+    { intro: function (N) { return 'У Буратино в кукольном театре ' + pn(N, ['зрительское место', 'зрительских места', 'зрительских мест']) + ' — в партере и в ложах. Мест в одном ряду партера столько же, сколько в партере рядов, а мест в каждой ложе столько же, сколько всего лож. Рядов в партере больше, чем лож.'; },
+      big: 'мест в партере', small: 'мест в ложах', A: 'рядов в партере', B: 'лож',
+      qa: 'Сколько рядов в партере?', qa2: 'Сколько мест в партере?', qb2: 'Сколько мест во всех ложах вместе?', qd: 'На сколько рядов в партере больше, чем лож?',
+      notOne: 'Лож больше одной.', lim: function (L) { return 'Рядов в партере не больше ' + L + '.'; }, unitA: ROWS, unitA2: ['место', 'места', 'мест'] },
+    { intro: function (N) { return 'Садовник посадил ' + pn(N, ['дерево', 'дерева', 'деревьев']) + ': яблони и груши. Яблони растут квадратом: рядов столько же, сколько деревьев в каждом ряду. Груши тоже растут квадратом. Яблонь больше, чем груш.'; },
+      big: 'яблонь', small: 'груш', A: 'рядов яблонь', B: 'рядов груш',
+      qa: 'Сколько рядов яблонь?', qa2: 'Сколько яблонь посадил садовник?', qb2: 'Сколько груш посадил садовник?', qd: 'На сколько рядов яблонь больше, чем рядов груш?',
+      notOne: 'Груши растут не в один ряд.', lim: function (L) { return 'Рядов яблонь не больше ' + L + '.'; }, unitA: ROWS, unitA2: ['дерево', 'дерева', 'деревьев'] },
+    { intro: function (N) { return 'В кинотеатре ' + pn(N, ['место', 'места', 'мест']) + ': в большом зале и на балконе. В зале рядов столько же, сколько мест в каждом ряду. На балконе тоже рядов столько же, сколько мест в ряду. Рядов в зале больше, чем на балконе.'; },
+      big: 'мест в зале', small: 'мест на балконе', A: 'рядов в зале', B: 'рядов на балконе',
+      qa: 'Сколько рядов в зале?', qa2: 'Сколько мест в зале?', qb2: 'Сколько мест на балконе?', qd: 'На сколько рядов в зале больше, чем на балконе?',
+      notOne: 'На балконе больше одного ряда.', lim: function (L) { return 'В зале не больше ' + L + ' рядов.'; }, unitA: ROWS, unitA2: ['место', 'места', 'мест'] }
+  ];
+  function t4(level, r) {
+    var S = pick(r, HALL_SKINS), N, D, goal, cond = null, condText = '', ask;
+    if (level < 3) {
+      N = level === 1 ? ri(r, 20, 130) : ri(r, 30, 200);
+      D = decs(N); if (D.length !== 1 || hasEqual(N)) return null;
+      goal = D[0];
+      ask = level === 1 ? pick(r, ['a', 'a2']) : pick(r, ['d', 'd', 'a2']);
+    } else {
+      N = ri(r, 40, 230); D = decs(N); if (D.length !== 2 || hasEqual(N)) return null;
+      var withOne = D.filter(function (x) { return x[1] === 1; });
+      if (withOne.length === 1 && r() < 0.6) { cond = 'notOne'; goal = D.filter(function (x) { return x[1] !== 1; })[0]; condText = S.notOne; }
+      else { var as = D.map(function (x) { return x[0]; }).sort(function (x, y) { return x - y; }); if (as[1] - as[0] < 2) return null; var L = ri(r, as[0], as[1] - 1); cond = 'lim'; goal = D.filter(function (x) { return x[0] <= L; })[0]; condText = S.lim(L); cond = { lim: L }; }
+      ask = pick(r, ['a2', 'b2', 'd']);
+    }
+    var a = goal[0], b = goal[1], ans = ask === 'a' ? a : ask === 'a2' ? a * a : ask === 'b2' ? b * b : a - b;
+    var q = ask === 'a' ? S.qa : ask === 'a2' ? S.qa2 : ask === 'b2' ? S.qb2 : S.qd;
+    var squares = range(1, isqrt(N - 1)).map(function (k) { return k * k; });
+    var checks = squares.filter(function (s) { return 2 * s > N; }).reverse().map(function (s) { var rest = N - s, ok = isqrt(rest) * isqrt(rest) === rest && rest > 0; return N + ' − ' + s + ' = ' + rest + (ok ? ' ✓' : ''); });
+    var unit = ask === 'a' || ask === 'd' ? plural(ans, S.unitA) : plural(ans, S.unitA2);
+    return {
+      text: S.intro(N) + (condText ? ' ' + condText : '') + ' ' + q,
+      answer: { kind: 'num', value: ans, unit: unit },
+      params: { N: N, cond: cond, ask: ask },
+      hints: [
+        cap(S.big) + ' — это число рядов, умноженное само на себя. ' + cap(S.small) + ' — тоже. Какие числа так получаются?',
+        'Выпиши 1, 4, 9, 16, 25… до ' + N + ' и найди два таких числа, которые в сумме дают ' + N + '. Большее из них — больше половины ' + N + '.',
+        'Такие числа: ' + squares.join(', ') + '. Проверяем большее: ' + checks.join(', ') + '. ' +
+          (D.length === 2 ? 'Два варианта: ' + D.map(function (x) { return x[0] * x[0] + ' и ' + x[1] * x[1]; }).join(', ') + '. Условие «' + condText.replace(/\.$/, '') + '» оставляет ' + a * a + ' и ' + b * b + '. ' : '') +
+          'Значит, ' + a + ' × ' + a + ' и ' + b + ' × ' + b + '. ' +
+          (ask === 'd' ? a + ' − ' + b + ' = ' + ans + '. ' : '') + 'Ответ: ' + ans + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 5. Выписываем числа
+  // =====================================================================
+  function countIf(lo, hi, f) { var c = 0; for (var x = lo; x <= hi; x++) if (f(Math.floor(x / 100), Math.floor(x / 10) % 10, x % 10, x)) c++; return c; }
+  function digitsUpTo(N) { var d = 0; for (var x = 1; x <= N; x++) d += String(x).length; return d; }
+  function t5(level, r) {
+    var w = kid(r), a = w.v('', 'а'), tsec = ri(r, 2, 4), k, S, f, cnt, cond, how, two = false, pick3;
+    if (level === 1) {
+      pick3 = pick(r, ['same', 'firstMore', 'lastMore', 'midSame', 'd2same', 'd2more', 'd2sum']);
+    } else if (level === 2) {
+      pick3 = pick(r, ['olymp', 'olymp', 'firstMore', 'lastMore', 'midSame']);
+    } else {
+      pick3 = pick(r, ['sumLast', 'midSum', 'sumS', 'upTo']);
+    }
+    switch (pick3) {
+      case 'same': f = function (x, y, z) { return x === z; }; cond = 'у которых первая и последняя цифры одинаковые'; how = 'Первая цифра — от 1 до 9, последняя такая же, средняя — любая от 0 до 9: 9 × 10 = 90.'; break;
+      case 'olymp': f = function (x, y, z) { return x + y === y + z; }; cond = 'у которых сумма первых двух цифр равна сумме последних двух цифр'; how = 'Средняя цифра есть в обеих суммах — значит, первая цифра равна последней. Первая — от 1 до 9, средняя — от 0 до 9: 9 × 10 = 90 чисел.'; break;
+      case 'firstMore': k = ri(r, 1, 5); f = function (x, y, z) { return x === z + k; }; cond = 'у которых первая цифра на ' + k + ' больше последней'; how = 'Последняя цифра — от 0 до ' + (9 - k) + ', первая на ' + k + ' больше: ' + (10 - k) + ' вариантов. Средняя — от 0 до 9: ' + (10 - k) + ' × 10 = ' + (10 - k) * 10 + '.'; break;
+      case 'lastMore': k = ri(r, 1, 5); f = function (x, y, z) { return z === x + k; }; cond = 'у которых последняя цифра на ' + k + ' больше первой'; how = 'Первая цифра — от 1 до ' + (9 - k) + ' (иначе последняя будет больше 9): ' + (9 - k) + ' вариантов. Средняя — от 0 до 9: ' + (9 - k) + ' × 10 = ' + (9 - k) * 10 + '.'; break;
+      case 'midSame': f = function (x, y, z) { return y === z; }; cond = 'у которых две последние цифры одинаковые'; how = 'Первая цифра — от 1 до 9, а две последние одинаковые: 00, 11, 22, …, 99 — 10 вариантов. 9 × 10 = 90.'; break;
+      case 'd2same': two = true; f = function (x, y, z) { return y === z; }; cond = 'двузначные числа с одинаковыми цифрами'; how = 'Это 11, 22, …, 99 — первая цифра от 1 до 9: 9 чисел.'; break;
+      case 'd2more': two = true; k = ri(r, 1, 5); f = function (x, y, z) { return y === z + k; }; cond = 'двузначные числа, у которых первая цифра на ' + k + ' больше второй'; how = 'Вторая цифра — от 0 до ' + (9 - k) + ', первая на ' + k + ' больше: ' + (10 - k) + ' чисел.'; break;
+      case 'd2sum': two = true; S = ri(r, 3, 12); f = function (x, y, z) { return y + z === S; }; cond = 'двузначные числа с суммой цифр ' + S;
+        var firsts = range(1, 9).filter(function (d) { return S - d >= 0 && S - d <= 9; });
+        how = 'Первая цифра — ' + (firsts.length > 1 ? 'от ' + firsts[0] + ' до ' + firsts[firsts.length - 1] : firsts[0]) + ', вторая — ' + S + ' минус первая: ' + firsts.length + ' чисел.'; break;
+      case 'sumLast': f = function (x, y, z) { return x + y === z; }; cond = 'у которых сумма первых двух цифр равна последней цифре'; how = 'Первая 1 — средняя от 0 до 8: 9 чисел. Первая 2 — 8 чисел, и так далее, первая 9 — одно число 909. 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 45.'; break;
+      case 'midSum': f = function (x, y, z) { return y === x + z; }; cond = 'у которых средняя цифра равна сумме двух крайних'; how = 'Первая 1 — последняя от 0 до 8: 9 чисел. Первая 2 — 8 чисел, и так далее, первая 9 — одно число 990. 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 45.'; break;
+      case 'sumS': S = ri(r, 3, 9); f = function (x, y, z) { return x + y + z === S; }; cond = 'у которых сумма цифр равна ' + S;
+        how = 'Первая 1 — две другие дают ' + (S - 1) + ': ' + S + ' вариантов. Первая 2 — ' + (S - 1) + ' вариантов, и так далее, первая ' + S + ' — один вариант. ' + range(1, S).reverse().join(' + ') + ' = ' + S * (S + 1) / 2 + '.'; break;
+      case 'upTo': break;
+    }
+    if (pick3 === 'upTo') {
+      var N = ri(r, 40, 160), dg = digitsUpTo(N), sec = dg * tsec;
+      var parts = N < 100 ? ['однозначных 9 — 9 цифр', 'двузначных от 10 до ' + N + ': ' + (N - 9) + ' × 2 = ' + 2 * (N - 9)] : ['однозначных 9 — 9 цифр', 'двузначных 90 — 180 цифр', 'трёхзначных от 100 до ' + N + ': ' + (N - 99) + ' × 3 = ' + 3 * (N - 99)];
+      return {
+        text: w.name + ' выписал' + a + ' подряд все числа от 1 до ' + N + '. На одну цифру ' + w.v('он', 'она') + ' тратит ' + pn(tsec, SECONDS) + '. Сколько секунд ушло на всю работу?',
+        answer: { kind: 'num', value: sec, unit: plural(sec, SECONDS) }, params: { mode: 'upTo', N: N, t: tsec },
+        hints: ['Числа бывают однозначные, двузначные' + (N >= 100 ? ', трёхзначные' : '') + '. Сколько цифр в каждой группе?', 'Однозначных чисел 9, двузначных — от 10 до ' + Math.min(N, 99) + '. Не забудь: в двузначном числе две цифры!',
+          'Цифр: ' + parts.join(', ') + '. Всего ' + dg + ' цифр. ' + dg + ' × ' + tsec + ' = ' + sec + '. Ответ: ' + sec + '.']
+      };
+    }
+    cnt = two ? countIf(10, 99, function (h, t, u) { return f(0, t, u); }) : countIf(100, 999, f);
+    var nd = two ? 2 : 3, askTime = level === 2 || (level === 3 && r() < 0.6);
+    var digitsAll = cnt * nd, secs = digitsAll * tsec, ans = askTime ? secs : cnt;
+    var lead = w.name + ' выписал' + a + ' ' + (two ? 'все ' + cond : 'все трёхзначные числа, ' + cond) + '.';
+    var text = lead + (askTime ? ' На выписывание одной цифры ' + w.v('он', 'она') + ' тратит ' + pn(tsec, SECONDS) + '. Сколько секунд ' + w.v('он', 'она') + ' потратил' + a + ' на всю работу?' : ' Сколько чисел ' + w.v('он', 'она') + ' выписал' + a + '?');
+    return {
+      text: text,
+      answer: { kind: 'num', value: ans, unit: askTime ? plural(ans, SECONDS) : plural(ans, NUMBERS) },
+      params: { mode: pick3, k: k, S: S, two: two, t: tsec, askTime: askTime },
+      hints: [
+        two ? 'Перебери первую цифру по порядку: какая может быть вторая?' : (pick3 === 'olymp' ? 'В обеих суммах есть средняя цифра. Что тогда можно сказать про первую и последнюю?' : 'Перебери первую цифру по порядку: сколько чисел получается для каждой?'),
+        two || level === 1 ? 'Не забудь: первая цифра не бывает нулём.' : 'Первая цифра не бывает нулём.' + (askTime ? ' И когда найдёшь, сколько чисел, вспомни: в каждом ' + nd + ' цифры.' : ''),
+        how + (askTime ? ' Цифр: ' + cnt + ' × ' + nd + ' = ' + digitsAll + '. Время: ' + digitsAll + ' × ' + tsec + ' = ' + secs + '.' : '') + ' Ответ: ' + ans + '.'
+      ]
+    };
+  }
+
+  // =====================================================================
+  // 6. Все пути Учёного Кота
+  // =====================================================================
+  var BOTS = [
+    { name: 'Учёный Кот', he: 'Кот', dat: 'Коту' }, { name: 'Робот Бип', he: 'Бип', dat: 'Бипу' },
+    { name: 'Попугай Кеша', he: 'Кеша', dat: 'Кеше' }, { name: 'Калькулятор Счётик', he: 'Счётик', dat: 'Счётику' }
+  ];
+  function paths(M, A, D, S) {
+    return [
+      { lab: '«×' + M + ', потом :' + D + '»', f: function (x) { return (M * x) % D ? null : M * x / D; }, show: function (x) { return x + ' × ' + M + ' : ' + D; } },
+      { lab: '«×' + M + ', потом −' + S + '»', f: function (x) { return M * x - S; }, show: function (x) { return x + ' × ' + M + ' − ' + S; } },
+      { lab: '«+' + A + ', потом :' + D + '»', f: function (x) { return (x + A) % D ? null : (x + A) / D; }, show: function (x) { return '(' + x + ' + ' + A + ') : ' + D; } },
+      { lab: '«+' + A + ', потом −' + S + '»', f: function (x) { return x + A - S; }, show: function (x) { return x + ' + ' + A + ' − ' + S; } }
+    ];
+  }
+  function vals(P, x) { return P.map(function (p) { return p.f(x); }); }
+  function fits(v, given) {     // три данных числа — результаты трёх разных путей; вернуть номер оставшегося пути или −1
+    for (var miss = 0; miss < 4; miss++) {
+      var rest = v.filter(function (_, i) { return i !== miss; });
+      if (rest.some(function (z) { return z == null; })) continue;
+      var a = rest.slice().sort(function (x, y) { return x - y; }), b = given.slice().sort(function (x, y) { return x - y; });
+      if (a.every(function (z, i) { return z === b[i]; })) return miss;
+    }
+    return -1;
+  }
+  function t6(level, r) {
+    var B = pick(r, BOTS), w = kid(r), a = w.v('', 'а');
+    var M = pick(r, [2, 3]), A = ri(r, 2, 6), D = pick(r, [2, 3]), S = ri(r, 1, 6);
+    if (A === S || M === D) return null;
+    var P = paths(M, A, D, S);
+    var intro = B.name + ' умеет считать в уме. Если ему сказать число, он либо умножит его на ' + M + ', либо прибавит к нему ' + A + '. Потом результат он либо разделит на ' + D + ', либо уменьшит на ' + S + ' — и скажет, что получилось. ';
+    var K = A - S, shift = K > 0 ? 'на ' + K + ' больше загаданного' : 'на ' + (-K) + ' меньше загаданного';
+    var labs = P.map(function (p) { return p.lab; }).join(', ');
+    if (level === 1) {
+      var X = ri(r, 2, 30), v = vals(P, X);
+      if (v.some(function (z) { return z == null || z <= 0; })) return null;
+      if (new Set(v).size !== 4) return null;
+      return {
+        text: intro + w.name + ' сказал' + a + ' ' + B.dat + ' число ' + X + '. Какие числа мог назвать ' + B.he + '? Найди все.',
+        answer: { kind: 'multi', value: v.slice().sort(function (x, y) { return x - y; }) },
+        params: { mode: 'forward', M: M, A: A, D: D, S: S, X: X },
+        hints: ['Сначала ' + B.he + ' выбирает одно из двух действий, потом — ещё одно из двух. Сколько всего получается путей?',
+          'Путей 4: ' + labs + '. Пройди по каждому с числом ' + X + '.',
+          P.map(function (p, i) { return p.lab + ': ' + p.show(X) + ' = ' + v[i]; }).join('; ') + '. Ответ: ' + v.slice().sort(function (x, y) { return x - y; }).join(', ') + '.']
+      };
+    }
+    if (level === 2) {
+      var X2 = ri(r, 2, 60), v2 = vals(P, X2);
+      if (v2.some(function (z) { return z == null || z <= 0; }) || new Set(v2).size !== 4) return null;
+      var hide = ri(r, 0, 3), given = shuffle(r, v2.filter(function (_, i) { return i !== hide; }));
+      var xs = [];
+      for (var x = 1; x <= 100; x++) { var m = fits(vals(P, x), given); if (m >= 0) xs.push([x, m]); }
+      if (xs.length !== 1 || xs[0][0] !== X2) return null;
+      var ans = v2[hide];
+      var lines = given.map(function (g) {
+        var x = g - K, head = 'Если ' + g + ' дал путь ' + P[3].lab + ', загадано ' + x;
+        if (x < 1) return head + ' — меньше 1, не подходит.';
+        if (x > 100) return head + ' — больше 100, не подходит.';
+        var vv = vals(P, x), others = given.filter(function (z) { return z !== g; });
+        var shown = [0, 1, 2].map(function (i) { return vv[i] == null ? P[i].show(x).replace(/ : \d+$/, '') + ' на ' + D + ' не делится' : P[i].show(x) + ' = ' + vv[i]; });
+        var miss = others.filter(function (z) { return vv.slice(0, 3).indexOf(z) < 0; });
+        return head + ': ' + shown.join(', ') + (miss.length ? ' — нет ' + joinAnd(miss) + '.' : ' — подходит.');
+      });
+      var lines4 = given.map(function (g) {
+        if ((g + S) % M) return g + ' + ' + S + ' на ' + M + ' не делится';
+        var x = (g + S) / M, vv = vals(P, x), others = given.filter(function (z) { return z !== g; });
+        var ok = others.every(function (z) { return z === vv[0] || z === vv[2]; }) && others[0] !== others[1] && vv[0] !== vv[2];
+        var sh = [0, 2].map(function (i) { return vv[i] == null ? P[i].show(x).replace(/ : \d+$/, '') + ' на ' + D + ' не делится' : P[i].show(x) + ' = ' + vv[i]; });
+        return 'если ' + g + ' дал путь ' + P[1].lab + ', загадано ' + x + ': ' + sh.join(', ') + (ok ? ' — подходит' : ' — не подходит');
+      });
+      return {
+        text: intro + w.name + ' загадал' + a + ' целое число от 1 до 100 и назвал' + a + ' его ' + B.dat + ' четыре раза. ' + B.he + ' каждый раз отвечал по-разному: сначала ' + given[0] + ', потом ' + given[1] + ', потом ' + given[2] + '. Какое число ' + B.he + ' назвал в четвёртый раз?',
+        answer: { kind: 'num', value: ans, unit: '' },
+        params: { mode: 'fourth', M: M, A: A, D: D, S: S, given: given },
+        hints: ['Путей 4: ' + labs + '. Один из них просто сдвигает число. Какой?',
+          'Путь ' + P[3].lab + ' даёт число ' + shift + '. Проверь по очереди: вдруг его дало ' + given[0] + '? А ' + given[1] + '? А ' + given[2] + '?',
+          lines.join(' ') + ' А если путь ' + P[3].lab + ' — четвёртый ответ, то одно из чисел дал путь ' + P[1].lab + ': ' + lines4.join('; ') + '. Подходит только загаданное ' + X2 + ': пути дают ' + v2.join(', ') + '. Ответ: ' + ans + '.']
+      };
+    }
+    var R = ri(r, 2, 30), found = [], lines3 = [];
+    var inv = [
+      function () { var y = R * D; return y % M ? [null, R + ' × ' + D + ' = ' + y + ', ' + y + ' на ' + M + ' не делится'] : [y / M, R + ' × ' + D + ' = ' + y + ', ' + y + ' : ' + M + ' = ' + y / M]; },
+      function () { var y = R + S; return y % M ? [null, R + ' + ' + S + ' = ' + y + ', ' + y + ' на ' + M + ' не делится'] : [y / M, R + ' + ' + S + ' = ' + y + ', ' + y + ' : ' + M + ' = ' + y / M]; },
+      function () { var y = R * D; return [y - A, R + ' × ' + D + ' = ' + y + ', ' + y + ' − ' + A + ' = ' + (y - A)]; },
+      function () { var y = R + S; return [y - A, R + ' + ' + S + ' = ' + y + ', ' + y + ' − ' + A + ' = ' + (y - A)]; }
+    ];
+    inv.forEach(function (fn, i) {
+      var res = fn(), x = res[0], ok = x != null && x >= 1 && x <= 100;
+      if (ok && found.indexOf(x) < 0) found.push(x);
+      lines3.push(P[i].lab + ': ' + res[1] + (x != null && !ok ? ' — не подходит' : ''));
+    });
+    if (found.length < 2) return null;
+    found.sort(function (x, y) { return x - y; });
+    return {
+      text: intro + w.name + ' сказал' + a + ' ' + B.dat + ' целое число от 1 до 100, и ' + B.he + ' ответил ' + R + '. Какое число мог сказать ' + w.name + '? Найди все варианты.',
+      answer: { kind: 'multi', value: found },
+      params: { mode: 'back', M: M, A: A, D: D, S: S, R: R },
+      hints: ['Иди с конца. Что надо сделать, чтобы отменить «:' + D + '»? А «−' + S + '»?',
+        'Путей 4: ' + labs + '. Для каждого сделай обратные действия с конца: вместо :' + D + ' — ×' + D + ', вместо −' + S + ' — +' + S + ' и так далее.',
+        lines3.join('; ') + '. Ответ: ' + found.join(', ') + '.']
+    };
+  }
+
+  // =====================================================================
+  // 7. Разрезаем на равные куски
+  // =====================================================================
+  var RIBBONS = [{ acc: 'ленточку', nom: 'ленточка' }, { acc: 'верёвку', nom: 'верёвка' }, { acc: 'проволоку', nom: 'проволока' }, { acc: 'полоску бумаги', nom: 'полоска бумаги' }];
+  var PIECES = ['кусок', 'куска', 'кусков'];
+  function t7(level, r) {
+    var w = kid(r), a = w.v('', 'а'), R = pick(r, RIBBONS);
+    if (level === 1) {
+      var n = ri(r, 2, 8), L = ri(r, 5, 30), m = ri(r, 2, 10), T = n * L;
+      if (m === n || T % m) return null;
+      var q = T / m;
+      return {
+        text: w.name + ' разрезал' + a + ' ' + R.acc + ' на ' + pn(n, PIECES) + ' по ' + L + ' см. Какой длины будут куски, если такую же ' + R.acc + ' разрезать на ' + pn(m, ['равный кусок', 'равных куска', 'равных кусков']) + '?',
+        answer: { kind: 'num', value: q, unit: 'см' }, params: { mode: 'simple', n: n, L: L, m: m },
+        hints: ['Сначала узнай, какой длины вся ' + R.nom + '.', 'Вся ' + R.nom + ': ' + n + ' × ' + L + ' = ' + T + ' см. Теперь раздели её на ' + m + '.', n + ' × ' + L + ' = ' + T + ' см, ' + T + ' : ' + m + ' = ' + q + '. Ответ: ' + q + ' см.']
+      };
+    }
+    if (level === 2) {
+      var n2 = ri(r, 5, 20), longer = r() < 0.65, d = ri(r, 2, 9), m2, p, T2, X, lines;
+      if (longer) {
+        m2 = n2 - ri(r, 1, 5); if (m2 < 2) return null;
+        if ((m2 * d) % (n2 - m2)) return null; p = m2 * d / (n2 - m2); T2 = n2 * p;
+        X = m2 * d;
+        lines = 'Если кусков ' + m2 + ', каждый длиннее на ' + d + ' см: вместе они прибавили ' + m2 + ' × ' + d + ' = ' + X + ' см. Эти ' + X + ' см — это ' + pn(n2 - m2, ['«лишний» кусок', '«лишних» куска', '«лишних» кусков']) + ' из ' + n2 + ' (' + n2 + ' − ' + m2 + ' = ' + (n2 - m2) + '). Один кусок: ' + X + ' : ' + (n2 - m2) + ' = ' + p + ' см. Вся ' + R.nom + ': ' + p + ' × ' + n2 + ' = ' + T2 + ' см.';
+      } else {
+        m2 = n2 + ri(r, 1, 5);
+        if ((n2 * d) % (m2 - n2)) return null; var qq = n2 * d / (m2 - n2); p = qq + d; T2 = n2 * p;
+        X = n2 * d;
+        lines = 'Сейчас каждый из ' + n2 + ' кусков длиннее на ' + d + ' см, чем был бы при ' + m2 + ' кусках: вместе это ' + n2 + ' × ' + d + ' = ' + X + ' см. Из них и сложились бы ' + pn(m2 - n2, ['лишний кусок', 'лишних куска', 'лишних кусков']) + ' (' + m2 + ' − ' + n2 + ' = ' + (m2 - n2) + '). Новый кусок: ' + X + ' : ' + (m2 - n2) + ' = ' + qq + ' см. Вся ' + R.nom + ': ' + qq + ' × ' + m2 + ' = ' + T2 + ' см.';
+      }
+      if (p < 4 || p > 90 || T2 > 2000) return null;
+      return {
+        text: w.name + ' разрезал' + a + ' ' + R.acc + ' на ' + pn(n2, ['равный кусок', 'равных куска', 'равных кусков']) + '. Если бы ' + w.v('он', 'она') + ' разрезал' + a + ' её на ' + pn(m2, ['равный кусок', 'равных куска', 'равных кусков']) + ', то каждый кусок был бы ' + (longer ? 'длиннее' : 'короче') + ' на ' + d + ' см. Какой длины была ' + R.nom + '? Ответ дай в сантиметрах.',
+        answer: { kind: 'num', value: T2, unit: 'см' }, params: { mode: 'olymp', n: n2, m: m2, d: d, longer: longer },
+        hints: [longer ? 'Кусков стало меньше, и каждый подрос на ' + d + ' см. Сколько сантиметров прибавилось ко всем кускам вместе?' : 'Кусков стало больше, и каждый укоротился на ' + d + ' см. Сколько сантиметров «отрезали» от всех ' + n2 + ' кусков вместе?',
+          longer ? 'Прибавка ' + m2 + ' × ' + d + ' = ' + X + ' см — это ' + pn(n2 - m2, ['кусок', 'куска', 'кусков']) + ', которых больше нет. Какой длины один кусок?' : 'Эти ' + n2 + ' × ' + d + ' = ' + X + ' см и есть ' + pn(m2 - n2, ['новый кусок', 'новых куска', 'новых кусков']) + '. Какой длины один новый кусок?',
+          lines + ' Ответ: ' + T2 + ' см.']
+      };
+    }
+    var T3 = pick(r, [60, 72, 84, 90, 96, 120, 144, 150, 168, 180, 210, 240]), k = ri(r, 1, 3);
+    var cands = range(2, T3).filter(function (x) { return T3 % x === 0 && T3 % (x + k) === 0; });
+    var c0 = pick(r, cands); var d3 = T3 / c0 - T3 / (c0 + k);
+    if (c0 < 2 || d3 < 2) return null;
+    var sols = cands.filter(function (x) { return T3 / x - T3 / (x + k) === d3; });
+    if (sols.length !== 1) return null;
+    var idx = cands.indexOf(c0), showC = cands.slice(Math.max(0, idx - 2), Math.min(cands.length, idx + 2));
+    var tl = showC.map(function (x) { var dd = T3 / x - T3 / (x + k); return 'кусков ' + x + ' и ' + (x + k) + ': ' + T3 + ' : ' + x + ' = ' + T3 / x + ', ' + T3 + ' : ' + (x + k) + ' = ' + T3 / (x + k) + ', разница ' + dd + (dd === d3 ? ' — подходит' : dd > d3 ? ' — много' : ' — мало'); });
+    return {
+      text: cap(R.acc) + ' длиной ' + T3 + ' см разрезали на равные куски. Если бы кусков было на ' + k + ' больше, каждый был бы на ' + d3 + ' см короче. На сколько кусков разрезали ' + R.acc + '?',
+      answer: { kind: 'num', value: c0, unit: plural(c0, PIECES) }, params: { mode: 'count', T: T3, k: k, d: d3 },
+      hints: ['И число кусков, и число на ' + k + ' больше делят ' + T3 + ' без остатка. Какие пары подходят?',
+        'Перебирай пары по порядку: ' + cands.slice(0, 3).map(function (x) { return x + ' и ' + (x + k); }).join(', ') + '… Для каждой найди длины кусков и их разницу.',
+        cap(tl.join('; ')) + '. Чем больше кусков, тем меньше разница — дальше не подойдёт. Ответ: ' + c0 + '.']
+    };
+  }
+
+  // =====================================================================
+  // 8. Сумма периметров
+  // =====================================================================
+  function cutsSvg(W, H, v, h, r, labels) {
+    var sc = 200 / Math.max(W, H), w = W * sc, hh = H * sc, pad = 26, out = [];
+    function spots(n, len) { var s = [], base = len / (n + 1); for (var i = 1; i <= n; i++) s.push(base * i + (r() - 0.5) * base * 0.5); return s; }
+    out.push('<rect x="' + pad + '" y="' + 8 + '" width="' + w.toFixed(1) + '" height="' + hh.toFixed(1) + '" fill="#E8EBFA" stroke="#343F9E" stroke-width="3"/>');
+    spots(v, w).forEach(function (x) { out.push('<line x1="' + (pad + x).toFixed(1) + '" y1="8" x2="' + (pad + x).toFixed(1) + '" y2="' + (8 + hh).toFixed(1) + '" stroke="#C0392B" stroke-width="3" stroke-dasharray="8 5"/>'); });
+    spots(h, hh).forEach(function (y) { out.push('<line x1="' + pad + '" y1="' + (8 + y).toFixed(1) + '" x2="' + (pad + w).toFixed(1) + '" y2="' + (8 + y).toFixed(1) + '" stroke="#C0392B" stroke-width="3" stroke-dasharray="8 5"/>'); });
+    if (labels && labels.bottom) out.push('<text x="' + (pad + w / 2).toFixed(1) + '" y="' + (8 + hh + 22).toFixed(1) + '" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-size="17" font-weight="800" fill="#1E2440">' + labels.bottom + '</text>');
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + (w + 2 * pad).toFixed(0) + ' ' + (hh + 40).toFixed(0) + '" role="img" aria-label="Фигура с разрезами">' + out.join('') + '</svg>';
+  }
+  var CUT_V = ['вертикальный', 'вертикальных', 'вертикальных'], CUT_H = ['горизонтальный', 'горизонтальных', 'горизонтальных'];
+  function cutsWords(v, h) { return 'вертикальных — ' + v + ', горизонтальных — ' + h; }
+  function t8(level, r) {
+    if (level < 3) {
+      var a = level === 1 ? ri(r, 3, 15) : ri(r, 4, 16), v = ri(r, 1, 3), h = ri(r, 1, 3);
+      var c = 4 + 2 * (v + h), S = c * a, n = (v + 1) * (h + 1);
+      var base = 'Край квадрата входит в сумму периметров один раз — это 4 стороны квадрата. Каждый разрез длиной в сторону квадрата и входит в сумму дважды (он край у кусков с обеих сторон): ' + (v + h) + ' × 2 = ' + pn(2 * (v + h), SIDES) + '. Всего 4 + ' + 2 * (v + h) + ' = ' + c + ' сторон квадрата.';
+      if (level === 1) return {
+        text: 'Квадрат со стороной ' + a + ' см разрезали прямыми разрезами от края до края: ' + cutsWords(v, h) + '. Получилось ' + pn(n, ['прямоугольник', 'прямоугольника', 'прямоугольников']) + '. Чему равна сумма их периметров? Ответ дай в сантиметрах.',
+        svg: cutsSvg(a, a, v, h, r, { bottom: a + ' см' }),
+        answer: { kind: 'num', value: S, unit: 'см' }, params: { mode: 'sum', a: a, v: v, h: h },
+        hints: ['Обведи пальцем периметр каждого кусочка. Сколько раз ты пройдёшь по краю квадрата? А по каждому разрезу?', 'Край — один раз, каждый разрез — два раза: он граница у кусков слева и справа (или сверху и снизу).', base + ' ' + c + ' × ' + a + ' = ' + S + '. Ответ: ' + S + ' см.']
+      };
+      return {
+        text: 'В квадрате провели прямые разрезы от края до края: ' + cutsWords(v, h) + '. Квадрат распался на ' + pn(n, ['прямоугольник', 'прямоугольника', 'прямоугольников']) + '. Сумма их периметров равна ' + S + ' см. Чему была равна площадь квадрата? Ответ дай в квадратных сантиметрах.',
+        svg: cutsSvg(a, a, v, h, r, null),
+        answer: { kind: 'num', value: a * a, unit: 'см²' }, params: { mode: 'area', S: S, v: v, h: h },
+        hints: ['Сколько раз в сумму периметров входит край квадрата? А каждый разрез?', 'Край — один раз (4 стороны квадрата), каждый разрез — два раза. Сколько это сторон квадрата всего?', base + ' ' + S + ' : ' + c + ' = ' + a + ' см — сторона. ' + a + ' × ' + a + ' = ' + a * a + '. Ответ: ' + a * a + ' см².']
+      };
+    }
+    if (r() < 0.5) {
+      var k = ri(r, 3, 6), a3 = ri(r, 4, 18), Ptot = 2 * a3 * (k + 1);
+      if (Ptot % k) return null; var P = Ptot / k;
+      return {
+        text: 'Квадратный коврик разрезали ' + pn(k - 1, ['разрезом', 'разрезами', 'разрезами']) + ' от края до края, параллельными одной стороне, на ' + pn(k, ['полоску', 'полоски', 'полосок']) + '. У каждой полоски периметр ' + P + ' см. Найди площадь коврика. Ответ дай в квадратных сантиметрах.',
+        svg: cutsSvg(a3, a3, k - 1, 0, r, null),
+        answer: { kind: 'num', value: a3 * a3, unit: 'см²' }, params: { mode: 'strips', k: k, P: P },
+        hints: ['Чему равна сумма периметров всех полосок?', 'Сумма: ' + k + ' × ' + P + ' = ' + Ptot + ' см. Край входит один раз, каждый разрез — дважды. Сколько это сторон коврика?',
+          'Сумма периметров: ' + k + ' × ' + P + ' = ' + Ptot + ' см. Край — 4 стороны, ' + pn(k - 1, ['разрез', 'разреза', 'разрезов']) + ' по 2 раза — ' + pn(2 * (k - 1), SIDES) + '. Всего ' + (2 * k + 2) + ' сторон: ' + Ptot + ' : ' + (2 * k + 2) + ' = ' + a3 + ' см. ' + a3 + ' × ' + a3 + ' = ' + a3 * a3 + '. Ответ: ' + a3 * a3 + ' см².']
+      };
+    }
+    var aa = ri(r, 4, 15), bb = ri(r, 4, 20), hh2 = ri(r, 1, 3), vv = ri(r, 1, 3);
+    if (aa === bb) return null;
+    var S3 = 2 * (aa + bb) + 2 * (hh2 * aa + vv * bb), ca = 2 + 2 * hh2, cb = 2 + 2 * vv;
+    return {
+      text: 'У прямоугольного листа бумаги одна сторона ' + aa + ' см. Его разрезали от края до края: разрезов, параллельных этой стороне, — ' + hh2 + ', а перпендикулярных — ' + vv + '. Сумма периметров всех кусков ' + S3 + ' см. Чему равна другая сторона листа?',
+      svg: cutsSvg(aa, bb, hh2, vv, r, { bottom: aa + ' см' }).replace('viewBox', 'data-rot="1" viewBox'),
+      answer: { kind: 'num', value: bb, unit: 'см' }, params: { mode: 'rect', a: aa, h: hh2, v: vv, S: S3 },
+      hints: ['Каждый разрез входит в сумму периметров дважды, край — один раз. Какой длины разрезы, параллельные стороне ' + aa + ' см?',
+        'Стороны по ' + aa + ' см: 2 края и ' + hh2 + ' разреза по 2 раза — ' + ca + ' раз. Стороны другой длины: 2 края и ' + vv + ' разреза по 2 раза — ' + cb + ' раз.',
+        'Отрезков по ' + aa + ' см в сумме ' + ca + ': ' + ca + ' × ' + aa + ' = ' + ca * aa + ' см. На другую сторону остаётся ' + S3 + ' − ' + ca * aa + ' = ' + (S3 - ca * aa) + ' см, это ' + cb + ' её длины: ' + (S3 - ca * aa) + ' : ' + cb + ' = ' + bb + '. Ответ: ' + bb + ' см.']
+    };
+  }
+
+  // =====================================================================
+  // 9. Река и мячик
+  // =====================================================================
+  var RIVER = [
+    { boat: 'Лодка', boatF: true, A: 'деревни', B: 'лагеря', toA: 'в деревню', toB: 'в лагерь', at: 'у мельницы', mark: 'мельница', objAcc: 'мячик', obj: 'Мячик', objF: false, who: null },
+    { boat: 'Катер', boatF: false, A: 'пристани', B: 'острова', toA: 'к пристани', toB: 'к острову', at: 'у маяка', mark: 'маяк', objAcc: 'шляпу', obj: 'Шляпа', objF: true, who: 'Капитан' },
+    { boat: 'Байдарка', boatF: true, A: 'турбазы', B: 'водопада', toA: 'к турбазе', toB: 'к водопаду', at: 'у старого моста', mark: 'старый мост', objAcc: 'бутылку с запиской', obj: 'Бутылка', objF: true, who: null }
+  ];
+  function riverSetup(r) {
+    var rr = ri(r, 2, 8), g = gcd(rr + 2, rr), tu = (rr + 2) / g, td = rr / g, s = ri(r, 1, 3);
+    tu *= s; td *= s; if (tu > 9) return null;
+    return { r: rr, tu: tu, td: td };
+  }
+  function t9(level, r) {
+    var Z = pick(r, RIVER), st = riverSetup(r); if (!st) return null;
+    var rr = st.r, tu = st.tu, td = st.td;
+    if (level === 3) {
+      var Lk = 2 * lcm(tu, td), vd = Lk / td, vu = Lk / tu, c = (vd - vu) / 2;
+      var raft = r() < 0.6;
+      if (raft) {
+        if (Lk % c) return null; var T = Lk / c;
+        return {
+          text: Z.boat + ' проплывает путь от ' + Z.A + ' до ' + Z.B + ' по течению за ' + pn(td, HOURS) + ', а обратно, против течения, — за ' + pn(tu, HOURS) + '. За сколько часов этот же путь по течению проплывёт плот?',
+          answer: { kind: 'num', value: T, unit: plural(T, HOURS) }, params: { mode: 'raft', tu: tu, td: td },
+          hints: ['Плот сам не гребёт — с какой скоростью он плывёт?', 'Придумай удобную длину пути, которая делится и на ' + td + ', и на ' + tu + ', например ' + Lk + ' км. Найди скорость по течению, против течения и скорость самой реки.',
+            'Пусть путь ' + Lk + ' км. По течению ' + Lk + ' : ' + td + ' = ' + vd + ' км в час, против — ' + Lk + ' : ' + tu + ' = ' + vu + ' км в час. Разница — две скорости течения: (' + vd + ' − ' + vu + ') : 2 = ' + c + ' км в час. Плот плывёт со скоростью течения: ' + Lk + ' : ' + c + ' = ' + T + '. Ответ: ' + T + ' ч. (Возьми другую длину пути — ответ будет тот же.)']
+        };
+      }
+      var own = (vd + vu) / 2; if (Lk % own) return null; var T2 = Lk / own;
+      return {
+        text: Z.boat + ' проплывает путь от ' + Z.A + ' до ' + Z.B + ' по течению за ' + pn(td, HOURS) + ', а обратно, против течения, — за ' + pn(tu, HOURS) + '. За сколько часов ' + (Z.boatF ? 'она' : 'он') + ' проплывёт такое же расстояние по озеру, где течения нет?',
+        answer: { kind: 'num', value: T2, unit: plural(T2, HOURS) }, params: { mode: 'lake', tu: tu, td: td },
+        hints: ['По течению река помогает, против — мешает. А на озере?', 'Придумай удобную длину пути, например ' + Lk + ' км. Скорость на озере — ровно посередине между скоростью по течению и против.',
+          'Пусть путь ' + Lk + ' км. По течению ' + vd + ' км в час, против — ' + vu + ' км в час. Течение (' + vd + ' − ' + vu + ') : 2 = ' + c + ', своя скорость ' + vu + ' + ' + c + ' = ' + own + ' км в час. ' + Lk + ' : ' + own + ' = ' + T2 + '. Ответ: ' + T2 + ' ч.']
+      };
+    }
+    var cands = range(4, 30).map(function (k) { return k * 50; }).filter(function (c) { var D = tu * rr * c; return D <= 30000 && D >= 3000 && D % (rr + 1) === 0 && D % 100 === 0; });
+    if (!cands.length) return null;
+    var cc = pick(r, cands), D = tu * rr * cc, Vu = rr * cc, Vd = (rr + 2) * cc;
+    if (level === 1) {
+      var askOwn = r() < 0.4, ans1 = askOwn ? (rr + 1) * cc : cc;
+      return {
+        text: Z.boat + ' плывёт по реке от ' + Z.A + ' до ' + Z.B + ' ' + pn(tu, HOURS) + ', а обратно — ' + pn(td, HOURS) + '. От ' + Z.A + ' до ' + Z.B + ' по реке ' + fmtN(D) + ' метров. ' + (askOwn ? 'С какой скоростью ' + (Z.boatF ? 'плыла бы лодка' : 'плыл бы катер').replace('лодка', Z.boat.toLowerCase()) + ' по озеру, где течения нет?' : 'С какой скоростью течёт река?') + ' Ответ дай в метрах в час.',
+        answer: { kind: 'num', value: ans1, unit: 'м в час' }, params: { mode: askOwn ? 'own' : 'current', D: D, tu: tu, td: td },
+        hints: ['Найди скорость туда и обратно. Где ' + Z.boat.toLowerCase() + ' плывёт быстрее — по течению или против?',
+          'Туда ' + fmtN(D) + ' : ' + tu + ' = ' + fmtN(Vu) + ' м в час, обратно ' + fmtN(D) + ' : ' + td + ' = ' + fmtN(Vd) + ' м в час. Разница этих скоростей — две скорости течения.',
+          'Туда ' + fmtN(Vu) + ' м в час (против течения), обратно ' + fmtN(Vd) + ' м в час (по течению). Течение: (' + fmtN(Vd) + ' − ' + fmtN(Vu) + ') : 2 = ' + fmtN(cc) + ' м в час.' + (askOwn ? ' Своя скорость: ' + fmtN(Vu) + ' + ' + fmtN(cc) + ' = ' + fmtN(ans1) + ' м в час.' : '') + ' Ответ: ' + fmtN(ans1) + '.']
+      };
+    }
+    var x = D / (rr + 1), who = Z.who ? { name: Z.who, mid: Z.who.toLowerCase(), f: false, v: function (m) { return m; } } : kid(r), a = who.v('', 'а');
+    if (!who.mid) who.mid = who.name;
+    var boatWord = Z.boat.toLowerCase();
+    return {
+      text: Z.boat + ' плывёт по реке от ' + Z.A + ' до ' + Z.B + ' ' + pn(tu, HOURS) + ', а обратно — ' + pn(td, HOURS) + '. ' + who.name + ' плыл' + a + ' на ' + (boatWord === 'лодка' ? 'лодке' : boatWord === 'катер' ? 'катере' : 'байдарке') + ' от ' + Z.A + ' ' + Z.toB + ' и ' + Z.at + ' уронил' + a + ' в воду ' + Z.objAcc + '. ' + Z.obj + ' приплыл' + (Z.objF ? 'а' : '') + ' ' + Z.toA + ' как раз тогда, когда ' + who.mid + ' приплыл' + a + ' ' + Z.toB + '. От ' + Z.A + ' до ' + Z.B + ' по реке ' + fmtN(D) + ' метров. На каком расстоянии от ' + Z.A + ' находится ' + Z.mark + '? Ответ дай в метрах.',
+      answer: { kind: 'num', value: x, unit: 'м' }, params: { mode: 'ball', D: D, tu: tu, td: td },
+      hints: ['Найди скорость ' + (Z.boatF ? 'лодки' : 'катера').replace('лодки', boatWord === 'байдарка' ? 'байдарки' : 'лодки') + ' туда и обратно и скорость течения. С какой скоростью плывёт ' + Z.objAcc.split(' ')[0].replace('шляпу', 'шляпа').replace('бутылку', 'бутылка') + '?',
+        'Туда ' + fmtN(Vu) + ' м в час, обратно ' + fmtN(Vd) + ' м в час, течение ' + fmtN(cc) + ' м в час. Во сколько раз ' + boatWord + ' быстрее течения на пути туда? За одно и то же время кто сколько проплыл?',
+        'Туда ' + fmtN(D) + ' : ' + tu + ' = ' + fmtN(Vu) + ' м в час, обратно ' + fmtN(D) + ' : ' + td + ' = ' + fmtN(Vd) + ' м в час — значит, туда против течения. Течение: (' + fmtN(Vd) + ' − ' + fmtN(Vu) + ') : 2 = ' + fmtN(cc) + ' м в час — с этой скоростью плывёт ' + Z.obj.toLowerCase() + '. ' + cap(boatWord) + ' против течения быстрее в ' + fmtN(Vu) + ' : ' + fmtN(cc) + ' = ' + pn(rr, TIMES) + '. За одно время от места, где упал' + (Z.objF ? 'а' : '') + ' ' + Z.obj.toLowerCase() + ', ' + boatWord + ' проплыл' + (Z.boatF ? 'а' : '') + ' в ' + pn(rr, TIMES) + ' больше, чем ' + Z.obj.toLowerCase() + ': весь путь — 1 + ' + rr + ' = ' + (rr + 1) + ' частей. ' + fmtN(D) + ' : ' + (rr + 1) + ' = ' + fmtN(x) + '. Ответ: ' + fmtN(x) + ' м.']
+    };
+  }
+
+  // =====================================================================
+  // 10. Лягушки и жабы
+  // =====================================================================
+  var SAYS = 'Лягушки всегда говорят правду, а жабы всегда лгут. Каждая из них сказала: «У меня есть соседка-жаба!»';
+  function rowExample(n, mode) {     // строка Л/Ж для ряда (mode: max | min), для круга (cmax | cmin)
+    var s = [];
+    for (var i = 1; i <= n; i++) s.push('Л');
+    if (mode === 'max') for (var i2 = 0; i2 < n; i2 += 2) s[i2] = 'Ж';
+    if (mode === 'cmax') for (var i3 = 0; i3 + 1 < n; i3 += 2) s[i3] = 'Ж';
+    if (mode === 'min') { for (var p = 2; p <= n; p += 3) s[p - 1] = 'Ж'; if (n % 3 !== 0) s[n - 1] = 'Ж'; }
+    if (mode === 'cmin') { var q = Math.floor(n / 3); for (var t = 0; t < q; t++) s[3 * t] = 'Ж'; if (n % 3 === 1) s[3 * q - 1 + 0] = 'Ж'; if (n % 3 === 2) s[3 * q] = 'Ж'; }
+    return s.join(' ');
+  }
+  function t10(level, r) {
+    var text, ans, params, ex, bound, h1, h2;
+    h1 = 'Лягушка говорит правду — значит, рядом с ней есть жаба. Жаба лжёт — значит, рядом с ней жаб нет.';
+    if (level === 1) {
+      var n = ri(r, 5, 12); ans = Math.ceil(n / 2);
+      text = 'В ряд стоят ' + n + ' домиков, в каждом живёт лягушка или жаба. ' + SAYS + ' Какое наибольшее число жаб могло жить в домиках? (Соседки живут в соседних домиках.)';
+      params = { kind: 'path', n: n, ask: 'max' };
+      ex = 'Пример: ' + rowExample(n, 'max') + ' — ' + pn(ans, TOADS) + ', у каждой лягушки соседка-жаба, жабы рядом не живут.';
+      bound = n % 2 === 0 ? 'Больше нельзя: домики разбиваются на ' + pn(n / 2, PAIRS) + ' соседей, в каждой паре не больше одной жабы.' : 'Больше нельзя: без последнего домика остальные разбиваются на ' + pn((n - 1) / 2, PAIRS) + ' соседей, в каждой паре не больше одной жабы, и ещё последний домик: ' + (n - 1) / 2 + ' + 1 = ' + ans + '.';
+    } else if (level === 2) {
+      var g = pick(r, [[2, 3], [2, 4], [2, 5], [3, 3], [3, 4], [3, 5], [4, 4], [2, 6], [4, 5]]), A = g[0], B = g[1], cells = A * B;
+      ans = Math.ceil(cells / 2);
+      text = 'Поле ' + A + ' × ' + B + ' разбито на клетки, в каждой клетке сидит лягушка или жаба. ' + SAYS + ' Какое наибольшее число жаб могло быть? (Соседки сидят в клетках с общей стороной.)';
+      params = { kind: 'grid', a: A, b: B, ask: 'max' };
+      ex = 'Пример: раскрасим поле как шахматную доску' + (cells % 2 ? ', угловые клетки тёмные — тёмных ' + ans + ', светлых ' + (cells - ans) : ' — тёмных и светлых клеток поровну, по ' + ans) + '. Жабы на тёмных: соседки у них только светлые, а у каждой лягушки есть тёмная соседка.';
+      bound = cells % 2 === 0 ? 'Больше нельзя: поле разбивается на ' + pn(cells / 2, PAIRS) + ' соседних клеток (доминошек), в каждой паре не больше одной жабы.' : 'Больше нельзя: без одной угловой клетки поле разбивается на ' + pn((cells - 1) / 2, PAIRS) + ' соседних клеток, в паре не больше одной жабы, и ещё угловая клетка: ' + (cells - 1) / 2 + ' + 1 = ' + ans + '.';
+    } else {
+      var kind = pick(r, ['pathmin', 'cyclemin', 'cyclemax', 'box']);
+      if (kind === 'pathmin') {
+        var n2 = ri(r, 6, 14); ans = Math.ceil(n2 / 3);
+        text = 'В ряд стоят ' + n2 + ' домиков, в каждом живёт лягушка или жаба. ' + SAYS + ' Какое наименьшее число жаб могло жить в домиках? (Соседки живут в соседних домиках.)';
+        params = { kind: 'path', n: n2, ask: 'min' };
+        ex = 'Пример: ' + rowExample(n2, 'min') + ' — ' + pn(ans, TOADS) + '.';
+        bound = 'Меньше нельзя: каждая жаба «закрывает» себя и двух соседок — не больше 3 домиков. ' + pn(ans - 1, TOADS) + ' закроют не больше ' + (ans - 1) + ' × 3 = ' + 3 * (ans - 1) + ' домиков, а их ' + n2 + '.';
+        h1 = 'Жабы рядом не живут, а у каждой лягушки рядом есть жаба. Сколько домиков «закрывает» одна жаба?';
+      } else if (kind === 'cyclemin' || kind === 'cyclemax') {
+        var n3 = ri(r, 6, 14), mx = kind === 'cyclemax'; ans = mx ? Math.floor(n3 / 2) : Math.ceil(n3 / 3);
+        text = 'Вокруг пруда по кругу плавают ' + n3 + ' кувшинок, на каждой сидит лягушка или жаба. ' + SAYS + ' Какое ' + (mx ? 'наибольшее' : 'наименьшее') + ' число жаб могло быть? (Соседки — на соседних кувшинках, у каждой две соседки.)';
+        params = { kind: 'cycle', n: n3, ask: mx ? 'max' : 'min' };
+        ex = 'Пример по кругу: ' + rowExample(n3, mx ? 'cmax' : 'cmin') + ' (последняя кувшинка — соседка первой) — ' + pn(ans, TOADS) + '.';
+        bound = mx ? 'Больше нельзя: за каждой жабой по часовой стрелке сидит лягушка, у разных жаб — разные лягушки. Значит, лягушек не меньше, чем жаб, и жаб не больше половины: ' + n3 + ' : 2' + (n3 % 2 ? ' — не больше ' + ans : ' = ' + ans) + '.'
+          : 'Меньше нельзя: каждая жаба «закрывает» себя и двух соседок — не больше 3 кувшинок. ' + pn(ans - 1, TOADS) + ' закроют не больше ' + 3 * (ans - 1) + ', а кувшинок ' + n3 + '.';
+        if (!mx) h1 = 'Жабы рядом не сидят, а у каждой лягушки рядом есть жаба. Сколько кувшинок «закрывает» одна жаба?';
+      } else {
+        var bx = pick(r, [[2, 2, 2], [2, 2, 3], [2, 3, 3], [3, 3, 3], [2, 2, 4]]), V = bx[0] * bx[1] * bx[2]; ans = Math.ceil(V / 2);
+        text = 'Брусок ' + bx.join(' × ') + ' сложен из кубиков 1 × 1 × 1, в каждом кубике сидит лягушка или жаба. ' + SAYS + ' Какое наибольшее число жаб могло быть? (Соседки сидят в кубиках с общей гранью.)';
+        params = { kind: 'box', dims: bx, ask: 'max' };
+        ex = 'Пример: раскрасим кубики «шахматкой»' + (V % 2 ? ', угловые тёмные — тёмных ' + ans + ', светлых ' + (V - ans) : ' — тёмных и светлых поровну, по ' + ans) + '. Жабы в тёмных: соседки у них светлые, а у каждой лягушки есть тёмная соседка.';
+        bound = V % 2 === 0 ? 'Больше нельзя: брусок разбивается на ' + pn(V / 2, PAIRS) + ' соседних кубиков, в каждой паре не больше одной жабы.' : 'Больше нельзя: ' + (V - 1) + ' кубиков без одного углового разбиваются на ' + pn((V - 1) / 2, PAIRS) + ' соседей, в каждой паре не больше одной жабы: ' + (V - 1) / 2 + ' + 1 = ' + ans + '.';
+      }
+    }
+    h2 = 'Две жабы рядом сидеть не могут, а у каждой лягушки рядом есть жаба. Построй пример — а потом подумай, почему ' + (params.ask === 'max' ? 'больше' : 'меньше') + ' нельзя.';
+    return { text: text, answer: { kind: 'num', value: ans, unit: plural(ans, TOADS) }, params: params, hints: [h1, h2, ex + ' ' + bound + ' Ответ: ' + ans + '.'] };
+  }
+
+  // ---------- каталог ----------
+  var TYPES = [
+    { id: 1, title: 'Сколько не хватает', story: 'Треугольник из карточек', gen: t1, trick: 'Посчитай, сколько должно быть, и вычти, сколько есть. В треугольнике из n рядов n × n карточек.' },
+    { id: 2, title: 'Цифры по возрастанию', story: 'Номер телефона', gen: t2, trick: 'Цифры идут по возрастанию — после каждой должно хватить места для следующих. Начни с самых маленьких и объясни, почему другие не подходят.' },
+    { id: 3, title: 'Красивые даты', story: 'Дни недели', gen: t3, trick: 'Посчитай дни до нужной даты и раздели на 7: остаток покажет, на сколько сдвинется день недели. Помни, сколько дней в каждом месяце.' },
+    { id: 4, title: 'Квадратные залы', story: 'Театр Буратино', gen: t4, trick: 'Выпиши числа 1, 4, 9, 16, 25… и найди пару с нужной суммой. Проверь все пары — лишние отбрось.' },
+    { id: 5, title: 'Выписываем числа', story: 'Сколько секунд', gen: t5, trick: 'Сначала посчитай числа (перебирай первую цифру), потом цифры в них, потом время.' },
+    { id: 6, title: 'Все пути Учёного Кота', story: 'Четыре ответа', gen: t6, trick: 'Выпиши все пути. Найди тот, что просто сдвигает число, и проверь каждое данное число как его ответ.' },
+    { id: 7, title: 'Равные куски', story: 'Катина ленточка', gen: t7, trick: 'Прибавка ко всем кускам вместе — это и есть лишние куски. Раздели прибавку на число лишних кусков.' },
+    { id: 8, title: 'Сумма периметров', story: 'Квадрат с разрезами', gen: t8, trick: 'Край входит в сумму периметров один раз, каждый разрез — два раза. Посчитай, сколько это сторон.' },
+    { id: 9, title: 'Река и мячик', story: 'Лодка и течение', gen: t9, trick: 'Разница скоростей по течению и против — это две скорости течения. Мячик и плот плывут со скоростью течения.' },
+    { id: 10, title: 'Лягушки и жабы', story: 'Кто сказал правду', gen: t10, trick: 'Жабы рядом не сидят, у каждой лягушки рядом жаба. Ответ = пример + объяснение, почему больше (меньше) нельзя.' }
+  ];
+  function generate(typeId, level, seed) {
+    var r = makeRng(seed), T = TYPES[typeId - 1];
+    for (var i = 0; i < 20000; i++) {
+      var x = T.gen(level, r);
+      if (x) { x.type = typeId; x.level = level; return x; }
+    }
+    throw new Error('Не удалось сгенерировать задачу вида ' + typeId + ', уровень ' + level);
+  }
+  var API = { TYPES: TYPES, generate: generate };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.GEN4 = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* Тренажёр к олимпиаде «Интеллектиум» — логика страницы. Генераторы задач — GEN1…GEN4 (gen1.js … gen4.js). */
 (function () {
   'use strict';
   var CFG = window.TRAINER_CONFIG || {};
-  var KLASS_READY = { 3: GEN3 };
+  var KLASS_READY = { 1: GEN1, 2: GEN2, 3: GEN3, 4: GEN4 };
   var OLYMPIAD_DAY = new Date(2026, 10, 13);           // 13 ноября 2026
 
   // ---------- имена ----------
@@ -906,6 +2610,10 @@ window.TRAINER_CONFIG = {
     s.innerHTML = paths[name];  // константы выше, не пользовательский текст
     return s;
   }
+  function pic(task) {      // рисунок к задаче: SVG собирает генератор из своих чисел, пользовательского текста в нём нет
+    if (!task.svg) return null;
+    var d = h('div', { class: 'pic' }); d.innerHTML = task.svg; return d;
+  }
   function dot(hex, size) { return h('span', { class: 'dot', 'aria-hidden': 'true', style: 'width:' + size + 'px;height:' + size + 'px;background:' + hex }); }
   function logoBlock() { return h('div', { class: 'brand' }, h('img', { src: window.LOGO_SRC, alt: 'Интеллектиум', class: 'logo' }), h('div', { class: 'descr', text: 'Олимпиадная математика' })); }
   function topBar(backLabel, onBack) {
@@ -942,7 +2650,7 @@ window.TRAINER_CONFIG = {
         h('section', { class: 'card' },
           h('h2', { id: 'kl', text: 'В каком ты классе?' }),
           h('div', { class: 'grid4', role: 'group', 'aria-labelledby': 'kl' }, klassBtns),
-          ready ? null : h('div', { class: 'note', text: 'Тренажёр для этого класса скоро появится. Пока открыт 3 класс.' })),
+          ready ? null : h('div', { class: 'note', text: 'Тренажёр для этого класса скоро появится.' })),
         h('section', { class: 'card' },
           h('h2', { text: 'Секретное имя' }),
           h('p', { class: 'muted', text: 'Тренажёр придумает тебе смешное имя. По нему преподаватель увидит твои успехи.' }),
@@ -1112,7 +2820,7 @@ window.TRAINER_CONFIG = {
       topBar('Все задачи', function () { if (c.attempts && !c.finished) finish('ушёл'); screenHome(); }),
       h('div', null, h('div', { class: 'kicker', text: 'Вид ' + c.T.id + ' из 10' }), h('h1', { class: 'h1dark', text: c.T.title })),
       dots,
-      h('section', { class: 'card task' }, h('div', { class: 'muted small b', text: 'Задача ' + c.taskNo }), h('p', { class: 'tasktext', text: c.task.text })),
+      h('section', { class: 'card task' }, h('div', { class: 'muted small b', text: 'Задача ' + c.taskNo }), h('p', { class: 'tasktext', text: c.task.text }), pic(c.task)),
       h('div', { class: 'answer' }, h('div', { class: 'label', id: 'anslabel' }, h('label', { for: 'ans', text: 'Ответ' })), inp.el,
         h('div', { class: 'muted small', text: 'Решение запиши в тетради, как на олимпиаде, а сюда — только ответ.' })),
       fb, hintBox,
@@ -1171,7 +2879,7 @@ window.TRAINER_CONFIG = {
       topBar('Выйти', function () { trial = null; screenHome(); }),
       h('div', null, h('div', { class: 'kicker', text: 'Пробная олимпиада' }), h('h1', { class: 'h1dark', text: 'Задача ' + (trial.i + 1) + ' из 10' })),
       h('div', { class: 'bars', 'aria-hidden': 'true' }, trial.items.map(function (x, j) { return h('span', { class: 'bar ' + (j < trial.i ? 'done' : j === trial.i ? 'tried' : 'new') }); })),
-      h('section', { class: 'card task' }, h('p', { class: 'tasktext', text: it.task.text })),
+      h('section', { class: 'card task' }, h('p', { class: 'tasktext', text: it.task.text }), pic(it.task)),
       h('div', { class: 'answer' }, h('div', { class: 'label', id: 'anslabel' }, h('label', { for: 'ans', text: 'Ответ' })), inp.el),
       fb,
       h('div', { class: 'actions' },
@@ -1190,7 +2898,7 @@ window.TRAINER_CONFIG = {
         var det = h('details', { class: 'review' },
           h('summary', null, h('span', { class: 'num', text: String(x.T.id) }), h('span', { class: 'grow' }, h('b', { text: x.T.title }), h('span', { class: 'muted small', text: x.answer != null ? 'Твой ответ: ' + x.answer : 'Без ответа' })),
             h('span', { class: 'status' }, h('span', { class: 'mark ' + st, 'aria-hidden': 'true' }), h('span', { class: 'small', text: lab }))),
-          h('div', { class: 'hint full' }, h('div', { class: 'hlabel', text: 'Разбор' }), h('div', { text: x.task.hints[2] })),
+          h('div', { class: 'hint full' }, h('div', { class: 'hlabel', text: 'Разбор' }), h('div', { class: 'small', text: x.task.text }), pic(x.task), h('div', { text: x.task.hints[2] })),
           h('button', { type: 'button', class: 'btn ghost', onclick: function () { startTraining(x.T.id); } }, 'Тренировать этот вид'));
         return det;
       })),
