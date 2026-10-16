@@ -158,9 +158,15 @@
     .phone{display:none} .logo img{width:140px}
     .hero{padding-top:48px}
     .hero-actions .btn,.hero-actions .btn-text{width:100%;justify-content:center}
-    .facts{grid-template-columns:1fr 1fr;gap:4px 16px;padding:8px 0}
-    .facts>div{border-right:0!important;padding:14px 0!important}
-    .facts b{font-size:26px}
+
+    .facts{grid-template-columns:1fr;gap:0;padding:8px 24px}
+    .float{left:16px;top:16px}
+    .hero-photo img{aspect-ratio:4/3}
+    .hero-photo{max-width:none}
+    .facts>div{border-right:0!important;padding:14px 0!important;border-bottom:1px solid var(--line)}
+    .facts>div:last-child{border-bottom:0}
+    .facts b{font-size:26px;white-space:nowrap;min-width:110px}
+    .facts span br{display:none}
     .dir-cta{align-self:stretch}
     .cal-list li{flex-direction:column;gap:4px}
     .faq p{padding-right:0}
@@ -217,10 +223,10 @@
 
 <!-- ФАКТЫ -->
 <div class="wrap facts">
-  <div><b>9 лет</b><span>центру,<br>с 2017 года</span></div>
-  <div><b>до 6</b><span>человек<br>в группе</span></div>
-  <div><b>4</b><span>направления<br>для 1–7 класса</span></div>
-  <div><b>5,0</b><span>на Яндекс Картах,<br>70+ отзывов</span></div>
+  <div><b>9 лет</b><span>центру, <br>с 2017 года</span></div>
+  <div><b>до 6</b><span>человек <br>в группе</span></div>
+  <div><b>4</b><span>направления <br>для 1–7 класса</span></div>
+  <div><b>5,0</b><span>на Яндекс Картах, <br>70+ отзывов</span></div>
 </div>
 
 <!-- НАПРАВЛЕНИЯ -->

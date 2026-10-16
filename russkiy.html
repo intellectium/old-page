@@ -1,785 +1,403 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Русский язык для 1–4 класса в СПб — детский центр «Интеллектиум»</title>
 <meta name="description" content="Русский язык для 1–4 класса на ул. Оптиков, 45к1. Мини-группы до 6 человек, работа над ошибками параллельно со школьной программой, подготовка к ВПР. Бесплатная диагностика.">
+<meta name="theme-color" content="#2563EB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
-
-<!-- Яндекс.Метрика -->
-<script type="text/javascript">
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-   ym(111831978, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/111831978" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Яндекс.Метрика -->
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="preload" as="image" href="images/russkiy-gruppa-thumb.jpg">
 <!-- Пиксель VK Рекламы: вставить сюда после получения ID от клиента -->
-
 <style>
   :root{
-    --blue:   #343F9E;
-    --blue-d: #242D76;
-    --blue-l: #5C68C9;
-    --sun:    #FFC53D;
-    --bg:     #F7F8FC;
-    --card:   #FFFFFF;
-    --text:   #22263D;
-    --muted:  #6B7190;
-    --mist:   #E4E7F5;
-    --warm:   #FFF8E6;
-    --r:      22px;
+    --blue:#2563EB; --blue-900:#1E3A8A; --blue-950:#172554;
+    --sun:#FFC83D; --bg:#F4F7FE; --tint:#E8EFFD; --card:#FFFFFF;
+    --text:#0F1B3D; --text-2:#34415F; --muted:#51607F; --line:#E1E8F7; --on-blue:#DCE6FF;
+    --r:22px; --r-lg:28px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    font-family:Nunito, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  section{padding:72px 0}
+  body{font-family:Manrope,system-ui,sans-serif;background:#fff;color:var(--text);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block;height:auto}
+  a{color:var(--blue)} a:hover{color:var(--blue-900)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  .bg{background:var(--bg)}
+  .label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  h1{font-size:clamp(34px,4.6vw,56px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+  h2{margin-top:12px;font-size:clamp(28px,3.2vw,40px);line-height:1.12;font-weight:800;letter-spacing:-.02em;max-width:24ch}
+  h3{font-size:20px;font-weight:700;line-height:1.3}
+  .lead{margin-top:18px;color:var(--muted);max-width:66ch}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:12px 28px;border-radius:14px;font-weight:800;font-size:17px;line-height:1.3;text-align:center;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-blue{background:var(--blue);color:#fff} .btn-blue:hover{color:#fff}
+  .btn-white{background:#fff;color:var(--blue-900)} .btn-white:hover{color:var(--blue-900)}
+  .btn-outline{border:1.5px solid var(--blue);color:var(--blue);background:transparent;min-height:50px;padding:10px 22px;font-size:16px}
+  .btn-text{display:inline-flex;align-items:center;min-height:56px;padding:0 8px;color:var(--text);font-weight:700;text-decoration:none;white-space:nowrap}
+  .tick{flex:none}
 
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
+  .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:12px;padding-bottom:12px}
+  .logo img{width:156px;height:auto}
+  .nav{display:flex;gap:28px}
+  .nav a{color:var(--text-2);text-decoration:none;font-weight:600;font-size:15px}
+  .nav a:hover{color:var(--blue)}
+  .contacts{display:flex;align-items:center;gap:18px}
+  .phone{color:var(--text);font-weight:700;text-decoration:none;white-space:nowrap}
+  .hdr-cta{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:12px;background:var(--blue);color:#fff;font-weight:800;font-size:15px;text-decoration:none}
+  .hdr-cta:hover{color:#fff}
 
-  .eyebrow{
-    display:inline-block;
-    background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.3);
-    color:#fff;
-    font-weight:800;
-    font-size:.78rem;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    padding:9px 18px;
-    border-radius:999px;
-    margin-bottom:22px;
-  }
-  .kicker{
-    display:inline-block;
-    color:var(--blue);
-    font-weight:800;
-    font-size:.8rem;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    margin-bottom:10px;
-  }
+  .hero{background:var(--bg);padding:64px 0 0;overflow:hidden}
+  .hero .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
+  .hero-text{flex:1.2 1 520px;min-width:0;padding-bottom:64px}
+  .pill{display:inline-flex;align-items:center;gap:10px;min-height:34px;padding:0 14px 0 6px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14px}
+  .pill span{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:var(--sun);font-size:13px;white-space:nowrap}
+  .hero h1{margin-top:22px}
+  .hero .lead{color:var(--text-2);font-size:clamp(17px,1.5vw,19px);max-width:54ch}
+  .hero .lead b{color:var(--text)}
+  .ticks{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px}
+  .ticks li{display:flex;gap:12px;align-items:center;font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;align-items:center}
+  .hero-photo{flex:1 1 380px;min-width:0;max-width:500px;margin:0 auto;align-self:flex-end;position:relative}
+  .hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:35% 50%;border-radius:28px 28px 0 0}
+  .float{position:absolute;left:-20px;top:32px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 34px rgba(23,37,84,.16);display:flex;align-items:center;gap:12px}
+  .float b{display:block;font-weight:800;font-size:18px;line-height:1.2}
+  .float small{font-size:13px;color:var(--muted)}
 
-  /* Header */
-  .site-header{background:var(--card);border-bottom:1px solid var(--mist);position:sticky;top:0;z-index:50}
-  .site-header .wrap{
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
-    padding-top:14px;padding-bottom:14px;flex-wrap:wrap;
-  }
-  .site-header .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .site-header .logo img{height:38px;width:auto;display:block}
-  .site-header .contacts{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-  .site-header .contacts .phone{
-    font-weight:800;font-size:1rem;color:var(--text);text-decoration:none;white-space:nowrap;
-  }
-  .site-header .contacts .cta{
-    background:var(--blue-d);color:#fff;font-size:.92rem;padding:12px 26px;box-shadow:none;
-  }
-  .site-header .contacts .cta:hover{background:var(--blue)}
-  @media (max-width: 640px){
-    .site-header .wrap{justify-content:center;text-align:center}
-    .site-header .contacts{justify-content:center;width:100%}
-  }
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-bottom:1px solid var(--line)}
+  .facts>div{padding:26px 24px;display:flex;gap:14px;align-items:center;border-right:1px solid var(--line)}
+  .facts>div:first-child{padding-left:0} .facts>div:last-child{border-right:0;padding-right:0}
+  .facts b{font-size:32px;font-weight:800;color:var(--blue);line-height:1;white-space:nowrap}
+  .facts span{font-size:14px;color:var(--muted);line-height:1.3}
 
-  /* Hero */
-  .hero{
-    background:linear-gradient(160deg, var(--blue) 0%, var(--blue-d) 100%);
-    color:#fff;
-    padding:64px 0 56px;
-  }
-  .hero h1{
-    font-size:clamp(1.9rem, 4vw, 2.7rem);
-    font-weight:900;
-    line-height:1.22;
-    max-width:780px;
-    margin-bottom:20px;
-  }
-  .hero h1 u{
-    text-decoration:none;
-    background:var(--sun);
-    color:var(--blue-d);
-    padding:0 8px;
-    border-radius:8px;
-    box-decoration-break:clone;
-    -webkit-box-decoration-break:clone;
-  }
-  .hero .sub{
-    font-size:1.08rem;
-    max-width:640px;
-    color:rgba(255,255,255,.92);
-    margin-bottom:28px;
-  }
-  .hero .sub b{color:#fff}
-  .cta{
-    display:inline-block;
-    background:var(--sun);
-    color:var(--blue-d);
-    font-weight:800;
-    font-size:1rem;
-    padding:16px 34px;
-    border-radius:999px;
-    text-decoration:none;
-    border:none;
-    cursor:pointer;
-    transition:transform .15s ease, box-shadow .15s ease;
-    box-shadow:0 8px 24px rgba(0,0,0,.15);
-  }
-  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.2)}
-  .hero-facts{
-    display:flex;
-    flex-wrap:wrap;
-    gap:28px;
-    margin-top:36px;
-  }
-  .fact{display:flex;flex-direction:column;gap:2px}
-  .fact b{font-size:1.3rem;font-weight:900}
-  .fact span{font-size:.85rem;color:rgba(255,255,255,.78)}
+  .cards{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+  .card.soft{background:var(--bg);border:0}
+  .card h3{margin-bottom:8px}
+  .card p{color:var(--muted);font-size:16px}
+  .num{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:18px}
+  .age{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--tint);color:var(--blue-900);font-weight:700;font-size:12px;margin-bottom:16px}
+  .sc-fact{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--blue-900)!important;font-weight:600;font-size:15px!important}
 
-  .sec-head{max-width:680px;margin-bottom:36px}
-  .sec-head h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:900;line-height:1.28}
-  .sec-head p{margin-top:12px;color:var(--muted);font-size:1.02rem}
+  .objection{margin-top:20px;background:var(--blue-900);color:#fff;border-radius:var(--r);padding:clamp(28px,3.5vw,40px);display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center}
+  .objection>div{flex:1 1 340px;min-width:0}
+  .objection h3{font-size:clamp(20px,2vw,24px);font-weight:800}
+  .objection .oq{margin-top:8px;color:var(--on-blue);font-size:15px}
+  .objection p{color:var(--on-blue)}
 
-  .signup-top-wrap{padding:40px 0 0}
-  .signup.compact{padding:28px 28px 32px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .signup.compact h2{font-size:1.2rem;margin-bottom:6px}
-  .signup.compact > p{font-size:.9rem;margin-bottom:18px}
+  .why{display:flex;flex-wrap:wrap;gap:20px;margin-top:40px}
+  .why-main{flex:1.1 1 400px;min-width:0;background:var(--blue);color:#fff;border-radius:var(--r-lg);padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center}
+  .huge{font-size:clamp(56px,7vw,88px);font-weight:800;line-height:.95;letter-spacing:-.03em}
+  .huge span{display:block;font-size:17px;font-weight:600;letter-spacing:0;color:var(--on-blue);margin-top:10px}
+  .why-main h3{margin:28px 0 8px;font-size:22px;font-weight:800}
+  .why-main p{color:var(--on-blue)}
+  .why-side{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
+  .why-side .card{flex:1}
 
-  /* Pains */
-  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
-  .pain{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .pain h3{font-size:1.08rem;font-weight:800;margin-bottom:10px}
-  .pain p{color:var(--muted);font-size:.96rem}
-  .objection{
-    background:var(--warm);
-    border-radius:var(--r);
-    padding:32px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:28px;
-    align-items:start;
-  }
-  .objection h3{font-size:1.15rem;font-weight:800;margin-bottom:6px}
-  .objection .oq{color:var(--muted);font-size:.9rem;font-style:italic}
-  .objection p{font-size:.98rem}
-
-  /* Showcase (by grade) */
-  .showcase{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .sc-card{background:var(--card);border-radius:var(--r);padding:24px;border:1px solid var(--mist)}
-  .sc-age{
-    display:inline-block;background:var(--mist);color:var(--blue);
-    font-weight:800;font-size:.78rem;padding:5px 12px;border-radius:999px;margin-bottom:14px;
-  }
-  .sc-card h3{font-size:1.02rem;font-weight:800;margin-bottom:10px}
-  .sc-card p{color:var(--muted);font-size:.9rem;margin-bottom:10px}
-  .sc-fact{color:var(--blue) !important;font-weight:700;font-size:.82rem !important}
-  .showcase-note{text-align:center;margin-top:28px;color:var(--muted)}
-
-  /* Results */
-  .results{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
-  .result{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .result .num{
-    display:inline-block;font-size:2rem;font-weight:900;color:var(--blue);line-height:1;margin-bottom:12px;
-  }
-  .result h3{font-size:1.05rem;font-weight:800;margin-bottom:10px}
-  .result p{color:var(--muted);font-size:.92rem}
-
-  .method{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .method-item{background:var(--card);border-radius:16px;padding:22px 24px;border:1px solid var(--mist)}
-  .method-item h3{font-size:.98rem;font-weight:800;color:var(--blue);margin-bottom:8px}
-  .method-item p{font-size:.9rem;color:var(--muted)}
-
-  /* Why / method */
-  .why{display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
-  .why-main{
-    background:var(--blue);color:#fff;border-radius:var(--r);padding:36px;
-    display:flex;flex-direction:column;justify-content:center;
-  }
-  .huge{font-size:3.4rem;font-weight:900;line-height:1;margin-bottom:8px}
-  .huge span{display:block;font-size:1rem;font-weight:600;color:rgba(255,255,255,.85);margin-top:8px}
-  .why-main h3{font-size:1.2rem;font-weight:800;margin:16px 0 10px}
-  .why-main p{color:rgba(255,255,255,.9);font-size:.98rem}
-  .why-side{display:flex;flex-direction:column;gap:16px}
-  .why-card{background:var(--card);border-radius:18px;padding:22px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .why-card h3{font-size:1.02rem;font-weight:800;margin-bottom:6px}
-  .why-card p{color:var(--muted);font-size:.92rem}
-
-  /* Pricing */
-  .formats{display:grid;grid-template-columns:1fr;max-width:520px;margin:0 auto}
-  .fmt{background:var(--card);border-radius:var(--r);padding:32px;border:2px solid var(--sun);position:relative}
-  .fmt .badge{
-    position:absolute;top:-14px;left:28px;background:var(--sun);color:var(--blue-d);
-    font-weight:800;font-size:.78rem;padding:6px 14px;border-radius:999px;
-  }
-  .fmt h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
-  .fmt .per{color:var(--muted);font-size:.9rem;margin-bottom:14px}
-  .fmt .big{font-size:2.4rem;font-weight:900;color:var(--blue)}
-  .fmt .big span{font-size:1.2rem}
-  .fmt .per-lesson{color:var(--muted);font-size:.85rem;margin-bottom:16px}
-  .fmt ul{list-style:none;margin-bottom:22px}
-  .fmt li{
-    position:relative;padding-left:22px;margin-bottom:8px;font-size:.92rem;color:var(--text);
-  }
-  .fmt li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:900}
-  .fmt .cta{width:100%;text-align:center;background:var(--sun);color:var(--blue-d)}
-  .price-note{text-align:center;margin-top:24px;color:var(--muted);font-size:.92rem}
-
-  /* Schedule */
-  .sched{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
-  .sched-facts{display:flex;flex-direction:column;gap:16px}
-  .sched-fact{background:var(--card);border-radius:16px;padding:20px 24px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .sched-fact b{display:block;font-size:1.25rem;color:var(--blue);font-weight:900}
-  .sched-fact span{color:var(--muted);font-size:.88rem}
-  .sched-note{background:var(--warm);border-radius:var(--r);padding:30px}
-  .sched-note h3{font-size:1.1rem;font-weight:800;margin-bottom:10px}
-  .sched-note p{color:var(--text);font-size:.96rem}
-
-  /* Teacher */
-  .teacher{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;background:var(--card);border-radius:var(--r);padding:32px;box-shadow:0 4px 18px rgba(34,38,61,.05)}
-  .t-photo img{border-radius:18px;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 20%}
-  .t-info h3{font-size:1.3rem;font-weight:900;margin-bottom:4px}
-  .t-role{color:var(--blue);font-weight:700;font-size:.92rem;margin-bottom:12px}
-  .t-info p{color:var(--text);font-size:.96rem;margin-bottom:10px;max-width:58ch}
-  .t-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-  .t-badge{background:var(--mist);color:var(--blue);font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px}
-
-  /* Gallery */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  @media (max-width: 1080px){
-    .gallery{grid-template-columns:repeat(2,1fr)}
-  }
-  .g-item{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+  .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;margin-top:40px}
+  .g-item{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
   .g-item img{width:100%;height:100%;object-fit:cover}
-  .g-caption{
-    position:absolute;bottom:0;left:0;right:0;
-    background:linear-gradient(to top, rgba(34,38,61,.75), transparent);
-    color:#fff;font-weight:700;font-size:.88rem;padding:16px 14px 12px;
-  }
+  .g-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(15,27,61,.75),transparent);color:#fff;font-weight:700;font-size:15px;padding:28px 16px 14px}
 
-  /* Diagnostic CTA block */
-  .diag{
-    background:linear-gradient(160deg, var(--blue) 0%, var(--blue-d) 100%);
-    color:#fff;border-radius:32px;padding:48px;text-align:center;
-  }
-  .free-pill{
-    display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
-    font-weight:800;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;
-    padding:8px 18px;border-radius:999px;margin-bottom:18px;
-  }
-  .diag h2{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:900;max-width:680px;margin:0 auto 16px}
-  .diag > p{max-width:640px;margin:0 auto 32px;color:rgba(255,255,255,.9)}
-  .diag-points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;text-align:left}
-  .diag-point{background:rgba(255,255,255,.09);border-radius:16px;padding:20px}
-  .diag-point h3{font-size:1rem;font-weight:800;margin-bottom:6px}
-  .diag-point p{color:rgba(255,255,255,.85);font-size:.88rem}
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;margin-top:40px}
+  .price{background:#fff;border-radius:var(--r-lg);padding:36px;display:flex;flex-direction:column;position:relative}
+  .price.hot{background:var(--blue);color:#fff}
+  .price .badge{position:absolute;top:20px;right:20px;display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:var(--sun);color:var(--text);font-size:13px;font-weight:800}
+  .price h3{font-size:19px}
+  .price .per{margin-top:4px;color:var(--muted);font-size:15px}
+  .price.hot .per{color:var(--on-blue)}
+  .price .sum{margin-top:18px;font-size:clamp(40px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .price .per-lesson{margin-top:8px;color:var(--muted);font-size:15px}
+  .price.hot .per-lesson{color:var(--on-blue)}
+  .price ul{list-style:none;margin:22px 0 0;display:flex;flex-direction:column;gap:10px;flex:1}
+  .price li{display:flex;gap:10px;align-items:flex-start;font-size:16px}
+  .price li svg{flex:none;margin-top:2px}
+  .price .btn{margin-top:24px}
+  .price-note{margin-top:20px;color:var(--muted);max-width:70ch}
 
-  /* Signup form */
-  .signup{background:var(--card);border-radius:32px;padding:48px;box-shadow:0 8px 32px rgba(34,38,61,.08)}
-  .signup h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:900;margin-bottom:10px;text-align:center}
-  .signup > p{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 28px}
-  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;margin:0 auto}
-  .form-grid input, .form-grid select{
-    padding:14px 16px;border:2px solid var(--mist);border-radius:14px;
-    font-family:Nunito, sans-serif;font-size:.96rem;background:var(--bg);color:var(--text);
-  }
-  .form-grid input:focus, .form-grid select:focus{outline:none;border-color:var(--blue)}
-  .form-grid button{
-    grid-column:1/-1;background:var(--blue);color:#fff;font-weight:800;font-size:1rem;
-    padding:16px;border:none;border-radius:14px;cursor:pointer;margin-top:6px;transition:background .15s ease;
-  }
-  .form-grid button:hover{background:var(--blue-d)}
-  .form-ok{display:none;text-align:center;max-width:520px;margin:0 auto;background:var(--warm);border-radius:16px;padding:24px}
-  .form-ok b{display:block;font-size:1.1rem;margin-bottom:6px}
-  .form-note{text-align:center;color:var(--muted);font-size:.82rem;max-width:560px;margin:16px auto 0}
-  .form-note a{color:var(--blue);text-decoration:underline}
-  .msgr-row{display:flex;justify-content:center;gap:12px;margin-top:24px}
-  .msgr-chip{
-    display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;
-    font-weight:700;font-size:.88rem;text-decoration:none;
-  }
+  .sched{display:flex;flex-wrap:wrap;gap:20px;margin-top:40px;align-items:stretch}
+  .sched-facts{flex:1 1 320px;min-width:0;display:grid;gap:16px}
+  .sched-fact{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  .sched-fact b{display:block;font-size:24px;color:var(--blue);font-weight:800;letter-spacing:-.01em}
+  .sched-fact span{color:var(--muted);font-size:15px}
+  .sched-note{flex:1.4 1 420px;min-width:0;background:var(--tint);border-radius:var(--r);padding:clamp(28px,3.5vw,40px);display:flex;flex-direction:column;justify-content:center}
+  .sched-note h3{font-size:22px;margin-bottom:10px}
+  .sched-note p{color:var(--text-2)}
+
+  .teacher{display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center;margin-top:40px}
+  .t-photo{flex:0 1 380px;min-width:0;background:var(--bg);border-radius:var(--r-lg);padding:16px}
+  .t-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px}
+  .t-photo .cap{padding:18px 8px 6px}
+  .t-photo .cap b{display:block;font-size:20px;font-weight:800}
+  .t-photo .cap span{color:var(--muted);font-size:15px}
+  .t-info{flex:1 1 440px;min-width:0}
+  .t-info .first{margin-top:20px;font-size:18px;font-weight:500}
+  .t-info p+p{margin-top:16px;color:var(--muted)}
+  .t-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .t-badge{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;background:var(--tint);color:var(--blue-900);font-weight:700;font-size:13px}
+
+  .rating{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:24px}
+  .score{font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:.9;color:var(--blue)}
+  .stars{display:flex;gap:3px}
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;margin-top:36px}
+  .review{background:#fff;border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:16px}
+  .review p{color:var(--text-2);flex:1}
+  .review .author{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px}
+  .review .author span{display:block;font-weight:400;color:var(--muted);font-size:13px}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+
+  .faq-wrap{display:flex;flex-wrap:wrap;gap:32px 64px}
+  .faq-wrap>div:first-child{flex:1 1 300px;min-width:0}
+  .faq{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:10px}
+  .faq details{background:var(--bg);border-radius:16px;padding:0 22px}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:700}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:var(--tint);color:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq p{padding:0 48px 20px 0;color:var(--muted)}
+
+  .diag{background:var(--blue-900);color:#fff;border-radius:var(--r-lg);padding:clamp(28px,4vw,52px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center}
+  .diag>div:first-child{flex:1 1 380px;min-width:0}
+  .diag h2{margin:0;color:#fff}
+  .diag .free{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:var(--sun);color:var(--text);font-size:13px;font-weight:800;margin-bottom:16px}
+  .diag>div:first-child>p{margin-top:18px;color:var(--on-blue)}
+  .diag>div:first-child>p b{color:#fff}
+  .diag-points{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:12px}
+  .diag-point{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:18px 20px}
+  .diag-point h3{font-size:17px;font-weight:800}
+  .diag-point p{color:var(--on-blue);font-size:15px;margin-top:4px}
+
+  .signup{background:var(--bg)}
+  .signup .wrap{display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center}
+  .signup .intro{flex:1 1 380px;min-width:0}
+  .signup h2{margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.08}
+  .signup .intro p{margin-top:18px;color:var(--text-2)}
+  .signup .intro a{font-weight:800}
+  .msgr-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .msgr-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:15px;text-decoration:none;color:var(--text)}
   .msgr-chip svg{width:18px;height:18px}
-  .msgr-chip.vk{background:#e8eaf9;color:var(--blue)}
-  .msgr-chip.tg{background:#e5f4ff;color:#0088cc}
+  .form-grid{flex:1 1 460px;min-width:0;background:#fff;border-radius:var(--r-lg);padding:clamp(24px,3.5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:14px;box-shadow:0 24px 60px rgba(23,37,84,.1)}
+  .form-grid label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--text-2)}
+  .form-grid input,.form-grid select{font:inherit;font-weight:500;font-size:16px;min-height:52px;padding:0 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);width:100%}
+  .form-grid select{padding:0 12px}
+  .form-grid input:focus,.form-grid select:focus{outline:2px solid var(--blue);outline-offset:1px}
+  .form-grid button{grid-column:1/-1}
+  .form-grid button:disabled{opacity:.7;cursor:default;transform:none}
+  .policy{grid-column:1/-1;font-size:13px;color:#6A7695}
+  .form-ok{display:none;grid-column:1/-1;background:var(--tint);border-radius:14px;padding:18px 20px}
+  .form-ok b{display:block;font-size:18px;margin-bottom:4px}
 
-  footer{background:var(--blue-d);color:rgba(255,255,255,.8);padding:28px 0;font-size:.88rem;text-align:center}
-  footer a{text-decoration:none}
+  footer{background:var(--blue-950);color:#AFC0E8;padding:36px 0;font-size:15px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:20px 48px;align-items:center;justify-content:space-between}
+  footer img{width:140px}
+  footer .info{flex:1 1 480px;min-width:0}
+  footer .info p:first-child{color:#E3EAFB}
+  footer .info p+p{margin-top:6px}
+  footer a{color:#fff} footer a.js-tel{font-weight:800}
 
-  @media (max-width: 860px){
-    section{padding:52px 0}
-    .pains{grid-template-columns:1fr}
-    .objection{grid-template-columns:1fr}
-    .showcase{grid-template-columns:1fr}
-    .results{grid-template-columns:1fr}
-    .method{grid-template-columns:1fr}
-    .why{grid-template-columns:1fr}
-    .sched{grid-template-columns:1fr}
-    .teacher{grid-template-columns:1fr;text-align:center}
-    .t-photo img{max-width:100%;margin:0 auto}
-    .diag-points{grid-template-columns:1fr}
-    .diag{padding:32px 24px}
-    .signup{padding:32px 22px}
-    .form-grid{grid-template-columns:1fr}
-    .hero{padding:44px 0 40px}
+  @media(max-width:900px){.nav{display:none}}
+  @media(max-width:600px){
+    section{padding:64px 0}
+    .phone{display:none} .logo img{width:140px}
+    .hero{padding-top:48px}
+    .hero-actions .btn,.hero-actions .btn-text{width:100%;justify-content:center}
+
+    .facts{grid-template-columns:1fr;gap:0;padding:8px 24px}
+    .float{left:16px;top:16px}
+    .hero-photo img{aspect-ratio:4/3}
+    .hero-photo{max-width:none}
+    .facts>div{border-right:0!important;padding:14px 0!important;border-bottom:1px solid var(--line)}
+    .facts>div:last-child{border-bottom:0}
+    .facts b{font-size:26px;white-space:nowrap;min-width:110px}
+    .facts span br{display:none}
+    .faq p{padding-right:0}
   }
+
+  .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .tool{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:8px;background:var(--tint);color:var(--blue-900);font-weight:700;font-size:12px}
+  .card.col{display:flex;flex-direction:column} .card.col>p:not(.sc-fact){flex:1}
+  .olymp{margin-top:20px;background:var(--blue-900);color:#fff;border-radius:var(--r-lg);padding:clamp(28px,4vw,48px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center}
+  .olymp>div{flex:1 1 380px;min-width:0}
+  .olymp h2{margin:0;color:#fff}
+  .olymp .new{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:var(--sun);color:var(--text);font-size:13px;font-weight:800;margin-bottom:16px}
+  .olymp p{color:var(--on-blue);margin-top:14px} .olymp p b{color:#fff}
+  .olymp-groups{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .olymp-group{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:14px 20px}
+  .olymp-group b{display:block;font-size:20px;font-weight:800} .olymp-group span{font-size:14px;color:var(--on-blue)}
+  .mid{max-width:640px}
 </style>
 </head>
 <body>
-
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="Интеллектиум — на главную">
-      <img src="images/logo.png" alt="Интеллектиум — математика и программирование" width="147" height="38">
-    </a>
-    <div class="contacts">
-      <a class="phone" href="tel:+79818962575">+7 (981) 896-25-75</a>
-      <a class="cta" href="#signup-top">Записаться</a>
-    </div>
+    <a class="logo" href="/" aria-label="Интеллектиум — на главную"><img src="images/logo-dark.png" alt="Интеллектиум — математика и программирование" width="156" height="40"></a>
+    <nav class="nav" aria-label="Разделы страницы"><a href="#showcase">Программа</a><a href="#results">Результат</a><a href="#pricing">Цена</a><a href="#teacher">Педагог</a><a href="#faq">Вопросы</a></nav>
+    <div class="contacts"><a class="phone js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a><a class="hdr-cta" href="#signup">Записаться</a></div>
   </div>
 </header>
-
-<div class="hero">
+<section class="hero">
   <div class="wrap">
-    <span class="eyebrow">1–4 класс · мини-группы до 6 человек · 2 раза в неделю</span>
-    <h1>Русский язык для 1–4 класса: <u>пишем без ошибок</u> и понимаем правила</h1>
-    <p class="sub">Идём <b>параллельно со школьной программой</b> — закрепляем пройденное и разбираем именно те
-      ошибки, которые мешают ребёнку сейчас. С чего начать — решим вместе на <b>бесплатной диагностике</b>.</p>
-    <a class="cta" href="#signup">Записаться на бесплатную диагностику</a>
-    <div class="hero-facts">
-      <div class="fact"><b>1–4 класс</b><span>по школьной программе</span></div>
-      <div class="fact"><b>до 6 человек</b><span>в мини-группе</span></div>
-      <div class="fact"><b>2 раза</b><span>в неделю по 60 минут</span></div>
+    <div class="hero-text">
+      <div class="pill"><span>1–4 класс</span>Мини-группы до 6 человек · 2 раза в неделю</div>
+      <h1>Русский язык для <span style="white-space:nowrap">1–4 класса</span>: пишем без ошибок и понимаем правила</h1>
+      <p class="lead">Идём <b>параллельно со школьной программой</b> — закрепляем пройденное и разбираем именно те ошибки, которые мешают ребёнку сейчас. С чего начать — решим вместе на <b>бесплатной диагностике</b>.</p>
+      <ul class="ticks"><li><svg class="tick" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Параллельно со школьной программой, по тем же темам</li><li><svg class="tick" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Педагог — учитель начальных классов</li><li><svg class="tick" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Первое занятие — бесплатная диагностика</li></ul>
+      <div class="hero-actions">
+        <a class="btn btn-blue" href="#signup">Записаться на бесплатную диагностику</a>
+        <a class="btn-text js-tel" href="tel:+79818962575">или позвоните: +7 (981) 896-25-75</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/russkiy-gruppa-thumb.jpg" alt="Мини-группа учеников на занятии по русскому языку" width="900" height="675" fetchpriority="high">
+      <div class="float"><svg width="28" height="28" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><div><b>5,0</b><small>70+ отзывов на Яндекс Картах</small></div></div>
     </div>
   </div>
-</div>
-
-<main>
-
-  <section id="signup-top" class="signup-top-wrap">
-    <div class="wrap">
-      <div class="signup compact reveal">
-        <h2>Запишитесь на бесплатную диагностику</h2>
-        <p>Оставьте заявку — перезвоним и подберём удобное время. Формат и на чём сосредоточиться обсудим вместе, если пока не знаете.</p>
-        <form class="form-grid" id="leadFormTop">
-          <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
-          <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
-          <select name="grade" required aria-label="В какой класс идёт ребёнок">
-            <option value="" selected disabled>В какой класс идёт ребёнок?</option>
-            <option>В 1 класс</option>
-            <option>Во 2 класс</option>
-            <option>В 3 класс</option>
-            <option>В 4 класс</option>
-          </select>
-          <select name="interest" required aria-label="Что вас интересует">
-            <option value="" selected disabled>Что вас интересует?</option>
-            <option>Пока не знаю, посоветуйте</option>
-            <option>Ошибки и почерк</option>
-            <option>Правила и грамотность</option>
-            <option>Подготовка к ВПР</option>
-          </select>
-          <input type="hidden" name="format" value="2 раза в неделю — 8 занятий, 7500 ₽">
-          <button type="submit">Записаться на диагностику</button>
-        </form>
-        <p class="form-ok" id="formOkTop"><b>Заявка принята</b>Мы скоро вам перезвоним и всё расскажем.</p>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html">политикой обработки персональных данных</a>.</p>
-      </div>
+</section>
+<div class="wrap facts"><div><b>1–4</b><span>класс, по школьной <br>программе</span></div><div><b>до 6</b><span>человек <br>в мини-группе</span></div><div><b>2 раза</b><span>в неделю <br>по 60 минут</span></div><div><b>ВПР</b><span>готовим <br>в 4 классе</span></div></div>
+<section id="pains">
+  <div class="wrap">
+    <div class="label">Знакомая ситуация?</div>
+    <h2>С чем чаще всего приходят к нам родители</h2>
+    <div class="cards"><div class="card soft"><div class="num">1</div><h3>Школьный учитель мчится по программе</h3><p>Ребёнок просто не успевает закрепить сложные правила — класс идёт дальше, а тема так и остаётся непонятой до конца.</p></div><div class="card soft"><div class="num">2</div><h3>Знает правило, но делает глупые ошибки</h3><p>На словах объясняет правило без запинки, а в тетради пропускает буквы и путает написание — знание не превращается в навык.</p></div><div class="card soft"><div class="num">3</div><h3>Домашнее задание — ежедневный стресс для всей семьи</h3><p>Исправлений красной пастой становится всё больше, а ребёнок теряет уверенность в себе и веру в свои силы.</p></div></div><div class="objection"><div><h3>«Нам, наверное, нужен репетитор один на один»</h3><p class="oq">— самое частое сомнение, с которым звонят родители</p></div><div><p>У каждого ребёнка — своя программа и свой темп, даже если рядом занимаются другие дети. Мы не тормозим сильных и не торопим тех, кому нужно больше времени. При этом тревожному ребёнку легче в компании сверстников: он видит, что ошибаться — нормально, и постепенно раскрывается. Внимания хватает каждому.</p></div></div>
+  </div>
+</section>
+<section id="showcase" class="bg">
+  <div class="wrap">
+    <div class="label">Программа по классам</div>
+    <h2>Что делаем на занятиях — в зависимости от класса</h2><p class="lead">Программа всегда идёт параллельно со школьной — не отвлекаем от того, что проходят в классе, а закрепляем и разбираем ошибки.</p>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))"><div class="card col"><span class="age">1 класс</span><h3>Фонематический слух и первые правила</h3><p>Развиваем фонематический слух и мелкую моторику, ставим руку и мягко переходим от букваря к первым правилам — жи-ши, ча-ща.</p><p class="sc-fact">Подходит для первого знакомства с письмом и правилами</p></div><div class="card col"><span class="age">2 класс</span><h3>Фундамент орфографии</h3><p>Автоматизируем правила переноса, безударные гласные и парные согласные в корне слова — то, что становится основой для всех следующих тем.</p><p class="sc-fact">Подходит, если в тетради много исправлений красной пастой</p></div><div class="card col"><span class="age">3 класс</span><h3>Разбор слова и части речи</h3><p>Учимся видеть состав слова — приставки и суффиксы, глубоко разбираем части речи и разделительные знаки.</p><p class="sc-fact">Подходит, если правила уже сложнее, а ошибки повторяются</p></div><div class="card col"><span class="age">4 класс</span><h3>Сложные темы и подготовка к ВПР</h3><p>Осваиваем спряжения глаголов и падежные окончания, закрываем накопившиеся пробелы за начальную школу и уверенно готовимся к ВПР.</p><p class="sc-fact">Подходит, если в этом году предстоит Всероссийская проверочная работа</p></div></div><p class="lead" style="margin-top:28px">Приходите на <b>бесплатную диагностику</b> — вместе поймём, на чём стоит сосредоточиться именно вашему ребёнку.</p>
+  </div>
+</section>
+<section id="results">
+  <div class="wrap">
+    <div class="label">Что получит ребёнок</div>
+    <h2>Три результата курса</h2>
+    <div class="cards"><div class="card"><div class="num">1</div><h3>Орфографическая зоркость</h3><p>Ребёнок научится внимательно сканировать текст, видеть опасные места в словах и проверять себя сам — ещё до того, как сдаст тетрадь на проверку.</p></div><div class="card"><div class="num">2</div><h3>Рост грамотности</h3><p>Точечно закрываем пробелы в текущих темах. Ребёнок избавится от хронических ошибок, увереннее напишет диктант и поднимет школьную оценку.</p></div><div class="card"><div class="num">3</div><h3>Словарный запас и работа со словарями</h3><p>Ребёнок перестанет писать буквы наугад — научится быстро находить проверочные и словарные слова и сразу применять правила на письме.</p></div></div><div class="label" style="margin-top:48px">Как работаем</div><div class="cards" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))"><div class="card soft"><h3 style="color:var(--blue-900)">Орфографическое чтение</h3><p>Учим проговаривать слова по слогам так, как они пишутся, — это решает проблему пропуска и замены букв.</p></div><div class="card soft"><h3 style="color:var(--blue-900)">Пошаговый алгоритм самопроверки</h3><p>Включаем у ребёнка внутренний «радар ошибок» — мозг учится проверять написанное прямо в процессе письма.</p></div><div class="card soft"><h3 style="color:var(--blue-900)">Понятные алгоритмы вместо зубрёжки</h3><p>Переводим сложные правила учебника в простые визуальные схемы-подсказки, которые легко применять на практике.</p></div><div class="card soft"><h3 style="color:var(--blue-900)">Интерактивные паузы</h3><p>Небольшие паузы в течение занятия разгружают мозг и помогают ребёнку удерживать фокус внимания все 60 минут.</p></div></div>
+  </div>
+</section>
+<section id="why" class="bg">
+  <div class="wrap">
+    <div class="label">Как проходят занятия</div>
+    <h2>Программа идёт параллельно со школой</h2>
+    <div class="why"><div class="why-main"><div class="huge">до 6<span>человек в мини-группе</span></div><h3>Работаем по школьной системе</h3><p>Закрепляем ту же программу, что и в классе, и разбираем именно те ошибки, которые встречаются у вашего ребёнка — а не общий набор упражнений для всех.</p></div><div class="why-side"><div class="card soft"><h3>60 минут, 2 раза в неделю</h3><p>Полноценное занятие с разбором ошибок и закреплением правил, а не короткая пробежка по теме.</p></div><div class="card soft"><h3>Обратная связь после каждого занятия</h3><p>Мы на связи с родителями напрямую и рассказываем, как прошло занятие и над чем работаем дальше.</p></div><div class="card soft"><h3>Педагог — учитель начальных классов</h3><p>Высшее педагогическое образование и опыт преподавания русского языка.</p></div></div></div>
+  </div>
+</section>
+<section id="gallery">
+  <div class="wrap">
+    <div class="label">Атмосфера</div>
+    <h2>Как проходят наши занятия</h2>
+    <div class="gal"><div class="g-item"><img src="images/russkiy-tetrad-1-thumb.jpg" alt="Работа над словарными словами в рабочей тетради" loading="lazy" width="900" height="675"><span class="g-caption">Работа над словарными словами</span></div><div class="g-item"><img src="images/russkiy-tetrad-2-thumb.jpg" alt="Ученик разбирает упражнение по русскому языку" loading="lazy" width="900" height="675"><span class="g-caption">Разбираем упражнение</span></div><div class="g-item"><img src="images/russkiy-laptop-thumb.jpg" alt="Ученица занимается за ноутбуком" loading="lazy" width="900" height="675"><span class="g-caption">Занятие с интерактивными заданиями</span></div><div class="g-item"><img src="images/russkiy-gruppa-thumb.jpg" alt="Мини-группа учеников за занятием" loading="lazy" width="900" height="675"><span class="g-caption">Мини-группа за работой</span></div></div>
+  </div>
+</section>
+<section id="pricing" class="bg">
+  <div class="wrap">
+    <div class="label">Стоимость</div>
+    <h2>Один формат — 2 раза в неделю</h2>
+    <div class="prices" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)"><div class="price hot"><span class="badge">Единственный формат</span><h3>2 раза в неделю</h3><p class="per">Абонемент на 8 занятий</p><div class="sum">7 500 ₽</div><p class="per-lesson">937 ₽ за занятие</p><ul><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFC83D"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#0F1B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>60 минут, мини-группа до 6 человек</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFC83D"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#0F1B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Работа над ошибками и правилами параллельно со школьной программой</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFC83D"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#0F1B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Для 4 класса — с подготовкой к ВПР во втором полугодии</li></ul><a class="btn btn-white" href="#signup">Записаться на диагностику</a></div>
+<div class="price" style="border:1px solid var(--line)"><h3>Почему два раза, а не один</h3><p class="per">Так правило успевает закрепиться</p><ul style="margin-top:18px"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Между занятиями проходит два-три дня — ребёнок не успевает забыть, что разбирали</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Одно занятие уходит на новую тему и правило, второе — на тренировку и работу над ошибками</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2563EB"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>К концу недели виден результат в школьной тетради</li></ul></div></div>
+<p class="price-note">Точную программу и на чём сосредоточиться именно вашему ребёнку определим на бесплатной диагностике.</p>
+  </div>
+</section>
+<section id="schedule">
+  <div class="wrap">
+    <div class="label">Расписание</div>
+    <h2>Подберём удобное время</h2>
+    <div class="sched"><div class="sched-facts"><div class="sched-fact"><b>6 дней</b><span>в неделю ведём занятия</span></div><div class="sched-fact"><b>15:00–19:00</b><span>сразу после школы</span></div><div class="sched-fact"><b>Мини-группы</b><span>поэтому расписание получается гибким</span></div></div><div class="sched-note"><h3>Почему получается подобрать удобное время</h3><p>У нас маленькие группы и много занятий каждый день — поэтому расписание не жёсткое. Точное время подберём вместе с вами после бесплатной диагностики, ориентируясь на школьное расписание и другие кружки ребёнка.</p></div></div>
+  </div>
+</section>
+<section id="teacher" class="bg">
+  <div class="wrap">
+    <div class="label">Кто ведёт занятия</div>
+    <h2>Педагог, которому спокойно доверить ребёнка</h2>
+    <div class="teacher"><div class="t-photo"><img src="images/russkiy-portret.jpg" alt="Анна Харина — педагог по русскому языку" loading="lazy" width="700" height="700"><div class="cap"><b>Анна Харина</b><span>Педагог по русскому языку · 1–4 класс</span></div></div><div class="t-info"><p class="first">Учитель начальных классов, высшее педагогическое образование. Два года опыта преподавания русского языка. В детском центре «Интеллектиум» — с этого учебного года.</p><p>Работает по школьной системе — закрепляет ту же программу, что и в классе, и точечно разбирает ошибки каждого ребёнка.</p><div class="t-badges"><span class="t-badge">Высшее педагогическое</span><span class="t-badge">2 года опыта</span><span class="t-badge">1–4 класс</span></div></div></div>
+  </div>
+</section>
+<section id="reviews">
+  <div class="wrap">
+    <div class="label">Нам доверяют</div>
+    <h2>Что говорят родители о центре</h2>
+    <div class="rating"><span class="score">5,0</span><div><div class="stars" role="img" aria-label="5 из 5"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div><p style="margin-top:6px;font-weight:700">Более 70 положительных отзывов на Яндекс Картах</p></div></div>
+    <p style="margin-top:28px"><a class="btn btn-blue" href="https://yandex.ru/maps/org/intellektium/24843162339/reviews" target="_blank" rel="noopener">Читать все отзывы на Яндекс Картах <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap faq-wrap">
+    <div><div class="label">Вопросы родителей</div><h2>Что чаще всего спрашивают о занятиях</h2></div>
+    <div class="faq"><details><summary>Сколько стоит русский язык для детей в Приморском районе?</summary><p>7 500 ₽ в месяц — абонемент на 8 занятий, 2 раза в неделю по 60 минут. Это единственный формат: двух занятий в неделю достаточно, чтобы правила закреплялись, а не забывались от раза к разу.</p></details><details><summary>С какого класса можно начать?</summary><p>Занимаемся с учениками 1–4 класса. Программа идёт параллельно со школьной: в 1 классе — звуки, буквы и первые правила, во 2–3 — орфография и разбор слова, в 4 — сложные темы и подготовка к ВПР.</p></details><details><summary>Где находится центр «Интеллектиум»?</summary><p>Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно.</p></details><details><summary>Сколько детей в группе?</summary><p>Мини-группы до 6 человек. У каждого ребёнка своя программа и свой темп даже внутри одной группы: разбираем именно те ошибки, которые встречаются у него.</p></details><details><summary>Вы работаете по школьной программе или по своей?</summary><p>Параллельно со школьной. Мы не отвлекаем ребёнка от того, что проходят в классе, а закрепляем эти же темы и разбираем ошибки — поэтому результат виден в школьных тетрадях и оценках.</p></details><details><summary>Готовите ли к ВПР?</summary><p>Да, для 4 класса — во втором полугодии. Закрываем накопившиеся за начальную школу пробелы и разбираем формат проверочной работы.</p></details></div>
+  </div>
+</section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько стоит русский язык для детей в Приморском районе?", "acceptedAnswer": {"@type": "Answer", "text": "7 500 ₽ в месяц — абонемент на 8 занятий, 2 раза в неделю по 60 минут. Это единственный формат: двух занятий в неделю достаточно, чтобы правила закреплялись, а не забывались от раза к разу."}}, {"@type": "Question", "name": "С какого класса можно начать?", "acceptedAnswer": {"@type": "Answer", "text": "Занимаемся с учениками 1–4 класса. Программа идёт параллельно со школьной: в 1 классе — звуки, буквы и первые правила, во 2–3 — орфография и разбор слова, в 4 — сложные темы и подготовка к ВПР."}}, {"@type": "Question", "name": "Где находится центр «Интеллектиум»?", "acceptedAnswer": {"@type": "Answer", "text": "Санкт-Петербург, ул. Оптиков, 45к1, Приморский район. От метро Беговая и Старая Деревня — 15–20 минут пешком. Занятия проходят только очно."}}, {"@type": "Question", "name": "Сколько детей в группе?", "acceptedAnswer": {"@type": "Answer", "text": "Мини-группы до 6 человек. У каждого ребёнка своя программа и свой темп даже внутри одной группы: разбираем именно те ошибки, которые встречаются у него."}}, {"@type": "Question", "name": "Вы работаете по школьной программе или по своей?", "acceptedAnswer": {"@type": "Answer", "text": "Параллельно со школьной. Мы не отвлекаем ребёнка от того, что проходят в классе, а закрепляем эти же темы и разбираем ошибки — поэтому результат виден в школьных тетрадях и оценках."}}, {"@type": "Question", "name": "Готовите ли к ВПР?", "acceptedAnswer": {"@type": "Answer", "text": "Да, для 4 класса — во втором полугодии. Закрываем накопившиеся за начальную школу пробелы и разбираем формат проверочной работы."}}]}</script>
+<section id="diagnostic" style="padding-top:0"><div class="wrap"><div class="diag"><div><span class="free">Бесплатно · без обязательств</span><h2>Начните с бесплатной диагностики — дальше решим вместе</h2><p>Не нужно ничего оплачивать заранее. Приведите ребёнка на бесплатную диагностику: педагог посмотрит уровень грамотности, и мы вместе решим, на чём сосредоточиться — <b>на ошибках, правилах или подготовке к ВПР</b>.</p><p style="margin-top:24px"><a class="btn btn-white" href="#signup">Записаться на бесплатную диагностику</a></p></div><div class="diag-points"><div class="diag-point"><h3>Без оплаты</h3><p>Диагностика полностью бесплатна и ни к чему вас не обязывает.</p></div><div class="diag-point"><h3>Честная картина знаний</h3><p>Увидите сильные и слабые стороны ребёнка глазами педагога.</p></div><div class="diag-point"><h3>Подберём расписание</h3><p>Найдём удобное время занятий с учётом школьного расписания.</p></div></div></div></div></section>
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Запишитесь на бесплатную диагностику</h2>
+      <p>Оставьте заявку — мы свяжемся с вами и подберём удобное время. Ещё не знаете, что подойдёт ребёнку? Так бывает почти всегда — определим формат вместе на диагностике.</p>
+      <p>Или свяжитесь с нами напрямую: <a class="js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a></p>
+      <div class="msgr-row"><a class="msgr-chip" href="https://vk.com/intellectium_spb" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path d="M13.16 18.5c-5.86 0-9.2-3.99-9.34-10.63h2.94c.1 4.88 2.26 6.95 3.97 7.38V7.87h2.77v4.21c1.69-.18 3.46-2.1 4.06-4.21h2.77c-.46 2.6-2.38 4.52-3.75 5.31 1.37.64 3.55 2.32 4.38 5.32h-3.05c-.65-2.03-2.26-3.6-4.41-3.81v3.81h-.34z"/></svg>ВКонтакте</a><a class="msgr-chip" href="https://t.me/+79818962575" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path d="M21.9 3.4 2.9 10.7c-1 .4-1 1.4-.2 1.7l4.8 1.5 1.9 5.8c.2.7 1 .9 1.5.4l2.7-2.5 4.9 3.6c.6.4 1.4.1 1.6-.6l3-15.7c.2-1-.5-1.7-1.2-1.5zM8.5 13.5l9.5-6.2c.3-.2.6.2.4.4l-7.8 7.2-.3 3-1.8-4.4z"/></svg>Telegram</a></div>
     </div>
-  </section>
-
-  <section id="pains">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Знакомая ситуация?</span>
-        <h2>С чем чаще всего приходят к нам родители</h2>
-      </div>
-      <div class="pains">
-        <div class="pain reveal">
-          <h3>Школьный учитель мчится по программе</h3>
-          <p>Ребёнок просто не успевает закрепить сложные правила — класс идёт дальше, а тема так и остаётся непонятой до конца.</p>
-        </div>
-        <div class="pain reveal">
-          <h3>Знает правило, но делает глупые ошибки</h3>
-          <p>На словах объясняет правило без запинки, а в тетради пропускает буквы и путает написание — знание не превращается в навык.</p>
-        </div>
-        <div class="pain reveal">
-          <h3>Домашнее задание — ежедневный стресс для всей семьи</h3>
-          <p>Исправлений красной пастой становится всё больше, а ребёнок теряет уверенность в себе и веру в свои силы.</p>
-        </div>
-      </div>
-      <div class="objection reveal">
-        <div>
-          <h3>«Нам, наверное, нужен репетитор один на один»</h3>
-          <p class="oq">— самое частое сомнение, с которым звонят родители</p>
-        </div>
-        <div>
-          <p>У каждого ребёнка — своя программа и свой темп, даже если рядом занимаются другие дети. Мы не тормозим
-            сильных и не торопим тех, кому нужно больше времени. При этом тревожному ребёнку легче в компании
-            сверстников: он видит, что ошибаться — нормально, и постепенно раскрывается. Внимания хватает каждому.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="showcase">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Программа по классам</span>
-        <h2>Что делаем на занятиях — в зависимости от класса</h2>
-        <p>Программа всегда идёт параллельно со школьной — не отвлекаем от того, что проходят в классе, а закрепляем и разбираем ошибки.</p>
-      </div>
-      <div class="showcase">
-        <div class="sc-card reveal">
-          <span class="sc-age">1 класс</span>
-          <h3>Фонематический слух и первые правила</h3>
-          <p>Развиваем фонематический слух и мелкую моторику, ставим руку и мягко переходим от букваря к первым правилам — жи-ши, ча-ща.</p>
-          <p class="sc-fact">Подходит для первого знакомства с письмом и правилами</p>
-        </div>
-        <div class="sc-card reveal">
-          <span class="sc-age">2 класс</span>
-          <h3>Фундамент орфографии</h3>
-          <p>Автоматизируем правила переноса, безударные гласные и парные согласные в корне слова — то, что становится основой для всех следующих тем.</p>
-          <p class="sc-fact">Подходит, если в тетради много исправлений красной пастой</p>
-        </div>
-        <div class="sc-card reveal">
-          <span class="sc-age">3 класс</span>
-          <h3>Разбор слова и части речи</h3>
-          <p>Учимся видеть состав слова — приставки и суффиксы, глубоко разбираем части речи и разделительные знаки.</p>
-          <p class="sc-fact">Подходит, если правила уже сложнее, а ошибки повторяются</p>
-        </div>
-        <div class="sc-card reveal">
-          <span class="sc-age">4 класс</span>
-          <h3>Сложные темы и подготовка к ВПР</h3>
-          <p>Осваиваем спряжения глаголов и падежные окончания, закрываем накопившиеся пробелы за начальную школу и уверенно готовимся к ВПР.</p>
-          <p class="sc-fact">Подходит, если в этом году предстоит Всероссийская проверочная работа</p>
-        </div>
-      </div>
-      <p class="showcase-note reveal">Приходите на <b>бесплатную диагностику</b> — вместе поймём, на чём стоит сосредоточиться именно вашему ребёнку.</p>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Атмосфера</span>
-        <h2>Как проходят наши занятия</h2>
-      </div>
-      <div class="gallery reveal">
-        <div class="g-item">
-          <img src="images/russkiy-tetrad-1-thumb.jpg" alt="Работа над словарными словами в рабочей тетради" loading="lazy" width="700" height="933">
-          <span class="g-caption">Работа над словарными словами</span>
-        </div>
-        <div class="g-item">
-          <img src="images/russkiy-tetrad-2-thumb.jpg" alt="Ученик разбирает упражнение по русскому языку" loading="lazy" width="700" height="594">
-          <span class="g-caption">Разбираем упражнение</span>
-        </div>
-        <div class="g-item">
-          <img src="images/russkiy-laptop-thumb.jpg" alt="Ученица занимается за ноутбуком" loading="lazy" width="640" height="427">
-          <span class="g-caption">Занятие с интерактивными заданиями</span>
-        </div>
-        <div class="g-item">
-          <img src="images/russkiy-gruppa-thumb.jpg" alt="Мини-группа учеников за занятием" loading="lazy" width="700" height="903">
-          <span class="g-caption">Мини-группа за работой</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="results">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Что получит ребёнок</span>
-        <h2>Три результата курса</h2>
-      </div>
-      <div class="results reveal">
-        <div class="result">
-          <span class="num">1</span>
-          <h3>Орфографическая зоркость</h3>
-          <p>Ребёнок научится внимательно сканировать текст, видеть опасные места в словах и проверять себя сам — ещё до того, как сдаст тетрадь на проверку.</p>
-        </div>
-        <div class="result">
-          <span class="num">2</span>
-          <h3>Рост грамотности</h3>
-          <p>Точечно закрываем пробелы в текущих темах. Ребёнок избавится от хронических ошибок, увереннее напишет диктант и поднимет школьную оценку.</p>
-        </div>
-        <div class="result">
-          <span class="num">3</span>
-          <h3>Словарный запас и работа со словарями</h3>
-          <p>Ребёнок перестанет писать буквы наугад — научится быстро находить проверочные и словарные слова и сразу применять правила на письме.</p>
-        </div>
-      </div>
-      <div class="method reveal">
-        <div class="method-item">
-          <h3>Орфографическое чтение</h3>
-          <p>Учим проговаривать слова по слогам так, как они пишутся, — это решает проблему пропуска и замены букв.</p>
-        </div>
-        <div class="method-item">
-          <h3>Пошаговый алгоритм самопроверки</h3>
-          <p>Включаем у ребёнка внутренний «радар ошибок» — мозг учится проверять написанное прямо в процессе письма.</p>
-        </div>
-        <div class="method-item">
-          <h3>Понятные алгоритмы вместо зубрёжки</h3>
-          <p>Переводим сложные правила учебника в простые визуальные схемы-подсказки, которые легко применять на практике.</p>
-        </div>
-        <div class="method-item">
-          <h3>Интерактивные паузы</h3>
-          <p>Небольшие паузы в течение занятия разгружают мозг и помогают ребёнку удерживать фокус внимания все 60 минут.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="why">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Как проходят занятия</span>
-        <h2>Программа идёт параллельно со школой</h2>
-      </div>
-      <div class="why">
-        <div class="why-main reveal">
-          <div class="huge">до 6<span>человек в мини-группе</span></div>
-          <h3>Работаем по школьной системе</h3>
-          <p>Закрепляем ту же программу, что и в классе, и разбираем именно те ошибки, которые встречаются у вашего
-            ребёнка — а не общий набор упражнений для всех.</p>
-        </div>
-        <div class="why-side">
-          <div class="why-card reveal">
-            <h3>60 минут, 2 раза в неделю</h3>
-            <p>Полноценное занятие с разбором ошибок и закреплением правил, а не короткая пробежка по теме.</p>
-          </div>
-          <div class="why-card reveal">
-            <h3>Обратная связь после каждого занятия</h3>
-            <p>Мы на связи с родителями напрямую и рассказываем, как прошло занятие и над чем работаем дальше.</p>
-          </div>
-          <div class="why-card reveal">
-            <h3>Педагог — учитель начальных классов</h3>
-            <p>Высшее педагогическое образование и опыт преподавания русского языка.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Стоимость</span>
-        <h2>Один формат — 2 раза в неделю</h2>
-      </div>
-      <div class="formats">
-        <div class="fmt reveal">
-          <span class="badge">Единственный формат</span>
-          <h3>2 раза в неделю</h3>
-          <p class="per">Абонемент на 8 занятий</p>
-          <div class="big">7 500 <span>₽</span></div>
-          <p class="per-lesson">937 ₽ за занятие</p>
-          <ul>
-            <li>60 минут, мини-группа до 6 человек</li>
-            <li>Работа над ошибками и правилами параллельно со школьной программой</li>
-            <li>Для 4 класса — с подготовкой к ВПР во втором полугодии</li>
-          </ul>
-          <a class="cta" href="#signup" data-format="2 раза в неделю — 8 занятий, 7500 ₽">Записаться на диагностику</a>
-        </div>
-      </div>
-      <p class="price-note reveal">Точную программу и на чём сосредоточиться именно вашему ребёнку определим на бесплатной диагностике.</p>
-    </div>
-  </section>
-
-  <section id="schedule">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Расписание</span>
-        <h2>Подберём удобное время</h2>
-      </div>
-      <div class="sched">
-        <div class="sched-facts reveal">
-          <div class="sched-fact">
-            <b>6 дней</b>
-            <span>в неделю ведём занятия</span>
-          </div>
-          <div class="sched-fact">
-            <b>15:00–19:00</b>
-            <span>сразу после школы</span>
-          </div>
-          <div class="sched-fact">
-            <b>Мини-группы</b>
-            <span>поэтому расписание получается гибким</span>
-          </div>
-        </div>
-        <div class="sched-note reveal">
-          <h3>Почему получается подобрать удобное время</h3>
-          <p>У нас маленькие группы и много занятий каждый день — поэтому расписание не жёсткое. Точное время подберём
-            вместе с вами после бесплатной диагностики, ориентируясь на школьное расписание и другие кружки ребёнка.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="teacher">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Кто ведёт занятия</span>
-        <h2>Педагог, которому спокойно доверить ребёнка</h2>
-      </div>
-      <div class="teacher reveal">
-        <div class="t-photo">
-          <img src="images/russkiy-portret.jpg" alt="Анна Харина — педагог по русскому языку" loading="lazy" width="700" height="875">
-        </div>
-        <div class="t-info">
-          <h3>Анна Харина</h3>
-          <p class="t-role">Педагог по русскому языку · 1–4 класс</p>
-          <p>Учитель начальных классов, высшее педагогическое образование. Два года опыта преподавания русского языка. В детском центре «Интеллектиум» — с этого учебного года.</p>
-          <p>Работает по школьной системе — закрепляет ту же программу, что и в классе, и точечно разбирает ошибки каждого ребёнка.</p>
-          <div class="t-badges">
-            <span class="t-badge">Высшее педагогическое</span>
-            <span class="t-badge">2 года опыта</span>
-            <span class="t-badge">1–4 класс</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="diagnostic">
-    <div class="wrap">
-      <div class="diag reveal">
-        <span class="free-pill">Бесплатно · без обязательств</span>
-        <h2>Начните с бесплатной диагностики — дальше решим вместе</h2>
-        <p>Не нужно ничего оплачивать заранее. Приведите ребёнка на бесплатную диагностику: педагог посмотрит уровень
-          грамотности, и мы вместе решим, на чём сосредоточиться — <b>на ошибках, правилах или подготовке к ВПР</b>.</p>
-        <div class="diag-points">
-          <div class="diag-point">
-            <h3>Без оплаты</h3>
-            <p>Диагностика полностью бесплатна и ни к чему вас не обязывает.</p>
-          </div>
-          <div class="diag-point">
-            <h3>Честная картина знаний</h3>
-            <p>Увидите сильные и слабые стороны ребёнка глазами педагога.</p>
-          </div>
-          <div class="diag-point">
-            <h3>Подберём расписание</h3>
-            <p>Найдём удобное время занятий с учётом школьного расписания.</p>
-          </div>
-        </div>
-        <a class="cta" href="#signup">Записаться на бесплатную диагностику</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="signup">
-    <div class="wrap">
-      <div class="signup reveal">
-        <h2>Запишитесь на бесплатную диагностику</h2>
-        <p>Оставьте заявку — мы свяжемся с вами и подберём удобное время. Ещё не знаете, что подойдёт ребёнку? Так
-          бывает почти всегда — определим формат вместе на диагностике.</p>
-        <form class="form-grid" id="leadForm">
-          <input type="text" name="parent" placeholder="Ваше имя" required aria-label="Ваше имя">
-          <input type="tel" name="phone" placeholder="Телефон" required aria-label="Телефон">
-          <select name="grade" required aria-label="В какой класс идёт ребёнок">
-            <option value="" selected disabled>В какой класс идёт ребёнок?</option>
-            <option>В 1 класс</option>
-            <option>Во 2 класс</option>
-            <option>В 3 класс</option>
-            <option>В 4 класс</option>
-          </select>
-          <select name="interest" required aria-label="Что вас интересует">
-            <option value="" selected disabled>Что вас интересует?</option>
-            <option>Пока не знаю, посоветуйте</option>
-            <option>Ошибки и почерк</option>
-            <option>Правила и грамотность</option>
-            <option>Подготовка к ВПР</option>
-          </select>
-          <input type="hidden" name="format" value="2 раза в неделю — 8 занятий, 7500 ₽">
-          <button type="submit">Записаться на диагностику</button>
-        </form>
-        <p class="form-ok" id="formOk"><b>Заявка принята</b>Мы скоро вам перезвоним и всё расскажем.</p>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html">политикой обработки персональных данных</a>.</p>
-        <p style="margin-top:22px;font-size:.98rem;text-align:center">Или свяжитесь с нами напрямую: <a
-            href="tel:+79818962575" style="color:var(--blue);font-weight:800;text-decoration:none">+7 (981) 896-25-75</a><br>
-          <span style="font-size:.86rem;color:var(--muted)">Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1</span></p>
-        <div class="msgr-row">
-          <a class="msgr-chip vk" href="https://vk.com/intellectium_spb" target="_blank" rel="noopener"><svg
-              viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M13.16 18.5c-5.86 0-9.2-3.99-9.34-10.63h2.94c.1 4.88 2.26 6.95 3.97 7.38V7.87h2.77v4.21c1.69-.18 3.46-2.1 4.06-4.21h2.77c-.46 2.6-2.38 4.52-3.75 5.31 1.37.64 3.55 2.32 4.38 5.32h-3.05c-.65-2.03-2.26-3.6-4.41-3.81v3.81h-.34z"/>
-            </svg>ВКонтакте</a>
-          <a class="msgr-chip tg" href="https://t.me/+79818962575" target="_blank" rel="noopener"><svg
-              viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M21.9 3.4 2.9 10.7c-1 .4-1 1.4-.2 1.7l4.8 1.5 1.9 5.8c.2.7 1 .9 1.5.4l2.7-2.5 4.9 3.6c.6.4 1.4.1 1.6-.6l3-15.7c.2-1-.5-1.7-1.2-1.5zM8.5 13.5l9.5-6.2c.3-.2.6.2.4.4l-7.8 7.2-.3 3-1.8-4.4z"/>
-            </svg>Telegram</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1 · <a href="tel:+79818962575"
-      style="color:inherit;font-weight:700;text-decoration:none">+7 (981) 896-25-75</a><br>Русский язык для школьников ·
-    1–4 класс · Учебный год 2026/2027</div>
-</footer>
-
+    <form class="form-grid" id="leadForm" novalidate>
+      <label>Ваше имя<input type="text" name="parent" required autocomplete="name"></label>
+      <label>Телефон<input type="tel" name="phone" required autocomplete="tel" inputmode="tel"></label>
+      <label>В какой класс идёт ребёнок?<select name="grade" required><option value="" selected disabled>Выберите класс</option><option>В 1 класс</option><option>Во 2 класс</option><option>В 3 класс</option><option>В 4 класс</option></select></label>
+      <label>Что вас интересует?<select name="interest" required><option value="" selected disabled>Выберите</option><option>Пока не знаю, посоветуйте</option><option>Ошибки и почерк</option><option>Правила и грамотность</option><option>Подготовка к ВПР</option></select></label>
+      
+      <input type="hidden" name="format" value="2 раза в неделю — 8 занятий, 7500 ₽">
+      <button class="btn btn-blue" type="submit">Записаться на диагностику</button>
+      <p class="form-ok" id="formOk"><b>Заявка принята</b>Мы скоро вам перезвоним и всё расскажем.</p>
+      <p class="policy">Нажимая кнопку, вы соглашаетесь с <a href="/privacy.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</p>
+    </form>
+  </div>
+</section>
+<footer><div class="wrap"><img src="images/logo-white.png" alt="Интеллектиум" width="140" height="36" loading="lazy"><div class="info"><p>Детский центр «Интеллектиум» · Санкт-Петербург, ул. Оптиков, 45к1 · <a class="js-tel" href="tel:+79818962575">+7 (981) 896-25-75</a></p><p>Русский язык для школьников · 1–4 класс · Учебный год 2026/2027 · <a href="/privacy.html">Политика конфиденциальности</a></p></div></div></footer>
 <script>
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) {e.target.classList.add('in'); io.unobserve(e.target);}
-  }), {threshold: .12});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCVSASTT9KMfg7RSLCSmiUxcDL3afI5jhbtvyoFlywmsyG1Vm4Em5MMb6gjtk4_-K/exec";
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCVSASTT9KMfg7RSLCSmiUxcDL3afI5jhbtvyoFlywmsyG1Vm4Em5MMb6gjtk4_-K/exec";
-
-  function bindLeadForm(formId, okId){
-    const form = document.getElementById(formId);
-    if (!form) return;
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const oldText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'Отправляем…';
-      const data = new URLSearchParams(new FormData(form));
-      data.append('source', 'Русский язык — годовой курс');
-      try {
-        if (!SCRIPT_URL.startsWith('https://')) throw new Error('SCRIPT_URL не настроен');
-        await fetch(SCRIPT_URL, {method: 'POST', mode: 'no-cors', body: data});
-        if (typeof ym === 'function') {ym(111831978, 'reachGoal', 'form_submit');}
-        form.style.display = 'none';
-        document.getElementById(okId).style.display = 'block';
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = oldText;
-        alert('Не получилось отправить заявку. Пожалуйста, позвоните или напишите нам: +7 (981) 896-25-75');
-      }
-    });
-    return form;
+  function goal(name){
+    try { if (typeof ym === 'function') ym(111831978, 'reachGoal', name); } catch(e){}
   }
-
-  bindLeadForm('leadFormTop', 'formOkTop');
-  const leadForm = bindLeadForm('leadForm', 'formOk');
-
-  const fmtSelect = leadForm.querySelector('select[name="format"]');
-  document.querySelectorAll('[data-format]').forEach(a => {
-    a.addEventListener('click', () => {fmtSelect.value = a.dataset.format;});
+  document.querySelectorAll('a.js-tel').forEach(function(a){
+    a.addEventListener('click', function(){ goal('phone_click'); });
   });
+
+  var form = document.getElementById('leadForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      var oldText = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Отправляем…';
+      var data = new URLSearchParams(new FormData(form));
+      data.append('source', 'Русский язык — годовой курс');
+      fetch(SCRIPT_URL, {method:'POST', mode:'no-cors', body:data})
+        .then(function(){
+          goal('form_submit');
+          Array.prototype.forEach.call(form.querySelectorAll('label, button'), function(el){ el.style.display='none'; });
+          document.getElementById('formOk').style.display = 'block';
+        })
+        .catch(function(){
+          btn.disabled = false; btn.textContent = oldText;
+          alert('Не получилось отправить заявку. Пожалуйста, позвоните или напишите нам: +7 (981) 896-25-75');
+        });
+    });
+  }
 </script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+ym(111831978, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111831978" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
 </body>
 </html>

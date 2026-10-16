@@ -30,11 +30,14 @@ button:disabled{opacity:.7;cursor:default}
 .form-ok{grid-column:1/-1;background:#E8EFFD;border-radius:14px;padding:18px 20px;font-weight:700}
 @media (max-width:600px){
   section{padding-top:64px!important;padding-bottom:64px!important}
-  .facts{grid-template-columns:1fr 1fr!important;gap:4px 16px;padding-top:8px;padding-bottom:8px}
-  .facts>div{border-right:0!important;padding:14px 0!important}
-  .facts>div>div:first-child{font-size:26px!important}
+  .facts{grid-template-columns:1fr!important;gap:0;padding-top:8px;padding-bottom:8px}
+  .facts>div{border-right:0!important;padding:14px 0!important;border-bottom:1px solid #E1E8F7}
+  .facts>div:last-child{border-bottom:0}
+  .facts>div>div:first-child{font-size:26px!important;white-space:nowrap;min-width:110px}
+  .facts br{display:none}
   #signup-top{padding-top:0!important}
 }
+@media (max-width:600px){.hero-float{left:16px!important;top:16px!important}.hero-img{aspect-ratio:4/3!important;object-position:50% 20%!important}}
 </style>
 </head>
 <body>
@@ -70,8 +73,8 @@ button:disabled{opacity:.7;cursor:default}
 </div>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; max-width: 500px; margin: 0 auto; align-self: flex-end; position: relative">
-<img src="images/olimp-hero.jpg" alt="Ученик у доски с олимпиадной задачей" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px 28px 0 0; display: block">
-<div style="position: absolute; left: -20px; top: 32px; background: #FFFFFF; border-radius: 16px; padding: 12px 16px; box-shadow: 0 14px 34px rgba(23,37,84,0.16); display: flex; align-items: center; gap: 12px">
+<img src="images/olimp-hero.jpg" alt="Ученик у доски с олимпиадной задачей" class="hero-img" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px 28px 0 0; display: block">
+<div class="hero-float" style="position: absolute; left: -20px; top: 32px; background: #FFFFFF; border-radius: 16px; padding: 12px 16px; box-shadow: 0 14px 34px rgba(23,37,84,0.16); display: flex; align-items: center; gap: 12px">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>
 <div style="line-height: 1.2"><div style="font-weight: 800; font-size: 18px">5,0</div><div style="font-size: 13px; color: #51607F">70+ отзывов на Яндекс Картах</div></div>
 </div>
@@ -82,10 +85,10 @@ button:disabled{opacity:.7;cursor:default}
 <!-- ПОЛОСА ДОВЕРИЯ -->
 <section style="padding: 0; background: #FFFFFF; border-bottom: 1px solid #E1E8F7">
 <div class="facts" style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))">
-<div style="padding: 26px 24px 26px 0; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">9 лет</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">центру,<br>с 2017 года</div></div>
-<div style="padding: 26px 24px; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">10+</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">призёров<br>каждый год</div></div>
-<div style="padding: 26px 24px; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">до 6</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">человек<br>в группе</div></div>
-<div style="padding: 26px 0 26px 24px; display: flex; gap: 14px; align-items: center"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">4 500 ₽</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">в месяц,<br>от 4 занятий</div></div>
+<div style="padding: 26px 24px 26px 0; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">9 лет</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">центру, <br>с 2017 года</div></div>
+<div style="padding: 26px 24px; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">10+</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">призёров <br>каждый год</div></div>
+<div style="padding: 26px 24px; display: flex; gap: 14px; align-items: center; border-right: 1px solid #E1E8F7"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">до 6</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">человек <br>в группе</div></div>
+<div style="padding: 26px 0 26px 24px; display: flex; gap: 14px; align-items: center"><div style="font-size: 32px; font-weight: 800; color: #2563EB; line-height: 1">4 500 ₽</div><div style="font-size: 14px; color: #51607F; line-height: 1.3">в месяц, <br>от 4 занятий</div></div>
 </div>
 </section>
 
