@@ -52,6 +52,7 @@
 
   .hero{background:var(--bg);padding:64px 0 0;overflow:hidden}
   .hero .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
+  @media(max-width:600px){.hero .wrap{gap:20px}}
   .hero-text{flex:1.2 1 520px;min-width:0;padding-bottom:64px}
   .pill{display:inline-flex;align-items:center;gap:10px;min-height:34px;padding:0 14px 0 6px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14px}
   .pill span{display:inline-flex;align-items:center;min-height:24px;padding:4px 10px;border-radius:999px;background:var(--sun);font-size:13px;white-space:nowrap}
@@ -247,6 +248,15 @@
 }
 .facts>div{min-width:0}
   .facts span{min-width:0;overflow-wrap:break-word}
+
+h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+@media (max-width:600px){
+  .hero-text,.hero-text-m{padding-bottom:0!important}
+  .hero-wrap-m{gap:20px!important}
+  .hero-photo{display:flex;flex-direction:column;align-self:stretch!important}
+  .hero-photo>img{order:2}
+  .float,.hero-float{position:static!important;order:1;left:auto!important;top:auto!important;margin:0 0 14px!important;align-self:flex-start;box-shadow:0 6px 18px rgba(23,37,84,.10)!important}
+}
 </style>
 </head>
 <body>

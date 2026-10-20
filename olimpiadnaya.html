@@ -57,6 +57,15 @@ button:disabled{opacity:.7;cursor:default}
 }
 .facts>div{min-width:0}
   .facts span{min-width:0;overflow-wrap:break-word}
+
+h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+@media (max-width:600px){
+  .hero-text,.hero-text-m{padding-bottom:0!important}
+  .hero-wrap-m{gap:20px!important}
+  .hero-photo{display:flex;flex-direction:column;align-self:stretch!important}
+  .hero-photo>img{order:2}
+  .float,.hero-float{position:static!important;order:1;left:auto!important;top:auto!important;margin:0 0 14px!important;align-self:flex-start;box-shadow:0 6px 18px rgba(23,37,84,.10)!important}
+}
 </style>
 </head>
 <body>
@@ -76,8 +85,8 @@ button:disabled{opacity:.7;cursor:default}
 
 <!-- HERO: светлый, текст слева, фото справа; три тезиса под заголовком -->
 <section style="background: #F4F7FE; padding: 64px 0 0; overflow: hidden">
-<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center">
-<div style="flex: 1.2 1 520px; min-width: 0; padding-bottom: 64px">
+<div class="hero-wrap-m" style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center">
+<div class="hero-text-m" style="flex: 1.2 1 520px; min-width: 0; padding-bottom: 64px">
 <div style="display: inline-flex; align-items: center; gap: 10px; min-height: 34px; padding: 0 14px 0 6px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E1E8F7; font-weight: 700; font-size: 14px"><span style="display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; background: #FFC83D; font-size: 13px; white-space: nowrap">1–5 класс</span>Приморский район · Набор 2026/2027</div>
 <h1 style="margin: 22px 0 0; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em">Олимпиадная математика для тех, кому мало школьной</h1>
 <p style="margin: 20px 0 0; font-size: clamp(17px, 1.5vw, 19px); color: #34415F; max-width: 54ch">Ребёнок решает быстрее класса и скучает на уроке? Ему нужны задачи, к которым не подходит готовый шаблон. Занимаемся олимпиадной математикой с 2021 года — каждый год десять и больше наших учеников берут призовые места.</p>
@@ -91,7 +100,7 @@ button:disabled{opacity:.7;cursor:default}
 <a class="js-tel" href="tel:+79818962575" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 8px; color: #0F1B3D; font-weight: 700; text-decoration: none; white-space: nowrap">или позвоните: +7 (981) 896-25-75</a>
 </div>
 </div>
-<div style="flex: 1 1 380px; min-width: 0; max-width: 500px; margin: 0 auto; align-self: flex-end; position: relative">
+<div class="hero-photo" style="flex: 1 1 380px; min-width: 0; max-width: 500px; margin: 0 auto; align-self: flex-end; position: relative">
 <img src="images/olimp-hero.jpg" alt="Ученик у доски с олимпиадной задачей" class="hero-img" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px 28px 0 0; display: block">
 <div class="hero-float" style="position: absolute; left: -20px; top: 32px; background: #FFFFFF; border-radius: 16px; padding: 12px 16px; box-shadow: 0 14px 34px rgba(23,37,84,0.16); display: flex; align-items: center; gap: 12px">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFC83D" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>
